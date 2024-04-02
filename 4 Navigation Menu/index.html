@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Mobile-Friendly Navigation</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            header {
+                background-color: #3498db;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+            }
+
+            nav {
+                background-color: #2c3e50;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px;
+            }
+
+            nav ul {
+                list-style: none;
+                display: flex;
+                margin: 0;
+                padding: 0;
+            }
+
+            nav li {
+                margin-right: 20px;
+            }
+
+            nav a {
+                text-decoration: none;
+                color: #fff;
+                font-weight: bold;
+            }
+
+            /* Hamburger menu styles */
+            .menu-icon {
+                display: none;
+                cursor: pointer;
+                font-size: 24px;
+            }
+
+            @media only screen and (max-width: 768px) {
+                nav ul {
+                    display: none;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 50px;
+                    left: 0;
+                    width: 100%;
+                    background-color: #2c3e50;
+                }
+
+                nav ul.show {
+                    display: flex;
+                }
+
+                nav li {
+                    margin: 0;
+                    text-align: center;
+                }
+
+                .menu-icon {
+                    display: block;
+                }
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                text-align: justify;
+                margin: 20px;
+                /* size: 15; */
+                background-color: rgb(0, 255, 251);
+            }
+
+            footer {
+                font-size: large;
+                text-align: center;
+                color: #fa0404be;
+                height: 20px;
+                margin: 0 20px;
+                padding-top: 20px;
+                font-size: 25px;
+            }
+            photo{
+                float: right
+            }
+        </style>
+        </style>
+    </head>
+
+    <body>
+
+
+
+        <header>
+            <h1>Responsive Navigation</h1>
+        </header>
+
+        <nav>
+            <span class="menu-icon">&#9776;</span>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+        <script>
+            // JavaScript to toggle the mobile menu
+            document.addEventListener('DOMContentLoaded', function () {
+                const menuIcon = document.querySelector('.menu-icon');
+                const navList = document.querySelector('nav ul');
+
+                menuIcon.addEventListener('click', function () {
+                    navList.classList.toggle('show');
+                });
+            });
+        </script>
+        <div class="content">
+            <p>This is a simple responsive card component with an image and text.
+            <p>
+                <b>🌟 Aspiring Web Developer || Frontend Enthusiast || MERN Stack & Java DSA Learner 🚀
+
+                    <br>* Greetings! I'm Abhisek Panda, currently embarking on an exciting journey towards becoming a
+                    proficient
+                    Web Developer. Pursuing a BTech in Computer Science at GIET University Gunupur, I've set my sights
+                    on
+                    mastering the
+                    intricate art of the MERN Stack and honing my skills in Java Data Structures and Algorithms.
+
+                    <br>* My academic journey began at ST. XAVIER'S SR. SECONDARY SCHOOL JAJPUR ROAD, Jajpur, where I
+                    completed
+                    my Intermediate
+                    and Matriculation. As a self-driven and independent learner, I thrive on setting ambitious goals and
+                    pushing
+                    beyond boundaries. My commitment to learning drives me, and I possess a keen ability to combat
+                    monotony,
+                    constantly
+                    seeking innovation and growth.
+
+                    <br>* One of my key strengths lies in effective communication, a skill I leverage to collaborate
+                    seamlessly
+                    within teams. I am goal-oriented, consistently striving for excellence and fostering an environment
+                    conducive to collective success.
+
+                    <br> * I'm passionate about crafting immersive user experiences through frontend development and am
+                    dedicated to refining my
+                    abilities in this domain. Embracing challenges fuels my journey, and I am poised to contribute my
+                    skills
+                    and
+                    enthusiasm to impactful projects.
+
+                    <br>* I am explore opportunities where I can bring my determination, enthusiasm, and teamwork
+                    commitment
+                    to
+                    contribute meaningfully to the world of web development.
+            </p>
+            <img src="./ABHISEK PROFILE PIC.png" alt="Placeholder Image">
+        </div>
+        <footer>
+            <a href="https://github.com/abhisek2004"> @ Created and Design By Abhisek Panda</a>
+        </footer>
+    </body>
+
+</html>
