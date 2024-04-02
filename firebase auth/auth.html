@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<!-- Bootstrap theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<title>Firebase login and register</title>
+	</head>
+
+	<body>
+
+		<div class="navbar navbar-default">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://github.com/abhisek2004">Abhisek Panda</a>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+					data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#" id="logout" style="display: none;">Log Out</a></li>
+				</ul>
+			</div>
+		</div>
+		<br>
+		<div class="container">
+			<form name="registration_form" id="registration_form" method="post" action="#"
+				enctype="multipart/form-data">
+				<div class="row">
+
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label for="email">Email</label>
+							<input type="text" name="email" id="email" class="form-control"
+								placeholder="Enter your email">
+						</div>
+
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" name="password" id="password" class="form-control"
+								placeholder="Enter your password">
+						</div>
+						<button type="button" id="register" name="register" class="btn btn-success">Register
+							Now</button>
+					</div><!-- end col -->
+			</form>
+			<div class="col-sm-4">
+				<img src="firebase_auth.png">
+			</div>
+			<form name="login_form" id="login_form" method="post" action="#" enctype="multipart/form-data">
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input type="text" name="login_email" id="login_email" class="form-control"
+							placeholder="Enter your email">
+					</div>
+
+					<div class="form-group">
+						<label for="password">Password</label>
+						<input type="password" name="login_password" id="login_password" class="form-control"
+							placeholder="Enter your password">
+					</div>
+					<button type="button" id="login" name="login" class="btn btn-success">Login</button>
+				</div><!-- end col -->
+
+		</div><!--  end row -->
+		</form>
+		</div>
+		<br>
+		<center>Developed by <a href="https://github.com/abhisek2004">Abhisek</a></center>
+	</body>
+	<script type="module">
+		// Import the functions you need from the SDKs you need
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+		import { getAuth } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
+
+		const firebaseConfig = {
+			apiKey: "AIzaSyDDNb9-MIEF-3cPPH2rP1Uv7MHY_VzxJw4",
+			authDomain: "authencation-fb081.firebaseapp.com",
+			projectId: "authencation-fb081",
+			storageBucket: "authencation-fb081.appspot.com",
+			messagingSenderId: "743498766801",
+			appId: "1:743498766801:web:22b5eec30533dd4acba8f0",
+			measurementId: "G-F9WG26H5TT"
+		};
+
+		// Initialize Firebase
+		const app = initializeApp(firebaseConfig);
+		const analytics = getAnalytics(app);
+		// console.log(app);
+
+		submitdata.addEventListener('click', (e) => {
+
+			var email = document.getElementById('Email').value;
+			var password = document.getElementById('Password').value;
+
+			createUserWithEmailAndPassword(auth, email, password)
+				.then((userCredential) => {
+					// Signed up 
+					const user = userCredential.user;
+					// ...
+					alert('user created successfully');
+
+				})
+				.catch((error) => {
+					const errorCode = error.code;
+					const errorMessage = error.message;
+					// ..
+					alert('errorMessage');
+
+				});
+
+
+		})
+
+
+	</script>
+
+</html>
