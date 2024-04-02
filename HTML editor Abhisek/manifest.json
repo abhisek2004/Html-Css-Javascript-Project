@@ -1,0 +1,15 @@
+{
+    "name": "Real-time HTML5 Online Editor",
+    "short_name": "HTML5 Online Editor",
+    "description": "Make tiny and fast html code tests, with styles, script and html support.",
+    "start_url": "/?homescreen=1",
+    "display": "standalone",
+    "background_color": "#212121",
+    "theme_color": "#212121",
+    "icons": [{
+      "src": "assets/icon2.png",
+      "sizes": "512X512",
+      "type": "image/png"
+    }]
+  }
+  
