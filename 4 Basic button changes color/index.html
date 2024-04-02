@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                margin: 20px;
+                background-color: beige;
+            }
+
+            button {
+                padding: 10px 20px;
+                font-size: 30px;
+                cursor: pointer;
+            }
+
+            button.clicked {
+                background-color: #4caf50;
+                color: white;
+            }
+
+            footer {
+                font-size: large;
+                text-align: center;
+                color: #fa0404be;
+                height: 20px;
+                margin: 0 20px;
+                padding-top: 20px;
+                font-size: 25px;
+            }
+        </style>
+        <title>Color-Changing Button</title>
+    </head>
+
+    <body>
+        <button id="colorButton">Click me to change color</button>
+
+        <script>
+            const colorButton = document.getElementById('colorButton');
+
+            colorButton.addEventListener('click', function () {
+                colorButton.classList.toggle('clicked');
+            });
+        </script>
+        <footer>
+            <a href="https://github.com/abhisek2004"> @ Created and Design By Abhisek Panda</a>
+        </footer>
+
+
+    </body>
+
+</html>
