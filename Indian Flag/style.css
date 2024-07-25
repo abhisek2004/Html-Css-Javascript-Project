@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #888;
+  overflow: hidden;
+}
+.parent {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  transform: rotate(-30deg) scale(2.5);
+}
+
+.orange,
+.white,
+.green {
+  height: 33.33%;
+  width: 100%;
+  transition: all 2s;
+}
+.orange {
+  background: #ff9933;
+}
+.white {
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.green {
+  background: #138808;
+}
+
+.white img {
+  width: 10%;
+  animation: rotate 3s infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  flex: 1;
+  /* This makes the content wrapper take up available space */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Center the cards horizontally */
+  justify-content: center;
+  /* Center the cards vertically */
+}
+
+.card {
+  margin: 20px;
+}
+
+footer {
+  /* background-color: #00ffe1; */
+  text-align: center;
+  color: #fa0404be;
+  height: 20px;
+  margin: 0 20px;
+  padding-top: 20px;
+  font-size: 25px;
+}
