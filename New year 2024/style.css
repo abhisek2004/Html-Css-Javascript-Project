@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  height: 100vh;
+  width: 100%;
+}
+
+.front {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #373c10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.front .info {
+  padding: 20px 15px;
+  font-size: 4.5rem;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.front .countdown {
+  position: relative;
+  font-size: 5.5rem;
+  padding: 20px 15px;
+}
+
+.front .countdown h1 {
+  display: none;
+  opacity: 0;
+}
+
+.front .loader {
+  position: relative;
+  margin-top: 100px;
+  width: 250px;
+  height: 10px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.front .loader .fill {
+  position: absolute;
+  height: 100%;
+  width: 0;
+  background: #fff;
+  border-radius: 20px;
+  animation: animate 10s linear forwards;
+}
+
+.front-shadow {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #717a33;
+  left: 100%;
+}
+
+@keyframes animate {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.new-year {
+  position: fixed;
+  top: 0;
+  left: 120%;
+  height: 100%;
+  width: 100%;
+  background: #686222;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+}
+
+.new-year h1:nth-child(1) {
+  font-size: 4.3rem;
+  margin-left: 150%;
+}
+.new-year h1.year {
+  font-size: 12.3rem;
+  margin-top: 80%;
+}
+
+.firework {
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.5vmin;
+  aspect-ratio: 1;
+  background: transparent;
+  background-size: 0.5vmin 0.5vmin;
+  background-repeat: no-repeat;
+  animation: firework 1s infinite;
+  animation-delay: 14s;
+}
+
+@keyframes firework {
+  0% {
+    transform: translate(-50%, 60vh);
+    width: 0.5vmin;
+    opacity: 1;
+  }
+  50% {
+    width: 0.5vmin;
+    opacity: 1;
+  }
+  100% {
+    width: 45vmin;
+    opacity: 0;
+  }
+}
+
+.firework::before,
+.firework::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.5vmin;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgb(92, 105, 32) 0.2vmin, #0000 0) 50%
+      00%,
+    radial-gradient(circle, #fff 0.3vmin, #0000 0) 00% 50%,
+    radial-gradient(circle, rgba(0, 81, 255, 1) 0.5vmin, #0000 0) 50% 99%,
+    radial-gradient(circle, rgba(255, 94, 0, 1) 0.2vmin, #0000 0) 99% 50%,
+    radial-gradient(circle, rgba(55, 0, 255, 1) 0.3vmin, #0000 0) 80% 90%,
+    radial-gradient(circle, rgba(255, 0, 191, 1) 0.5vmin, #0000 0) 95% 90%,
+    radial-gradient(circle, rgb(0, 247, 255) 0.5vmin, #0000 0) 10% 60%,
+    radial-gradient(circle, rgb(255, 0, 0) 0.2vmin, #0000 0) 31% 80%,
+    radial-gradient(circle, #fff 0.3vmin, #0000 0) 80% 10%,
+    radial-gradient(circle, rgba(0, 255, 21, 1) 0.2vmin, #0000 0) 90% 23%,
+    radial-gradient(circle, #ffbf00 0.3vmin, #0000 0) 45% 20%,
+    radial-gradient(circle, #fff 0.5vmin, #0000 0) 13% 24%,
+    radial-gradient(circle, rgb(0, 247, 255) 0.5vmin, #0000 0) 10% 60%,
+    radial-gradient(circle, rgb(255, 0, 0) 0.2vmin, #0000 0) 31% 80%,
+    radial-gradient(circle, #fff 0.3vmin, #0000 0) 80% 10%,
+    radial-gradient(circle, rgba(0, 255, 21, 1) 0.2vmin, #0000 0) 90% 23%,
+    radial-gradient(circle, #fff 0.3vmin, #0000 0) 45% 20%,
+    radial-gradient(circle, #fff 0.5vmin, #0000 0) 13% 24%,
+    radial-gradient(circle, #ffbf00 0.5vmin, #0000 0) 13% 24%;
+  background-size: 0.5vmin 0.5vmin;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: firework 1s infinite;
+  animation-delay: 14s;
+}
+
+.firework::before {
+  transform: translate(-50%, -50%) rotate(25deg) !important;
+}
+
+.firework::after {
+  transform: translate(-50%, -50%) rotate(-37deg) !important;
+}
