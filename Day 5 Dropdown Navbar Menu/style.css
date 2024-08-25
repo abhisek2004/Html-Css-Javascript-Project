@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@1;100;200;300;400;500;600;700;800;900;1000&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sofia Sans Condensed', sans-serif;
+}
+
+body{
+    background: #f2f2f2;
+}
+
+nav{
+    background: #1b1b1b;
+    padding: 0 80px;
+}
+
+nav:after{
+    content: ' ';
+    clear: both;
+    display: table;
+}
+
+nav .logo{
+    float: left;
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 70px;
+    padding-left: 60px;
+    cursor: pointer;
+}
+
+nav .logo span{
+    color: cyan;
+}
+
+nav ul{
+    float: right;
+    list-style: none;
+    margin-right: 40px;
+    position: relative;
+}
+
+nav ul li{
+    float: left;
+    display: inline-block;
+    background: #1b1b1b;
+    margin: 0 5px;
+}
+
+nav ul li a{
+    color: #fff;
+    text-decoration: none;
+    line-height: 70px;
+    font-size: 18px;
+    padding: 8px 15px;
+}
+
+nav ul li a:hover{
+    color: cyan;
+    transition: 0.5s ease-in;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #33ffff,
+                0 0 5px #55ffff,
+                0 0 5px #66ffff;
+}
+
+nav ul ul li a:hover{
+    color: cyan;
+    box-shadow: none;
+}
+
+nav ul ul{
+    position: absolute;
+    border-top: 3px solid cyan;
+    top: 70px;
+    opacity: 0;
+    text-align: center;
+    visibility: hidden;
+}
+
+nav ul ul ul{
+    border-top: none;
+}
+
+nav ul li:hover > ul{
+    opacity: 1;
+    visibility: visible;
+}
+
+nav ul ul li {
+    position: relative;
+    margin:0px;
+    width: 150px;
+    float: none;
+    display: list-item;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    
+}
+
+nav ul ul li a{
+    line-height: 50px;
+}
+
+nav ul ul ul li{
+    position:relative;
+    top: -70px;
+    left: 150px;
+}
+
+.fa-plus{
+    margin-left: 15px;
+    font-size: 15px;
+}
+
+.home{
+    display: flex;
+    background:linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(./main.jpg) no-repeat center;
+    height: 90vh;
+    width: 100%;
+    background-size: cover;
+    color: #fff;
+    min-height: 500px;
+    padding: 0 80px;
+}
+
+.home .max-width{
+    margin: auto 0 auto 40px; 
+}
+
+.home .home-content{
+    line-height: 1;
+}
+
+.home .home-content .text-1{
+    font-size: 3.0rem;
+    font-weight: 100;
+}
+
+.home .home-content .text-2{
+    font-size: 7rem;
+    font-weight: 900;
+    margin-left: -3px;
+    text-transform: uppercase;
+}
+
+.home .home-content .text-3{
+    font-size: 4.5rem;
+}
+
+.home .home-content .text-3 span{
+    color: cyan;
+    font-weight: 500;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-wrapper {
+    flex: 1;
+    /* This makes the content wrapper take up available space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center the cards horizontally */
+    justify-content: center;
+    /* Center the cards vertically */
+}
+
+.card {
+    margin: 20px;
+}
+
+footer {
+    /* background-color: #00ffe1; */
+    text-align: center;
+    color: #fa0404be;
+    height: 20px;
+    margin: 0 20px;
+    padding-top: 20px;
+    font-size: 25px;
+}
