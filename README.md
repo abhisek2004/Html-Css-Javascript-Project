@@ -116,7 +116,3 @@ Your feedback and contributions can help enhance this repository and benefit the
 ## 📜 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-Feel free to customize any part to better fit your style or add specific instructions relevant to your projects!
