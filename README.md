@@ -1,7 +1,3 @@
-Sure! Here’s an updated version that includes a list of completed projects:
-
----
-
 # 🌟 Welcome to My HTML-CSS-Javascript Project Repository! 🌟
 
 🚀 **Mission:** To upload 1000+ projects before graduation in the next 2 years!
@@ -83,6 +79,3 @@ Watch my progress, give feedback, and maybe even collaborate! This journey is as
 
 Stay tuned and happy coding! ✨🚀
 
---- 
-
-Feel free to modify or expand the list of projects as needed!
