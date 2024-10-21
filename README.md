@@ -102,17 +102,3 @@ This repository serves as a collection of my web development projects using HTML
 
 ## 🤝 Contributing
 
-Contributions are welcome! If you’d like to help improve this project, please follow these steps:
-
-1. **Fork the repository** 🍴
-2. **Create a new branch** 🌿
-3. **Make your changes** ✏️
-4. **Commit your changes** 📦
-5. **Push to the branch** 🔄
-6. **Open a pull request** 📬
-
-Your feedback and contributions can help enhance this repository and benefit the community!
-
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
