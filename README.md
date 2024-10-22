@@ -116,3 +116,27 @@ Your feedback and contributions can help enhance this repository and benefit the
 ## 📜 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+## <h2 align="center"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Red%20Heart.png" width="35" height="35">Our Contributors</h2>
+<h3>Thank you for contributing to our repository</h3>
+
+![Contributors](https://contrib.rocks/image?repo=abhisek2004/LEARNING-PROJECT-2)
+
+---
+
+## Stargazers
+
+<div align='center'>
+
+[![Stargazers repo roster for @abhisek2004/LEARNING-PROJECT-2](https://reporoster.com/stars/abhisek2004/LEARNING-PROJECT-2)](https://github.com/abhisek2004/LEARNING-PROJECT-2/stargazers)
+
+</div>
+
+## Forkers
+
+<div align='center'>
+
+[![Forkers repo roster for @abhisek2004/LEARNING-PROJECT-2](https://reporoster.com/forks/abhisek2004/LEARNING-PROJECT-2)](https://github.com/abhisek2004/LEARNING-PROJECT-2/network/members)
+
+</div>
