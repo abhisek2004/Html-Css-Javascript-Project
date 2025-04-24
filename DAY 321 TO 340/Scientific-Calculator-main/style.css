@@ -1,0 +1,31 @@
+table{
+	background-color: rgb(178, 236, 187);
+}
+body{
+	background-color: aqua;
+}
+.calculator{
+	border:2px solid rgb(60, 190, 230);
+	width: 280px;
+	box-sizing: border-box;
+	margin: 40px auto 0;
+	font-family: verdana;
+}
+.calculator .form-control{
+	height: 50px;
+}
+.calculator .form-group{
+	margin-bottom: 0;
+}
+.calculator input[type=text]{
+	font-size: 1.5rem;
+	color:rgb(7, 7, 7);
+}
+.calculator .btn {
+	font-size: 1.5rem;
+	color:rgb(51, 51, 51);
+	width: 120px;
+}
+.calculator .btn-op {
+	background-color: #00f15d;
+}
