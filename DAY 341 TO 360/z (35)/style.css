@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@1;100;200;300;400;500;600;700;800;900;1000&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sofia Sans Condensed', sans-serif;
+}
+
+:root{
+    font-size: 62.5%;
+}
+
+.container{
+    width: 1400px;
+    max-width: 80%;
+    margin: auto;
+}
+
+.page1{
+    width: 100vw;
+    height: 100vh;
+    background: url(https://www.cnet.com/a/img/resize/65bbc9fb7a559bf752d4fef5eca83cfd8065fe83/hub/2022/03/18/67b4747e-233c-46d7-a696-04ea4e557656/starlink-slc40-desktop.jpg?auto=webp&fit=crop&height=675&width=1200);
+    background-size: cover;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.navbar a{
+    width: 200px;
+    height: auto;
+}
+
+.navbar a img{
+    width: 100%;
+    height: 100%;
+}
+
+.navbar ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+}
+
+.navbar ul li a{
+    font-size: 1.6rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.navbar ul li a::after{
+    content: '';
+    width:0%;
+    height: 1px;
+    background: #fff;
+    display: block;
+    margin: auto;
+    transition: 0.5s ease-in-out;
+}
+
+.navbar ul li a:hover::after{
+    width: 100%;
+}
+
+.logo a{
+    text-decoration: none;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #fff;
+    padding: 0 1.3rem;
+}
+
+.text{
+    position: relative;
+    top: 50%;
+    padding: 1rem 0;
+}
+
+.text p{
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #fff;
+}
+
+.text h1{
+    text-transform: uppercase;
+    font-size: 5.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2rem;
+}
+
+.text .btn{
+    text-decoration: none;
+    border: 1px solid #fff;
+    padding: 15px 30px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    transition: 0.54s;
+}
+
+.text .btn:hover{
+    background: #fff;
+    color: black;
+}
+
+.page2{
+    width: 100vw;
+    height: 80vh;
+    background: url(https://www.rocketlaunchschedule.com/wp-content/uploads/2023/05/falcon2520925_image_20230522092919.png?ezimgfmt=ngcb1/notWebP);
+    background-size: cover;
+}
+
+.page3{
+    width: 100vw;
+    height: 80vh;
+    background: url(https://parabolicarc.com/wp-content/uploads/2023/03/Relativity_Space_Terran-1_launch.jpg);
+    background-size: cover;
+    background-position: bottom;
+}
+
+.page4{
+    width: 100vw;
+    height: 90vh;
+    background: url(https://cdn.mos.cms.futurecdn.net/QRUprPaxCcv3pojcAhtySD-1200-80.jpg.webp);
+    background-size: cover;
+}
+
+.footer{
+    height: 10vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background: #000;
+}
+
+.footer a{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    transition: 0.4s;
+}
+
+.footer a:hover{
+    font-weight: 500;
+    color: #ffffff82;
+}
+
+
+
