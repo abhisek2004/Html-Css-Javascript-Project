@@ -12,7 +12,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #d6e9ec;
+    background: #a2c5ca;
 }
 
 .card{
@@ -115,29 +115,29 @@
 }
 
 .stars{
-    position: relative;
-    top: -50%;
-    left: -43%;
+    position: absolute; /* Ensures it stays within the box */
+    bottom: 20px; /* Adjusts the position relative to the bottom of the box */
+    left: 50%; /* Centers the icons horizontally */
+    transform: translateX(-50%); /* Centers the icons perfectly */
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    z-index: 999;
-    gap: 20px;
+    gap: 15px; /* Adds spacing between the icons */
     color: #fff;
     font-size: 25px;
+    z-index: 10; /* Ensures it stays above other elements */
 }
 
-.stars i{
-    transition: 0.3s;
+.stars a {
+    text-decoration: none;
+    color: inherit; /* Keeps the icon color */
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.stars i:hover{
-    scale: 105%;
-    color: #44a1a0;
+.stars a:hover {
+    color: #44a1a0; /* Hover color for the icons */
+    transform: scale(1.1); /* Slight zoom effect on hover */
 }
-
-
 
 .card .bottom::after{
     position: absolute;
