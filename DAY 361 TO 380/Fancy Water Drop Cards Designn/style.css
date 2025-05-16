@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,800;0,900;1,600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root{
+    font-size: 62.5%;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #eef0f4;
+}
+
+h1{
+    text-align: center;
+    font-size: 3rem;
+    color: #b18ef8;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.cards{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0 60px;
+}
+
+.cards .card{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    box-shadow: inset 20px 20px 20px rgba(0, 0, 0, 0.05),
+    25px 35px 20px rgba(0, 0, 0, 0.05),
+    25px 30px 30px rgba(0, 0, 0, 0.05),
+    inset -10px -10px 15px rgba(233, 249, 255, 0.9),
+    10px 10px 20px rgba(237, 248, 250, 0.9);
+    transition: all 0.5s ease;
+    
+}
+
+.cards .card:hover{
+    border-radius: 51% 49% 65% 35% / 65% 61% 39% 35% ;
+}
+
+.cards .card::before{
+    position: absolute;
+    content: '';
+    background: transparent;
+    width: 30px;
+    height: 30px;
+    top: 15%;
+    left: 25%;
+    box-shadow: rgb(204, 219, 232) 2px 2px 2px 0px inset,
+    rgba(255, 255, 255, 0.5) -2px -2px 3px 1px inset,
+    rgb(204, 219, 232) 2px 2px 2px 0px;
+    border-radius: 50%;
+    opacity: 0.9;
+}
+
+.cards .card::after{
+    position: absolute;
+    content: '';
+    background: transparent;
+    width: 15px;
+    height: 15px;
+    top: 25%;
+    left: 32%;
+    box-shadow: rgb(204, 219, 232) 2px 2px 2px 0px inset,
+    rgba(255, 255, 255, 0.5) -2px -2px 3px 1px inset,
+    rgb(204, 219, 232) 2px 2px 2px 0px;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+
+.card:nth-child(1){
+    border-radius: 53% 47% 37% 63% / 41% 41% 59% 59%  ;
+}
+
+.card:nth-child(2){
+    border-radius: 71% 29% 37% 63% / 41% 51% 49% 59% ;
+}
+
+.cards .card .card__content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    gap: 10px;
+}
+
+.cards .card-1 .card__content h2{
+    margin-top: 2.5rem;
+    color: #fb6f92;
+    font-size: 2.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-shadow: 0 3.36px 1.896px #c4b59d,0 -2px 1px #fff;
+}
+
+.cards .card-1 .card__content span{
+    position: absolute;
+    color: #fb6f92;
+    top: 10%;
+    left: 65%;
+    font-size: 4rem;
+    pointer-events: none;
+    font-weight: 800;
+    opacity: 0.5;
+}
+
+.cards .card-1 .card__content p{
+    font-size: 1.4rem;
+    width: 200px;
+    color: #707070;
+}
+
+.cards .card-1 .card__content button{
+    padding: 0.5rem 0.8rem;
+    text-align: center;
+    font-size: 1.4rem;
+    border: 1px solid #fb6f92;
+    color: #fb6f92;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: all 0.4s ease;
+}
+
+button:hover{
+    scale: 105%;
+}
+
+.cards .card-2 .card__content h2{
+    margin-top: 2.5rem;
+    font-size: 2.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #06d6a0;
+    text-shadow: 0 3.36px 1.896px #9db5c4,0 -2px 1px #fff;
+}
+
+.cards .card-2 .card__content span{
+    position: absolute;
+    top: 10%;
+    left: 65%;
+    font-size: 4rem;
+    pointer-events: none;
+    font-weight: 800;
+    opacity: 0.5;
+    color: #06d6a0;
+}
+
+.cards .card-2 .card__content p{
+    font-size: 1.4rem;
+    width: 200px;
+    color: #707070;
+}
+
+.cards .card-2 .card__content button{
+    padding: 0.5rem 0.8rem;
+    text-align: center;
+    font-size: 1.4rem;
+    border: 1px solid #06d6a0;
+    color: #06d6a0;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: all 0.4s ease;
+}
