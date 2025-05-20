@@ -1,0 +1,27 @@
+.teams-area{
+    .single-teams{
+        .team-img{
+            & img{
+                width: 100%;
+            }
+        }
+        .team-caption{
+            padding: 20px 0;
+            & h4{
+                margin-bottom: 7px;
+                & a{
+                    color: #3c3c3c;
+                    font-size: 25px;
+                    font-family: $font_1;
+                    font-weight:500;
+                    &:hover{
+                        color: $theme_color;
+                    }
+                }
+            }
+            & span{
+
+            }
+        }
+    }
+}

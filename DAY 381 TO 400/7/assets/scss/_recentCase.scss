@@ -1,0 +1,122 @@
+.recent-case-area{
+    
+    .single-practice{
+        .practice-img{
+            position: relative;
+            overflow: hidden;
+            & img{
+                width: 100%;
+                transform: scale(1);
+                -webkit-transform: scale(1);
+                -moz-transform: scale(1);
+                -ms-transform: scale(1);
+                -o-transform: scale(1);
+                @include transition(.5s);
+            }
+            .practice-icon{
+                display: inline-block;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                right: 29px;
+                @include transition(.5s);
+
+
+                & span{
+                    color:#1b1c29;
+                    font-size: 16px;
+                    display: inline-block;
+                    background:#fff;
+                    padding: 9px 16px;
+                    @include transition(.4s);
+                    font-weight: 500;
+                }
+            }
+        }
+        .practice-caption2{
+            background: #fcfcfc;
+            padding: 34px 22px 31px 37px;
+            @media #{$md}{
+                padding: 31px 12px 22px 17px;
+            }
+            @media #{$lg}{
+                padding: 31px 12px 22px 17px;
+            }
+            @media #{$sm}{
+                padding: 31px 12px 22px 17px;
+            }
+            @media #{$xs}{
+                padding: 31px 12px 22px 17px;
+            }
+
+            & h4{
+                color: #1b1c29;
+                font-size: 25px;
+                font-weight: 700;
+                margin-bottom: 20px;
+            }
+            & p{
+                color: #64676c;
+                line-height: 1.7;
+            }
+            .read-more1{
+                color:#c4c4c4;
+                font-size: 16px;
+                font-weight: 500;
+            }
+        }
+    }
+
+    // hover Effect
+    .single-practice:hover{
+        .practice-img {
+            & img{
+                transform: scale(1.1);
+                -webkit-transform: scale(1.1);
+                -moz-transform: scale(1.1);
+                -ms-transform: scale(1.1);
+                -o-transform: scale(1.1);
+    }
+            .practice-icon{
+                & span{
+                    color: $theme_color;
+                }
+            }
+        }
+        .read-more1{
+            color:$theme_color;
+        }
+    } 
+
+
+// Tabs Button Style
+        .nav-tabs .nav-link {
+            border: 0;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+            color: $theme-color;
+        }
+        .nav-tabs .nav-item {
+            padding-bottom: 10px;
+            display: block;
+            color: #8f8f96;
+            text-transform: capitalize;
+            font-size: 16px;
+        }
+        .nav-tabs {
+            margin-bottom: 45px;
+            @media #{$xs}{
+                margin-bottom: 20px;
+            }
+            @media #{$sm}{
+                margin-bottom: 20px;
+            }
+            padding-bottom: 0px;
+            position: relative;
+            border: 0;
+            display: flex;
+            justify-content: center;
+        }
+}
+    

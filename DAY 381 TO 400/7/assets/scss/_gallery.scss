@@ -1,0 +1,103 @@
+.gallery-area{
+    .gallery-box{
+
+        .single-gallery{
+            z-index: 0;
+            position: relative;
+            &::before{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                bottom: 0;
+                content: "";
+                @extend %fradient_gallery;
+
+                // background-image: -moz-linear-gradient( 90deg, rgba(0,22,62,0.90196) 0%, rgba(0,22,62,0) 62%, rgb(0,22,62) 62%);
+                // background-image: -webkit-linear-gradient( 90deg, rgba(0,22,62,0.90196) 0%, rgba(0,22,62,0) 62%, rgb(0,22,62) 62%);
+                // background-image: -ms-linear-gradient( 90deg, rgba(0,22,62,0.90196) 0%, rgba(0,22,62,0) 62%, rgb(0,22,62) 62%);
+            }
+            &::after{
+                content: "";
+                background: #f27420;
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                z-index: 1;
+                visibility: hidden;
+                opacity: 0;
+                transition: .4s;
+                -webkit-transition: .4s;
+                -moz-transition: .4s;
+                -ms-transition: .4s;
+                -o-transition: .4s;
+}
+
+            .gallery-img{
+                & img{
+                    width: 100%;
+                }
+            }
+            .g-caption1{
+                position: absolute;
+                bottom: 15px;
+                left: 32px;
+                & span{
+                    color: #f27420;
+                    font-size: 40px; 
+                    font-weight: 700;
+                    margin-bottom: 5px;
+                    display: block;
+                }
+                & h4{
+                    color:$white;
+                }
+            }
+            .g-caption2{
+               position: absolute;
+               z-index: 5;
+               top: 60%;
+               left: 32px;
+               transform:translateY(-60%);
+               -webkit-transform:translateY(-60%);
+               -moz-transform:translateY(-60%);
+               -ms-transform:translateY(-60%);
+               -o-transform:translateY(-60%);
+               @include transition(.4s);
+               opacity: 0;
+               visibility: hidden;
+               & span{
+                    color: #fff;
+                    font-size: 40px;
+                    font-weight: 700;
+                    margin-bottom: 5px;
+                    display: block;
+               }
+               & h4{
+                color: #fff;
+                margin-bottom: 20px;
+               }
+               & p{
+                color: #fff;
+                margin-bottom: 30px;
+               }
+               .read-btn{
+                color: #fff;
+                border-bottom: 2px solid #f59758;
+               }
+            }
+        }
+    }
+}
+
+// Hover Effect
+.gallery-box:hover .single-gallery::after{
+    visibility: visible;
+    opacity: 1;
+}
+.gallery-box:hover .single-gallery .g-caption2{
+   top: 55%;
+   opacity: 1;
+   visibility: visible;
+}

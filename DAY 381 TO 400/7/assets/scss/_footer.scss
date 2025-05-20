@@ -1,0 +1,126 @@
+.footer-area{
+
+    .footer-logo{
+        margin-bottom: 21px;
+    }
+    .footer-pera{
+        & p{
+            color:#b4b4b4;
+            font-size: 14px;
+            margin-bottom: 50px;
+            line-height: 1.8;
+        }
+        &.footer-pera2 p{
+            padding: 0;
+            margin-bottom: 0;
+        }
+    }
+    .footer-social a:hover{
+        margin-top: -44px;
+    }
+
+    // footer social
+    .footer-social{
+       & a{
+           color: #949eb2;
+           width: 40px;
+           height: 40px;
+           border-radius: 50%;
+           -webkit-border-radius: 50%;
+           -moz-border-radius: 50%;
+           -ms-border-radius: 50%;
+           -o-border-radius: 50%;
+           font-size: 14px;
+           border: 1px solid#e5e5e5;
+            line-height: 40px;
+            display: inline-block;
+            text-align: center;
+            margin-right: 8px;
+            &:hover{
+                background: $theme-color;
+                border: 1px solid transparent;
+                color: #fff;
+                // 
+                & i{
+                    margin-top: -44px;
+                }
+            }
+           & i{
+                display:inline-block;
+           }
+           }
+       }
+    }
+    .footer-tittle{
+        & h4{
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 29px;
+            font-weight: 500;
+            text-transform: capitalize;
+            font-family: $font_2;
+        }
+        & ul{
+            & li{
+                color: #b4b4b4;
+                margin-bottom: 17px;
+                font-size: 14px;
+                & a{
+                    color: #b4b4b4;
+                    font-weight: 400;
+                    &:hover{
+                        color: $theme-color;
+                        padding-left: 5px;
+                    }
+                }
+            }
+        }
+    }
+    .footer-form{
+        margin-top: 30px;
+        & form{
+            position: relative;
+            & input{
+                width: 100%;
+                height: 50px;
+                padding: 10px 20px;
+                border: 1px solid #fff;
+                margin-bottom: 17px;
+            }
+        }
+    }
+    .info.error {
+        color:  $theme-color;
+    }
+
+.footer-bg{
+    background: #010b1d;
+} 
+
+//copy Right 
+.footer-bottom-area {
+    .footer-border{
+        padding: 28px 0px 37px;
+    }
+    
+    .footer-copy-right{
+        & p{
+            color: #888888;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 2;
+            margin-bottom: 12px;
+            & i{
+                color:$theme-color;
+            }
+            & a{
+                color: $theme-color;
+                &:hover{
+                    color: #fff;
+                }
+                 
+            }
+        }
+    }
+
+}

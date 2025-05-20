@@ -1,0 +1,40 @@
+.wantToWork-area{
+    position: relative;
+    z-index: 0;
+    background: $theme_color;
+    overflow: hidden;
+    .wantToWork-caption{
+        h2{
+            color: #fff;
+            font-size: 40px;
+            font-weight:700;
+            line-height: 1.5;
+            margin: 0;
+            @media #{$md}{
+                font-size: 30px; 
+                margin-bottom: 20px;
+            }
+            @media #{$xs}{
+                font-size: 25px; 
+                margin-bottom: 20px;
+            }
+        } 
+        & p{
+            color: #fff;
+            font-size: 18px;
+        }
+    }
+    .wantToWork-btn{
+        padding-right: 50px;
+        position: relative;
+        bottom: 21px;
+        @media #{$md}{
+            float: left;
+            margin-top: 59px;
+        }
+        @media #{$xs}{
+            float: left;
+            margin-top: 59px;
+        }
+    }
+}
