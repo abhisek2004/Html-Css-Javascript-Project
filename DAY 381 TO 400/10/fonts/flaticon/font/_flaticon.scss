@@ -1,0 +1,66 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 08/06/2020 06:52
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff2") format("woff2"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-lawyer:before { content: "\f100"; }
+.flaticon-auction:before { content: "\f101"; }
+.flaticon-court:before { content: "\f102"; }
+.flaticon-call:before { content: "\f103"; }
+.flaticon-salesman:before { content: "\f104"; }
+.flaticon-medal:before { content: "\f105"; }
+.flaticon-case:before { content: "\f106"; }
+.flaticon-stats:before { content: "\f107"; }
+.flaticon-family:before { content: "\f108"; }
+.flaticon-handcuffs:before { content: "\f109"; }
+.flaticon-stay-home:before { content: "\f10a"; }
+.flaticon-injury:before { content: "\f10b"; }
+.flaticon-discount:before { content: "\f10c"; }
+    
+    $font-Flaticon-lawyer: "\f100";
+    $font-Flaticon-auction: "\f101";
+    $font-Flaticon-court: "\f102";
+    $font-Flaticon-call: "\f103";
+    $font-Flaticon-salesman: "\f104";
+    $font-Flaticon-medal: "\f105";
+    $font-Flaticon-case: "\f106";
+    $font-Flaticon-stats: "\f107";
+    $font-Flaticon-family: "\f108";
+    $font-Flaticon-handcuffs: "\f109";
+    $font-Flaticon-stay-home: "\f10a";
+    $font-Flaticon-injury: "\f10b";
+    $font-Flaticon-discount: "\f10c";
