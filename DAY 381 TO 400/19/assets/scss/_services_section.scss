@@ -1,0 +1,118 @@
+.services-area{
+    .single-services{
+        @media #{$sm}{
+           margin-bottom: 30px;
+        }
+        @media #{$xs}{
+           margin-bottom: 30px;
+        }
+        .services-img{
+            img {
+                width: 100%;
+            }
+        }
+        .services-caption {
+            position: relative;
+            background: #f7f9ff;
+            width: 80%;
+            padding: 33px 79px 16px 32px;
+            margin-top: -50px;
+            @media #{$lg}{
+                padding: 33px 58px 16px 32px;
+            }
+            @media #{$md}{
+                width: 95%;
+            }
+            @media #{$sm}{
+                width: 100%;
+                padding: 33px 16px 16px 26px;
+                margin-top: 0px;
+            }
+            @media #{$xs}{
+                width: 100%;
+                padding: 33px 16px 16px 26px;
+                margin-top: 0px;
+            }
+            span {
+                margin-bottom: 15px;
+                line-height: 13px;
+                position: relative;
+                color: #3957ff;
+                font-weight: 400;
+                font-size: 14px;
+                display: block;
+                padding-left: 60px;
+               &::before {
+                    position: absolute;
+                    content: "";
+                    width: 35px;
+                    height: 2px;
+                    top: 0;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: #3957ff;
+                }
+            }
+            p {
+                margin-bottom: 15px;
+                line-height: 1.5;
+                font-family: $font_2;
+                a{
+                    color: #0e132a;
+                    font-weight: 400;
+                    font-size: 20px;
+                    display: block;
+                    &:hover{
+                        color: $theme-color;
+                    }
+                    @media #{$md}{
+                      font-size: 18px;
+                    }
+                    @media #{$xs}{
+                      font-size: 18px;
+                    }
+                }
+            }
+
+        }
+    }
+     // Tabs Button Style
+    .nav-tabs .nav-link {
+        border: 0;
+        @media #{$xs}{
+            padding: .5rem .6rem;
+        }
+    }
+    .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+        color: $theme-color;
+    }
+    .nav-tabs .nav-item {
+        padding-bottom: 10px;
+        display: block;
+        color: #8f8f96;
+        text-transform: capitalize;
+        font-size: 16px;
+    }
+    .nav-tabs {
+        margin-bottom: 15px;
+        border: 0;
+        display: flex;
+        justify-content: right;
+        @media #{$md}{
+            justify-content: left;
+            padding-top: 40px;
+          }
+        @media #{$sm}{
+            justify-content: left;
+          }
+        @media #{$xs}{
+            justify-content: left;
+          }
+    }
+}
+
+
+
+
+

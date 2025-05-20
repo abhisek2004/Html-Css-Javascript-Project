@@ -1,0 +1,78 @@
+.categories-area {
+    .single-cat{
+        border: 1px solid #ddd;
+        padding: 52px 50px;
+        @include transition(.4s);
+        z-index: 1;
+        background: #ffff;
+        @media #{$lg}{
+            padding: 36px 29px;
+        }
+        @media #{$xs}{
+            padding: 30px 22px;
+        }
+        @media #{$sm}{
+            padding: 30px 18px;
+        }
+        // icon
+        .cat-icon{
+            span{
+                color: #3957ff ;
+                font-size: 55px;
+                margin-bottom: 24px;
+                display: block;
+            }
+        }
+        .cat-cap{
+            h5{
+                font-family:$font_2;
+             & > a{
+                font-family:$font_2;
+                font-size: 24px;
+                font-weight: 500;
+                margin-bottom: 21px;
+                color: #250051;
+                display: block;
+                @include transition(.2s);
+
+                @media #{$sm}{
+                    font-size: 21px;
+                }
+                @media #{$xs}{
+                    font-size: 23px;
+                }
+              }
+            }
+            p{
+                margin-bottom: 36px;
+                color: #57667e;
+                font-size: 16px;
+                @include transition(.2s);
+                @media #{$sm}{
+                    font-size: 15px;
+
+                }
+            }
+            a{
+                font-family:$font_3;
+                color: #5d6072;
+                font-size: 16px;
+                font-weight: 400;
+                @include transition(.2s);
+            }
+        }
+
+
+        // Hover Effect In single 
+        &:hover{
+            .cat-cap{
+                a.read-more1{
+                    color: $theme-color;
+                }
+
+            }
+       }
+    }
+}
+
+
