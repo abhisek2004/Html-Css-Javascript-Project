@@ -1,0 +1,561 @@
+/* Start Features Area css
+============================================================================================ */
+.features_area {
+	position: relative;
+	margin-top: -75px;
+	z-index: 222;
+	.col-lg-3:nth-child(3),
+	.col-lg-3:nth-child(4) {
+		.single_feature {
+			margin-bottom: 0;
+		}
+	}
+	.col-lg-3:nth-child(3) {
+		@media (max-width: 570px) {
+			.single_feature {
+				margin-bottom: 30px;
+			}
+		}
+	}
+	@media (max-width: 991px) {
+		margin-top: 80px;
+	}
+	.counter_wrapper {
+		background: $offwhite;
+		margin-left: 0;
+		margin-right: 0;
+		padding: 30px 15px;
+	}
+}
+
+.single_feature {
+	background: #fff;
+	padding: 18px;
+	@include transition();
+	@media (max-width: 991px) {
+		margin-bottom: 30px;
+	}
+	.thumb {
+		display: inline-block;
+		img {
+			margin-top: -55px;
+		}
+	}
+	.info-content {
+		display: inline-block;
+		padding-left: 15px;
+		h4 {
+			font-size: 20px;
+			color: $title-color;
+			@include transition();
+			text-transform: uppercase;
+		}
+		p {
+			color: #999999;
+			margin: 0;
+			@include transition();
+		}
+	}
+	&:hover {
+		@extend .gradient-bg;
+		color: #fff;
+		img {
+			@include filter (brightness(0) invert(1));
+			@include transition();
+		}
+		h4 {
+			color: #fff;
+		}
+		p {
+			color: #fff;
+		}
+	}
+}
+
+// for about page //
+#about {
+	.features_area {
+		margin-top: 120px;
+		@media (max-width: 991px) {
+			margin-top: 80px;
+		}
+	}
+}
+
+/* End Features Area css
+============================================================================================ */
+
+/* Start video Area css
+============================================================================================ */
+
+.video-sec-area {
+	@media (max-width: 768px) {
+		padding-top: 0px;
+	}
+}
+
+.video-left {
+	background: url(../img/video-bg.jpg) no-repeat center;
+	background-size: cover;
+	height: 350px;
+	border-radius: 10px;
+	z-index: 1;
+	&.overlay {
+		border-radius: 10px;
+		&:after {
+			background: #000;
+			opacity: .3;
+			border-radius: 10px;
+		}
+	}
+	.video-inner {
+		height: 100%;
+	}
+	.play-btn {
+		z-index: 2;
+	}
+	@media (max-width: 800px) {
+		margin-top: 100px;
+	}
+}
+
+.video-right {
+	margin-top: 70px;
+	padding-left: 30px;
+	h6 {
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		color: $primary-color;
+		font-size: 12px;
+		font-weight: 300;
+	}
+
+	p {
+		span {
+			color: #000;
+			font-weight: 400;
+		}
+	}
+	@media (max-width: 960px) {
+		margin-top: 50px;
+	}
+	.primary-btn {
+		background: $offwhite;
+	}
+	.right-bottom-area {
+		margin-top: 18%;
+		background: $offwhite;
+		padding: 40px;
+		border-radius: 5px;
+		@media (max-width: 991px) {
+			margin-top: 10%;
+		}
+		.author-title {
+			margin-top: 30px;
+			.thumb {
+				display: inline-block;
+				img {
+					margin-top: -25px;
+				}
+			}
+			.a-desc {
+				display: inline-block;
+				padding-left: 15px;
+				h6 {
+					margin-bottom: 5px;
+					color: $title-color;
+				}
+			}
+		}
+	}
+}
+
+// start about //
+.about-area {
+	margin-top: -25.5%;
+	@media (max-width: 1920px) {
+		margin-top: -17.7%;
+	}
+	@media (max-width: 1680px) {
+		margin-top: -20.3%;
+	}
+	@media (max-width: 1500px) {
+		margin-top: -22.7%;
+	}
+	@media (max-width: 1440px) {
+		margin-top: -23.6%;
+	}
+	@media (max-width: 1380px) {
+		margin-top: -24.6%;
+	}
+	@media (max-width: 1200px) {
+		margin-top: -28.5%;
+	}
+	@media (max-width: 1024px) {
+		margin-top: -40.6%;
+	}
+	@media (max-width: 991px) {
+		margin-top: 0;
+	}
+	.about-inner {
+		.row {
+			margin-left: -30px;
+			margin-right: -30px;
+			@media (max-width: 767px) {
+				margin-left: -15px;
+				margin-right: -15px;
+			}
+		}
+		.single-success {
+			background: $offwhite;
+			padding: 40px 30px;
+			margin-top: 30px;
+			@include transition();
+			border-radius: 5px;
+			h5 {
+				font-size: 18px;
+				@include transition();
+			}
+			p {
+				margin: 0;
+			}
+			&:hover {
+				@extend .gradient-bg;
+				box-shadow: 0 10px 30px rgba(39, 0, 110, 0.3);
+				color: #fff;
+				h5 {
+					color: #fff;
+				}
+			}
+		}
+	}
+}
+// end about //
+
+/* End video Area css
+============================================================================================ */
+
+/* Start service Area css
+============================================================================================ */
+// service-1 //
+
+.service-area {
+	@extend .gradient-bg;
+	margin: 120px 0;
+	.col-lg-4.col-md-6:last-child {
+		.single-service {
+			margin-bottom: 0;
+		}
+	}
+	.main_title {
+		color: #fff;
+		h1 {
+			color: #fff;
+		}
+	}
+}
+.single-service {
+	color: #fff;
+	margin-bottom: 30px;
+	.service-thumb {
+		position: relative;
+		overflow: hidden;
+		img{
+			@media(max-width:767px) {
+				width: 100%;
+			}
+		}
+		&:before {
+			position: absolute;
+			content: "";
+			background: rgba(255, 255, 255, 0.4);
+			z-index: 999;
+			left: 110%;
+			top: -15px;
+			height: 100%;
+			width: 110%;
+			@include transform(rotate(55deg));
+			@include transition(.5s);
+		}
+	}
+	h5 {
+		font-size: 18px;
+		margin: 20px 0 15px;
+		a {
+			color: #fff;
+		}
+	}
+	&:hover {
+		.service-thumb {
+			&:before {
+				left: -110%;
+				top: 15px;
+			}
+		}
+	}
+}
+
+// service-2 //
+
+.service-area-2 {
+	.service-2-left {
+		.get-know {
+			margin-bottom: 70px;
+			@media (max-width: 991px) {
+				margin-bottom: 50px;
+			}
+			.df-color {
+				color: $primary-color;
+			}
+			h1 {
+				font-size: 36px;
+				margin-bottom: 20px;
+			}
+		}
+		.author-title {
+			margin-top: 30px;
+			.thumb {
+				display: inline-block;
+				img {
+					margin-top: -25px;
+				}
+			}
+			.a-desc {
+				display: inline-block;
+				padding-left: 15px;
+				h6 {
+					margin-bottom: 5px;
+					color: $title-color;
+				}
+			}
+		}
+	}
+	.service-2-right {
+		.s-img {
+			position: relative;
+			overflow: hidden;
+			&:before {
+				position: absolute;
+				content: "";
+				background: rgba(255, 255, 255, 0.4);
+				z-index: 999;
+				left: 110%;
+				top: -15px;
+				height: 100%;
+				width: 110%;
+				@include transition(.5s);
+			}
+			&:hover {
+				&:before {
+					left: -110%;
+					top: 0;
+				}
+			}
+		}
+		.left-image {
+			margin-top: 60px;
+			img {
+				margin-bottom: 30px;
+			}
+		}
+		.right-image {
+			@media (max-width: 570px) {
+				margin-top: 10px;
+			}
+		}
+		img {
+			margin-bottom: 30px;
+			@media (max-width: 991px) {
+				margin: 30px;
+			}
+			@media (max-width: 767px) {
+				margin: 10px;
+			}
+		}
+	}
+}
+
+// for service page //
+
+#service {
+	.service-area {
+		margin: 0;
+	}
+}
+#service {
+	.service-area-2 {
+		padding-bottom: 90px;
+		@media (max-width: 991px) {
+			padding-bottom: 50px;
+		}
+	}
+}
+
+/* End service Area css
+============================================================================================ */
+
+/* Start Team Area css
+============================================================================================ */
+
+.team-area {
+	padding-top: 90px;
+	// .col-lg-4.col-md-6.col-sm-6:last-child{
+	//     @media (max-width: 991px) {
+	//         .single_member{
+	//             margin-bottom: 0;
+	//         }
+	//     }
+	// }
+}
+
+.single_member {
+	text-align: center;
+	box-shadow: none;
+	@media (max-width: 991px) {
+		margin-bottom: 30px;
+	}
+	.author_decs {
+		display: inline-block;
+		padding: 25px 15px;
+		position: absolute;
+		left: 50%;
+		bottom: -23%;
+		background: #fff;
+		transform: translateX(-50%);
+		width: 65%;
+		@include transition();
+		opacity: 0;
+		visibility: hidden;
+		@media (max-width: 991px) {
+			padding: 25px 5px;
+		}
+		h4 {
+			margin: 20px 0px 0px;
+		}
+		p {
+			margin: 0px;
+		}
+	}
+	&:hover {
+		.author_decs {
+			bottom: 0;
+			opacity: 1;
+			visibility: visible;
+			@media (max-width: 991px) {
+				bottom: 30px;
+			}
+		}
+	}
+}
+
+// for team page //
+#team {
+	.team-area {
+		padding-bottom: 90px;
+	}
+	.single_member {
+		margin-bottom: 30px;
+		&:hover {
+			.author_decs {
+				bottom: 30px;
+			}
+		}
+	}
+}
+
+/* End Team Area css
+============================================================================================ */
+
+/* Start CTA Area css
+============================================================================================ */
+.cta-area {
+	background: url(../img/cta-bg.jpg) center no-repeat;
+	background-size: cover;
+	text-align: center;
+	color: #fff;
+	z-index: 1;
+	&.overlay {
+		&:after {
+			background: #000;
+			opacity: .5;
+		}
+	}
+	h1 {
+		font-size: 36px;
+		color: #fff;
+	}
+	.primary-btn {
+		margin-top: 15px;
+	}
+}
+/* End CTA Area css
+============================================================================================ */
+
+/* Start Blog Area css
+============================================================================================ */
+
+.blog_area {
+	@media (max-width: 991px) {
+		padding-bottom: 50px;
+	}
+}
+
+.single-blog {
+	@include transition();
+	@media (max-width: 991px) {
+		margin-bottom: 30px;
+	}
+	@media (max-width: 570px) {
+		margin: 0 0 30px 0;
+	}
+	.blog-thumb {
+		position: relative;
+		overflow: hidden;
+		&:before {
+			position: absolute;
+			content: "";
+			background: rgba(255, 255, 255, 0.4);
+			z-index: 999;
+			left: 110%;
+			top: -15px;
+			height: 100%;
+			width: 130%;
+			@include transform(rotate(55deg));
+			@include transition(.5s);
+		}
+	}
+	.blog-details {
+		padding: 25px;
+		.blog-meta {
+			span {
+				padding-right: 15px;
+				text-transform: uppercase;
+				i.fa {
+					padding-right: 10px;
+				}
+			}
+		}
+		h5 {
+			a {
+				color: $title-color;
+				font-size: 18px;
+				line-height: 27px;
+			}
+			margin: 15px 0px 15px;
+		}
+	}
+	&:hover {
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+		.blog-thumb {
+			&:hover {
+				&:before {
+					left: -130%;
+					top: 10px;
+				}
+			}
+		}
+	}
+}
+
+/* End Blog Area css
+============================================================================================ */
