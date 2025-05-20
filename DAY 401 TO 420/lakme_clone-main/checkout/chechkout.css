@@ -1,0 +1,151 @@
+
+        .top {
+            background-image: url("https://images.pexels.com/photos/219998/pexels-photo-219998.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+            width: 100%;
+            height: 180px;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            width: 100%;
+            height: 1600px;
+            margin: auto;
+            margin-top: 10px;
+            display: grid;
+            grid-template-columns: 60% 40%;
+        }
+
+        .container .sub_cont {
+            margin-left: 9%;
+            margin-right: 3%;
+        }
+
+        .container .sub_cont .input {
+            width: 90%;
+            height: 40px;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .container .sub_cont .checkbox {
+            margin-top: 10px;
+            font-size: 24px;
+        }
+
+        input.checkbox {
+            width: 20px;
+            height: 20px;
+        }
+
+        .container .sub_cont .input_short1 {
+            width: 42%;
+            height: 40px;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .container .sub_cont .input_short2 {
+            width: 43%;
+            height: 40px;
+            font-size: 20px;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
+        .container .sub_cont .left {
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
+        .container .sub_cont .right {
+            font-size: 15px;
+            margin-top: 10px;
+            float: right;
+            margin-right: 10%;
+        }
+
+        .container2 {
+            width: 100%;
+            height: 1600px;
+        }
+
+        .container2 .input {
+            width: 60%;
+            height: 40px;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        button {
+            width: 30%;
+            background-color: black;
+            color: white;
+            height: 60px;
+            margin-top: 35px;
+            margin-left: 300px;
+        }
+
+        .container .align_left {
+            text-align: left;
+            font-size: 20px;
+            font-weight: 200;
+        }
+
+        .container .right_box {
+            width: 85%;
+            margin: auto;
+            height: 600px;
+        }
+
+        .container .align_right {
+            text-align: right;
+            font-size: 18px;
+        }
+
+        .total {
+            text-align: left;
+            font-size: 25px;
+            font-weight: 100;
+            height: 200px;
+        }
+
+        .container2 .right_box .small_text {
+            font-size: 14px;
+        }
+
+        .btn {
+            width: 30%;
+            background-color: black;
+            color: white;
+            height: 47px;
+            margin-top: 35px;
+            margin-left: 10px;
+            border-radius: 5%;
+        }
+
+        .upper {
+            margin-top: -2px;
+            font-size: 19px;
+        }
+
+        .red {
+            color: white;
+            background-color: #991853;
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: -30px;
+        }
+
+        h4 {
+            color: red;
+        }
+
+        img {
+            width: 20%;
+            height: 40px;
+            margin-top: 10%;
+            margin-left: 3%;
+        }

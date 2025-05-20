@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAKME</title>
+    <script src="https://kit.fontawesome.com/f001449fdc.js" crossorigin="anonymous"></script>
+    <!-- <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet"> -->
+
+
+    <link rel="stylesheet" href="main/style.css">
+
+</head>
+
+
+<body onload="show()">
+    <header>
+
+        <nav id="navbar" class="alignC ">
+            <div class="openMenu" id="openM"><i class="fas fa-bars"></i></div>
+            <a href="index.html" class="logo"><img
+                    src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/logo_37106f0a-2cdf-4ed0-9a97-33ad520b6682_155x.png?v=1599222024"
+                    alt=""></a>
+            <div class="left alignC flex">
+
+                <a class="far fa-heart" id="wishlistpop" href="../wishlist/wishlist.html"></a>
+                <a class="fas fa-user" id="user" href="../lakmeuser/lakmeuser.html"></a>
+                <a class="fas fa-search" id="searchi"></a>
+                <a class="fas fa-shopping-bag" id="cart_open"></a>
+
+            </div>
+        </nav>
+
+
+        <div id="hamburger">
+
+
+            <div class="fa fa-times close" id="closeM"></div>
+
+
+            <div id="hamLi" class="alignC">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="/lakmeuser/lakmeuser.html">SIGN IN OR REGISTER</a></li>
+                    <li><a href="#">YOUR ORDER</a></li>
+                    <li><a href="../sale/sale.html">BEST DEALS OR SALES</a></li>
+                    <li><a href="../makeup/makeup.html">MAKEUP</a></li>
+                    <li><a href="/skincare/skincare.html">SKIN CARE</a></li>
+                    <li><a href="/trends/trends.html">TRENDS</a></li>
+                    <li><a href="../trendingproduct/trendingproduct.html">Trending Products</a></li>
+                    <li><a href="#">GET THE LOOK</a></li>
+                    <li><a href="#">JOIN THE CLUB</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+        <!-- cart  -->
+        <div id="cart_page">
+            <!-- cart_title  -->
+            <div id="cart_header" class="">
+                <p>Cart</p>
+                <!-- cart_close  -->
+                <a id="closeCart"><i class="fa fa-times close"></i></a>
+
+            </div>
+
+            <div class="all_cart_items">
+            </div>
+            <div class="payement">
+                <div class="textC" id="patdHeader">
+                    <h2>PAYEMENT DETAILS</h2>
+                </div>
+
+                <div class="summary">
+                    <div class="tname_tot">
+                        <div class="tname"><b>Bag Toatal</b></div>
+                        <div class="ptotal"><i class="fas fa-rupee-sign"></i>0</div>
+                    </div>
+                    <div class="tname_tot">
+                        <div class="tname">
+                            <p>savings</p>
+                        </div>
+                        <div class="ptotal"><i class="fas fa-rupee-sign"></i>0</div>
+                    </div>
+                    <div class="tname_tot">
+                        <div class="tname">
+                            <p>Shipping Charges</p>
+                        </div>
+                        <div class="ptotal"><i class="fas fa-rupee-sign"></i>0</div>
+                    </div>
+                </div>
+                <div class="footer">
+
+                    <button class="sum_total"><i class="fas fa-rupee-sign"></i>0</button>
+
+                    <button class="checkout">
+                        <h3>Checkout></h3>
+                    </button>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div id="searchBar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="What are you looking for">
+        </div>
+    </header>
+
+
+    <!-- <div id="searchBar"><i class="fas fa-search" aria-hidden="true"></i><input placeholder="HELLO" type="text"></div> -->
+    ​
+    <div class="slideshow-container">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade" style="display: block;">
+
+            <img class="imgstyling"
+                src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/Desktop_1800x.gif?v=1632747560">
+
+        </div>
+
+        <div class="mySlides fade" style="display: none;">
+
+            <img class="imgstyling"
+                src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/homepage_desktop_banner1_1800x.jpg?v=1630577684">
+
+        </div>
+
+        <div class="mySlides fade" style="display: none;">
+
+            <img class="imgstyling"
+                src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/1169_x_511_glow_all_day_desktop_banner_1800x.jpg?v=1632313102">
+
+        </div>
+        <div class="mySlides fade" style="display: none;">
+
+            <img class="imgstyling"
+                src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/1169_x_511_matte_melt_mini_banner_1_1800x.jpg?v=1631190555">
+
+        </div>
+        <div class="mySlides fade" style="display: none;">
+
+            <img class="imgstyling"
+                src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/1169_x_511_hydration_kit_desktop_banner_1800x.jpg?v=1632301184">
+
+        </div>
+        <div class="mySlides fade" style="display: none;">
+
+            <img class="imgstyling"
+                src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/2_1_f3792fe2-25df-486b-8a21-d4290fcba064_1800x.png?v=1632295757">
+
+        </div>
+
+
+    </div>
+    <br>
+
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+        <span class="dot active" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+    </div>
+
+
+
+    <div id="trending">
+        <div>
+            <h2>TRENDING</h2>
+        </div>
+        <!-- <img id="trending" src="" alt=""> -->
+        <p class="trendingtag">Your favourite Lakmé Make-up and Skin Care.
+        </p>
+    </div>
+
+    <main>
+
+
+
+        <div class="parent">
+            <div id="rightarrow" onclick="moveRight()">
+                <button class="btnarrow">&lt;</button>
+            </div>
+
+
+            <div class="child" id="c1">
+                <div class=" wishlist"><a class="wishlist_ic far fa-heart"> </a></div>
+                <a href="productpagenew/productpagenew.html"><img
+                        src="https://cdn.shopify.com/s/files/1/0014/3514/0183/products/29158_H2_8901030857867_300x.jpg?v=1630501152"
+                        class="productimg" alt=""></a>
+                <p class="newtag">NEW</p>
+                <p class="name">LAKME LIMITED EDITION LIP <br>COLORS</p>
+                <p class="price">₹ 800</p>
+
+                <p class="shadesno"> 25 Shades</p>
+                <button class="viewshades">VIEW SHADES</button>
+            </div>
+            <div class="child" id="c2">
+                <a class="wishlist_ic"> <i class="far fa-heart wishlist"></i></a>
+                <img src="https://cdn.shopify.com/s/files/1/0014/3514/0183/products/24452_S1-8901030742446_300x.jpg?v=1611814486"
+                    class="productimg" alt="">
+                <p class="newtag">NEW</p>
+                <p class="name">LAKME LIMITED EDITION LIP <br>COLORS</p>
+                <p class="price">₹ 800</p>
+
+                <p class="shadesno"> 25 Shades</p>
+                <button class="viewshades">VIEW SHADES</button>
+            </div>
+            <div class="child" id="c3">
+                <a class="wishlist_ic"> <i class="far fa-heart wishlist"></i></a>
+                <img src="https://cdn.shopify.com/s/files/1/0014/3514/0183/products/LakmeEyeconicKajalBlack_300x.jpg?v=1606470113"
+                    class="productimg" alt="">
+                <p class="newtag">NEW</p>
+                <p class="name">LAKME LIMITED EDITION LIP <br>COLORS</p>
+                <p class="price">₹ 800</p>
+
+                <p class="shadesno"> 25 Shades</p>
+                <button class="viewshades">VIEW SHADES</button>
+            </div>
+            <div class="child" id="c4">
+                <a class="wishlist_ic"> <i class="far fa-heart wishlist"></i></a>
+                <img src="https://cdn.shopify.com/s/files/1/0014/3514/0183/products/29158_H2_8901030857867_300x.jpg?v=1630501152"
+                    class="productimg" alt="">
+                <p class="newtag">NEW</p>
+                <p class="name">LAKME LIMITED EDITION LIP <br>COLORS</p>
+                <p class="price">₹ 800</p>
+
+                <p class="shadesno"> 25 Shades</p>
+                <button class="viewshades">VIEW SHADES</button>
+            </div>
+            <div class="child" id="c5">
+                <a class="wishlist_ic"> <i class="far fa-heart wishlist"></i></a>
+                <img src="https://cdn.shopify.com/s/files/1/0014/3514/0183/products/29113_H1-8901030851667_300x.jpg?v=1630492665"
+                    class="productimg" alt="">
+                <p class="newtag">NEW</p>
+                <p class="name">LAKME LIMITED EDITION LIP <br>COLORS</p>
+                <p class="price">₹ 800</p>
+
+                <p class="shadesno"> 25 Shades</p>
+                <button class="viewshades">VIEW SHADES</button>
+            </div>
+            <div class="child" id="c6">
+                <a class="wishlist_ic"> <i class="far fa-heart wishlist"></i></a>
+                <img src="https://cdn.shopify.com/s/files/1/0014/3514/0183/products/Redrust_300x.jpg?v=1621226171"
+                    class="productimg" alt="">
+                <p class="newtag">NEW</p>
+                <p class="name">LAKME LIMITED EDITION LIP <br>COLORS</p>
+                <p class="price">₹ 800</p>
+
+                <p class="shadesno"> 25 Shades</p>
+                <button class="viewshades">VIEW SHADES</button>
+            </div>
+            <div class="child" id="c7">
+                <a class="wishlist_ic"> <i class="far fa-heart wishlist"></i></a>
+                <img src="https://cdn.shopify.com/s/files/1/0014/3514/0183/products/24990_H2-8901030817496_300x.jpg?v=1620115073"
+                    class="productimg" alt="">
+                <p class="newtag">NEW</p>
+                <p class="name">LAKME LIMITED EDITION LIP <br>COLORS</p>
+                <p class="price">₹ 800</p>
+
+                <p class="shadesno"> 25 Shades</p>
+                <button class="viewshades">VIEW SHADES</button>
+            </div>
+            <div class="child" id="c8">
+                <a class="wishlist_ic"> <i class="far fa-heart wishlist"></i></a>
+                <img src="https://cdn.shopify.com/s/files/1/0014/3514/0183/products/29158_H2_8901030857867_300x.jpg?v=1630501152"
+                    class="productimg" alt="">
+                <p class="newtag">NEW</p>
+                <p class="name">LAKME LIMITED EDITION LIP <br>COLORS</p>
+                <p class="price">₹ 800</p>
+
+                <p class="shadesno"> 25 Shades</p>
+                <button class="viewshades">VIEW SHADES</button>
+            </div>
+            <div id="leftarrow" onclick="moveLeft()">
+                <button class="btnarrow">&gt;</button>
+            </div>
+
+        </div>
+
+
+    </main>
+
+    <div id="trending">
+        <div>
+            <h2>FIND YOUR MATCH</h2>
+        </div>
+        <!-- <img id="trending" src="" alt=""> -->
+        <p class="trendingtag">Trying make-up was never this easy! </p>
+        <p class="trendingtag"> find your perfect shade of lip color and foundation in seconds
+        </p>
+    </div>
+
+    <div id="find_y_match">
+        <div class="fym_img">
+            <img src="https://i.ibb.co/W3ZgrvC/virtual-try-on-lipstick-foundation-banners-9ebe6262-b0ef-460c-93ae-7fb98f8b4d0b-750x695-crop-center.gif"
+                alt="">
+
+        </div>
+        <div class="fym_img">
+            <img src="https://i.ibb.co/b7wJmFH/virtual-try-on-foundation-banners-66b31c77-31bd-4e7d-8176-1b1b50f3caaf-750x695-crop-center.jpg"
+                alt="">
+
+        </div>
+    </div>
+
+    <div id="trending">
+        <div>
+            <h2>BEST DEALS</h2>
+        </div>
+        <!-- <img id="trending" src="" alt=""> -->
+        <p class="trendingtag">Trying make-up was never this easy! </p>
+        <p class="trendingtag"> find your perfect shade of lip color and foundation in seconds
+        </p>
+    </div>
+
+    <div id="collection">
+        <div class="collection_img">
+            <img class="center"
+                src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/768_x_960_paint_pot_banner_9b435673-bfd1-4018-af7a-30e0eab5237f_750x960_crop_center.jpg?v=1632210017" />
+        </div>
+        <div class="collection_img">
+            <img class="center"
+                src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/768_x_960_lip_crayon_banner_461f850d-6dc7-4822-8550-458a9d46d8aa_750x960_crop_center.jpg?v=1632210061" />
+        </div>
+        <div class="collection_img">
+            <img class="center"
+                src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/768_x_960_Vitamin_C_banner_89ad3466-21a6-4a7d-be01-cd73e5c2f81a_750x960_crop_center.jpg?v=1632210210" />
+        </div>
+        <div class="collection_img">
+            <img class="center"
+                src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/678_x_960_new_page_banner_750x960_crop_center.jpg?v=1632291384" />
+        </div>
+
+
+    </div>
+
+    <div id="trending">
+        <div>
+            <h2>DISCOVER</h2>
+        </div>
+        <!-- <img id="trending" src="" alt=""> -->
+        <p class="trendingtag">Trying make-up was never this easy! </p>
+        <p class="trendingtag"> find your perfect shade of lip color and foundation in seconds
+        </p>
+    </div>
+
+    <div id="video">
+        <a href="https://youtu.be/8OSrXLU-5wo"><img
+                src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/maxresdefault_1842bf5d-5bae-461a-9487-e0850fb1848c.jpg?v=1628051948"
+                alt=""></a>
+
+    </div>
+
+    <div id="newtrend">
+        <div>
+            <h2>TRENDS</h2>
+        </div>
+        <!-- <img id="trending" src="" alt=""> -->
+        <p class="trendingtag">Trying make-up was never this easy! </p>
+        <p class="trendingtag"> find your perfect shade of lip color and foundation in seconds
+        </p>
+    </div>
+
+    <div id="readmore">
+        <div class="rm_inner">
+            <img
+                src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/122140630_1029621930879912_2456599654292942303_n_400x-min_400x.jpg?v=1605017340" />
+            <h4>THE PERPECT RED LIPSTICK</h4>
+            <h5>if there's one shade of lipistik that looks good on absolutely everyone</h5>
+            <div><a href='#'>Read More</a></div>
+        </div>
+
+        <div class="rm_inner">
+            <img
+                src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/118742117_363757908125061_2328880449180434821_n_400x-min_400x.jpg?v=1605017400" />
+            <h4>GET SMOKEY EYES IN 5-MINUTES</h4>
+            <h5>This easy hack will give you a smokey eye in five minutes, and using only 5</h5>
+            <div><a href='#'>Read More</a></div>
+        </div>
+        <div class="rm_inner">
+            <img
+                src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/120293795_3012463728857990_4891872385482851889_n_400x-min_400x.jpg?v=1605017418" />
+            <h4>HOW TO ACE THE METALLIC EYE</h4>
+            <h5>The glitter eyes have had their moment of glory, but this year,</h5>
+            <div><a href='#'>Read More</a></div>
+        </div>
+        <div class="rm_inner">
+            <img
+                src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/122140630_1029621930879912_2456599654292942303_n_400x-min_400x.jpg?v=1605017340" />
+            <h4>HOW TO CHOOSE THE RIGHT</h4>
+            <h5>How To Choose The Right Foundation For Your Skin Type</h5>
+            <div><a href='#'>Read More</a></div>
+        </div>
+        <div id="km">
+            <button>KNOW MORE</button>
+        </div>
+    </div>
+
+
+
+
+    <footer class="bottom">
+        <div id="footerbottom">
+            <div class="logo">
+                <img
+                    src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/logo_155x_2x_36903a57-eff3-46a2-b04e-c7a9465ece1d_medium.png?v=1632222917" />
+            </div>
+            <div>
+                <p id="parafooter"> &nbsp; FOLLOW LATEST UPDATES & NEW LAUNCHES &nbsp;
+                    <a href="#" class="fab fa-facebook"></a>
+                    &nbsp;
+                    <a href="#" class="fa fa-youtube"></a> &nbsp;
+                    <a href="#" class="fa fa-instagram"></a>
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="main/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/f001449fdc.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="trendingproduct.css">
+</head>
+
+
+<body>
+    <header>
+
+        <nav id="navbar" class="alignC ">
+            <div class="openMenu" id="openM"><i class="fas fa-bars"></i></div>
+            <a href="../index.html" class="logo"><img
+                    src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/logo_37106f0a-2cdf-4ed0-9a97-33ad520b6682_155x.png?v=1599222024"
+                    alt=""></a>
+            <div class="left alignC flex">
+
+                <a class="far fa-heart" id="wishlistpop" href="../wishlist/wishlist.html"></a>
+                <a class="fas fa-user" id="user" href="../lakmeuser/lakmeuser.html"></a>
+                <a class="fas fa-search" id="searchi"></a>
+                <a class="fas fa-shopping-bag" id="cart_open"></a>
+
+            </div>
+        </nav>
+
+
+        <div id="hamburger">
+
+
+            <div class="fa fa-times close" id="closeM"></div>
+
+
+            <div id="hamLi" class="alignC">
+                <ul>
+                    <li><a href="../index.html">HOME</a></li>
+                    <li><a href="lakmeuser.html">SIGN IN OR REGISTER</a></li>
+                    <li><a href="#">YOUR ORDER</a></li>
+                    <li><a href="../sale/sale.html">BEST DEALS OR SALES</a></li>
+                    <li><a href="../makeup/makeup.html">MAKEUP</a></li>
+                    <li><a href="skincare.html">SKIN CARE</a></li>
+                    <li><a href="trends.html">TRENDS</a></li>
+                    <li><a href="../trendingproduct/trendingproduct.html">Trending Products</a></li>
+                    <li><a href="#">GET THE LOOK</a></li>
+                    <li><a href="#">JOIN THE CLUB</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+        <!-- cart  -->
+        <div id="cart_page">
+            <!-- cart_title  -->
+            <div id="cart_header" class="">
+                <p>Cart</p>
+                <!-- cart_close  -->
+                <a id="closeCart"><i class="fa fa-times close"></i></a>
+
+            </div>
+
+            <div class="all_cart_items">
+            </div>
+            <div class="payement">
+                <div class="textC" id="patdHeader">
+                    <h2>PAYEMENT DETAILS</h2>
+                </div>
+
+                <div class="summary">
+                    <div class="tname_tot">
+                        <div class="tname"><b>Bag Toatal</b></div>
+                        <div class="ptotal"><i class="fas fa-rupee-sign"></i>0</div>
+                    </div>
+                    <div class="tname_tot">
+                        <div class="tname">
+                            <p>savings</p>
+                        </div>
+                        <div class="ptotal"><i class="fas fa-rupee-sign"></i>0</div>
+                    </div>
+                    <div class="tname_tot">
+                        <div class="tname">
+                            <p>Shipping Charges</p>
+                        </div>
+                        <div class="ptotal"><i class="fas fa-rupee-sign"></i>0</div>
+                    </div>
+                </div>
+                <div class="footer">
+
+                    <button class="sum_total"><i class="fas fa-rupee-sign"></i>0</button>
+
+                    <button class="checkout">
+                        <h3>Checkout></h3>
+                    </button>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div id="searchBar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="What are you looking for">
+        </div>
+    </header>
+
+
+    <div class="centered">
+        <p id="topimagepara">NEW LAUNCHES</p>
+    </div>
+    <div id="comparisonbar">
+
+        <div id="sortingbtn">
+            <button id="lowtohigh" onclick="lowtohigh()" class="btncompare">SORT LOW TO HIGH</button>
+
+            <button id="hightolow" onclick="hightolow()" class="btncompare">SORT HIGH TO LOW</button>
+        </div>
+    </div>
+    <div id="productdetails"></div>
+    <footer class="bottom">
+        <div id="footerbottom">
+            <div class="logo">
+                <img
+                    src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/logo_155x_2x_36903a57-eff3-46a2-b04e-c7a9465ece1d_medium.png?v=1632222917" />
+            </div>
+            <div>
+                <p id="parafooter"> &nbsp; FOLLOW LATEST UPDATES & NEW LAUNCHES</p>
+            </div>
+
+        </div>
+    </footer>
+    <!-- <script src="../main/script.js"></script> -->
+    <script src="trendingproduct.js"></script>
+</body>
+
+</html>

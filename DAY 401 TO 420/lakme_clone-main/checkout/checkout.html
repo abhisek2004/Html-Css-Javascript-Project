@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information - Lakme - Checkout</title>
+
+    <link rel="stylesheet" href="chechkout.css">
+</head>
+
+<body>
+    <div class="top">
+        <img src="https://cdn.shopify.com/s/files/1/0014/3514/0183/files/logo_37106f0a-2cdf-4ed0-9a97-33ad520b6682_155x.png?v=1599222024">
+    </div>
+    <div class="container">
+
+        <div class="sub_cont">
+            <p class="left">CONTACT INFORMATION<span class="right"> Already have an account ? Log in</span> </p>
+            <form>
+                <input class="input" type="text" placeholder="Email" />
+                <br>
+                <input class="checkbox" type="checkbox" name="" value="email"> Email me with news & offers
+
+                <p>Shipping address</p>
+                <label class="input" type="number" placeholder="PIN CODE" />
+                <input class="input" type="text" placeholder="FIRST NAME" />
+                <input class="input" type="text" placeholder="LAST NAME" />
+                <input class="input" type="text" placeholder="Address" />
+                <input class="input" type="text" placeholder="City" />
+                <br>
+                <input class="input_short1" type="text" placeholder="Country/region" /><span><input  class="input_short2" type = "text" placeholder="State"/></span>
+
+                <input class="input" type="number" placeholder="Phone" />
+                <br>
+                <br>
+                <input class="checkbox" type="checkbox" name="" value="email"> Save this information for next time.
+                <br>
+                <input class="checkbox" type="checkbox" name="" value="email"> I am above the age of 18.
+            </form>
+            <br>
+            <button onclick="proceed(event)"> Proceed to Pay</button>
+        </div>
+
+        <div class="container2">
+            <div class="right_box">
+                <input class="input" id="coupan" placeholder="Gift card or discount code" />
+                <button class="btn">Apply</button>
+                <hr>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="align_left">Subtotal</th>
+                            <th class="align_right">0</th>
+
+                            <tr>
+                                <th class="align_left">Shipping</th>
+                                <th class="small_text">Calculated at next step</th>
+                            </tr>
+
+                            <th class="total">Total
+                                <p class="upper"> Including &#8377;197.67 in taxes</p>
+                            </th>
+                            <th class="align_right" rowspan="2" id="total_append"> Append total amount here</th>
+                        </tr>
+
+                        <tr>
+                            <th class="align_left"></th>
+
+                        </tr>
+
+                    </thead>
+                </table>
+
+                <div class="red">
+                    <p>Sale Alert! -<br> Get Free Lipstick of worth ₹800/- on the purchase of ₹1000/- & above.</p>
+                </div>
+                <h4>Due to unprecedented circumstances, delivery may be delayed. Apologies for the inconvenience. For any urgent queries, kindly drop us an email at support@lakmeindia.com Stay Safe.</h4>
+            </div>
+        </div>
+    </div>
+
+<script src="checkout.js"></script>
+</body>
+
+</html>
+
+

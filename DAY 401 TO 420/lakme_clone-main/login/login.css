@@ -1,0 +1,71 @@
+    body {
+        background-color: black;
+    }
+
+    #container {
+        width: 80%;
+        height: 600px;
+        background-image: url("https://img.freepik.com/free-photo/cosmetics-arranged-dusty-dark-background_23-2148181475.jpg?size=626&ext=jpg");
+        background-size: cover;
+        margin: auto;
+    }
+
+    .sinup {
+        margin: auto;
+        width: 40%;
+        height: 7%;
+        color: coral;
+        text-align: center;
+        font-size: 30px;
+    }
+
+    #block {
+        margin-left: 50%;
+        /* margin: auto; */
+        margin-top: 20px;
+        border: 1px solid white;
+        background-color: white;
+        width: 50%;
+        height: 100%;
+        margin-top: 30px;
+    }
+
+    #form {
+        border: none;
+        font-size: 20px;
+        margin: 20px;
+    }
+
+    #form>input,
+    #form>lable {
+        margin: 10px;
+        padding: 5px;
+        width: 60%;
+    }
+
+    #submit {
+        margin: 15px;
+        padding: 6px;
+        background-color: coral;
+        width: 40%;
+    }
+
+    .heading {
+        font-size: medium;
+        font-weight: bolder;
+        color: slategrey;
+    }
+
+    .button-clr {
+        color: black;
+        font-weight: bolder;
+    }
+
+    .block {
+        text-align: center;
+    }
+
+    .bd-color {
+        margin-top: 15px;
+        height: 50px;
+    }
