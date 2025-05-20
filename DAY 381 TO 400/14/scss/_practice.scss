@@ -1,0 +1,114 @@
+.practice_area{
+    background: #FFFDF8;
+    padding-top: 150px;
+    padding-bottom: 120px;
+    padding-right: 40.5px;
+    padding-left: 45.5px;
+    @media #{$mobile_device}{
+        padding-top: 80px;
+        padding-bottom: 80px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    &.practice_area2{
+        padding-top: 15px;
+        padding-bottom: 0;
+    }
+    .single_practice{
+        margin:0 4.5px 30px 4.5px;
+        position: relative;
+        .practice_image{
+            img{
+                width: 100%;
+            }
+        }
+        .practice_hover{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(31, 31, 31, .90);
+
+            i{
+                font-size: 85px;
+                color: #CEA159;
+                @media #{$mobile_device}{
+                    font-size: 40px;
+                }
+                @media #{$large_device}{
+                    font-size: 30px;
+                }
+            }  
+            h3{
+                font-size: 24px;
+                color: #fff;
+                font-family: $font2;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                @media #{$mobile_device} {
+                    margin-bottom: 10px;
+                }
+                @media #{$large_device} {
+                    font-size: 18px;
+                    color: #fff;
+                    margin-top: 6px;
+                    margin-bottom: 10px;
+                }
+            }
+            p{
+                font-size: 16px;
+                color: #C7C7C7;
+                margin-bottom: 21px;
+                @media #{$large_device} {
+                    font-size: 14px;
+                    margin-bottom: 10px;
+                }
+                br{
+                    @media #{$mobile_device}{
+                        display: none;
+                    }
+                    @media #{$large_device}{
+                        display: none;
+                    }
+                }
+            }
+            .hover_inner{
+                position: absolute;
+                top: 50%;
+                @include transform(translateY(-50%) translateY(0px));
+                right: 0;
+                left: 0;
+                text-align: center;
+                @media #{$tablet_device} {
+                    padding: 20px;
+                }
+                @media #{$mobile_device} {
+                    padding: 20px;
+                }
+                @include transition(.3s);
+                .lern_more{
+                    color: #F2C64D;
+                    font-size: 16px;
+                    font-weight: 400;
+                    opacity: 0;
+                    visibility: hidden;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        &:hover .practice_hover .hover_inner .lern_more{
+            opacity: 1;
+            visibility: visible;
+        } 
+        &:hover{
+            .practice_hover{
+                .hover_inner{
+                    @include transform(translateY(-50%) translateY(-25px));
+                }
+            }
+        }
+    }
+}

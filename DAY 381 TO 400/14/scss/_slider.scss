@@ -1,0 +1,104 @@
+.slider_bg_1{
+    background-image: url(../img/banner/banner.png);
+}
+.slider_bg_2{
+    background-image: url(../img/banner/banner2.png);
+}
+.slider_area {
+	padding: 0 50px;
+   background: #000;
+   @media #{$mobile_device} {
+      padding: 0 20px;
+   }
+}
+.slider_area_inner{
+    height: 800px;
+    position: relative;
+    z-index: 8;
+    position: relative;
+    z-index: 8;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    @media #{$mobile_device} {
+      height: 420px;
+      }
+    @media #{$tablet_device} {
+       height: 500px;
+      }
+    @media #{$mid_device} {
+      height: 500px;
+       background-position: right;
+      }
+    @media #{$large_device} {
+      height: 600px;
+       background-position: right;
+      }
+    .single_slider{
+      position: relative;
+      z-index: 8;
+        .slider_text{
+            h3{
+             color: #ffffff;
+             font-weight: 400;
+             font-family: $font1;
+             font-size: 56px;
+             line-height: 68px;
+             position: relative;
+             z-index: 8;
+             text-transform: capitalize;
+             @media #{$mobile_device} {
+               font-size: 25px;
+               line-height: 35px;
+            }
+             @media #{$tablet_device} {
+               font-size: 30px;
+               line-height: 46px;
+            }
+             @media #{$mid_device} {
+               font-size: 35px;
+               line-height: 56px;
+            }
+            br{
+                @media #{$mobile_device} {
+                   display: none;
+                 }
+            }
+            }
+            p{
+                font-size: 26px;
+                font-weight: 400;
+                color: #C7C7C7;
+                margin-bottom: 50px;
+                margin-top: 16px;
+                line-height: 32px;
+                font-style: italic;
+             @media #{$mid_device} {
+                font-size: 16px;
+             }
+             @media #{$mobile_device} {
+               font-size: 14px;
+               margin-bottom: 25px;
+             }
+             br{
+                @media #{$mobile_device} {
+                   display: none;
+                 }
+                @media #{$tablet_device} {
+                   display: none;
+                 }
+                @media #{$mid_device} {
+                  //  display: none;
+                 }
+            }
+            &.name{
+               font-size: 16px;
+               margin-top: 20px
+            }
+            }
+        }
+    }
+    &.slider_area_inner2{
+       height: 550px;
+    }
+}

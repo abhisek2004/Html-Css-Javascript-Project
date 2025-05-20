@@ -1,0 +1,53 @@
+.testmonial_bg_1{
+    background-image: url("../img/testmonial/testmonial_bg.png");
+}
+.testmonial_area{
+    padding: 135px 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    @media #{$mobile_device}{
+        padding: 100px 0;
+    }
+    .single_testmonial{
+        i{
+            color: #fff;
+            font-size: 47px;
+        }
+        p{
+            color: #fff;
+            font-size: 22px;
+            line-height: 34px;
+            font-weight: 400;
+            margin-top: 33px;
+            margin-bottom: 44px;
+            @media #{$mobile_device}{
+                font-size: 18px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            br{
+                @media #{$mobile_device} {
+                    display: none;
+                }
+                @media #{$tablet_device} {
+                    display: none;
+                }
+            }
+        }
+    }
+    .author_info{
+        .thumb{
+            float: left;
+            width: 35px;
+            height: 35px;
+            @include border-radius(50%);
+            margin-right: 10px;
+        }
+        span{
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+        }
+    }
+}

@@ -1,0 +1,102 @@
+.appointment_area{
+    padding-top: 150px;
+    @media #{$mobile_device} {
+        padding-top: 100px;
+    }
+    @media #{$tablet_device}{
+        padding-bottom: 100px;
+    }
+    .opacity_icon{
+        position: absolute;
+        bottom: -126px;
+        z-index: -1;
+        i{
+            font-size: 478px;
+            color: #FEFCF6;
+        }
+    }
+    .appiontment_thumb{
+        img{
+            @media #{$mobile_device}{
+                width: 100%;
+            }
+        }
+    }
+    .appointment_info{
+        position: relative;
+        z-index: 0;
+        @media #{$mobile_device}{
+            margin-bottom: 40px;
+            margin-top: 40px;
+        }
+        h3{
+            font-size: 42px;
+            font-weight: 700;
+            color: #1F1F1F;
+
+        }
+        p{
+            font-size: 16px;
+            color: #727272;
+            margin-top: 13px;
+            margin-bottom: 56px;
+        }
+    }
+    form{
+        input{
+            width: 100%;
+            height: 40px;
+            font-size: 16px;
+            border: none;
+            border-bottom: 1px solid #C7C7C7;
+            margin-bottom: 26px;
+            padding-bottom: 7px;
+            &::placeholder{
+                font-size: 16px;
+                color: #919191;
+                font-weight: 400;
+            }
+        }
+        textarea{
+            width: 100%;
+            height: 40px;
+            font-size: 16px;
+            border: none;
+            border-bottom: 1px solid #C7C7C7;
+            margin-bottom: 26px;
+            padding-bottom: 7px;
+            margin-top: 50px;
+            margin-bottom: 40px;
+            &::placeholder{
+                font-size: 16px;
+                color: #919191;
+                font-weight: 400;
+            }
+        }
+        .appoinment_button{
+            button{
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+}
+.gj-datepicker-md [role="right-icon"] {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	font-size: 17px;
+	color: #919191;
+	margin-right: 0;
+	color: #F2C64D;
+	top: 5px;
+}
+.gj-textbox-md:focus, .gj-textbox-md:active {
+    border-bottom: 1px solid #c7c7c7;
+    outline: none;
+}
+
+.gj-picker .fa.fa-chevron-left {
+	position: relative;
+	left: 25px;
+}
