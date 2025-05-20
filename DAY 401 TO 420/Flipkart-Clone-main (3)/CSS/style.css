@@ -1,0 +1,237 @@
+body{
+    margin: 0 0 0 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f1f3f6;
+}
+a{
+    text-decoration: none;
+}
+.container{
+    
+    width: 1519.2px;
+    height: 1619px;
+}
+.stickyslider{
+    width: 1519.2px;
+    height: 56px;;
+    background-color: #2874f0;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+.spaceleft{
+    background-color: #2874f0;
+    height: 56px;
+    width: 135.5px;
+}
+.topfun{
+    position: absolute;
+    right: 109px;
+    top: 0px;
+    background-color:  #2874f0;
+    width: 1248px;
+    height: 56px;
+}
+.spaceright{
+    position: absolute;
+    right: 0px;
+    top: -1px;
+    background-color:#2874f0 ;
+    height: 56px;
+    width: 135.5px;
+}
+.Tflogo{
+    position: absolute;
+    top: 10.8px;
+    width: 75px;
+    height: 20.11px;
+}
+.logocontain{
+    width: 75px;
+    height: 56px;
+}
+.searchbar{
+    position: absolute;
+    top: 0px;
+    right: 568px;
+    /* background-color: black; */
+    width: 591px;
+    height: 56px;
+}
+.SearchInput{
+    color:pink;
+    width: 564px;
+    height: 36px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.inputspace{
+    width:521.67px;
+    height: 36px;
+}
+.login{
+    text-align: center;
+    color: #2874f0;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    position: absolute;
+    right: 401px;
+    top: 12px;
+    width: 121.1px;
+    height: 30px;
+    background-color: white;
+}
+.login a{
+    letter-spacing: .1px;
+    border: 1px solid white;
+    position: absolute;
+    bottom: 5px;
+    left: 40px;
+    font-weight: bold;
+}
+.login a:active,a:link,a:visited,a:hover{
+    color: #2874f0;
+}
+.catagory{
+    height: 112.2px;
+    background:white;
+}
+.catcent{
+    background-color:white;
+    position: absolute;
+    right: 119px;
+    width: 1280px;
+    height: 112px;
+}
+.catcent img{
+    width: 64px;
+    height: 64px;
+}
+.catcent a{
+    font-weight: bold;
+    font-size: 14px;
+    color: black;
+}
+.catcent a:hover{
+    font-weight: bold;
+    font-size: 14px;
+    color: #2874f0;
+}
+
+.flex{
+    background-color: white;
+    width: 1503.200px;
+    height: 280px;
+    padding: 0px 8px 0px 8px;
+}
+.TopOffer{
+    background-color: white;
+    width: 1503.200px;
+    height: 372px;
+    margin-left: 8px;
+}
+.main{
+    background-color:white;
+    width: 1255.200px;
+    height: 372px;
+    padding-right: 10px;
+}
+.Info{
+    
+    background-color:white;
+    width: 230px;
+    height: 371px;
+}
+.link{
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    background-color: #2874f0;
+}
+.downflex{
+    background-color:white;
+    width: 1503.200px;
+    height: 266.100px;
+    margin-left: 14px;
+}
+.downflex img{
+    width: 496.050px;
+    height: 266.100px;
+    
+}
+footer{
+    background-color: #172337;
+    width: 1519.200px;
+    height: 346.800px;
+}
+.up{
+    font-size: 12px;
+    font-weight: bold;
+    width: 1519.200px;
+    height: 273px;
+}
+.footer-1{
+    width: 157px;
+    position: absolute;
+    right: 1301px;
+    top: 1326px;
+    line-height: 1.8;
+}
+.footer-2{
+    width: 157px;
+    position: absolute;
+    right: 1096px;
+    top: 1326px;
+    line-height: 1.8;
+}
+.footer-3{
+    width: 157px;
+    position: absolute;
+    right: 868px;
+    top: 1326px;
+    line-height: 1.8;
+}
+.footer-4{
+    width: 157px;
+    position: absolute;
+    right: 675px;
+    top: 1326px;
+    line-height: 1.8;
+}
+.up a:hover{
+    text-decoration: underline;
+    text-decoration-color: white;
+    -moz-text-decoration-color: white;
+}
+.mailus{
+    width: 170px;
+    position: absolute;
+    right: 421px;
+    top: 1326px;
+    line-height: 1.8;
+}
+.address{
+    width: 380px;
+    position: absolute;
+    right: -47px;
+    top: 1326px;
+    line-height: 1.8;
+}
+.down{
+    width: 1519.200px;
+    height: 73px;
+}
+.madeby{
+    background-color: #fffb00;
+    width: 1519.200px;
+    height: 26px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.slider img:hover{
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
