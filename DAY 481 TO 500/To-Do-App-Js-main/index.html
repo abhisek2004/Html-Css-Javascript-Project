@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="To do app in js, build a simple todo app with the help of javascript, javascript project"
-    />
-    <meta
-      name="keywords"
-      content="js, javascript, javascript_project, todo_app, ToDoApp, javascript_practice, build_advance_todo_app_with_the_help+_of_javascript"
-    />
+    <meta name="description"
+      content="To do app in js, build a simple todo app with the help of javascript, javascript project" />
+    <meta name="keywords"
+      content="js, javascript, javascript_project, todo_app, ToDoApp, javascript_practice, build_advance_todo_app_with_the_help+_of_javascript" />
     <meta http-equiv="X-UA-Compatible" content="IE=7" />
     <menu type="context"></menu>
     <title>To Do App Js</title>
     <link rel="stylesheet" href="./css/style.css" />
     <!-- Icon scout Link  -->
-    <link
-      rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css"
-    />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css" />
   </head>
+
   <body>
     <div id="root">
       <div id="main">
@@ -29,8 +24,7 @@
           <p id="heading"><span>Tasks</span> List</p>
           <button class="add-card-btn" id="add-card-btn">
             <span id="add-btn" class="add-btn">
-              <i class="uil uil-plus-circle"></i
-            ></span>
+              <i class="uil uil-plus-circle"></i></span>
             <span id="add-btn-text">Add Task</span>
           </button>
         </div>
@@ -40,19 +34,13 @@
         <div class="main-head-container-2" id="main-head-container-2">
           <p onclick="back()"><strong id="back-text">Back</strong></p>
           <button id="add-card-btn-2" class="btn-2 add-card-btn">
-            <span class="add-btn-2"
-              ><img src="./img/add.jpg" alt="add" width="25" height="25"
-            /></span>
+            <span class="add-btn-2"><img src="./img/add.jpg" alt="add" width="25" height="25" /></span>
             <span id="add-btn-text-2">Add Task</span>
           </button>
         </div>
       </div>
       <div class="cards-container" id="cards-container"></div>
-      <div
-        class="popup-container"
-        id="popup-container"
-        id="add-new-list-border"
-      >
+      <div class="popup-container" id="popup-container" id="add-new-list-border">
         <div class="popup" id="popup">
           <h2>Add New Task</h2>
           <input type="text" id="card-name" placeholder="Enter Task Name..." />
@@ -82,11 +70,7 @@
       <div class="popup3-container" id="popup3-container">
         <div class="popup3">
           <h2>Add New Item</h2>
-          <input
-            type="text"
-            id="sub-item-name"
-            placeholder="Enter Item Name..."
-          />
+          <input type="text" id="sub-item-name" placeholder="Enter Item Name..." />
 
           <button id="add-sub-items" onclick="addContentToCard()">Add</button>
           <button id="cancel-sub-items" onclick="removeAddContentToCardPopup()">
@@ -98,16 +82,8 @@
       <div id="card-title"></div>
       <div id="card-container"></div>
 
-      <footer>
-        <div>
-          Made with ❤️ by
-          <a href="https://ajay-dhangar.github.io" target="_blank"
-            >Ajay-Dhangar</a
-          >
-        </div>
-      </footer>
-
       <script src="./main.js"></script>
     </div>
   </body>
+
 </html>
