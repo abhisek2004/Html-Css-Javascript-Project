@@ -1,0 +1,344 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;500;600;700;800;900&display=swap");
+
+/* Default Style */
+* {
+  margin: 0;
+  padding: 0;
+}
+/* ==== style for body ==== */
+
+body {
+  background-color: rgb(26, 18, 39);
+  color: #fff;
+  font-family: "Nunito Sans", sans-serif;
+}
+/* ======= style for root ======= */
+#root {
+  margin: 10px;
+  /* background-color: #ff4800; */
+}
+/* ==== style for main, main-2 id ==== */
+#main,
+#main-2 {
+  padding: 10px;
+}
+/* ==== style for container ==== */
+#main-head-container,
+#main-head-container-2 {
+  font-size: 30px;
+  margin-top: 50px;
+  /* background-color: #4caf50; */
+  /* display: flex;
+    justify-content: space-between; */
+  display: flex;
+  flex-wrap: wrap;
+}
+.add-card-btn {
+  position: absolute;
+  right: 10%;
+  top: 80px;
+  margin-bottom: 10px;
+}
+.uil-plus-circle {
+  font-size: 40px;
+  color: #fff;
+  display: flex;
+}
+#main-head-container-2 {
+  display: none;
+}
+#main-head-container p,
+#main-head-container-2 p {
+  margin-left: 10%;
+  color: #fff;
+  /* text-shadow: 2px 1px #a18d8d; */
+  font-size: 40px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 800;
+}
+#heading span {
+  color: yellow;
+}
+#head-1 {
+  font-weight: 700;
+}
+
+#new-text {
+  display: none;
+}
+#main-head-container button,
+#main-head-container-2 button {
+  margin-right: 10%;
+  background-color: transparent;
+  border: transparent;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+/* ==== style for h1 ==== */
+
+/* #main-head-container .btn,
+#main-head-container-2 .btn-2 {
+  width: auto;
+  height: auto;
+  border-radius: 5px;
+  font-size: 22px;  
+} */
+/* ==== style for btn text ======= */
+#add-btn-text,
+#add-btn-text-2 {
+  color: #f5f5f5;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 5px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+}
+/* ==== style for add-btn ==== */
+#main-head-container .add-btn img,
+#main-head-container-2 .add-btn-2 img {
+  border-radius: 50%;
+  font-family: "Nunito Sans", sans-serif;
+}
+.no-item {
+  /* background-color: #f44336; */
+  width: auto;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+  margin-top: 50px;
+  font-size: 45px;
+  font-weight: 200;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-top: 50px;
+  justify-content: center;
+}
+.card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(204, 194, 194, 0.846);
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 20px;
+  width: 280px;
+  color: #000;
+}
+
+.card h2 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* .card p {
+    margin-bottom: 20px;
+    text-align: center;  
+  } */
+
+.card ul {
+  padding-top: 5px;
+  height: 300px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+.card li {
+  margin-bottom: 8px;
+  display: flex;
+  text-align: center;
+}
+.card li span {
+  margin-top: 10px;
+  width: 50%;
+  text-align: center;
+}
+.btn-left {
+  width: 50%;
+}
+
+.card .edit-btn {
+  margin-top: 20px;
+  margin-left: 30%;
+  font-size: 20px;
+  border-radius: 50%;
+  border: none;
+  width: auto;
+  height: auto;
+  background-color: #fff;
+  font-weight: bold;
+}
+.card .delete-btn {
+  margin-top: 20px;
+  font-size: 20px;
+  width: auto;
+  height: auto;
+  border-radius: 50%;
+  background-color: #fff;
+  border: none;
+  font-weight: bold;
+}
+.card .add-sub-item-btn {
+  font-size: 20px;
+  color: #fff;
+  width: 33px;
+  height: 33px;
+  font-weight: bold;
+  background-color: blue;
+  border-radius: 50%;
+}
+
+.card .sub-btn {
+  width: 25px;
+  height: 30px;
+}
+
+#addtask-plus {
+  background-image: url(./img/add.jpg);
+  background-size: contain;
+  height: 35px;
+  width: 35px;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+/* ==== style for popup-container ==== */
+.popup-container,
+.popup2-container,
+.popup3-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.popup,
+.popup2,
+.popup3 {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+}
+
+.popup h2,
+.popup2 h2,
+.popup3 h2 {
+  margin-bottom: 10px;
+  color: #ff4800;
+}
+
+.popup input,
+.popup2 input,
+.popup3 input,
+.popup textarea,
+.popup2 textarea,
+.popup3 textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  resize: none;
+}
+
+.popup button,
+.popup2 button,
+.popup3 button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.popup #add-card,
+.popup2 #add-item,
+.popup3 #add-sub-items {
+  background-color: #4caf50;
+  color: white;
+}
+
+.popup #cancel,
+.popup2 #cancel-item,
+.popup3 #cancel-sub-items {
+  background-color: #f44336;
+  color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 480px) {
+  #main-head-container button,
+  #main-head-container-2 button {
+    position: relative;
+    /* margin-top: 50px; */
+    margin: auto;
+    margin-bottom: 50px;
+  }
+  .card {
+    width: 100%;
+  }
+  .popup,
+  .popup3 {
+    width: 80%;
+  }
+}
+.editing {
+  color: #065c09;
+}
+.deleting {
+  color: red;
+}
+.done {
+  background-color: #fff;
+  border: none;
+}
+.dones {
+  border: 1px solid grey;
+  color: #fff;
+  border-radius: 50%;
+}
+strong {
+  color: rgb(255, 252, 77);
+}
+
+/* ====== Styles for footer ========== */
+footer {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+footer a {
+  text-decoration: none;
+  color: #ff4800;
+}
+footer a:hover {
+  color: #4caf50;
+}
+.item-content-buttons {
+  text-align: center;
+}
+.done {
+  margin-top: 5px;
+  border-radius: 50%;
+}
