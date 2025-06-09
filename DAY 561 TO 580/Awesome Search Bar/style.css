@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #262433;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.search {
+  display: inline-flex;
+  align-items: center;
+  background-image: linear-gradient(40deg, #111, #c22957);
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #fff;
+}
+.search :is(input, button) {
+  background: transparent;
+  color: inherit;
+  border: none;
+  outline: none;
+}
+.search__input {
+  width: 0;
+  transition: width 0.5s;
+}
+.search__button {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  transition: color 0.25s;
+}
+.search__button:hover {
+  color: #e3e3e3;
+}
+.search:focus-within input {
+  width: 200px;
+}
+::placeholder {
+  font: inherit;
+  color: #e3e3e3;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  flex: 1;
+  /* This makes the content wrapper take up available space */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Center the cards horizontally */
+  justify-content: center;
+  /* Center the cards vertically */
+}
+
+.card {
+  margin: 20px;
+}
+
+footer {
+  /* background-color: #00ffe1; */
+  text-align: center;
+  color: #fa0404be;
+  height: 20px;
+  margin: 0 20px;
+  padding-top: 20px;
+  font-size: 25px;
+}
