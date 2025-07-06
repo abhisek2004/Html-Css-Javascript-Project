@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    background: #83c5be;
+}
+
+:root{
+    font-size: 62.5%;
+}
+
+.heading{
+    color: #e29578;
+    font-size: 4.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 2rem;
+    letter-spacing: 0.1em;
+    text-shadow: 0 5.36px 5.896px #392920,0 -2px 1px #fa5a1f;
+    padding-bottom: 0.5rem;
+}
+
+
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 75vh;
+    width: 100%;
+}
+
+.card{
+    width: 300px;
+    height: 420px;
+    border: 5px solid #e29578;
+    position: relative;
+    border-radius: 15px;
+    transition: 1s;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    overflow: hidden;
+}
+
+.card img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+
+.text{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: -100%;
+    background: #3a525071;
+    backdrop-filter: blur(5px);
+    /* color: #edf6f9; */
+    padding: 2rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    transition: 1s;
+}
+
+.card:hover .text{
+    display: inline-block;
+    right: 0;
+}
+
+.text h1{
+    color: #e29578;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-shadow: 0 5.36px 5.896px #392920,0 -2px 1px #fa5a1f;
+}
+
+.text p{
+    margin-top: 3rem;
+    font-size: 1.6rem;
+    text-align: left;
+    font-weight: 400;
+    color: #f5f5f5;
+}
+
+.btn{
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #e29578;
+    margin-top: 2rem;
+    color: #e29578;
+    font-weight: 700;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: transparent;
+    border-radius: 8px;
+    transition: all 0.5s ;
+    cursor: pointer;
+    text-shadow: 0 3.36px 3.896px #392920,0 -1px 1px #fa5a1f;
+}
+
+.btn:hover{
+    background: #e29578;
+    color: #edf6f9;
+}
