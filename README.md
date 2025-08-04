@@ -1,5 +1,6 @@
 # 🌟 Welcome to My HTML-CSS-Javascript Project Repository! 🌟
 
+
 🚀 **Mission:** To upload 1000+ projects before graduation in the next 2 years!
 
 Hey there! I'm on an exciting journey to become a pro web developer, and this GitHub repository is my creative playground 🎨. Over the next two years, I aim to upload more than 1000 projects showcasing my skills in HTML, CSS, and JavaScript. Each project will reflect my learning, growth, and passion for web development 🌐.
