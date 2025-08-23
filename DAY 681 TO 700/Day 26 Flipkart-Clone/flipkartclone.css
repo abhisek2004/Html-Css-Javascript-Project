@@ -1,0 +1,105 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+nav{
+    background-color: #2455f4;
+    color: white;
+}
+.nav{
+    display: flex;
+    height: 57px;
+   
+}
+.box1{
+    margin-left: 130px;
+}
+.logo{
+    padding: 15px;
+}
+.search{
+    padding: 9px;
+}
+.login{
+    margin-left: 193px;
+    padding: 9px;
+}
+.more{
+    margin-left: 100px;
+    padding: 16px;
+}
+.cart{
+    margin-left: 100px;
+    padding: 12px;
+}
+.categories{
+    padding: 30px;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.topoffer{
+    margin-left: 235px;
+}
+.grocery{
+    margin-left: 85px;
+}
+.fashion{
+    margin-left: 85px;
+}
+.electronics{
+    margin-left: 85px;
+}
+.home{
+    margin-left: 85px;
+}
+.appliances{
+    margin-left: 85px;
+}
+.travel{
+    margin-left: 85px;
+}
+footer{
+    margin-top: 50px;
+    background-color: #2455f4;
+    color: white;
+    height: 50px;
+   
+}
+.copyright{
+    margin-left: 700px;
+    
+   
+}
+.sale{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    flex-wrap: wrap;
+    
+}
+.sale1{
+    margin: auto;
+}
+.sale2{
+    margin: auto;
+}
+.sale3{
+    margin: auto;
+}
+.paytmsale{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.paymentmode{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    flex-wrap: wrap;
+}
+.pay1{
+    margin: auto;
+    background-color: white;
+}
