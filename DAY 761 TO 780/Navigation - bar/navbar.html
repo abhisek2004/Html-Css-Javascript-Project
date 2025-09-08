@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Navigation Bar Hover Animation | HELPME_CODER</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            background: rgb(248, 197, 101);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        nav {
+            background: #fff;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        nav ul li {
+            display: inline-block;
+            list-style: none;
+            font-size: 2rem;
+            padding: 0 10px;
+            margin: 0 20px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        nav ul li:after {
+            content: '';
+            width: 0;
+            height: 3px;
+            background: rgb(245, 120, 4);
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            transition: 0.5s;
+        }
+
+        nav ul li:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JAVASCRIPT</li>
+                <li>PHP</li>
+            </ul>
+        </nav>
+    </div>
+</body>
+
+</html>
