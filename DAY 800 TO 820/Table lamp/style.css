@@ -1,0 +1,362 @@
+/* Set the colour and the position of the container and elements */
+body {
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  /* Style the container */
+  .lamp-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    overlfow: hidden;
+    background-color: #192c3d;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+  }
+  
+  .lamp-container:after {
+    content:"";
+    position: absolute;
+    background-color: #3b312a;
+    width:350px;
+    height: 13px;
+    top:300px;
+    left:25px;
+  }
+  
+  .lamp-container:before {
+    content:"";
+    position: absolute;
+    width:5px;
+    height:100px;
+    background-color: #2f425a;
+    top:300px;
+    left:40px;
+    box-shadow: 5px 0 #1c364d, 20px 0 #2f425a, 25px 0 #1c364d, 290px 0 #1c364d, 295px 0 #2f425a, 310px 0 #1c364d, 315px 0 #2f425a;
+  }
+
+  /* Style the window, computer, coffee and the picture   */
+  .computer {
+    position: absolute;
+    border: 8px solid #535460;
+    width: 120px;
+    height: 70px;
+    background-color: #5b6580;
+    top:187px;
+    left:150px;
+  }
+  
+  .computer:before {
+    content:"";
+    position: absolute;
+    background-color: #42434f;
+    width: 30px;
+    height:30px;
+    top:78px;
+    left:45px;
+  }
+  
+  .computer:after {
+    content:"";
+    position: absolute;
+    background-color: #31323b;
+    width: 100px;
+    height: 7px;
+    top:98px;
+    left:10px;
+  }
+  
+  .window {
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    border: 10px solid #243e54;
+    background-color: #376ea3;
+    left:180px;
+  }
+  
+  .window:before {
+    content:"";
+    position: absolute;
+    height: 250px;
+    width: 10px;
+    background-color: #243e54;
+    left:95px;
+  }
+  
+  .window:after {
+    content:"";
+    position: absolute;
+    background-color: #335266;
+    width: 220px;
+    height:10px;
+    left:-10px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 15px #335266, 0 30px #335266, 0 45px #335266, 0 60px #335266, 0 75px #335266, 0 90px #335266,0 105px #335266, 0 120px #335266, 0 135px #335266, 0 150px #335266, 0 165px #335266, 0 180px #335266, 0 195px #335266, 0 210px #335266, 0 225px #335266, 0 240px #335266;
+  }
+  
+  .picture {
+    position: absolute;
+    width:100px;
+    height: 70px;
+    border: 5px solid #2f4f67;
+    background-color: #8b8c8e;
+    left:25px;
+    top:80px;
+    overflow: hidden;
+  }
+  
+  .picture:before {
+    content:"";
+    position: absolute;
+    border-radius:50%;
+    width: 18px;
+    height: 18px;
+    background-color: #fff084;
+    left:15px;
+    top:7px;
+  }
+  
+  .picture:after {
+    content:"";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #3e4758;
+    top:30px;
+    box-shadow: 45px 20px #606c82,40px 10px #3e4758,80px 20px #3e4758, 60px -10px #606c82;
+  }
+  
+  .screen {
+    position: absolute;
+    width: 120px;
+    height: 70px;
+    overflow: hidden;
+    top:195px;
+    left:158px;
+  }
+  
+  .screen:before {
+    content:"";
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    opacity:0.3;
+    background-color: #0e212f;
+    top:10px;
+    left:15px;
+    box-shadow: 0 30px #0e212f, 50px 0 #0e212f, 50px 20px #0e212f, 50px 30px #0e212f;
+  }
+  
+  .screen:after {
+    content:"";
+    position: absolute;
+    background-color: rgba(255,255,255,0.2);
+    width:150px;
+    height: 150px;
+    transform: skew(60deg);
+    left: 65px;
+    top:-38px;
+  }
+  
+  .coffee {
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    background-color: white;
+    border-radius:0 0 20px 20px;
+    top:270px;
+    left:295px;
+  }
+  
+  .coffee:before {
+    content:"";
+    position: absolute;
+    background-color: #d16d72;
+    width:60px;
+    height:5px;
+    border-radius:0 0 30px 30px;
+    top:25px;
+    left:-10px;
+  }
+  
+  .coffee:after {
+    content:"";
+    position: absolute;
+    border: 4px solid white;
+    width:10px;
+    height: 10px;
+    border-radius:50%;
+    left:32px;
+    top:2px;
+  }
+
+  /* Style the lamp */
+  .lamp-base {
+    position: absolute;
+    width: 70px;
+    height: 7px;
+    background-color: #0e8488;
+    top:292px;
+    left:50px;
+    z-index:2;
+  }
+  
+  .lamp-base:before {
+    content:"";
+    position: absolute;
+    width: 60px;
+    height: 10px;
+    background-color: #0b9496;
+    border-radius: 10px 10px 0 0;
+    top:-10px;
+    left:5px;
+  }
+  
+  .tube {
+    background-color: #979dac;
+    position: absolute;
+    width:5px;
+    height: 100px;
+    top:190px;
+    left:50px;
+    transform: rotate(-20deg);
+    z-index:1;
+    box-shadow: 10px 0 #7e8491;
+  }
+  
+  .tube:before {
+    content:"";
+    position: absolute;
+    background-color: #979dac;
+    width:5px;
+    height: 100px;
+    transform: rotate(80deg);
+    top:-70px;
+    left:60px;
+    box-shadow: 10px 0 #7e8491;
+  }
+  
+  .tube:after {
+    content:"";
+    position: absolute;
+    border-radius:50%;
+    width: 10px;
+    height:10px;
+    background-color: #1b7776;
+    border:3px solid #175961;
+    outline: 3px solid #1b7776;
+    top:-13px;
+    left:0;
+  }
+  
+  .lamp-shade {
+    position: absolute;
+    background-color: #0f2230;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px 30px 0 0;
+    top:110px;
+    left:125px;
+    z-index:3;
+    transform: rotate(-25deg);
+  }
+  
+  .lamp-shade:before {
+    content:"";
+    position: absolute;
+    border-radius: 50px 50px 0 0;
+    background-color: #089697;
+    width:70px;
+    height:30px;
+    top:28px;
+    left:-20px;
+    transform: rotate(5deg);
+  }
+  
+  .light {
+    border-radius:50%;
+    position: absolute;
+    background-color: #fff07c;
+    width:30px;
+    height: 30px;
+    top:145px;
+    left:140px;
+  }
+  
+  .light:before {
+    content:"";
+    position: absolute;
+    width: 45px;
+    height:0;
+    border-bottom: 150px solid rgba(255, 240, 124,0.3);
+    border-right: 25px solid transparent;
+    border-left: 25px solid transparent;
+    transition: .3s;
+    top:10px;
+    left:-3px;
+    transform: skew(20deg);
+    opacity:0;
+  }
+  
+  .light:after {
+    content:"";
+    position: absolute;
+    width: 10px;
+    height:7px;
+    background-color: #1e5b63;
+    top:130px;
+    left:-47px;
+    border-radius: 5px 5px 0 0;
+    transition: .2s;
+    transform-origin: bottom;
+    cursor: pointer;
+  }
+
+  /* Use the input checkbox to on/off the light */
+  input#light {
+    display: none;
+  }
+  
+  #light:checked + .light:after {
+    transform: scaleY(0.5);
+  }
+  
+  #light:checked + .light:before {
+    opacity:1;
+  }
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .content-wrapper {
+      flex: 1;
+      /* This makes the content wrapper take up available space */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* Center the cards horizontally */
+      justify-content: center;
+      /* Center the cards vertically */
+    }
+  
+    .card {
+      margin: 20px;
+    }
+  
+    footer {
+      /* background-color: #00ffe1; */
+      text-align: center;
+      color: #fa0404be;
+      height: 20px;
+      margin: 0 20px;
+      padding-top: 20px;
+      font-size: 25px;
+    }
