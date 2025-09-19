@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Mulish', sans-serif;
+}
+body{
+  width: 100vw;
+  height: 100vh;
+  background-color: #ef9c0b;
+  color: #000000;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  place-items: center;
+  
+}
+.container{
+  background: #07cbe1;
+  display: flex;
+  height: 400px;
+  width: 500px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 10px 6px -6px #777;
+  border-radius: 10px;
+}
+.temp-calculator{
+  width: 100%;
+  padding: 0 20px;
+  margin: 25px 0;
+
+  
+}
+.title{
+  font-size: 50px;
+  font-weight: 600;
+  color: #000000;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 75px 0;
+  margin-top: -200px;
+}
+.temp-value{
+  width: 100%;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+
+}
+.temp-value p{
+  font-size: 16px;
+  font-weight: 600;
+  align-items: center;
+  text-align: left;
+  padding: 10px 0;
+  flex-basis: 42%;
+}
+.temp-value input{
+  width: 100%;
+  border: 0;
+  outline: none;
+  font-size: 14px;
+  border-radius: 6px;
+  color: #000000;
+  background: #ffffffc7;
+  width: 55%;
+  padding: 10px;
+  flex-basis: 55%;
+}
+#degree{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+#degree span{
+  flex-basis: 48%;
+}
+#degree span p{
+  font-size: 16px;
+  font-weight: 600;
+  align-items: center;
+  text-align: left;
+  padding: 5px 10px;
+}
+#degree span select{
+  width: 100%;
+  border: 0;
+  outline: none;
+  font-size: 14px;
+  border-radius: 6px;
+  color: #000000;
+  background: #ffffffc7;
+  padding: 10px;
+  cursor: pointer;
+}
+.btn{
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.btn input{
+  font-size: 16px;
+  background-color: #dc3545;
+  padding: 10px;
+  flex-basis: 45%;
+  color: #fff;
+  flex-wrap: wrap;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.temp-value #ans{
+  font-size: 16px;
+  font-weight: 600;
+  align-items: center;
+  text-align: left;
+  padding: 10px 0;
+  flex-basis: 25%;
+}
+.temp-value #result{
+  width: 100%;
+  border: 0;
+  outline: none;
+  font-size: 14px;
+  border-radius: 6px;
+  color: #000000;
+  background: #ffffffc7;
+  width: 60%;
+  padding: 10px;
+  flex-basis: 70%;
+  cursor: default;
+}
+.footer{
+  margin: 20px;
+  padding: 20px;
+}
