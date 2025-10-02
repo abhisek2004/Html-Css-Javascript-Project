@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Card UI</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for futuristic font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@300;400&display=swap"
+      rel="stylesheet">
+    <style>
+      /* Custom styles for skeleton loading and animations */
+      .skeleton {
+        background: linear-gradient(90deg, #2d2d2d 25%, #3a3a3a 50%, #2d2d2d 75%);
+        background-size: 200% 100%;
+        animation: skeleton-loading 1.5s ease-in-out infinite;
+      }
+
+      @keyframes skeleton-loading {
+        0% {
+          background-position: 200% 0;
+        }
+
+        100% {
+          background-position: -200% 0;
+        }
+      }
+
+      .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .card:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), 0 0 60px rgba(0, 255, 255, 0.2);
+      }
+
+      .neon-glow {
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.3);
+      }
+
+      body {
+        background: radial-gradient(circle at center, #1a1a2e 0%, #0d0d1f 100%);
+        font-family: 'Orbitron', sans-serif;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen flex items-center justify-center p-4">
+    <div class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <!-- Card 2: Adventure Card -->
+      <div class="card bg-gray-900 bg-opacity-50 rounded-xl p-4 neon-glow">
+        <div class="card-img h-48 rounded-lg overflow-hidden">
+          <img
+            src="https://img.freepik.com/free-photo/one-person-hiking-mountain-peak-achieves-success-generated-by-ai_188544-38198.jpg"
+            alt="Adventure" class="w-full h-full object-cover">
+        </div>
+        <div class="card-body mt-4">
+          <h2 class="card-title text-2xl font-bold text-cyan-300">The Adventure Begins</h2>
+          <p class="card-intro text-gray-300 font-['Roboto_Mono'] mt-2">Join our heroes on an epic journey through a
+            world of magic and wonder.</p>
+          <button
+            class="mt-4 px-4 py-2 bg-cyan-500 text-gray-900 rounded-lg hover:bg-cyan-400 transition-colors">Explore
+            Now</button>
+        </div>
+      </div>
+
+      <!-- Card 3: Cosmic Voyage -->
+      <div class="card bg-gray-900 bg-opacity-50 rounded-xl p-4 neon-glow">
+        <div class="card-img h-48 rounded-lg overflow-hidden">
+          <img
+            src="https://img.freepik.com/premium-photo/cosmic-voyage-through-surreal-digital-arvr-spacescape-with-vibrant-colors-geometric-shapes_994764-182124.jpg"
+            alt="Cosmic Voyage" class="w-full h-full object-cover">
+        </div>
+        <div class="card-body mt-4">
+          <h2 class="card-title text-2xl font-bold text-cyan-300">Cosmic Voyage</h2>
+          <p class="card-intro text-gray-300 font-['Roboto_Mono'] mt-2">Embark on a thrilling space odyssey across
+            uncharted galaxies.</p>
+          <button class="mt-4 px-4 py-2 bg-cyan-500 text-gray-900 rounded-lg hover:bg-cyan-400 transition-colors">Launch
+            Mission</button>
+        </div>
+      </div>
+
+      <!-- Card 4: Cyber Realm -->
+      <div class="card bg-gray-900 bg-opacity-50 rounded-xl p-4 neon-glow">
+        <div class="card-img h-48 rounded-lg overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2070&auto=format&fit=crop"
+            alt="Cyber Realm" class="w-full h-full object-cover">
+        </div>
+        <div class="card-body mt-4">
+          <h2 class="card-title text-2xl font-bold text-cyan-300">Cyber Realm</h2>
+          <p class="card-intro text-gray-300 font-['Roboto_Mono'] mt-2">Dive into a neon-lit digital world of infinite
+            possibilities.</p>
+          <button class="mt-4 px-4 py-2 bg-cyan-500 text-gray-900 rounded-lg hover:bg-cyan-400 transition-colors">Enter
+            Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Particles Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+      particlesJS('container', {
+        particles: {
+          number: { value: 80, density: { enable: true, value_area: 800 } },
+          color: { value: '#00ffff' },
+          shape: { type: 'circle' },
+          opacity: { value: 0.5, random: true },
+          size: { value: 3, random: true },
+          line_linked: { enable: false },
+          move: { enable: true, speed: 2, direction: 'none', random: true }
+        },
+        interactivity: {
+          detect_on: 'canvas',
+          events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } },
+          modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+        }
+      });
+    </script>
+  </body>
+
+</html>
