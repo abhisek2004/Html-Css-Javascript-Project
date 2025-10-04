@@ -4,299 +4,312 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futuristic Responsive Footer</title>
+    <title>Futuristic Fashion Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;600&display=swap"
+      rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f30fac2c61.js" crossorigin="anonymous"></script>
     <style>
+      :root {
+        --primary-color: #00ddeb;
+        --secondary-color: #ff007a;
+        --bg-dark: #0f172a;
+        --bg-light: #f8fafc;
+        --text-dark: #e2e8f0;
+        --text-light: #1e293b;
+      }
+
       body {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        background: linear-gradient(135deg, var(--bg-dark), #1e293b);
+        color: var(--text-dark);
+        font-family: 'Poppins', sans-serif;
         margin: 0;
-        font-family: 'Inter', sans-serif;
-        color: #e2e8f0;
+        transition: all 0.5s ease;
+        overflow-x: hidden;
       }
 
-      footer {
-        background: linear-gradient(180deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
-        backdrop-filter: blur(10px);
-        padding: 3rem 1.5rem;
-        position: relative;
-        overflow: hidden;
+      body.active {
+        background: linear-gradient(135deg, var(--bg-light), #e2e8f0);
+        color: var(--text-light);
       }
 
-      .content {
-        max-width: 1200px;
+      .contain {
+        max-width: 1400px;
         margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
+        padding: 0 1.5rem;
       }
 
-      .top {
+      nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-        padding-bottom: 2rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1.5rem 0;
+        position: sticky;
+        top: 0;
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(10px);
+        z-index: 100;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       }
 
-      .logo-details {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #00ddeb;
-        text-shadow: 0 0 10px rgba(0, 221, 235, 0.5);
-      }
-
-      .logo-details i {
+      .logo h1 {
+        font-family: 'Orbitron', sans-serif;
         font-size: 2rem;
-        color: #ff007a;
+        color: var(--primary-color);
+        text-shadow: 0 0 10px rgba(0, 221, 235, 0.5);
+        margin: 0;
         transition: transform 0.3s ease;
       }
 
-      .logo-details:hover i {
-        transform: scale(1.2);
+      .logo h1:hover {
+        transform: scale(1.05);
       }
 
-      .media-icons {
-        display: flex;
-        gap: 1rem;
-      }
-
-      .media-icons a {
-        width: 40px;
-        height: 40px;
+      nav ul {
         display: flex;
         align-items: center;
-        justify-content: center;
-        background: linear-gradient(45deg, #ff007a, #00ddeb);
-        border-radius: 50%;
-        color: white;
-        font-size: 1.2rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 0 15px rgba(255, 0, 122, 0.5);
-      }
-
-      .media-icons a:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 0 25px rgba(255, 0, 122, 0.7);
-        background: linear-gradient(45deg, #ff4d94, #4df1ff);
-      }
-
-      .link-boxes {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 2rem;
-        padding: 2rem 0;
+        list-style: none;
+        margin: 0;
+        padding: 0;
       }
 
-      .box {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-      }
-
-      .link_name {
-        font-size: 1.25rem;
+      nav ul li {
+        font-size: 1.1rem;
         font-weight: 600;
-        color: #00ddeb;
         text-transform: uppercase;
         letter-spacing: 1px;
-        margin-bottom: 0.5rem;
+        cursor: pointer;
         position: relative;
+        transition: color 0.3s ease;
       }
 
-      .link_name::after {
+      nav ul li:hover {
+        color: var(--secondary-color);
+        text-shadow: 0 0 5px rgba(255, 0, 122, 0.5);
+      }
+
+      nav ul li::after {
         content: '';
         position: absolute;
         bottom: -4px;
         left: 0;
-        width: 50%;
+        width: 0;
         height: 2px;
-        background: linear-gradient(90deg, #ff007a, #00ddeb);
+        background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
         transition: width 0.3s ease;
       }
 
-      .box:hover .link_name::after {
+      nav ul li:hover::after {
         width: 100%;
       }
 
-      .box li a {
-        color: #94a3b8;
-        text-decoration: none;
-        font-size: 1rem;
-        transition: color 0.3s ease;
+      #icon {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        cursor: pointer;
+        transition: transform 0.3s ease, color 0.3s ease;
       }
 
-      .box li a:hover {
-        color: #00ddeb;
-        text-shadow: 0 0 5px rgba(0, 221, 235, 0.5);
+      #icon:hover {
+        transform: rotate(180deg);
+        color: var(--secondary-color);
       }
 
-      .input-box {
+      body.active #icon {
+        color: var(--text-light);
+      }
+
+      .main {
         display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
+        align-items: center;
+        justify-content: space-between;
+        padding: 4rem 0;
+        gap: 2rem;
+        flex-wrap: wrap;
       }
 
-      .input-box input[type="text"] {
-        padding: 0.75rem;
-        border: none;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.1);
-        color: #e2e8f0;
-        font-size: 1rem;
-        outline: none;
-        transition: all 0.3s ease;
+      .mainText {
+        flex: 1;
+        min-width: 300px;
       }
 
-      .input-box input[type="text"]::placeholder {
-        color: #94a3b8;
+      .mainText h1 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 3.5rem;
+        background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin: 0 0 1rem;
+        line-height: 1.2;
+        text-shadow: 0 0 15px rgba(0, 221, 235, 0.3);
       }
 
-      .input-box input[type="text"]:focus {
-        background: rgba(255, 255, 255, 0.2);
-        box-shadow: 0 0 10px rgba(0, 221, 235, 0.5);
-      }
-
-      .input-box input[type="button"] {
-        padding: 0.75rem;
-        border: none;
-        border-radius: 8px;
-        background: linear-gradient(45deg, #ff007a, #00ddeb);
-        color: white;
-        font-size: 1rem;
+      .mainText h3 {
+        font-size: 1.8rem;
+        color: var(--text-dark);
+        margin: 0 0 1.5rem;
         font-weight: 600;
+      }
+
+      body.active .mainText h3 {
+        color: var(--text-light);
+      }
+
+      .mainText p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #94a3b8;
+        margin: 0 0 2rem;
+        max-width: 600px;
+      }
+
+      body.active .mainText p {
+        color: #4b5563;
+      }
+
+      .mainText button {
+        padding: 1rem 2.5rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+        border: none;
+        border-radius: 50px;
+        color: white;
         cursor: pointer;
         transition: all 0.3s ease;
-        box-shadow: 0 0 15px rgba(255, 0, 122, 0.5);
+        box-shadow: 0 0 20px rgba(255, 0, 122, 0.5);
       }
 
-      .input-box input[type="button"]:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 0 25px rgba(255, 0, 122, 0.7);
+      .mainText button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 30px rgba(255, 0, 122, 0.7);
         background: linear-gradient(45deg, #ff4d94, #4df1ff);
       }
 
-      .bottom-details {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: 1.5rem;
+      .main img {
+        max-width: 500px;
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 0 30px rgba(0, 221, 235, 0.3);
+        transition: transform 0.5s ease;
+      }
+
+      .main img:hover {
+        transform: scale(1.05);
+      }
+
+      footer {
         text-align: center;
+        padding: 2rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 2rem;
       }
 
-      .bottom_text {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 1rem;
-        font-size: 0.9rem;
-        color: #94a3b8;
-      }
-
-      .copyright_text a,
-      .policy_terms a {
-        color: #00ddeb;
+      footer a {
+        color: var(--primary-color);
         text-decoration: none;
+        font-size: 0.9rem;
         transition: color 0.3s ease;
       }
 
-      .copyright_text a:hover,
-      .policy_terms a:hover {
-        color: #ff4d94;
-        text-shadow: 0 0 5px rgba(255, 77, 148, 0.5);
+      footer a:hover {
+        color: var(--secondary-color);
+        text-shadow: 0 0 5px rgba(255, 0, 122, 0.5);
+      }
+
+      body.active footer a {
+        color: #1e90ff;
       }
 
       @media (max-width: 768px) {
-        .top {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .bottom_text {
+        .main {
           flex-direction: column;
           text-align: center;
+        }
+
+        .mainText h1 {
+          font-size: 2.5rem;
+        }
+
+        .mainText h3 {
+          font-size: 1.5rem;
+        }
+
+        nav ul {
+          flex-wrap: wrap;
+          gap: 1rem;
+          justify-content: center;
         }
       }
 
       @media (max-width: 480px) {
-        .link-boxes {
-          grid-template-columns: 1fr;
+        .logo h1 {
+          font-size: 1.5rem;
         }
 
-        .media-icons {
-          justify-content: center;
-          width: 100%;
+        .mainText h1 {
+          font-size: 2rem;
+        }
+
+        .mainText button {
+          padding: 0.75rem 1.5rem;
+          font-size: 1rem;
         }
       }
     </style>
   </head>
 
   <body>
+    <div class="contain">
+      <nav>
+        <div class="logo">
+          <h1>Jayaram Lenka</h1>
+        </div>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Shop</li>
+          <li>Contact</li>
+          <i id="icon" class="fa-solid fa-moon"></i>
+        </ul>
+      </nav>
+      <div class="main">
+        <div class="mainText">
+          <h1>Trend's With Generation</h1>
+          <h3>Shop Now Exciting Offer's</h3>
+          <p>If you would like to experience the best of online shopping for men, women, and kids in India, you are at
+            the right place. Myntra is the ultimate destination for fashion and lifestyle, being host to a wide array of
+            merchandise including clothing, footwear, accessories, jewellery, personal care products, and more. It is
+            time to redefine your style statement with our treasure-trove of trendy items. Our online store brings you
+            the latest in designer products straight out of fashion houses. You can shop online at Myntra from the
+            comfort of your home and get your favourites delivered right to your doorstep.</p>
+          <button>Shop Now</button>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1551489186-cf8726f514f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Fashion Image">
+      </div>
+    </div>
     <footer>
-      <div class="content">
-        <div class="top">
-          <div class="logo-details">
-            <i class="fab fa-slack"></i>
-            <span class="logo_name">Rock</span>
-          </div>
-          <div class="media-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-          </div>
-        </div>
-        <div class="link-boxes">
-          <ul class="box">
-            <li class="link_name">Company</li>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Get Started</a></li>
-          </ul>
-          <ul class="box">
-            <li class="link_name">Services</li>
-            <li><a href="#">App Design</a></li>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Logo Design</a></li>
-            <li><a href="#">Banner Design</a></li>
-          </ul>
-          <ul class="box">
-            <li class="link_name">Account</li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">My Account</a></li>
-            <li><a href="#">Preferences</a></li>
-            <li><a href="#">Purchase</a></li>
-          </ul>
-          <ul class="box">
-            <li class="link_name">Courses</li>
-            <li><a href="#">HTML & CSS</a></li>
-            <li><a href="#">JavaScript</a></li>
-            <li><a href="#">Photography</a></li>
-            <li><a href="#">Photoshop</a></li>
-          </ul>
-          <ul class="box input-box">
-            <li class="link_name">Subscribe</li>
-            <li><input type="text" placeholder="Enter your email"></li>
-            <li><input type="button" value="Subscribe"></li>
-          </ul>
-        </div>
-      </div>
-      <div class="bottom-details">
-        <div class="bottom_text">
-          <span class="copyright_text">Copyright © 2025 <a href="#">Abhisek</a> All rights reserved</span>
-          <span class="policy_terms">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms & Conditions</a>
-          </span>
-        </div>
-      </div>
+      <a href="https://github.com/abhisek2004">@ Created and Designed By Abhisek Panda</a>
     </footer>
+    <script>
+      let icon = document.getElementById("icon");
+
+      icon.addEventListener("click", function () {
+        document.querySelector("body").classList.toggle("active");
+
+        if (document.querySelector("body").className == "active") {
+          icon.className = "fa-solid fa-sun";
+        } else {
+          icon.className = "fa-solid fa-moon";
+        }
+      });
+    </script>
   </body>
 
 </html>
