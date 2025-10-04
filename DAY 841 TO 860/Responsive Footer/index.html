@@ -3,14 +3,239 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>Responsive footer</title>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'>
-    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Responsive Footer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+      body {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        color: #e2e8f0;
+      }
 
+      footer {
+        background: linear-gradient(180deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
+        backdrop-filter: blur(10px);
+        padding: 3rem 1.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .logo-details {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #00ddeb;
+        text-shadow: 0 0 10px rgba(0, 221, 235, 0.5);
+      }
+
+      .logo-details i {
+        font-size: 2rem;
+        color: #ff007a;
+        transition: transform 0.3s ease;
+      }
+
+      .logo-details:hover i {
+        transform: scale(1.2);
+      }
+
+      .media-icons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .media-icons a {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(45deg, #ff007a, #00ddeb);
+        border-radius: 50%;
+        color: white;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 15px rgba(255, 0, 122, 0.5);
+      }
+
+      .media-icons a:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 25px rgba(255, 0, 122, 0.7);
+        background: linear-gradient(45deg, #ff4d94, #4df1ff);
+      }
+
+      .link-boxes {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 2rem;
+        padding: 2rem 0;
+      }
+
+      .box {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .link_name {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #00ddeb;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+        position: relative;
+      }
+
+      .link_name::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 50%;
+        height: 2px;
+        background: linear-gradient(90deg, #ff007a, #00ddeb);
+        transition: width 0.3s ease;
+      }
+
+      .box:hover .link_name::after {
+        width: 100%;
+      }
+
+      .box li a {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+      }
+
+      .box li a:hover {
+        color: #00ddeb;
+        text-shadow: 0 0 5px rgba(0, 221, 235, 0.5);
+      }
+
+      .input-box {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .input-box input[type="text"] {
+        padding: 0.75rem;
+        border: none;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #e2e8f0;
+        font-size: 1rem;
+        outline: none;
+        transition: all 0.3s ease;
+      }
+
+      .input-box input[type="text"]::placeholder {
+        color: #94a3b8;
+      }
+
+      .input-box input[type="text"]:focus {
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 10px rgba(0, 221, 235, 0.5);
+      }
+
+      .input-box input[type="button"] {
+        padding: 0.75rem;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(45deg, #ff007a, #00ddeb);
+        color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 15px rgba(255, 0, 122, 0.5);
+      }
+
+      .input-box input[type="button"]:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 25px rgba(255, 0, 122, 0.7);
+        background: linear-gradient(45deg, #ff4d94, #4df1ff);
+      }
+
+      .bottom-details {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 1.5rem;
+        text-align: center;
+      }
+
+      .bottom_text {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 0.9rem;
+        color: #94a3b8;
+      }
+
+      .copyright_text a,
+      .policy_terms a {
+        color: #00ddeb;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .copyright_text a:hover,
+      .policy_terms a:hover {
+        color: #ff4d94;
+        text-shadow: 0 0 5px rgba(255, 77, 148, 0.5);
+      }
+
+      @media (max-width: 768px) {
+        .top {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .bottom_text {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .link-boxes {
+          grid-template-columns: 1fr;
+        }
+
+        .media-icons {
+          justify-content: center;
+          width: 100%;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <!-- partial:index.partial.html -->
     <footer>
       <div class="content">
         <div class="top">
@@ -30,22 +255,22 @@
           <ul class="box">
             <li class="link_name">Company</li>
             <li><a href="#">Home</a></li>
-            <li><a href="#">Contact us</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Get started</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Get Started</a></li>
           </ul>
           <ul class="box">
             <li class="link_name">Services</li>
-            <li><a href="#">App design</a></li>
-            <li><a href="#">Web design</a></li>
-            <li><a href="#">Logo design</a></li>
-            <li><a href="#">Banner design</a></li>
+            <li><a href="#">App Design</a></li>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Logo Design</a></li>
+            <li><a href="#">Banner Design</a></li>
           </ul>
           <ul class="box">
             <li class="link_name">Account</li>
             <li><a href="#">Profile</a></li>
-            <li><a href="#">My account</a></li>
-            <li><a href="#">Prefrences</a></li>
+            <li><a href="#">My Account</a></li>
+            <li><a href="#">Preferences</a></li>
             <li><a href="#">Purchase</a></li>
           </ul>
           <ul class="box">
@@ -64,15 +289,14 @@
       </div>
       <div class="bottom-details">
         <div class="bottom_text">
-          <span class="copyright_text">Copyright © 2025 <a href="#"> Abhisek </a>All rights reserved</span>
+          <span class="copyright_text">Copyright © 2025 <a href="#">Abhisek</a> All rights reserved</span>
           <span class="policy_terms">
-            <a href="#">Privacy policy</a>
-            <a href="#">Terms & condition</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
           </span>
         </div>
       </div>
     </footer>
-
   </body>
 
 </html>
