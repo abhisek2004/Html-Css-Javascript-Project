@@ -3,24 +3,206 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>Buttons popper</title>
-    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Button Popper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        font-family: 'Inter', sans-serif;
+      }
 
+      .wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      button {
+        padding: 1.25rem 2.5rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: white;
+        background: linear-gradient(45deg, #ff007a, #00ddeb);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 20px rgba(255, 0, 122, 0.5), 0 0 40px rgba(0, 221, 235, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 30px rgba(255, 0, 122, 0.7), 0 0 60px rgba(0, 221, 235, 0.5);
+        background: linear-gradient(45deg, #ff4d94, #4df1ff);
+      }
+
+      button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent);
+        transition: 0.5s;
+      }
+
+      button:hover::before {
+        left: 100%;
+      }
+
+      particle {
+        position: fixed;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        pointer-events: none;
+        background-repeat: no-repeat;
+        background-size: contain;
+        z-index: 10;
+      }
+
+      .preloader {
+        position: absolute;
+        width: 0;
+        height: 0;
+        background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/127738/mario-face.png);
+        visibility: hidden;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+
+        100% {
+          transform: scale(1.5);
+          opacity: 0;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <!-- partial:index.partial.html -->
     <div class="wrapper">
-      <button data-type="square">Square particles</button>
-      <button data-type="emoji">Emoji particles</button>
-      <button data-type="mario">Mario particles</button>
-      <button data-type="shadow">Shadow particles</button>
-      <button data-type="line">Line particles</button>
+      <button data-type="neon">Neon Sparks</button>
+      <button data-type="emoji">Cosmic Emojis</button>
+      <button data-type="cyber">Cyber Orbs</button>
+      <button data-type="pulse">Pulse Waves</button>
+      <button data-type="glitch">Glitch Lines</button>
     </div>
     <span class="preloader"></span>
-    <!-- partial -->
-    <script src="./script.js"></script>
 
+    <script>
+      function pop(e) {
+        let amount = 40;
+        switch (e.target.dataset.type) {
+          case 'pulse':
+          case 'glitch':
+            amount = 80;
+            break;
+        }
+
+        let x, y;
+        if (e.clientX === 0 && e.clientY === 0) {
+          const bbox = e.target.getBoundingClientRect();
+          x = bbox.left + bbox.width / 2;
+          y = bbox.top + bbox.height / 2;
+          for (let i = 0; i < 30; i++) {
+            createParticle(x, y, e.target.dataset.type);
+          }
+        } else {
+          x = e.clientX;
+          y = e.clientY + window.scrollY;
+          for (let i = 0; i < amount; i++) {
+            createParticle(x, y, e.target.dataset.type);
+          }
+        }
+      }
+
+      function createParticle(x, y, type) {
+        const particle = document.createElement('particle');
+        document.body.appendChild(particle);
+        let width = Math.floor(Math.random() * 40 + 10);
+        let height = width;
+        let destinationX = (Math.random() - 0.5) * 400;
+        let destinationY = (Math.random() - 0.5) * 400;
+        let rotation = Math.random() * 720;
+        let delay = Math.random() * 300;
+        let scale = Math.random() * 0.5 + 0.5;
+
+        switch (type) {
+          case 'neon':
+            particle.style.background = `hsl(${Math.random() * 60 + 300}, 80%, 60%)`;
+            particle.style.boxShadow = `0 0 15px hsl(${Math.random() * 60 + 300}, 80%, 60%)`;
+            particle.style.borderRadius = '10%';
+            break;
+          case 'emoji':
+            particle.innerHTML = ['🌌', '✨', '🌠', '🪐', '🚀', '💥', '⚡️'][Math.floor(Math.random() * 7)];
+            particle.style.fontSize = `${Math.random() * 30 + 12}px`;
+            width = height = 'auto';
+            break;
+          case 'cyber':
+            particle.style.background = `radial-gradient(circle, hsl(${Math.random() * 90 + 180}, 70%, 60%), transparent)`;
+            particle.style.boxShadow = `0 0 20px hsl(${Math.random() * 90 + 180}, 70%, 60%)`;
+            particle.style.borderRadius = '50%';
+            width = height = Math.random() * 10 + 6;
+            break;
+          case 'pulse':
+            particle.style.background = `hsl(${Math.random() * 90 + 270}, 70%, 50%)`;
+            particle.style.borderRadius = '50%';
+            width = height = Math.random() * 8 + 5;
+            particle.style.animation = 'pulse 1s ease-in-out infinite';
+            break;
+          case 'glitch':
+            particle.style.background = `hsl(${Math.random() * 90 + 90}, 80%, 50%)`;
+            particle.style.height = '2px';
+            rotation += 1500;
+            delay = Math.random() * 1200;
+            break;
+        }
+
+        particle.style.width = `${width}px`;
+        particle.style.height = `${height}px`;
+
+        const animation = particle.animate([
+          {
+            transform: `translate(-50%, -50%) translate(${x}px, ${y}px) rotate(0deg) scale(${scale})`,
+            opacity: 1
+          },
+          {
+            transform: `translate(-50%, -50%) translate(${x + destinationX}px, ${y + destinationY}px) rotate(${rotation}deg) scale(${scale * 1.5})`,
+            opacity: 0
+          }
+        ], {
+          duration: Math.random() * 1200 + 4000,
+          easing: 'cubic-bezier(0.25, 0.8, 0.5, 1)',
+          delay: delay
+        });
+
+        animation.onfinish = () => particle.remove();
+      }
+
+      if (document.body.animate) {
+        document.querySelectorAll('button').forEach(button => button.addEventListener('click', pop));
+      }
+    </script>
   </body>
 
 </html>
