@@ -1,21 +1,197 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>CodePen - Neon Light Button Hover Effect</title>
-  <link rel="stylesheet" href="./style.css">
+<html lang="en">
 
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<a href="#">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Button</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;600&display=swap"
+      rel="stylesheet">
+    <style>
+      :root {
+        --primary-color: #00ddeb;
+        --secondary-color: #ff007a;
+        --bg-dark: #0f172a;
+        --text-dark: #e2e8f0;
+      }
+
+      body {
+        background: linear-gradient(135deg, var(--bg-dark), #1e293b);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Orbitron', sans-serif;
+        color: var(--text-dark);
+        margin: 0;
+        overflow: hidden;
+      }
+
+      a {
+        position: relative;
+        display: inline-block;
+        padding: 1.2rem 3rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--text-dark);
+        text-decoration: none;
+        background: transparent;
+        border: none;
+        transition: all 0.3s ease;
+        z-index: 1;
+        text-shadow: 0 0 10px rgba(0, 221, 235, 0.5);
+      }
+
+      a span {
+        position: absolute;
+        background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+        transition: all 0.5s ease;
+        filter: drop-shadow(0 0 5px rgba(0, 221, 235, 0.5));
+      }
+
+      a span:nth-child(1) {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        transform: scaleX(0);
+        transform-origin: right;
+      }
+
+      a span:nth-child(2) {
+        top: 0;
+        right: 0;
+        width: 3px;
+        height: 100%;
+        transform: scaleY(0);
+        transform-origin: bottom;
+      }
+
+      a span:nth-child(3) {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        transform: scaleX(0);
+        transform-origin: left;
+      }
+
+      a span:nth-child(4) {
+        bottom: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        transform: scaleY(0);
+        transform-origin: top;
+      }
+
+      a:hover span:nth-child(1),
+      a:hover span:nth-child(3) {
+        transform: scaleX(1);
+      }
+
+      a:hover span:nth-child(2),
+      a:hover span:nth-child(4) {
+        transform: scaleY(1);
+      }
+
+      a:hover {
+        color: #fff;
+        text-shadow: 0 0 15px rgba(255, 0, 122, 0.7);
+        transform: translateY(-3px);
+        box-shadow: 0 0 30px rgba(0, 221, 235, 0.5);
+      }
+
+      .particle {
+        position: absolute;
+        background: radial-gradient(circle, var(--primary-color), transparent);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+
+        100% {
+          transform: scale(2);
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        a {
+          padding: 1rem 2rem;
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="#" id="neonButton">
       <span></span>
       <span></span>
       <span></span>
       <span></span>
-      Neon Button
+      Neon Pulse
     </a>
-<!-- partial -->
-  
-</body>
+    <script>
+      document.getElementById('neonButton').addEventListener('click', function (e) {
+        e.preventDefault();
+        const button = this;
+        const rect = button.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2 + window.scrollY;
+
+        for (let i = 0; i < 10; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          document.body.appendChild(particle);
+
+          const size = Math.random() * 10 + 5;
+          particle.style.width = `${size}px`;
+          particle.style.height = `${size}px`;
+          particle.style.left = `${x}px`;
+          particle.style.top = `${y}px`;
+
+          const destinationX = (Math.random() - 0.5) * 100;
+          const destinationY = (Math.random() - 0.5) * 100;
+          const rotation = Math.random() * 360;
+          const duration = Math.random() * 500 + 500;
+
+          particle.animate([
+            {
+              transform: `translate(-50%, -50%) translate(0, 0) rotate(0deg)`,
+              opacity: 1
+            },
+            {
+              transform: `translate(-50%, -50%) translate(${destinationX}px, ${destinationY}px) rotate(${rotation}deg)`,
+              opacity: 0
+            }
+          ], {
+            duration: duration,
+            easing: 'ease-out'
+          }).onfinish = () => particle.remove();
+        }
+
+        // Pulse effect on button
+        button.animate([
+          { transform: 'scale(1)', boxShadow: '0 0 30px rgba(0, 221, 235, 0.5)' },
+          { transform: 'scale(1.1)', boxShadow: '0 0 50px rgba(0, 221, 235, 0.7)' },
+          { transform: 'scale(1)', boxShadow: '0 0 30px rgba(0, 221, 235, 0.5)' }
+        ], {
+          duration: 300,
+          easing: 'ease-in-out'
+        });
+      });
+    </script>
+  </body>
+
 </html>
