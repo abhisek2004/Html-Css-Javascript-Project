@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Digital Alarm Clock</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;600&display=swap"
+      rel="stylesheet">
+    <style>
+      :root {
+        --primary-color: #00ddeb;
+        --secondary-color: #ff007a;
+        --bg-dark: #0f172a;
+        --text-dark: #e2e8f0;
+      }
+
+      body {
+        background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+        background-size: cover;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Orbitron', sans-serif;
+        color: var(--text-dark);
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .wrapper {
+        background: rgba(15, 23, 42, 0.9);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 0 30px rgba(0, 221, 235, 0.3);
+        max-width: 500px;
+        width: 90%;
+        text-align: center;
+        position: relative;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .digital-clock {
+        font-size: 2.5rem;
+        background: linear-gradient(45deg, #ff0000, #ff4500);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin: 1rem 0;
+        text-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+      }
+
+      .date-info {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        text-shadow: 0 0 5px rgba(0, 221, 235, 0.5);
+      }
+
+      .temp-day {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        text-shadow: 0 0 5px rgba(0, 221, 235, 0.5);
+      }
+
+      .content {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .column select {
+        padding: 0.75rem;
+        border: none;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-dark);
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 10px rgba(0, 221, 235, 0.2);
+      }
+
+      .column select:focus {
+        box-shadow: 0 0 15px rgba(0, 221, 235, 0.5);
+      }
+
+      .column select option {
+        background: var(--bg-dark);
+        color: var(--text-dark);
+      }
+
+      button {
+        padding: 0.75rem 2rem;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 15px rgba(255, 0, 122, 0.5);
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 25px rgba(255, 0, 122, 0.7);
+        background: linear-gradient(45deg, #ff4d94, #4df1ff);
+      }
+
+      .disable {
+        pointer-events: none;
+        opacity: 0.6;
+      }
+
+      footer {
+        position: absolute;
+        bottom: 1rem;
+        width: 100%;
+        text-align: center;
+      }
+
+      footer a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-family: 'Poppins', sans-serif;
+        transition: color 0.3s ease;
+      }
+
+      footer a:hover {
+        color: var(--secondary-color);
+        text-shadow: 0 0 5px rgba(255, 0, 122, 0.5);
+      }
+
+      @media (max-width: 480px) {
+        .wrapper {
+          padding: 1rem;
+        }
+
+        .digital-clock {
+          font-size: 2rem;
+        }
+
+        .date-info,
+        .temp-day {
+          font-size: 1rem;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .content {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        button {
+          width: 100%;
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="date-info">
+        <span>DATE: <span id="date">21</span>/<span id="month">10</span>/<span id="year">2025</span></span>
+      </div>
+      <h1 class="digital-clock" id="currentTime">11:37:25 PM</h1>
+      <div class="temp-day">
+        <span>TEMP: <span id="temp">29</span>°C</span>
+        <span id="day">SUN</span>
+      </div>
+      <div class="content">
+        <div class="column">
+          <select id="hour">
+            <option value="Hour" selected disabled hidden>Hour</option>
+          </select>
+        </div>
+        <div class="column">
+          <select id="minute">
+            <option value="Minute" selected disabled hidden>Minute</option>
+          </select>
+        </div>
+        <div class="column">
+          <select id="ampm">
+            <option value="AM/PM" selected disabled hidden>AM/PM</option>
+          </select>
+        </div>
+      </div>
+      <button id="setAlarmBtn">Set Alarm</button>
+    </div>
+    <footer>
+      <a href="https://github.com/abhisek2004">@ Created and Designed By Abhisek Panda</a>
+    </footer>
+    <script>
+      const currentTime = document.getElementById("currentTime"),
+        dateElement = document.getElementById("date"),
+        monthElement = document.getElementById("month"),
+        yearElement = document.getElementById("year"),
+        tempElement = document.getElementById("temp"),
+        dayElement = document.getElementById("day"),
+        selectMenu = [document.getElementById("hour"), document.getElementById("minute"), document.getElementById("ampm")],
+        setAlarmBtn = document.getElementById("setAlarmBtn");
+
+      let alarmTime, isAlarmSet,
+        ringtone = new Audio('https://www.soundjay.com/buttons/beep-01a.mp3');
+
+      // Populate hour select
+      for (let i = 12; i > 0; i--) {
+        i = i < 10 ? `0${i}` : i;
+        let option = `<option value="${i}">${i}</option>`;
+        selectMenu[0].firstElementChild.insertAdjacentHTML("afterend", option);
+      }
+
+      // Populate minute select
+      for (let i = 59; i >= 0; i--) {
+        i = i < 10 ? `0${i}` : i;
+        let option = `<option value="${i}">${i}</option>`;
+        selectMenu[1].firstElementChild.insertAdjacentHTML("afterend", option);
+      }
+
+      // Populate AM/PM select
+      for (let i = 2; i > 0; i--) {
+        let ampm = i == 1 ? "AM" : "PM";
+        let option = `<option value="${ampm}">${ampm}</option>`;
+        selectMenu[2].firstElementChild.insertAdjacentHTML("afterend", option);
+      }
+
+      setInterval(() => {
+        let date = new Date(),
+          h = date.getHours(),
+          m = date.getMinutes(),
+          s = date.getSeconds(),
+          day = date.toLocaleDateString('en-US', { weekday: 'short' }),
+          temp = Math.floor(20 + Math.random() * 10), // Simulated temperature
+          d = date.getDate(),
+          mo = date.getMonth() + 1,
+          y = date.getFullYear(),
+          ampm = "AM";
+
+        if (h >= 12) {
+          h = h - 12;
+          ampm = "PM";
+        }
+        h = h == 0 ? h = 12 : h;
+        h = h < 10 ? "0" + h : h;
+        m = m < 10 ? "0" + m : m;
+        s = s < 10 ? "0" + s : s;
+        d = d < 10 ? "0" + d : d;
+        mo = mo < 10 ? "0" + mo : mo;
+
+        currentTime.innerText = `${h}:${m}:${s} ${ampm}`;
+        dateElement.innerText = d;
+        monthElement.innerText = mo;
+        yearElement.innerText = y;
+        tempElement.innerText = temp;
+        dayElement.innerText = day;
+
+        if (alarmTime === `${h}:${m} ${ampm}`) {
+          ringtone.play();
+          ringtone.loop = true;
+          currentTime.style.textShadow = '0 0 20px #ff007a';
+          setTimeout(() => {
+            currentTime.style.textShadow = '0 0 10px rgba(255, 69, 0, 0.5)';
+          }, 1000);
+        }
+      }, 1000);
+
+      function setAlarm() {
+        if (isAlarmSet) {
+          alarmTime = "";
+          ringtone.pause();
+          ringtone.currentTime = 0;
+          document.querySelector(".content").classList.remove("disable");
+          setAlarmBtn.innerText = "Set Alarm";
+          return isAlarmSet = false;
+        }
+
+        let time = `${selectMenu[0].value}:${selectMenu[1].value} ${selectMenu[2].value}`;
+        if (time.includes("Hour") || time.includes("Minute") || time.includes("AM/PM")) {
+          return alert("Please, select a valid time to set Alarm!");
+        }
+        alarmTime = time;
+        isAlarmSet = true;
+        document.querySelector(".content").classList.add("disable");
+        setAlarmBtn.innerText = "Clear Alarm";
+        setAlarmBtn.animate([
+          { transform: 'scale(1)', boxShadow: '0 0 15px rgba(255, 0, 122, 0.5)' },
+          { transform: 'scale(1.1)', boxShadow: '0 0 25px rgba(255, 0, 122, 0.7)' },
+          { transform: 'scale(1)', boxShadow: '0 0 15px rgba(255, 0, 122, 0.5)' }
+        ], { duration: 300, easing: 'ease-in-out' });
+      }
+
+      setAlarmBtn.addEventListener("click", setAlarm);
+    </script>
+  </body>
+
+</html>
