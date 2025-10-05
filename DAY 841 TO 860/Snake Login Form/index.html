@@ -3,46 +3,305 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>Snake highlight</title>
-    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Highlight Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;600&display=swap"
+      rel="stylesheet">
+    <style>
+      :root {
+        --primary-color: #00ddeb;
+        --secondary-color: #ff007a;
+        --bg-dark: #0f172a;
+        --text-dark: #e2e8f0;
+      }
+
+      body {
+        background: linear-gradient(135deg, var(--bg-dark), #1e293b);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+        color: var(--text-dark);
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .page {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+      }
+
+      .container {
+        display: flex;
+        max-width: 900px;
+        width: 100%;
+        background: rgba(30, 41, 59, 0.9);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 0 30px rgba(0, 221, 235, 0.3);
+      }
+
+      .left {
+        flex: 1;
+        padding: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: linear-gradient(45deg, rgba(0, 221, 235, 0.1), rgba(255, 0, 122, 0.1));
+      }
+
+      .login {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2.5rem;
+        background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin: 0 0 1rem;
+        text-shadow: 0 0 10px rgba(0, 221, 235, 0.5);
+      }
+
+      .eula {
+        font-size: 0.9rem;
+        color: #94a3b8;
+        line-height: 1.6;
+        max-width: 300px;
+      }
+
+      .right {
+        flex: 1;
+        padding: 2.5rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        filter: drop-shadow(0 0 10px rgba(0, 221, 235, 0.5));
+      }
+
+      .form {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      label {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      input[type="email"],
+      input[type="password"] {
+        padding: 0.75rem;
+        border: none;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-dark);
+        font-size: 1rem;
+        outline: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 10px rgba(0, 221, 235, 0.2);
+      }
+
+      input[type="email"]:focus,
+      input[type="password"]:focus {
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 15px rgba(0, 221, 235, 0.5);
+      }
+
+      input[type="submit"] {
+        padding: 0.75rem;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+        color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 15px rgba(255, 0, 122, 0.5);
+        text-transform: uppercase;
+      }
+
+      input[type="submit"]:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 25px rgba(255, 0, 122, 0.7);
+        background: linear-gradient(45deg, #ff4d94, #4df1ff);
+      }
+
+      .success-message {
+        display: none;
+        font-size: 1rem;
+        color: var(--primary-color);
+        text-align: center;
+        margin-top: 1rem;
+        text-shadow: 0 0 5px rgba(0, 221, 235, 0.5);
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      footer {
+        position: absolute;
+        bottom: 1rem;
+        width: 100%;
+        text-align: center;
+      }
+
+      footer a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+      }
+
+      footer a:hover {
+        color: var(--secondary-color);
+        text-shadow: 0 0 5px rgba(255, 0, 122, 0.5);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+
+        .left,
+        .right {
+          padding: 1.5rem;
+        }
+
+        .login {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .login {
+          font-size: 1.5rem;
+        }
+
+        .eula {
+          font-size: 0.8rem;
+        }
+
+        input[type="email"],
+        input[type="password"],
+        input[type="submit"] {
+          font-size: 0.9rem;
+          padding: 0.6rem;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <!-- partial:index.partial.html -->
     <div class="page">
       <div class="container">
         <div class="left">
           <div class="login">Login</div>
-          <div class="eula">By logging in you agree to the ridiculously long terms that you didn't bother to read</div>
+          <div class="eula">By logging in, you agree to our terms and conditions that you probably didn't read.</div>
         </div>
         <div class="right">
           <svg viewBox="0 0 320 300">
             <defs>
-              <linearGradient inkscape:collect="always" id="linearGradient" x1="13" y1="193.49992" x2="307"
-                y2="193.49992" gradientUnits="userSpaceOnUse">
-                <stop style="stop-color:#ff00ff;" offset="0" id="stop876" />
-                <stop style="stop-color:#ff0000;" offset="1" id="stop878" />
+              <linearGradient id="linearGradient" x1="13" y1="193.49992" x2="307" y2="193.49992"
+                gradientUnits="userSpaceOnUse">
+                <stop style="stop-color:#ff007a;" offset="0" />
+                <stop style="stop-color:#00ddeb;" offset="1" />
               </linearGradient>
             </defs>
-            <path
+            <path fill="none" stroke="url(#linearGradient)" stroke-width="2"
               d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
           </svg>
-          <div class="form">
+          <form class="form" onsubmit="return handleSubmit(event)">
             <label for="email">Email</label>
-            <input type="email" id="email">
+            <input type="email" id="email" required>
             <label for="password">Password</label>
-            <input type="password" id="password">
+            <input type="password" id="password" required>
             <input type="submit" id="submit" value="Submit">
-          </div>
+            <p class="success-message">Login Successful!</p>
+          </form>
         </div>
       </div>
     </div>
-    <!-- partial -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js'></script>
-    <script src="./script.js"></script>
     <footer>
-      <a href="https://github.com/abhisek2004">@ Created and Design By Abhisek Panda</a>
+      <a href="https://github.com/abhisek2004">@ Created and Designed By Abhisek Panda</a>
     </footer>
+    <script>
+      // Animate SVG path on page load
+      anime({
+        targets: '.right svg path',
+        strokeDashoffset: [anime.setDashoffset, 0],
+        easing: 'easeInOutSine',
+        duration: 2000,
+        direction: 'alternate',
+        loop: true
+      });
+
+      function handleSubmit(event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const successMessage = document.querySelector('.success-message');
+        const inputs = document.querySelectorAll('input[type="email"], input[type="password"]');
+
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && password.length >= 6) {
+          successMessage.style.display = 'block';
+          document.querySelector('.container').classList.add('success');
+          inputs.forEach(input => (input.value = ''));
+          anime({
+            targets: '.container',
+            scale: [1, 1.05],
+            duration: 500,
+            easing: 'easeInOutQuad',
+            complete: () => {
+              setTimeout(() => {
+                successMessage.style.display = 'none';
+                document.querySelector('.container').classList.remove('success');
+              }, 2000);
+            }
+          });
+        } else {
+          inputs.forEach(input => {
+            input.style.boxShadow = '0 0 15px rgba(255, 0, 122, 0.5)';
+            setTimeout(() => {
+              input.style.boxShadow = '0 0 10px rgba(0, 221, 235, 0.2)';
+            }, 2000);
+          });
+        }
+        return false;
+      }
+    </script>
   </body>
 
 </html>
