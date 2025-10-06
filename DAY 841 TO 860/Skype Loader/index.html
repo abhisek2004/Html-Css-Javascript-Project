@@ -3,17 +3,180 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>Skype loader</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel="stylesheet" href="./style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Skype Loader</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;600&display=swap"
+      rel="stylesheet">
+    <style>
+      :root {
+        --primary-color: #00ddeb;
+        --secondary-color: #ff007a;
+        --bg-dark: #0f172a;
+        --text-dark: #e2e8f0;
+      }
 
+      body {
+        background: linear-gradient(135deg, var(--bg-dark), #1e293b);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Orbitron', sans-serif;
+        color: var(--text-dark);
+        margin: 0;
+        overflow: hidden;
+      }
+
+      #center {
+        text-align: center;
+        position: relative;
+        padding: 2rem;
+        background: rgba(30, 41, 59, 0.9);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 0 30px rgba(0, 221, 235, 0.3);
+        animation: pulse 2s infinite alternate;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 20px rgba(0, 221, 235, 0.3);
+        }
+
+        100% {
+          box-shadow: 0 0 40px rgba(0, 221, 235, 0.6);
+        }
+      }
+
+      img {
+        width: 150px;
+        filter: drop-shadow(0 0 10px rgba(0, 221, 235, 0.5));
+        transition: transform 0.3s ease;
+      }
+
+      img:hover {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 15px rgba(0, 221, 235, 0.7));
+      }
+
+      .skype-loader {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin: 1.5rem 0;
+      }
+
+      .dot {
+        width: 15px;
+        height: 15px;
+        background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+        border-radius: 50%;
+        animation: bounce 1.5s infinite ease-in-out;
+        filter: drop-shadow(0 0 5px var(--primary-color));
+      }
+
+      .dot:nth-child(2) {
+        animation-delay: -0.4s;
+      }
+
+      .dot:nth-child(3) {
+        animation-delay: -0.8s;
+      }
+
+      .dot:nth-child(4) {
+        animation-delay: -1.2s;
+      }
+
+      .dot .first {
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        animation: innerPulse 1.5s infinite ease-in-out;
+      }
+
+      @keyframes bounce {
+
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      @keyframes innerPulse {
+        0% {
+          transform: scale(0);
+          opacity: 0.5;
+        }
+
+        50% {
+          transform: scale(1.2);
+          opacity: 1;
+        }
+
+        100% {
+          transform: scale(0);
+          opacity: 0.5;
+        }
+      }
+
+      #center p {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        text-shadow: 0 0 5px rgba(0, 221, 235, 0.5);
+        margin-top: 1rem;
+      }
+
+      footer {
+        position: absolute;
+        bottom: 1rem;
+        width: 100%;
+        text-align: center;
+      }
+
+      footer a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-family: 'Poppins', sans-serif;
+        transition: color 0.3s ease;
+      }
+
+      footer a:hover {
+        color: var(--secondary-color);
+        text-shadow: 0 0 5px rgba(255, 0, 122, 0.5);
+      }
+
+      @media (max-width: 480px) {
+        #center {
+          padding: 1rem;
+        }
+
+        img {
+          width: 120px;
+        }
+
+        .dot {
+          width: 12px;
+          height: 12px;
+        }
+
+        #center p {
+          font-size: 1rem;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <!-- partial:index.partial.html -->
     <div id="center">
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/40480/skype-logo.png" width="150" alt="">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/40480/skype-logo.png" width="150" alt="Skype Logo">
       <div class="skype-loader">
         <div class="dot">
           <div class="first"></div>
@@ -22,12 +185,36 @@
         <div class="dot"></div>
         <div class="dot"></div>
       </div>
-      Logging in...
+      <!-- <p>Logging in... <span id="time">09:55 PM IST, Mon, Oct 06, 2025</span></p> -->
     </div>
-    <!-- partial -->
     <footer>
-      <a href="https://github.com/abhisek2004">@ Created and Design By Abhisek Panda</a>
+      <a href="https://github.com/abhisek2004">@ Created and Designed By Abhisek Panda</a>
     </footer>
+    <script>
+      function updateTime() {
+        const now = new Date();
+        const hours = now.getHours() % 12 || 12;
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const ampm = now.getHours() >= 12 ? 'PM' : 'AM';
+        const day = now.toLocaleDateString('en-US', { weekday: 'short' });
+        const date = now.getDate().toString().padStart(2, '0');
+        const month = now.toLocaleDateString('en-US', { month: 'short' });
+        const year = now.getFullYear();
+        document.getElementById('time').innerText = `${hours}:${minutes} ${ampm} IST, ${day}, ${month} ${date}, ${year}`;
+      }
+
+      updateTime();
+      setInterval(updateTime, 60000); // Update every minute
+
+      // Add subtle animation to the loading text
+      const loadingText = document.querySelector('#center p');
+      setInterval(() => {
+        loadingText.style.textShadow = '0 0 10px rgba(0, 221, 235, 0.7)';
+        setTimeout(() => {
+          loadingText.style.textShadow = '0 0 5px rgba(0, 221, 235, 0.5)';
+        }, 500);
+      }, 1000);
+    </script>
   </body>
 
 </html>
