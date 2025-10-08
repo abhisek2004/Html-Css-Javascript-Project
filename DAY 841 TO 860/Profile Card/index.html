@@ -3,41 +3,229 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>Card Hover Effects</title>
-    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Hover</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet">
+    <style>
+      :root {
+        --primary-color: #00ddeb;
+        --secondary-color: #ff007a;
+        --bg-dark: #0f172a;
+        --text-dark: #e2e8f0;
+      }
 
+      body {
+        background: linear-gradient(135deg, var(--bg-dark), #1e293b);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Orbitron', sans-serif;
+        color: var(--text-dark);
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+      }
+
+      .card {
+        position: relative;
+        width: 300px;
+        height: 400px;
+        background: rgba(30, 41, 59, 0.9);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 221, 235, 0.3);
+        overflow: hidden;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 30px rgba(0, 221, 235, 0.5);
+      }
+
+      .card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(0, 221, 235, 0.2), transparent 70%);
+        animation: glow 5s ease-in-out infinite;
+        z-index: 0;
+      }
+
+      @keyframes glow {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem;
+        height: 100%;
+      }
+
+      .img img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--primary-color);
+        filter: drop-shadow(0 0 10px rgba(0, 221, 235, 0.5));
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover .img img {
+        transform: scale(1.1);
+      }
+
+      .cardContent {
+        text-align: center;
+        margin-top: 1rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 5px rgba(0, 221, 235, 0.5);
+      }
+
+      span {
+        font-size: 1rem;
+        color: #94a3b8;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      .sci {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .sci li {
+        list-style: none;
+        position: relative;
+        --i: 1;
+        transition: all 0.3s ease;
+      }
+
+      .sci li a {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .sci li:hover a {
+        color: var(--secondary-color);
+        transform: scale(1.2);
+        filter: drop-shadow(0 0 10px rgba(255, 0, 122, 0.5));
+      }
+
+      .card::after {
+        content: 'Updated: 10:17 PM IST, Wed, Oct 08, 2025';
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.8rem;
+        color: #94a3b8;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .card:hover::after {
+        opacity: 1;
+      }
+
+      @media (max-width: 480px) {
+        .card {
+          width: 250px;
+          height: 350px;
+        }
+
+        .img img {
+          width: 100px;
+          height: 100px;
+        }
+
+        h3 {
+          font-size: 1.2rem;
+        }
+
+        span {
+          font-size: 0.9rem;
+        }
+
+        .sci li a {
+          font-size: 1.2rem;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <!-- partial:index.partial.html -->
-
-    <head>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-
-    <body>
-      <div class="container">
-        <div class="card">
-          <div class="content">
-            <div class="img"><img src="https://avatars.githubusercontent.com/u/117925314?v=4"></div>
-            <div class="cardContent">
-              <h3>ABHISEK PANDA<br><span>Web Developer</span></h3>
-            </div>
+    <div class="container">
+      <div class="card">
+        <div class="content">
+          <div class="img"><img src="https://avatars.githubusercontent.com/u/117925314?v=4" alt="Abhisek Panda"></div>
+          <div class="cardContent">
+            <h3>ABHISEK PANDA<br><span>Web Developer</span></h3>
           </div>
-          <ul class="sci">
-            <li style="--i:1">
-              <a href="https://www.linkedin.com/in/abhisekpanda2004/"><i class="fa fa-linkedin"
-                  aria-hidden="true"></i></a>
-            </li>
-            <li style="--i:3">
-              <a href="https://github.com/abhisek2004"><i class="fa fa-github" aria-hidden="true"></i></a>
-            </li>
-          </ul>
         </div>
+        <ul class="sci">
+          <li style="--i:1">
+            <a href="https://www.linkedin.com/in/abhisekpanda2004/"><i class="fa fa-linkedin"
+                aria-hidden="true"></i></a>
+          </li>
+          <li style="--i:3">
+            <a href="https://github.com/abhisek2004"><i class="fa fa-github" aria-hidden="true"></i></a>
+          </li>
+        </ul>
       </div>
-    </body>
-    <!-- partial -->
-
+    </div>
+    <script>
+      const card = document.querySelector('.card');
+      card.addEventListener('click', () => {
+        card.animate([
+          { transform: 'rotate(0deg) scale(1)', boxShadow: '0 0 20px rgba(0, 221, 235, 0.3)' },
+          { transform: 'rotate(5deg) scale(1.05)', boxShadow: '0 0 30px rgba(0, 221, 235, 0.5)' },
+          { transform: 'rotate(-5deg) scale(1.05)', boxShadow: '0 0 30px rgba(0, 221, 235, 0.5)' },
+          { transform: 'rotate(0deg) scale(1)', boxShadow: '0 0 20px rgba(0, 221, 235, 0.3)' }
+        ], {
+          duration: 500,
+          easing: 'ease-in-out'
+        });
+      });
+    </script>
   </body>
 
 </html>
