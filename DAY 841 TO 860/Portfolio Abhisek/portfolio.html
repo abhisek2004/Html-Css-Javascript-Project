@@ -1,160 +1,523 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futuristic Portfolio - Abhisek Panda</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/f30fac2c61.js" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --primary-color: #00ddeb;
+      --secondary-color: #ff007a;
+      --bg-dark: #0f172a;
+      --text-dark: #e2e8f0;
+    }
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="portfolio.css">
-        <link
-            href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Catamaran:wght@200&family=Courgette&family=Dancing+Script:wght@700&family=Edu+TAS+Beginner:wght@700&family=Lato:wght@300;900&family=Mukta:wght@700&family=Mulish:wght@300&family=Open+Sans&family=PT+Sans:ital,wght@1,700&family=Poppins:wght@300&family=Raleway:wght@100&family=Roboto&family=Roboto+Condensed:wght@700&family=Roboto+Slab&display=swap"
-            rel="stylesheet">
-        <script src="https://kit.fontawesome.com/f30fac2c61.js" crossorigin="anonymous"></script>
-    </head>
+    body {
+      background: linear-gradient(135deg, var(--bg-dark), #1e293b);
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--text-dark);
+    }
 
-    <body>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <h1>Abhiek<span>Panda</span></h1>
-                </div>
-                <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#service">Services</a></li>
-                    <li><a href="#work">My Work</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
 
-                </ul>
-                <i id="bar" class="fa-solid fa-bars"></i>
-            </nav>
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: rgba(30, 41, 59, 0.9);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 221, 235, 0.2);
+    }
 
-            <div class="main">
-                <div class="mainText">
-                    <h3>Hello I Am</h3>
-                    <h1>Abhisek <span>Panda</span></h1>
-                    <p>FullStack Developer</p>
-                    <a class="btn"
-                        href="https://drive.google.com/file/d/1a69iBaVJ0OsYucnR5nBiiaNW_T3El2Yo/view?usp=drive_link"><i
-                            class="fa fa-download"></i>Resume</a>
-                </div>
-                <img src="./Image/Abhisek.png" alt="">
-            </div>
+    .logo h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 5px rgba(0, 221, 235, 0.5);
+    }
 
-            <div class="aboutus" id="about">
-                <div class="head">
-                    <h1>About <span>Us</span></h1>
-                </div>
-                <div class="about">
-                    <img src="./Image/Abhisek 2.jpg" alt="">
-                    <div class="aboutText">
-                        <h2>I am FullStack <span>Developer</span></h2>
-                        <p>🌟 Aspiring Web Developer || Frontend Enthusiast || MERN Stack & Java DSA || GATE Learner 🚀
-                            <br>* I'm passionate about crafting immersive user experiences through frontend development
-                            and
-                            am dedicated to refining my
-                            abilities in this domain.
-                            <br>* Embracing challenges fuels my journey, and I am poised to
-                            contribute my skills and enthusiasm
-                            to impactful projects.
-                            <br>* I am explore opportunities where I can bring my determination, enthusiasm, and
-                            teamwork
-                            commitment to contribute
-                            meaningfully to the world of web development.
-                        </p>
-                        <p>Speciality : <span>Website Development</span></p>
-                        <p>Skills : <span>MERN || Java DSA</span></p>
-                        <p>YouTuber : <span>Making Programming Videos</span></p>
-                        <p>Email : <span>abhsiek2004panda@gmail.com</span></p>
+    .logo span {
+      color: var(--primary-color);
+    }
 
-                    </div>
-                </div>
-            </div>
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
 
+    nav ul li a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
 
-            <div class="ourservice" id="service">
-                <div class="head">
-                    <h1>Our <span>Service</span></h1>
-                </div>
-                <div class="service">
-                    <div class="card">
-                        <i class="fa-solid fa-code"></i>
-                        <h2>Website Development</h2>
-                        <p>Passionate website developer skilled in HTML, CSS, JavaScript, and more. Dedicated to
-                            crafting responsive,
-                            user-friendly websites that exceed client expectations and enhance online presence.
-                        </p>
-                    </div>
-                    <div class="card">
-                        <i class="fa-solid fa-code"></i>
-                        <h2>Website Design</h2>
-                        <p>Crafting captivating digital experiences that blend creativity with functionality. Elevating
-                            brands through intuitive
-                            design, seamless navigation, and engaging content. Let's bring your vision to life and make
-                            an impact together.
-                        </p>
-                    </div>
-                </div>
-            </div>
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: var(--primary-color);
+      transition: width 0.3s ease;
+    }
 
-            <div class="mywork" id="work">
-                <div class="head">
-                    <h1>My <span>Work</span></h1>
-                </div>
-                <div class="work">
-                    <div class="workCard">
-                        <img src="./Image/1.png" alt="">
-                        <p>Social Linkup Webpage</p>
-                        <a href="https://github.com/abhisek2004/LEARNING-PROJECT-1.git" target="_blank">Checkout</a>
-                    </div>
-                    <div class="workCard">
-                        <img src="./Image/2.png" alt="">
-                        <p>Project 1</p>
-                        <a href="https://github.com/abhisek2004/OIBSIP_WebDevelopment.git" target="_blank">Checkout</a>
-                    </div>
-                    <div class="workCard">
-                        <img src="./Image/3.png" alt="">
-                        <p>Project 2</p>
-                        <a href="https://github.com/abhisek2004/Learn-Smasher.git" target="_blank">Checkout</a>
-                    </div>
-                </div>
-            </div>
+    nav ul li a:hover::after {
+      width: 100%;
+    }
 
-            <div class="form" id="contact">
-                <div class="head">
-                    <h1>Connect <span>Us</span></h1>
-                </div>
-                <div class="contact">
-                    <p>Email :</p>
-                    <input type="text" placeholder="Enter Email" id="email">
-                    <p>Password :</p>
-                    <input type="text" placeholder="Enter Password" id="pass">
-                    <p>Message :</p>
-                    <input type="text" placeholder="Enter Message" id="mess">
-                    <button id="submit">Submit</button>
-                </div>
-            </div>
+    #bar {
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+      color: var(--primary-color);
+    }
 
-            <div class="footer">
-                <div class="sidebar-footer">
-                    <a href="https://twitter.com/ABHISEK_2003"><i class="fab fa-twitter"></i></a>
-                    <a href="https://github.com/abhisek2004"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/abhisekpanda2004/"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <div class="text">
-                    <h3>Contact</h3>
-                    <p>Email</p>
-                    <p>Phone</p>
-                    <p>Message</p>
-                    <p>987-656-3210</p>
+    .main {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 5rem;
+      padding: 2rem;
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 221, 235, 0.3);
+    }
 
-                </div>
-            </div>
+    .mainText h3 {
+      font-size: 1.2rem;
+      color: #94a3b8;
+    }
+
+    .mainText h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 10px rgba(0, 221, 235, 0.5);
+    }
+
+    .mainText p {
+      font-size: 1.1rem;
+      color: var(--primary-color);
+      margin: 0.5rem 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(255, 0, 122, 0.5);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px rgba(255, 0, 122, 0.7);
+    }
+
+    .main img {
+      width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 221, 235, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .main:hover img {
+      transform: scale(1.05);
+    }
+
+    .head h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 10px rgba(0, 221, 235, 0.5);
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .head span {
+      color: var(--primary-color);
+    }
+
+    .about, .service, .work, .contact {
+      margin: 4rem 0;
+      padding: 2rem;
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 221, 235, 0.3);
+    }
+
+    .about img {
+      width: 250px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 221, 235, 0.3);
+    }
+
+    .aboutText h2 {
+      font-size: 1.8rem;
+      background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 5px rgba(0, 221, 235, 0.5);
+    }
+
+    .aboutText p {
+      font-size: 1rem;
+      color: #94a3b8;
+      margin: 0.5rem 0;
+    }
+
+    .aboutText span {
+      color: var(--primary-color);
+    }
+
+    .service .card {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .service .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 15px rgba(0, 221, 235, 0.5);
+    }
+
+    .service .card i {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .work .workCard {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .work .workCard:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 15px rgba(0, 221, 235, 0.5);
+    }
+
+    .workCard img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
+    }
+
+    .workCard a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .workCard a:hover {
+      color: var(--secondary-color);
+    }
+
+    .contact input {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-dark);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .contact input:focus {
+      box-shadow: 0 0 15px rgba(0, 221, 235, 0.5);
+    }
+
+    #submit {
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px rgba(255, 0, 122, 0.7);
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem;
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 221, 235, 0.3);
+      margin-top: 4rem;
+    }
+
+    .sidebar-footer a {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin: 0 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-footer a:hover {
+      color: var(--secondary-color);
+      transform: scale(1.2);
+    }
+
+    .footer .text p {
+      font-size: 1rem;
+      color: #94a3b8;
+      margin: 0.2rem 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: rgba(30, 41, 59, 0.9);
+      backdrop-filter: blur(10px);
+    }
+
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: var(--secondary-color);
+      text-shadow: 0 0 5px rgba(255, 0, 122, 0.5);
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+
+      #bar {
+        display: block;
+      }
+
+      .main {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .main img {
+        margin-top: 1rem;
+      }
+
+      .about, .service, .work, .contact {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="logo">
+        <h1>Abhiek<span>Panda</span></h1>
+      </div>
+      <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#service">Services</a></li>
+        <li><a href="#work">My Work</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+      <i id="bar" class="fa-solid fa-bars"></i>
+    </nav>
+    <div class="main">
+      <div class="mainText">
+        <h3>Hello I Am</h3>
+        <h1>Abhisek <span>Panda</span></h1>
+        <p>FullStack Developer</p>
+        <a class="btn" href="https://drive.google.com/file/d/1a69iBaVJ0OsYucnR5nBiiaNW_T3El2Yo/view?usp=drive_link"><i class="fa fa-download"></i>Resume</a>
+      </div>
+      <img src="./Image/Abhisek.png" alt="Abhisek Panda">
+    </div>
+    <div class="aboutus" id="about">
+      <div class="head">
+        <h1>About <span>Us</span></h1>
+      </div>
+      <div class="about">
+        <img src="./Image/Abhisek 2.jpg" alt="Abhisek Panda">
+        <div class="aboutText">
+          <h2>I am FullStack <span>Developer</span></h2>
+          <p>🌟 Aspiring Web Developer || Frontend Enthusiast || MERN Stack & Java DSA || GATE Learner 🚀
+            <br>* I'm passionate about crafting immersive user experiences through frontend development and am dedicated to refining my abilities in this domain.
+            <br>* Embracing challenges fuels my journey, and I am poised to contribute my skills and enthusiasm to impactful projects.
+            <br>* I am exploring opportunities where I can bring my determination, enthusiasm, and teamwork commitment to contribute meaningfully to the world of web development.
+          </p>
+          <p>Speciality : <span>Website Development</span></p>
+          <p>Skills : <span>MERN || Java DSA</span></p>
+          <p>YouTuber : <span>Making Programming Videos</span></p>
+          <p>Email : <span>abhsiek2004panda@gmail.com</span></p>
         </div>
-        <script src="portfolio.js"></script>
-        <footer>
-            <a href="https://github.com/abhisek2004">@ Created and Design By Abhisek Panda</a>
-        </footer>
-    </body>
+      </div>
+    </div>
+    <div class="ourservice" id="service">
+      <div class="head">
+        <h1>Our <span>Service</span></h1>
+      </div>
+      <div class="service">
+        <div class="card">
+          <i class="fa-solid fa-code"></i>
+          <h2>Website Development</h2>
+          <p>Passionate website developer skilled in HTML, CSS, JavaScript, and more. Dedicated to crafting responsive, user-friendly websites that exceed client expectations and enhance online presence.</p>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-code"></i>
+          <h2>Website Design</h2>
+          <p>Crafting captivating digital experiences that blend creativity with functionality. Elevating brands through intuitive design, seamless navigation, and engaging content. Let's bring your vision to life and make an impact together.</p>
+        </div>
+      </div>
+    </div>
+    <div class="mywork" id="work">
+      <div class="head">
+        <h1>My <span>Work</span></h1>
+      </div>
+      <div class="work">
+        <div class="workCard">
+          <img src="./Image/1.png" alt="Social Linkup">
+          <p>Social Linkup Webpage</p>
+          <a href="https://github.com/abhisek2004/LEARNING-PROJECT-1.git" target="_blank">Checkout</a>
+        </div>
+        <div class="workCard">
+          <img src="./Image/2.png" alt="Project 1">
+          <p>Project 1</p>
+          <a href="https://github.com/abhisek2004/OIBSIP_WebDevelopment.git" target="_blank">Checkout</a>
+        </div>
+        <div class="workCard">
+          <img src="./Image/3.png" alt="Project 2">
+          <p>Project 2</p>
+          <a href="https://github.com/abhisek2004/Learn-Smasher.git" target="_blank">Checkout</a>
+        </div>
+      </div>
+    </div>
+    <div class="form" id="contact">
+      <div class="head">
+        <h1>Connect <span>Us</span></h1>
+      </div>
+      <div class="contact">
+        <p>Email :</p>
+        <input type="text" placeholder="Enter Email" id="email">
+        <p>Password :</p>
+        <input type="text" placeholder="Enter Password" id="pass">
+        <p>Message :</p>
+        <input type="text" placeholder="Enter Message" id="mess">
+        <button id="submit">Submit</button>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="sidebar-footer">
+        <a href="https://twitter.com/ABHISEK_2003"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/abhisek2004"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/abhisekpanda2004/"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <div class="text">
+        <h3>Contact</h3>
+        <p>Email</p>
+        <p>Phone</p>
+        <p>Message</p>
+        <p>987-656-3210</p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <a href="https://github.com/abhisek2004">@ Created and Designed By Abhisek Panda</a>
+  </footer>
+  <script>
+    const bar = document.getElementById('bar');
+    const nav = document.querySelector('nav ul');
 
+    bar.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+
+    const submitBtn = document.getElementById('submit');
+    submitBtn.addEventListener('click', () => {
+      const email = document.getElementById('email').value;
+      const pass = document.getElementById('pass').value;
+      const mess = document.getElementById('mess').value;
+      if (email && pass && mess) {
+        alert('Form submitted successfully! Check console for details.');
+        console.log('Email:', email, 'Password:', pass, 'Message:', mess);
+        document.getElementById('email').value = '';
+        document.getElementById('pass').value = '';
+        document.getElementById('mess').value = '';
+      } else {
+        alert('Please fill all fields!');
+      }
+    });
+
+    function updateTime() {
+      const now = new Date();
+      const hours = now.getHours() % 12 || 12;
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const ampm = now.getHours() >= 12 ? 'PM' : 'AM';
+      const day = now.toLocaleDateString('en-US', { weekday: 'short' });
+      const date = now.getDate().toString().padStart(2, '0');
+      const month = now.toLocaleDateString('en-US', { month: 'short' });
+      const year = now.getFullYear();
+      document.querySelector('.mainText p').innerText = `FullStack Developer | Updated: ${hours}:${minutes} ${ampm} IST, ${day}, ${month} ${date}, ${year}`;
+    }
+
+    updateTime();
+    setInterval(updateTime, 60000); // Update every minute
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('nav ul li a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const sectionId = this.getAttribute('href');
+        document.querySelector(sectionId).scrollIntoView({ behavior: 'smooth' });
+        nav.classList.remove('active');
+      });
+    });
+  </script>
+</body>
 </html>
