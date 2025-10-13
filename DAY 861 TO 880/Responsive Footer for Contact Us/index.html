@@ -1,71 +1,385 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Responsive Contact us Page Design</title>
-<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-	<section class="contact">
-		<div class="content">
-			<h2>Contact Us</h2>
-			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem numquam id reprehenderit, sunt laudantium enim possimus repellat debitis et quis!</p>
-		</div>
-		<div class="container">
-			<div class="contactInfo">
-				<div class="box">
-					<div class="icon"><ion-icon name="location-outline"></ion-icon></div>
-					<div class="text">
-						<h3>Address</h3>
-						<p>402671 Sugar Camp Road,<br>Owatonna,Minnesota,<br>55025060</p>
-					</div>
-				</div>
-				<div class="box">
-					<div class="icon"><ion-icon name="call-outline"></ion-icon></div>
-					<div class="text">
-						<h3>Phone</h3>
-						<p>000-000-0000</p>
-					</div>
-				</div>
-				<div class="box">
-					<div class="icon"><ion-icon name="mail-outline"></ion-icon></div>
-					<div class="text">
-						<h3>Email</h3>
-						<p>wrub7d78i0e@temporary-mail</p>
-					</div>
-				</div>
-				<h2 class="txt">Connect with us</h2>
-				<ul class="sci">
-					<li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
-					<li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
-					<li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-					<li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
-				</ul>
-			</div>
+<html lang="en">
 
-			<div class="contactForm">
-				<form>
-					<h2>Send Message</h2>
-					<div class="inputBox">
-						<input type="text" name="" required="required">
-						<span>Full Name</span>
-					</div>
-					<div class="inputBox">
-						<input type="text" name="" required="required">
-						<span>Email</span>
-					</div>
-					<div class="inputBox">
-						<textarea required="required"></textarea>
-						<span>Type your Message...</span>
-					</div>
-					<div class="inputBox">
-						<input type="submit" value="Send">
-					</div>
-				</form>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Contact Us Page</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: 'Poppins', sans-serif;
+			}
+
+			body {
+				min-height: 100vh;
+				background: linear-gradient(135deg, #6b48ff, #00ddeb);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 20px;
+				overflow-x: hidden;
+			}
+
+			.contact {
+				max-width: 1200px;
+				width: 100%;
+				background: rgba(255, 255, 255, 0.95);
+				border-radius: 20px;
+				box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+				display: flex;
+				flex-wrap: wrap;
+				padding: 40px;
+				margin: 20px;
+				animation: fadeIn 1s ease-in-out;
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.content {
+				text-align: center;
+				width: 100%;
+				margin-bottom: 40px;
+			}
+
+			.content h2 {
+				font-size: 2.5em;
+				color: #333;
+				margin-bottom: 10px;
+				position: relative;
+			}
+
+			.content h2::after {
+				content: '';
+				width: 60px;
+				height: 4px;
+				background: #6b48ff;
+				position: absolute;
+				bottom: -10px;
+				left: 50%;
+				transform: translateX(-50%);
+				border-radius: 2px;
+			}
+
+			.content p {
+				color: #666;
+				font-size: 1.1em;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+
+			.container {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				width: 100%;
+			}
+
+			.contactInfo,
+			.contactForm {
+				width: 100%;
+				max-width: 48%;
+				padding: 20px;
+			}
+
+			.contactInfo .box {
+				display: flex;
+				align-items: center;
+				margin-bottom: 30px;
+				transition: transform 0.3s ease;
+			}
+
+			.contactInfo .box:hover {
+				transform: translateX(10px);
+			}
+
+			.contactInfo .icon {
+				width: 50px;
+				height: 50px;
+				background: #6b48ff;
+				border-radius: 50%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-right: 20px;
+				color: #fff;
+				font-size: 1.5em;
+			}
+
+			.contactInfo .text h3 {
+				color: #333;
+				font-size: 1.3em;
+				margin-bottom: 5px;
+			}
+
+			.contactInfo .text p {
+				color: #666;
+				font-size: 1em;
+			}
+
+			.txt {
+				font-size: 1.5em;
+				color: #333;
+				margin: 20px 0;
+			}
+
+			.sci {
+				display: flex;
+				gap: 15px;
+				list-style: none;
+			}
+
+			.sci li a {
+				width: 50px;
+				height: 50px;
+				background: #6b48ff;
+				border-radius: 50%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: #fff;
+				font-size: 1.5em;
+				transition: 0.3s;
+			}
+
+			.sci li a:hover {
+				background: #00ddeb;
+				transform: scale(1.1);
+				box-shadow: 0 0 15px rgba(0, 221, 235, 0.5);
+			}
+
+			.contactForm {
+				background: #fff;
+				border-radius: 15px;
+				padding: 30px;
+				box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+			}
+
+			.contactForm h2 {
+				font-size: 1.8em;
+				color: #333;
+				margin-bottom: 20px;
+			}
+
+			.inputBox {
+				position: relative;
+				margin-bottom: 35px;
+			}
+
+			.inputBox input,
+			.inputBox textarea {
+				width: 100%;
+				padding: 10px 0;
+				font-size: 1em;
+				color: #333;
+				border: none;
+				border-bottom: 2px solid #6b48ff;
+				outline: none;
+				background: transparent;
+				resize: none;
+			}
+
+			.inputBox span {
+				position: absolute;
+				left: 0;
+				top: 10px;
+				font-size: 1em;
+				color: #666;
+				pointer-events: none;
+				transition: 0.3s;
+			}
+
+			.inputBox input:focus~span,
+			.inputBox input:valid~span,
+			.inputBox textarea:focus~span,
+			.inputBox textarea:valid~span {
+				transform: translateY(-20px);
+				font-size: 0.9em;
+				color: #6b48ff;
+			}
+
+			.inputBox input[type="submit"] {
+				width: auto;
+				padding: 10px 30px;
+				background: #6b48ff;
+				color: #fff;
+				border: none;
+				border-radius: 25px;
+				cursor: pointer;
+				transition: 0.3s;
+			}
+
+			.inputBox input[type="submit"]:hover {
+				background: #00ddeb;
+				box-shadow: 0 0 15px rgba(0, 221, 235, 0.5);
+			}
+
+			.error {
+				color: #ff4d4d;
+				font-size: 0.9em;
+				position: absolute;
+				bottom: -20px;
+				left: 0;
+			}
+
+			@media (max-width: 768px) {
+
+				.contactInfo,
+				.contactForm {
+					max-width: 100%;
+				}
+
+				.contact {
+					padding: 20px;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<section class="contact">
+			<div class="content">
+				<h2>Contact Us</h2>
+				<p>Reach out to us anytime! We're here to answer your questions and provide assistance with a smile.</p>
 			</div>
-		</div>
-	</section>
-	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-</body>
+			<div class="container">
+				<div class="contactInfo">
+					<div class="box">
+						<div class="icon"><ion-icon name="location-outline"></ion-icon></div>
+						<div class="text">
+							<h3>Address</h3>
+							<p>402671 Sugar Camp Road,<br>Owatonna, Minnesota,<br>55025060</p>
+						</div>
+					</div>
+					<div class="box">
+						<div class="icon"><ion-icon name="call-outline"></ion-icon></div>
+						<div class="text">
+							<h3>Phone</h3>
+							<p>000-000-0000</p>
+						</div>
+					</div>
+					<div class="box">
+						<div class="icon"><ion-icon name="mail-outline"></ion-icon></div>
+						<div class="text">
+							<h3>Email</h3>
+							<p>wrub7d78i0e@temporary-mail</p>
+						</div>
+					</div>
+					<h2 class="txt">Connect with us</h2>
+					<ul class="sci">
+						<li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
+						<li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
+						<li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+						<li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+					</ul>
+				</div>
+				<div class="contactForm">
+					<form id="contactForm">
+						<h2>Send Message</h2>
+						<div class="inputBox">
+							<input type="text" id="fullName" required>
+							<span>Full Name</span>
+							<div class="error" id="nameError"></div>
+						</div>
+						<div class="inputBox">
+							<input type="email" id="email" required>
+							<span>Email</span>
+							<div class="error" id="emailError"></div>
+						</div>
+						<div class="inputBox">
+							<textarea id="message" required></textarea>
+							<span>Type your Message...</span>
+							<div class="error" id="messageError"></div>
+						</div>
+						<div class="inputBox">
+							<input type="submit" value="Send">
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+		<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+		<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+		<script>
+			document.getElementById('contactForm').addEventListener('submit', function (e) {
+				e.preventDefault();
+
+				const fullName = document.getElementById('fullName');
+				const email = document.getElementById('email');
+				const message = document.getElementById('message');
+				const nameError = document.getElementById('nameError');
+				const emailError = document.getElementById('emailError');
+				const messageError = document.getElementById('messageError');
+
+				let isValid = true;
+
+				// Reset errors
+				nameError.textContent = '';
+				emailError.textContent = '';
+				messageError.textContent = '';
+
+				// Validate name
+				if (fullName.value.trim().length < 2) {
+					nameError.textContent = 'Name must be at least 2 characters';
+					isValid = false;
+				}
+
+				// Validate email
+				const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+				if (!emailRegex.test(email.value.trim())) {
+					emailError.textContent = 'Please enter a valid email';
+					isValid = false;
+				}
+
+				// Validate message
+				if (message.value.trim().length < 10) {
+					messageError.textContent = 'Message must be at least 10 characters';
+					isValid = false;
+				}
+
+				if (isValid) {
+					alert('Message sent successfully!');
+					this.reset();
+					// Reset floating labels
+					document.querySelectorAll('.inputBox input, .inputBox textarea').forEach(input => {
+						input.dispatchEvent(new Event('input'));
+					});
+				}
+			});
+
+			// Floating label effect
+			document.querySelectorAll('.inputBox input, .inputBox textarea').forEach(input => {
+				input.addEventListener('input', function () {
+					if (this.value.trim() !== '') {
+						this.classList.add('valid');
+					} else {
+						this.classList.remove('valid');
+					}
+				});
+			});
+
+			// Social media icon hover effect
+			document.querySelectorAll('.sci li a').forEach(icon => {
+				icon.addEventListener('mouseenter', () => {
+					icon.style.transform = 'scale(1.2) rotate(5deg)';
+				});
+				icon.addEventListener('mouseleave', () => {
+					icon.style.transform = 'scale(1) rotate(0deg)';
+				});
+			});
+		</script>
+	</body>
+
 </html>
