@@ -3,20 +3,201 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>Modern glowing button hover effect</title>
-    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Glowing Button Hover Effect</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .btn {
+        position: relative;
+        display: inline-block;
+        padding: 15px 30px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: 600;
+        color: #fff;
+        background: transparent;
+        border: 2px solid var(--color);
+        border-radius: 50px;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        z-index: 1;
+      }
+
+      .btn span {
+        position: relative;
+        z-index: 2;
+      }
+
+      .btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, var(--color), transparent);
+        transition: all 0.6s ease;
+        z-index: 0;
+      }
+
+      .btn:hover::before {
+        left: 100%;
+      }
+
+      .btn:hover {
+        box-shadow: 0 0 20px var(--color), 0 0 40px var(--color);
+        transform: translateY(-5px);
+        background: var(--color);
+        color: #000;
+      }
+
+      .btn i {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+      }
+
+      .btn:hover i {
+        opacity: 1;
+      }
+
+      .btn:nth-child(1) {
+        --color: #00ffcc;
+      }
+
+      .btn:nth-child(2) {
+        --color: #ff007a;
+      }
+
+      .btn:nth-child(3) {
+        --color: #ccff00;
+      }
+
+      /* Particle background effect */
+      #particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      @media (max-width: 600px) {
+        .btn {
+          padding: 10px 20px;
+          font-size: 16px;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <!-- partial:index.partial.html -->
+    <canvas id="particles"></canvas>
     <div class="container">
-      <a href="#" style="--color: #1e9bff"><span>Button</span><i></i></a>
-      <a href="#" style="--color: #ff1867"><span>Button</span><i></i></a>
-      <a href="#" style="--color: #6eff3e"><span>Button</span><i></i></a>
+      <a href="#" class="btn"><span>Explore Now</span><i></i></a>
+      <a href="#" class="btn"><span>Join Us</span><i></i></a>
+      <a href="#" class="btn"><span>Discover</span><i></i></a>
     </div>
-    <!-- partial -->
 
+    <script>
+      // Particle background animation
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      let particlesArray = [];
+      const numberOfParticles = 100;
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 5 + 1;
+          this.speedX = Math.random() * 3 - 1.5;
+          this.speedY = Math.random() * 3 - 1.5;
+          this.color = `hsl(${Math.random() * 360}, 50%, 50%)`;
+        }
+
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+
+          if (this.size > 0.2) this.size -= 0.1;
+
+          if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+          if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        }
+
+        draw() {
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function init() {
+        particlesArray = [];
+        for (let i = 0; i < numberOfParticles; i++) {
+          particlesArray.push(new Particle());
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particlesArray.length; i++) {
+          particlesArray[i].update();
+          particlesArray[i].draw();
+          if (particlesArray[i].size <= 0.2) {
+            particlesArray.splice(i, 1);
+            i--;
+            particlesArray.push(new Particle());
+          }
+        }
+        requestAnimationFrame(animate);
+      }
+
+      init();
+      animate();
+
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        init();
+      });
+    </script>
   </body>
 
 </html>
