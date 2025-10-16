@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Dine & Dash Culinary Reservations</title>
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./globalStyles.css">
+    <link rel="stylesheet" href="./components.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="./menu.css">
+  </head>
+
+  <body>
+
+    <div class="nav">
+      <div class="container">
+        <div class="nav__wrapper">
+          <a href="./index.html" class="logo">
+            <!-- <img src="#" alt="Dine & Dash"> -->
+          </a>
+          <nav>
+            <div class="nav__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-menu">
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            </div>
+            <div class="nav__bgOverlay"></div>
+            <ol class="nav__list">
+              <div class="nav__close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-x">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </div>
+              <div class="nav__list__wrapper">
+
+                <li><a class="nav__link" href="./index.html">Home</a></li>
+                <li><a class="nav__link" href="./menu.html">Menu</a></li>
+                <li><a class="nav__link" href="./about.html">About</a></li>
+                <li><a class="nav__link" href="./contact.html">Contact</a></li>
+                <li><a href="./booking.html" class="btn primary-btn">Book Table</a></li>
+              </div>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <section id="page__title" data-aos="fade-up">
+      <div class="container">
+        <h2 class="page__title__text">
+          Explore Our Menu
+        </h2>
+      </div>
+    </section>
+    <section id="ourSpecials" data-aos="fade-up">
+      <div class="container">
+        <h3 class="ourSpecials__title">Our Specials</h3>
+        <div class="ourSpecials__wrapper">
+          <div class="ourSpecials__item">
+            <div class="ourSpecials__item__img">
+              <img src="./images/pngegg (2).png" alt="food img">
+            </div>
+            <div class="ourSpecials__item__info">
+              <h3 class="ourSpecials__item__title">
+                Sweet Potato Fries Bowl
+              </h3>
+              <h4 class="ourSpecials__item__price">₹265</h4>
+              <div class="ourSpecials__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 stars"> -->
+              </div>
+            </div>
+          </div>
+          <div class="ourSpecials__item">
+            <div class="ourSpecials__item__img">
+              <img src="./images/pngegg (3).png" alt="food img">
+            </div>
+            <div class="ourSpecials__item__info">
+              <h3 class="ourSpecials__item__title">
+                Vegan Salad bowl
+              </h3>
+              <h4 class="ourSpecials__item__price">₹210</h4>
+              <div class="ourSpecials__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 stars"> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="dishGrid" data-aos="fade-down">
+      <div class="container">
+        <h2 class="dishGrid__title">
+          Top Dishes
+        </h2>
+        <div class="dishGrid__wrapper">
+          <div class="dishGrid__item">
+            <div class="dishGrid__item__img">
+              <img src="./images/pngegg (4).png" alt="food img">
+            </div>
+            <div class="dishGrid__item__info">
+              <h3 class="dishGrid__item__title">
+                Hot Green Bowl
+              </h3>
+              <h3 class="dishGrid__item__price">₹215</h3>
+              <div class="dishGrid__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 star"> -->
+              </div>
+            </div>
+          </div>
+          <div class="dishGrid__item">
+            <div class="dishGrid__item__img">
+              <img src="./images/pngegg (1).png" alt="food img">
+            </div>
+            <div class="dishGrid__item__info">
+              <h3 class="dishGrid__item__title">
+                Hot Green Bowl
+              </h3>
+              <h3 class="dishGrid__item__price">₹185</h3>
+              <div class="dishGrid__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 star"> -->
+              </div>
+            </div>
+          </div>
+          <div class="dishGrid__item">
+            <div class="dishGrid__item__img">
+              <img src="./images/pngegg (5).png" alt="food img">
+            </div>
+            <div class="dishGrid__item__info">
+              <h3 class="dishGrid__item__title">
+                Hot Green Bowl
+              </h3>
+              <h3 class="dishGrid__item__price">₹200</h3>
+              <div class="dishGrid__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 star"> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="dishGrid" data-aos="fade-up">
+      <div class="container">
+        <h2 class="dishGrid__title">
+          Breakfast
+        </h2>
+        <div class="dishGrid__wrapper">
+          <div class="dishGrid__item">
+            <div class="dishGrid__item__img">
+              <img src="./images/pngegg (6).png" alt="food img">
+            </div>
+            <div class="dishGrid__item__info">
+              <h3 class="dishGrid__item__title">
+                Hot Green Bowl
+              </h3>
+              <h3 class="dishGrid__item__price">₹215</h3>
+              <div class="dishGrid__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 star"> -->
+              </div>
+            </div>
+          </div>
+          <div class="dishGrid__item">
+            <div class="dishGrid__item__img">
+              <img src="./images/pngegg (7).png" alt="food img">
+            </div>
+            <div class="dishGrid__item__info">
+              <h3 class="dishGrid__item__title">
+                Hot Green Bowl
+              </h3>
+              <h3 class="dishGrid__item__price">₹120</h3>
+              <div class="dishGrid__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 star"> -->
+              </div>
+            </div>
+          </div>
+          <div class="dishGrid__item">
+            <div class="dishGrid__item__img">
+              <img src="./images/chicken 65.png" alt="food img">
+            </div>
+            <div class="dishGrid__item__info">
+              <h3 class="dishGrid__item__title">
+                Hot Green Bowl
+              </h3>
+              <h3 class="dishGrid__item__price">₹120</h3>
+              <div class="dishGrid__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 star"> -->
+              </div>
+            </div>
+          </div>
+          <div class="dishGrid__item">
+            <div class="dishGrid__item__img">
+              <img src="./images/chicken cutlet and mixed.png" alt="food img">
+            </div>
+            <div class="dishGrid__item__info">
+              <h3 class="dishGrid__item__title">
+                Hot Green Bowl
+              </h3>
+              <h3 class="dishGrid__item__price">₹185</h3>
+              <div class="dishGrid__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 star"> -->
+              </div>
+            </div>
+          </div>
+          <div class="dishGrid__item">
+            <div class="dishGrid__item__img">
+              <img src="./images/mix combo.png" alt="food img">
+            </div>
+            <div class="dishGrid__item__info">
+              <h3 class="dishGrid__item__title">
+                Hot Green Bowl
+              </h3>
+              <h3 class="dishGrid__item__price">₹215</h3>
+              <div class="dishGrid__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 star"> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="dishGrid" data-aos="fade-up">
+      <div class="container">
+        <h2 class="dishGrid__title">
+          Lunch
+        </h2>
+        <div class="dishGrid__wrapper">
+          <div class="dishGrid__item">
+            <div class="dishGrid__item__img">
+              <img src="./images/coke fried.png" alt="food img">
+            </div>
+            <div class="dishGrid__item__info">
+              <h3 class="dishGrid__item__title">
+                Hot Green Bowl
+              </h3>
+              <h3 class="dishGrid__item__price">₹200</h3>
+              <div class="dishGrid__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 star"> -->
+              </div>
+            </div>
+          </div>
+          <div class="dishGrid__item">
+            <div class="dishGrid__item__img">
+              <img src="./images/chicken fried  fries.png" alt="food img">
+            </div>
+            <div class="dishGrid__item__info">
+              <h3 class="dishGrid__item__title">
+                Hot Green Bowl
+              </h3>
+              <h3 class="dishGrid__item__price">₹215</h3>
+              <div class="dishGrid__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 star"> -->
+              </div>
+            </div>
+          </div>
+          <div class="dishGrid__item">
+            <div class="dishGrid__item__img">
+              <img src="./images/burger.png" alt="food img">
+            </div>
+            <div class="dishGrid__item__info">
+              <h3 class="dishGrid__item__title">
+                Hot Green Bowl
+              </h3>
+              <h3 class="dishGrid__item__price">₹200</h3>
+              <div class="dishGrid__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 star"> -->
+              </div>
+            </div>
+          </div>
+          <div class="dishGrid__item">
+            <div class="dishGrid__item__img">
+              <img src="./images/fried_chicken.png" alt="food img">
+            </div>
+            <div class="dishGrid__item__info">
+              <h3 class="dishGrid__item__title">
+                Hot Green Bowl
+              </h3>
+              <h3 class="dishGrid__item__price">₹185</h3>
+              <div class="dishGrid__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 star"> -->
+              </div>
+            </div>
+          </div>
+          <div class="dishGrid__item">
+            <div class="dishGrid__item__img">
+              <img src="./images/chicken cutlet and mixed.png" alt="food img">
+            </div>
+            <div class="dishGrid__item__info">
+              <h3 class="dishGrid__item__title">
+                Hot Green Bowl
+              </h3>
+              <h3 class="dishGrid__item__price">₹180</h3>
+              <div class="dishGrid__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 star"> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="dishGrid" data-aos="fade-up">
+      <div class="container">
+        <h2 class="dishGrid__title">
+          Dinner
+        </h2>
+        <div class="dishGrid__wrapper">
+          <div class="dishGrid__item">
+            <div class="dishGrid__item__img">
+              <img src="./images/all food mix combo.png" alt="food img">
+            </div>
+            <div class="dishGrid__item__info">
+              <h3 class="dishGrid__item__title">
+                Hot Green Bowl
+              </h3>
+              <h3 class="dishGrid__item__price">₹300</h3>
+              <div class="dishGrid__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 star"> -->
+              </div>
+            </div>
+          </div>
+          <div class="dishGrid__item">
+            <div class="dishGrid__item__img">
+              <img src="./images/pngegg (2).png" alt="food img">
+            </div>
+            <div class="dishGrid__item__info">
+              <h3 class="dishGrid__item__title">
+                Hot Green Bowl
+              </h3>
+              <h3 class="dishGrid__item__price">₹210</h3>
+              <div class="dishGrid__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 star"> -->
+              </div>
+            </div>
+          </div>
+          <div class="dishGrid__item">
+            <div class="dishGrid__item__img">
+              <img src="./images/food-1.png" alt="food img">
+            </div>
+            <div class="dishGrid__item__info">
+              <h3 class="dishGrid__item__title">
+                Hot Green Bowl
+              </h3>
+              <h3 class="dishGrid__item__price">₹215</h3>
+              <div class="dishGrid__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 star"> -->
+              </div>
+            </div>
+          </div>
+          <div class="dishGrid__item">
+            <div class="dishGrid__item__img">
+              <img src="./images/food-1.png" alt="food img">
+            </div>
+            <div class="dishGrid__item__info">
+              <h3 class="dishGrid__item__title">
+                Hot Green Bowl
+              </h3>
+              <h3 class="dishGrid__item__price">₹120</h3>
+              <div class="dishGrid__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 star"> -->
+              </div>
+            </div>
+          </div>
+          <div class="dishGrid__item">
+            <div class="dishGrid__item__img">
+              <img src="./images/food-1.png" alt="food img">
+            </div>
+            <div class="dishGrid__item__info">
+              <h3 class="dishGrid__item__title">
+                Hot Green Bowl
+              </h3>
+              <h3 class="dishGrid__item__price">₹120</h3>
+              <div class="dishGrid__item__stars">
+                <!-- <img src="./images/3star.png" alt="3 star"> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <div class="footer__wrapper">
+          <div class="footer__col1">
+            <div class="footer__logo">
+              <img src="./images/Dine & Dash.png" alt="Dine & Dash">
+            </div>
+            <p class="footer__desc">
+              Fresh and delicious traditional Odisha food to delight the whole family.
+            </p>
+            <div class="footer__socials">
+            </div>
+          </div>
+          <div class="footer__col2">
+            <h3 class="footer__text__title">
+              Links
+            </h3>
+            <ol class="footer__text">
+              <li>
+                <a href="/index.html">Home</a>
+              </li>
+              <li>
+                <a href="./menu.html">Menu</a>
+              </li>
+              <li>
+                <a href="./booking.html">Book Table</a>
+              </li>
+              <li>
+                <a href="./about.html">About Us</a>
+              </li>
+              <li>
+                <a href="./contact.html">contact Us</a>
+              </li>
+            </ol>
+          </div>
+          <div class="footer__col4">
+            <h3 class="footer__text__title">
+              Contact
+            </h3>
+            <ol class="footer__text">
+              <li>
+                <a href="#">+91 9876543210</a>
+              </li>
+              <li>
+                <a href="#">dinedash2024@gmail.com</a>
+              </li>
+              <li>
+                <a href="#">Gobriguda, Gunupur-765022</a>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div id="copyright">
+      <div class="container">
+        <p class="copyright__text">
+          © copyright 2024 Dine & Dash Culinary Reservations | All rights reserved
+        </p>
+      </div>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="./main.js"></script>
+  </body>
+
+</html>
