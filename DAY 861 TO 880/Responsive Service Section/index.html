@@ -3,20 +3,170 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Responsive services section</title>
-        <link rel="stylesheet" href="./style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Responsive Services Section</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Poppins', sans-serif;
+            }
+
+            body {
+                background: linear-gradient(135deg, #1a1a2e, #16213e);
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 40px;
+                color: #fff;
+            }
+
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 30px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .box {
+                flex: 1 1 300px;
+                min-height: 350px;
+                position: relative;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 20px;
+                overflow: hidden;
+                transition: all 0.5s ease;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .box:hover {
+                transform: translateY(-10px) scale(1.03);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 20px var(--clr);
+            }
+
+            .content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                padding: 20px;
+                text-align: center;
+            }
+
+            .icon {
+                font-size: 3rem;
+                color: var(--clr);
+                margin-bottom: 20px;
+                transition: transform 0.3s ease;
+            }
+
+            .box:hover .icon {
+                transform: scale(1.2) rotate(10deg);
+            }
+
+            .text h3 {
+                font-size: 1.8rem;
+                font-weight: 600;
+                color: #fff;
+                margin-bottom: 15px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            .text p {
+                font-size: 1rem;
+                color: rgba(255, 255, 255, 0.8);
+                margin-bottom: 20px;
+                line-height: 1.5;
+            }
+
+            .text a {
+                display: inline-block;
+                padding: 10px 20px;
+                background: var(--clr);
+                color: #000;
+                text-decoration: none;
+                font-weight: 600;
+                border-radius: 5px;
+                transition: all 0.3s ease;
+            }
+
+            .text a:hover {
+                background: #fff;
+                color: var(--clr);
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+
+            .box::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 10%, transparent 10%);
+                background-size: 20px 20px;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                z-index: -1;
+            }
+
+            .box:hover::before {
+                opacity: 1;
+            }
+
+            @keyframes glow {
+                0% {
+                    box-shadow: 0 0 5px var(--clr), 0 0 10px var(--clr);
+                }
+
+                50% {
+                    box-shadow: 0 0 20px var(--clr), 0 0 30px var(--clr);
+                }
+
+                100% {
+                    box-shadow: 0 0 5px var(--clr), 0 0 10px var(--clr);
+                }
+            }
+
+            .box:active {
+                animation: glow 0.8s infinite;
+            }
+
+            @media (max-width: 768px) {
+                .box {
+                    flex: 1 1 100%;
+                    min-height: 300px;
+                }
+
+                .text h3 {
+                    font-size: 1.5rem;
+                }
+
+                .icon {
+                    font-size: 2.5rem;
+                }
+            }
+        </style>
     </head>
 
-    
     <body>
-        <!-- partial:index.partial.html -->
         <div class="container">
             <div class="box" style="--clr:#89ec5b;">
                 <div class="content">
                     <div class="icon"><ion-icon name="brush"></ion-icon></div>
                     <div class="text">
                         <h3>Designing</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, qui.</p>
+                        <p>Crafting visually stunning and user-friendly interfaces with a focus on creativity and
+                            functionality.</p>
                         <a href="#">Read More</a>
                     </div>
                 </div>
@@ -26,7 +176,8 @@
                     <div class="icon"><ion-icon name="code-slash"></ion-icon></div>
                     <div class="text">
                         <h3>Development</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, qui.</p>
+                        <p>Building robust and scalable web applications with cutting-edge technologies and best
+                            practices.</p>
                         <a href="#">Read More</a>
                     </div>
                 </div>
@@ -36,15 +187,37 @@
                     <div class="icon"><ion-icon name="search"></ion-icon></div>
                     <div class="text">
                         <h3>SEO</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, qui.</p>
+                        <p>Optimizing your online presence to rank higher on search engines and drive organic traffic.
+                        </p>
                         <a href="#">Read More</a>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- partial -->
-        <script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js'></script>
-        <script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js'></script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script>
+            document.querySelectorAll('.box').forEach(box => {
+                box.addEventListener('click', () => {
+                    box.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        box.style.transform = 'scale(1)';
+                        console.log(`Clicked on ${box.querySelector('h3').textContent} section`);
+                    }, 200);
+                });
+
+                box.addEventListener('mousemove', (e) => {
+                    const rect = box.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    box.style.transform = `perspective(1000px) rotateX(${y / 20}deg) rotateY(${-x / 20}deg)`;
+                });
+
+                box.addEventListener('mouseleave', () => {
+                    box.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+                });
+            });
+        </script>
     </body>
 
 </html>
