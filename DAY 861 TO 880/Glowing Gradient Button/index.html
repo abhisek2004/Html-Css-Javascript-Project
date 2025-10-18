@@ -3,16 +3,139 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>Glowing Button - onhover</title>
-    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowing Button - On Hover</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
 
+      body {
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      a {
+        position: relative;
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #fff;
+        text-decoration: none;
+        background: transparent;
+        border: 2px solid #00ff88;
+        border-radius: 10px;
+        transition: all 0.4s ease;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.4), transparent);
+        transition: all 0.5s ease;
+        z-index: -1;
+      }
+
+      a:hover {
+        color: #000;
+        background: #00ff88;
+        box-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88, 0 0 60px #00ff88;
+        transform: translateY(-5px);
+      }
+
+      a:hover::before {
+        left: 100%;
+      }
+
+      a::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 10%, transparent 10%);
+        background-size: 20px 20px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+      }
+
+      a:hover::after {
+        opacity: 1;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7);
+        }
+
+        70% {
+          box-shadow: 0 0 0 20px rgba(0, 255, 136, 0);
+        }
+
+        100% {
+          box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
+        }
+      }
+
+      a:active {
+        animation: pulse 0.5s;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 768px) {
+        a {
+          font-size: 1.2rem;
+          padding: 12px 24px;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <!-- partial:index.partial.html -->
-    <a href="#">ABHISEK PANDA</a>
-    <!-- partial -->
+    <a href="#">Abhisek Panda</a>
+    <script>
+      const button = document.querySelector('a');
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        button.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          button.style.transform = 'scale(1)';
+          alert('Button clicked! Redirecting... (Demo)');
+        }, 200);
+      });
 
+      // Optional: Add a subtle rotation effect on hover
+      button.addEventListener('mousemove', (e) => {
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const rotateX = y / 10;
+        const rotateY = -x / 10;
+        button.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      button.addEventListener('mouseleave', () => {
+        button.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+      });
+    </script>
   </body>
 
 </html>
