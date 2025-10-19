@@ -1,34 +1,237 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Animated Login Form with Glowing Input</title>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'><link rel="stylesheet" href="./style.css">
+<html lang="en">
 
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<div class="login-form">
-  <div class="text">
-    LOGIN
-  </div>
-  <form>
-    <div class="field">
-      <div class="fas fa-envelope"></div>
-      <input type="text" placeholder="Email or Phone">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Animated Login Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(45deg, #0a0a0a, #3a4452);
+        overflow: hidden;
+      }
+
+      .login-form {
+        position: relative;
+        width: 400px;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        animation: slideIn 0.5s ease-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .login-form .text {
+        color: #fff;
+        font-size: 2.5em;
+        text-align: center;
+        margin-bottom: 30px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .field {
+        position: relative;
+        margin-bottom: 30px;
+      }
+
+      .field i {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        color: #fff;
+        font-size: 1.2em;
+        transition: 0.3s;
+      }
+
+      .field input {
+        width: 100%;
+        padding: 15px 20px 15px 50px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        color: #fff;
+        font-size: 1em;
+        outline: none;
+        transition: 0.3s;
+      }
+
+      .field input:focus,
+      .field input:valid {
+        border-color: #ff6b6b;
+        box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+      }
+
+      .field input:focus~i,
+      .field input:valid~i {
+        color: #ff6b6b;
+      }
+
+      .field input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      button {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 1.2em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      button::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+
+      button:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+      }
+
+      .link {
+        text-align: center;
+        margin-top: 20px;
+        color: #fff;
+        font-size: 0.9em;
+      }
+
+      .link a {
+        color: #4ecdc4;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .link a:hover {
+        color: #ff6b6b;
+        text-decoration: underline;
+      }
+
+      .particle {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        pointer-events: none;
+        animation: particle 5s linear infinite;
+      }
+
+      @keyframes particle {
+        0% {
+          transform: translateY(100vh);
+          opacity: 1;
+        }
+
+        100% {
+          transform: translateY(-100vh);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="login-form">
+      <div class="text">LOGIN</div>
+      <form>
+        <div class="field">
+          <i class="fas fa-envelope"></i>
+          <input type="text" placeholder="Email or Phone" required>
+        </div>
+        <div class="field">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password" required>
+        </div>
+        <button type="submit">LOGIN</button>
+        <div class="link">
+          Not a member? <a href="#">Signup now</a>
+        </div>
+      </form>
     </div>
-    <div class="field">
-      <div class="fas fa-lock"></div>
-      <input type="password" placeholder="Password">
-    </div>
-    <button>LOGIN</button>
-    <div class="link">
-      Not a member?
-      <a href="#">Signup now</a>
-    </div>
-  </form>
-</div>
-<!-- partial -->
-  
-</body>
+    <script>
+      // Particle animation
+      function createParticle() {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.width = `${Math.random() * 5 + 2}px`;
+        particle.style.height = particle.style.width;
+        particle.style.left = `${Math.random() * 100}vw`;
+        particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+          particle.remove();
+        }, 5000);
+      }
+
+      setInterval(createParticle, 200);
+
+      // Form submission feedback
+      const form = document.querySelector('form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const button = form.querySelector('button');
+        button.textContent = 'Logging In...';
+        button.style.background = 'linear-gradient(45deg, #555, #777)';
+
+        setTimeout(() => {
+          button.textContent = 'LOGIN';
+          button.style.background = 'linear-gradient(45deg, #ff6b6b, #4ecdc4)';
+          alert('Login successful! (This is a demo)');
+        }, 2000);
+      });
+    </script>
+  </body>
+
 </html>
