@@ -3,19 +3,293 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>Facebook Login Page</title>
-    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Facebook Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+      }
 
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Animated background particles */
+      body::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        animation: pulse 10s infinite;
+        z-index: 0;
+      }
+
+      @keyframes pulse {
+
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.2;
+        }
+
+        50% {
+          transform: scale(1.1);
+          opacity: 0.4;
+        }
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .facebook-page {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 50px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        animation: slideIn 0.6s ease-out;
+        max-width: 900px;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .text {
+        color: #fff;
+        max-width: 400px;
+      }
+
+      .text h1 {
+        font-size: 3.5em;
+        font-weight: 700;
+        background: linear-gradient(45deg, #3b5998, #8b9dc3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 15px;
+        text-transform: lowercase;
+        letter-spacing: 2px;
+      }
+
+      .text p {
+        font-size: 1.2em;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 350px;
+      }
+
+      input {
+        padding: 15px 20px;
+        border: none;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        font-size: 1em;
+        outline: none;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      input:focus {
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 15px rgba(59, 89, 152, 0.5);
+        border: 1px solid #3b5998;
+      }
+
+      .link {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+      }
+
+      .login {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(45deg, #3b5998, #8b9dc3);
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 1.2em;
+        font-weight: 600;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .login::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+
+      .login:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .login:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(59, 89, 152, 0.5);
+      }
+
+      .forgot {
+        color: #8b9dc3;
+        text-decoration: none;
+        font-size: 0.9em;
+        transition: all 0.3s ease;
+      }
+
+      .forgot:hover {
+        color: #fff;
+        text-decoration: underline;
+      }
+
+      hr {
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        margin: 20px 0;
+      }
+
+      .button a {
+        display: inline-block;
+        padding: 12px 20px;
+        background: #42b72a;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .button a:hover {
+        background: #36a420;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(66, 183, 42, 0.5);
+      }
+
+      footer {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9em;
+      }
+
+      footer a {
+        color: #8b9dc3;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      footer a:hover {
+        color: #fff;
+        text-decoration: underline;
+      }
+
+      /* Particle effect */
+      .particle {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        pointer-events: none;
+        animation: float 5s linear infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+
+        100% {
+          transform: translateY(-100vh);
+          opacity: 0.8;
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .facebook-page {
+          flex-direction: column;
+          padding: 20px;
+          gap: 20px;
+        }
+
+        form {
+          width: 100%;
+        }
+
+        .text h1 {
+          font-size: 2.5em;
+        }
+
+        .text p {
+          font-size: 1em;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <!-- partial:index.partial.html -->
     <div class="container flex">
       <div class="facebook-page flex">
         <div class="text">
           <h1>facebook</h1>
-          <p>Connect with friends and the world </p>
-          <p> around you on Facebook.</p>
+          <p>Connect with friends and the world</p>
+          <p>around you on Facebook.</p>
         </div>
         <form action="#">
           <input type="email" placeholder="Email or phone number" required>
@@ -31,10 +305,51 @@
         </form>
       </div>
     </div>
-    <!-- partial -->
     <footer>
-      <a href="https://github.com/abhisek2004">@ Created and Design By Abhisek Panda</a>
+      <a href="https://github.com/abhisek2004">@ Created and Designed By Abhisek Panda</a>
     </footer>
+
+    <script>
+      // Particle animation
+      function createParticle() {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+          particle.remove();
+        }, 5000);
+      }
+
+      setInterval(createParticle, 300);
+
+      // Form submission feedback
+      const form = document.querySelector('form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const button = form.querySelector('.login');
+        button.textContent = 'Logging In...';
+        button.style.background = 'linear-gradient(45deg, #2a5298, #3b5998)';
+
+        setTimeout(() => {
+          button.textContent = 'Login';
+          button.style.background = 'linear-gradient(45deg, #3b5998, #8b9dc3)';
+          alert('Login successful! (This is a demo)');
+        }, 2000);
+      });
+
+      // Input field animation
+      document.querySelectorAll('input').forEach(input => {
+        input.addEventListener('focus', () => {
+          input.style.transform = 'scale(1.02)';
+        });
+        input.addEventListener('blur', () => {
+          input.style.transform = 'scale(1)';
+        });
+      });
+    </script>
   </body>
 
 </html>
