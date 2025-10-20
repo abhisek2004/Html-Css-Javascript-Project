@@ -1,26 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Animated Navigation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <head>
-    <meta charset="UTF-8">
-    <title>Navigation Hover Effect</title>
-    <link rel="stylesheet" href="./style.css">
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
 
-  </head>
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      animation: grain 0.5s linear infinite;
+    }
 
-  <body>
-    <!-- partial:index.partial.html -->
-    <section>
-      <ul>
-        <li><a href="#" data-text="Home">Home</a></li>
-        <li><a href="#" data-text="About">About</a></li>
-        <li><a href="#" data-text="Services">Services</a></li>
-        <li><a href="#" data-text="Team">Team</a></li>
-        <li><a href="#" data-text="Contact">Contact</a></li>
-      </ul>
-    </section>
-    <!-- partial -->
+    @keyframes grain {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(1px, 1px); }
+    }
 
-  </body>
+    section {
+      position: relative;
+      z-index: 1;
+    }
 
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    ul:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    li {
+      position: relative;
+    }
+
+    a {
+      display: block;
+      position: relative;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2em;
+      font-weight: 600;
+      padding: 15px 25px;
+      border-radius: 15px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    a::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    a:hover::before {
+      left: 100%;
+    }
+
+    a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+
+    a:hover::after {
+      width: 100%;
+    }
+
+    a i {
+      margin-right: 10px;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: all 0.3s ease;
+    }
+
+    a:hover i {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    a:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateX(10px) scale(1.05);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Floating particles */
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 1;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+        padding: 10px;
+      }
+
+      a {
+        font-size: 1em;
+        padding: 10px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <ul>
+      <li><a href="#" data-text="Home"><i class="fas fa-home"></i>Home</a></li>
+      <li><a href="#" data-text="About"><i class="fas fa-user"></i>About</a></li>
+      <li><a href="#" data-text="Services"><i class="fas fa-cogs"></i>Services</a></li>
+      <li><a href="#" data-text="Team"><i class="fas fa-users"></i>Team</a></li>
+      <li><a href="#" data-text="Contact"><i class="fas fa-envelope"></i>Contact</a></li>
+    </ul>
+  </section>
+
+  <script>
+    // Create floating particles
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.top = Math.random() * 100 + 'vh';
+      particle.style.animationDelay = Math.random() * 6 + 's';
+      particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.body.appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 6000);
+    }
+
+    // Generate particles periodically
+    setInterval(createParticle, 500);
+
+    // Add click ripple effect
+    document.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const ripple = document.createElement('span');
+        const rect = link.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+
+        ripple.style.cssText = `
+          position: absolute;
+          width: ${size}px;
+          height: ${size}px;
+          left: ${x}px;
+          top: ${y}px;
+          background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%);
+          border-radius: 50%;
+          transform: scale(0);
+          animation: ripple 0.6s ease-out;
+          pointer-events: none;
+        `;
+
+        const clone = link.cloneNode(true);
+        clone.style.position = 'relative';
+        link.parentNode.replaceChild(clone, link);
+        clone.appendChild(ripple);
+
+        ripple.addEventListener('animationend', () => ripple.remove());
+      });
+    });
+
+    // Add CSS for ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ripple {
+        to {
+          transform: scale(2);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
 </html>
