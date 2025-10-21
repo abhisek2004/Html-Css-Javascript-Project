@@ -1,19 +1,257 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Glowing Neon Button</title>
-  <link rel="stylesheet" href="./style.css">
 
-</head>
-<body>
-  <a href="#">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowing Neon Button</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Background particles */
+      body::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="4" height="4" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="white" opacity="0.2"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+        opacity: 0.3;
+        animation: subtleMove 20s linear infinite;
+      }
+
+      @keyframes subtleMove {
+        0% {
+          transform: translate(0, 0);
+        }
+
+        50% {
+          transform: translate(2px, 2px);
+        }
+
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+
+      a {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        padding: 15px 30px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 1.2em;
+        font-weight: 700;
+        color: #fff;
+        background: linear-gradient(45deg, #ff00cc, #3333ff);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(255, 0, 204, 0.5);
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        z-index: 1;
+      }
+
+      a i {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: transform 0.6s ease;
+        transform: translateX(-100%);
+      }
+
+      a i:nth-child(2) {
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transform: translateX(100%);
+        transition-delay: 0.2s;
+      }
+
+      a:hover i {
+        transform: translateX(100%);
+      }
+
+      a:hover i:nth-child(2) {
+        transform: translateX(-100%);
+      }
+
+      a span {
+        position: relative;
+        z-index: 2;
+        transition: transform 0.3s ease;
+      }
+
+      a:hover span {
+        transform: scale(1.1);
+      }
+
+      a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #ff00cc, #3333ff);
+        filter: blur(20px);
+        opacity: 0.5;
+        z-index: -1;
+        transition: opacity 0.3s ease;
+      }
+
+      a:hover::before {
+        opacity: 0.8;
+      }
+
+      a:hover {
+        box-shadow: 0 0 30px rgba(255, 0, 204, 0.8), 0 0 60px rgba(51, 51, 255, 0.6);
+        transform: translateY(-5px) scale(1.05);
+      }
+
+      /* Neon glow effect */
+      a::after {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, #ff00cc, #3333ff);
+        filter: blur(10px);
+        z-index: -2;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      a:hover::after {
+        opacity: 1;
+      }
+
+      /* Particle effect */
+      .particle {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        pointer-events: none;
+        animation: sparkle 3s linear infinite;
+      }
+
+      @keyframes sparkle {
+        0% {
+          transform: translateY(100vh) scale(0.5);
+          opacity: 0;
+        }
+
+        50% {
+          opacity: 0.8;
+        }
+
+        100% {
+          transform: translateY(-100vh) scale(1);
+          opacity: 0;
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        a {
+          padding: 12px 20px;
+          font-size: 1em;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="#">
       <i></i>
       <i></i>
-      <span>Button</span>
-  </a>
-<!-- partial -->
-  <script src="./script.js"></script>
+      <span>Discover Now</span>
+    </a>
 
+    <script>
+      // Particle animation
+      function createParticle() {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.animationDuration = (Math.random() * 2 + 1) + 's';
+        particle.style.animationDelay = Math.random() + 's';
+        document.body.appendChild(particle);
 
-</body></html>
+        setTimeout(() => {
+          particle.remove();
+        }, 3000);
+      }
+
+      setInterval(createParticle, 200);
+
+      // Click ripple effect
+      const button = document.querySelector('a');
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const ripple = document.createElement('span');
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+
+        ripple.style.cssText = `
+        position: absolute;
+        width: ${size}px;
+        height: ${size}px;
+        left: ${x}px;
+        top: ${y}px;
+        background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 70%);
+        border-radius: 50%;
+        transform: scale(0);
+        animation: ripple 0.5s ease-out;
+        pointer-events: none;
+        z-index: 3;
+      `;
+
+        button.appendChild(ripple);
+        ripple.addEventListener('animationend', () => ripple.remove());
+
+        // Simulate action
+        button.style.background = 'linear-gradient(45deg, #cc00ff, #ff3333)';
+        setTimeout(() => {
+          button.style.background = 'linear-gradient(45deg, #ff00cc, #3333ff)';
+          alert('Button clicked! (Demo action)');
+        }, 300);
+      });
+
+      // Add CSS for ripple animation
+      const style = document.createElement('style');
+      style.textContent = `
+      @keyframes ripple {
+        to {
+          transform: scale(2);
+          opacity: 0;
+        }
+      }
+    `;
+      document.head.appendChild(style);
+    </script>
+  </body>
+
+</html>
