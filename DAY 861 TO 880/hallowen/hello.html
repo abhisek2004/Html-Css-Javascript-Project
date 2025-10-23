@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Halloween</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Creepster', cursive;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1a0b2e, #2e1a47);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Background fog effect */
+    body::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
+      animation: fog 10s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes fog {
+      0% { transform: translateY(0); opacity: 0.3; }
+      50% { opacity: 0.5; }
+      100% { transform: translateY(100vh); opacity: 0.2; }
+    }
+
+    .banner {
+      position: relative;
+      text-align: center;
+      z-index: 1;
+    }
+
+    h2 {
+      font-size: 5em;
+      color: transparent;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    h2 span {
+      display: inline-block;
+      animation: glow 2s ease-in-out infinite;
+      animation-delay: calc(0.1s * var(--i));
+      background: linear-gradient(45deg, #ff4500, #ff8c00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(255, 69, 0, 0.8), 0 0 20px rgba(255, 140, 0, 0.6);
+    }
+
+    @keyframes glow {
+      0%, 100% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(-10px); opacity: 0.7; }
+    }
+
+    /* Spider web effect */
+    .spiderWeb {
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, transparent 50%, rgba(255, 255, 255, 0.1) 70%);
+      border-radius: 50%;
+      z-index: 0;
+      animation: spinWeb 20s linear infinite;
+    }
+
+    @keyframes spinWeb {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Animated spider */
+    .spider {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 50px;
+      background: radial-gradient(circle, #000 30%, #333 70%);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      animation: swing 3s ease-in-out infinite;
+    }
+
+    .spider::before {
+      content: '\f5d8';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: #fff;
+      font-size: 2em;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes swing {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(20px); }
+    }
+
+    /* Pumpkin effects */
+    .pumpkin01, .pumpkin02 {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle at 30% 30%, #ff8c00 0%, #e65b00 70%);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      box-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
+    }
+
+    .pumpkin01 {
+      bottom: -50px;
+      left: 20%;
+      animation: floatPumpkin 4s ease-in-out infinite;
+    }
+
+    .pumpkin02 {
+      bottom: -50px;
+      right: 20%;
+      animation: floatPumpkin 4.5s ease-in-out infinite;
+      animation-delay: 0.5s;
+    }
+
+    .pumpkin01::before, .pumpkin02::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      width: 10px;
+      height: 15px;
+      background: #4b2e00;
+      transform: translateX(-50%);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+
+    .pumpkin01::after, .pumpkin02::after {
+      content: '\f0c4';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: #000;
+      font-size: 1.5em;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.3;
+    }
+
+    @keyframes floatPumpkin {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Ghost particles */
+    .ghost {
+      position: absolute;
+      width: 20px;
+      height: 30px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 20%, transparent 70%);
+      border-radius: 50% 50% 0 0;
+      animation: floatGhost 5s linear infinite;
+      pointer-events: none;
+    }
+
+    .ghost::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 20%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    @keyframes floatGhost {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      50% { opacity: 0.5; }
+      100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 3em;
+      }
+
+      .spiderWeb {
+        width: 200px;
+        height: 200px;
+      }
+
+      .pumpkin01, .pumpkin02 {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="banner">
+    <h2>
+      <span style="--i:1;">H</span>
+      <span style="--i:2;">a</span>
+      <span style="--i:3;">l</span>
+      <span style="--i:4;">l</span>
+      <span style="--i:5;">o</span>
+      <span style="--i:6;">w</span>
+      <span style="--i:7;">e</span>
+      <span style="--i:8;">e</span>
+      <span style="--i:9;">n</span>
+    </h2>
+    <div class="spider"></div>
+    <div class="pumpkin01"></div>
+    <div class="pumpkin02"></div>
+    <div class="spiderWeb"></div>
+  </section>
+
+  <script>
+    // Load Google Fonts for Creepster
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Creepster&display=swap';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+
+    // Create ghost particles
+    function createGhost() {
+      const ghost = document.createElement('div');
+      ghost.classList.add('ghost');
+      ghost.style.left = Math.random() * 100 + 'vw';
+      ghost.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.body.appendChild(ghost);
+
+      setTimeout(() => {
+        ghost.remove();
+      }, 6000);
+    }
+
+    setInterval(createGhost, 500);
+
+    // Interactive hover effect for pumpkins
+    const pumpkins = document.querySelectorAll('.pumpkin01, .pumpkin02');
+    pumpkins.forEach(pumpkin => {
+      pumpkin.addEventListener('mouseenter', () => {
+        pumpkin.style.transform = 'scale(1.2)';
+        pumpkin.style.boxShadow = '0 0 30px rgba(255, 140, 0, 0.8)';
+      });
+      pumpkin.addEventListener('mouseleave', () => {
+        pumpkin.style.transform = 'scale(1)';
+        pumpkin.style.boxShadow = '0 0 20px rgba(255, 140, 0, 0.5)';
+      });
+    });
+
+    // Click effect for spider
+    const spider = document.querySelector('.spider');
+    spider.addEventListener('click', () => {
+      spider.style.animation = 'bounce 0.3s ease';
+      setTimeout(() => {
+        spider.style.animation = 'swing 3s ease-in-out infinite';
+      }, 300);
+    });
+
+    // Add CSS for bounce animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes bounce {
+        0%, 100% { transform: translateX(-50%) translateY(0); }
+        50% { transform: translateX(-50%) translateY(-30px); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
