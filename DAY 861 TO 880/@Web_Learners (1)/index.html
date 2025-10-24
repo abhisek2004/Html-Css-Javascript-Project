@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Card Slider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Background particles */
+      body::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        animation: pulse 15s infinite;
+        z-index: -1;
+      }
+
+      @keyframes pulse {
+
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.2;
+        }
+
+        50% {
+          transform: scale(1.2);
+          opacity: 0.4;
+        }
+      }
+
+      .swiper-container {
+        width: 80%;
+        max-width: 1200px;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .swiper-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+      }
+
+      .swiper-slide-active {
+        transform: scale(1.05);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .slider-image-wrapper {
+        flex: 1;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .slider-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .swiper-slide:hover .slider-image {
+        transform: scale(1.1);
+      }
+
+      .slider-item-content {
+        flex: 1;
+        padding: 30px;
+        color: #fff;
+        text-align: left;
+        position: relative;
+      }
+
+      .slider-item-content h1 {
+        font-size: 2em;
+        font-weight: 700;
+        margin-bottom: 15px;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+      }
+
+      .slider-item-content p {
+        font-size: 1em;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .slider-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .swiper-button-prev,
+      .swiper-button-next {
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .swiper-button-prev::before,
+      .swiper-button-next::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+
+      .swiper-button-prev:hover::before,
+      .swiper-button-next:hover::before {
+        width: 200px;
+        height: 200px;
+      }
+
+      .swiper-button-prev:hover,
+      .swiper-button-next:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(255, 107, 107, 0.5);
+      }
+
+      .swiper-pagination {
+        margin-top: 20px;
+        position: relative;
+      }
+
+      .swiper-pagination-bullet {
+        background: #fff;
+        opacity: 0.5;
+        width: 10px;
+        height: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .swiper-pagination-bullet-active {
+        background: #ff6b6b;
+        opacity: 1;
+        transform: scale(1.3);
+      }
+
+      /* Particle effect */
+      .particle {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        pointer-events: none;
+        animation: float 5s linear infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+
+        50% {
+          opacity: 0.8;
+        }
+
+        100% {
+          transform: translateY(-100vh);
+          opacity: 0;
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .swiper-container {
+          width: 90%;
+        }
+
+        .swiper-slide {
+          flex-direction: column;
+        }
+
+        .slider-image-wrapper {
+          height: 200px;
+        }
+
+        .slider-item-content h1 {
+          font-size: 1.5em;
+        }
+
+        .slider-item-content p {
+          font-size: 0.9em;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="slider-item swiper-slide">
+          <div class="slider-image-wrapper">
+            <img class="slider-image"
+              src="https://images.unsplash.com/photo-1498307833015-e7b400441eb8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2600&q=80"
+              alt="SliderImg">
+          </div>
+          <div class="slider-item-content">
+            <h1>Exploring Italy's Beauty</h1>
+            <p>Discover the breathtaking landscapes, rich history, and delectable cuisine of Italy in this mesmerizing
+              journey.</p>
+          </div>
+        </div>
+        <div class="slider-item swiper-slide">
+          <div class="slider-image-wrapper">
+            <img class="slider-image"
+              src="https://images.unsplash.com/photo-1491900177661-4e1cd2d7cce2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"
+              alt="SliderImg">
+          </div>
+          <div class="slider-item-content">
+            <h1>Exploring Hidden Bunkers</h1>
+            <p>Uncover the secrets of underground bunkers and their historical significance in this thrilling adventure.
+            </p>
+          </div>
+        </div>
+        <div class="slider-item swiper-slide">
+          <div class="slider-image-wrapper">
+            <img class="slider-image"
+              src="https://images.unsplash.com/photo-1482192505345-5655af888cc4?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2600&q=80"
+              alt="SliderImg">
+          </div>
+          <div class="slider-item-content">
+            <h1>Scaling Small Mountains</h1>
+            <p>Embark on an adventurous journey to conquer the challenging peaks of small mountains and embrace the
+              thrill of the climb.</p>
+          </div>
+        </div>
+        <div class="slider-item swiper-slide">
+          <div class="slider-image-wrapper">
+            <img class="slider-image"
+              src="https://images.unsplash.com/photo-1564604761388-83eafc96f668?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"
+              alt="SliderImg">
+          </div>
+          <div class="slider-item-content">
+            <h1>Walking On a Dream</h1>
+            <p>Experience the dreamlike landscapes and surreal beauty of distant lands in this enchanting expedition.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slider-buttons">
+        <button class="swiper-button-prev">Prev</button>
+        <button class="swiper-button-next">Next</button>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.js"></script>
+    <script>
+      // Initialize Swiper
+      const swiper = new Swiper('.swiper-container', {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+        },
+      });
+
+      // Particle animation
+      function createParticle() {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+          particle.remove();
+        }, 5000);
+      }
+
+      setInterval(createParticle, 300);
+
+      // Hover effect for slides
+      document.querySelectorAll('.swiper-slide').forEach(slide => {
+        slide.addEventListener('mouseenter', () => {
+          slide.style.transform = 'scale(1.1)';
+          slide.style.zIndex = 2;
+        });
+        slide.addEventListener('mouseleave', () => {
+          if (!slide.classList.contains('swiper-slide-active')) {
+            slide.style.transform = 'scale(1)';
+          }
+          slide.style.zIndex = 1;
+        });
+      });
+
+      // Click effect for buttons
+      document.querySelectorAll('.swiper-button-prev, .swiper-button-next').forEach(button => {
+        button.addEventListener('click', () => {
+          button.style.transform = 'scale(0.9)';
+          setTimeout(() => {
+            button.style.transform = 'scale(1)';
+          }, 200);
+        });
+      });
+    </script>
+  </body>
+
+</html>
