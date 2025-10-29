@@ -1,183 +1,656 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Neon Pulse Download</title>
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+        <style>
+            :root {
+                --bg: #0a0a1a;
+                --primary: #00f2ff;
+                --accent: #ff00aa;
+                --glow: 0 0 20px rgba(0, 242, 255, 0.6);
+                --glow-accent: 0 0 20px rgba(255, 0, 170, 0.6);
+                --text: #e0e0ff;
+                --radius: 24px;
+            }
 
-<body>
-    <button class="button">
-        <svg class="circle" viewBox="0 0 76 76">
-            <circle class="default" cx="38" cy="38" r="36"></circle>
-            <circle class="active" cx="38" cy="38" r="36"></circle>
-        </svg>
-        <div class="icon">
-            <svg class="line" viewBox="0 0 4 37">
-                <line x1="2" y1="2" x2="2" y2="35"></line>
-            </svg>
-            <div>
-                <svg class="arrow" viewBox="0 0 40 32"></svg>
-                <svg class="progress" viewBox="0 0 444 10">
-                    <path
-                        d="M2,5 L42,5 C60.0089086,6.33131695 73.3422419,6.99798362 82,7 C87.572404,7.00129781 91.0932494,1.72677301 102,1.99944178 C112.906751,2.27211054 112.000464,7.99986045 122,8 C131.999536,8.00013955 132,2 142,2 C152,2 152,8 162,8 C172,8 172,2 182,2 C192,2 192,8 202,8 C212,8 212,2 222,2 C232,2 232,8 242,8 C252,8 252,2 262,2 C272,2 272,8 282,8 C292,8 292,2 302,2 C312,2 312,8 322,8 C332,8 332,2 342,2 C352,2 351.897852,7.49489262 362,8 C372.102148,8.50510738 378.620177,5.22532154 402,5 L442,5">
-                    </path>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                min-height: 100vh;
+                background: var(--bg);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Space Grotesk', sans-serif;
+                overflow: hidden;
+                perspective: 1000px;
+            }
+
+            .container {
+                position: relative;
+                width: 380px;
+                height: 380px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .button {
+                position: relative;
+                width: 180px;
+                height: 180px;
+                border-radius: 50%;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                outline: none;
+                transform-style: preserve-3d;
+                transition: transform 0.3s ease;
+            }
+
+            .button:hover {
+                transform: translateY(-8px) scale(1.05);
+            }
+
+            .button::before {
+                content: '';
+                position: absolute;
+                inset: -20px;
+                border-radius: 50%;
+                background: radial-gradient(circle at center, var(--primary) 0%, transparent 70%);
+                opacity: 0;
+                filter: blur(20px);
+                transition: opacity 0.5s ease;
+                z-index: -1;
+            }
+
+            .button.loading::before,
+            .button.animation::before {
+                opacity: 0.7;
+                animation: pulseGlow 2s infinite alternate;
+            }
+
+            .circle-bg {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                background: conic-gradient(from 0deg, var(--primary), var(--accent), var(--primary));
+                opacity: 0.2;
+                filter: blur(15px);
+                z-index: -2;
+                animation: rotate 8s linear infinite;
+            }
+
+            .circle {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+
+            .circle .default {
+                fill: none;
+                stroke: rgba(0, 242, 255, 0.3);
+                stroke-width: 3;
+                r: 78;
+                cx: 90;
+                cy: 90;
+                filter: drop-shadow(0 0 8px var(--primary));
+            }
+
+            .circle .active {
+                fill: none;
+                stroke: url(#gradient);
+                stroke-width: 4;
+                r: 78;
+                cx: 90;
+                cy: 90;
+                stroke-dasharray: 490;
+                stroke-dashoffset: 490;
+                stroke-linecap: round;
+                filter: drop-shadow(0 0 15px var(--primary));
+                transition: stroke-dashoffset 0.1s linear;
+            }
+
+            .icon-wrapper {
+                position: absolute;
+                width: 80px;
+                height: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                border-radius: 50%;
+                background: rgba(10, 10, 26, 0.6);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(0, 242, 255, 0.2);
+            }
+
+            .icon {
+                position: relative;
+                width: 40px;
+                height: 40px;
+            }
+
+            .line {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .line line {
+                stroke: var(--text);
+                stroke-width: 3;
+                stroke-linecap: round;
+                x1="20" y1="5" x2="20" y2="35";
+            }
+
+            .arrow-container {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+
+            .arrow {
+                width: 100%;
+                height: 100%;
+            }
+
+            .arrow path {
+                fill: none;
+                stroke: var(--primary);
+                stroke-width: 3;
+                stroke-linecap: round;
+                filter: drop-shadow(0 0 6px var(--primary));
+            }
+
+            .progress-path {
+                position: absolute;
+                width: 400%;
+                height: 400%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(0deg);
+                opacity: 0;
+            }
+
+            .progress-path path {
+                fill: none;
+                stroke: url(#progressGradient);
+                stroke-width: 2;
+                stroke-linecap: round;
+                filter: drop-shadow(0 0 10px var(--accent));
+            }
+
+            .count {
+                position: absolute;
+                bottom: -50px;
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: var(--text);
+                letter-spacing: 1px;
+                text-shadow: 0 0 10px var(--primary);
+                opacity: 0;
+                transition: all 0.4s ease;
+            }
+
+            .button.loading .count,
+            .button.animation .count {
+                opacity: 1;
+                bottom: -60px;
+            }
+
+            .particles {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: -1;
+            }
+
+            .particle {
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: var(--primary);
+                border-radius: 50%;
+                opacity: 0;
+                filter: blur(1px);
+                box-shadow: 0 0 10px var(--primary);
+            }
+
+            .success-check {
+                position: absolute;
+                width: 60px;
+                height: 60px;
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            .success-check path {
+                fill: none;
+                stroke: #00ff88;
+                stroke-width: 5;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-dasharray: 60;
+                stroke-dashoffset: 60;
+                filter: drop-shadow(0 0 15px #00ff88);
+            }
+
+            .reset-icon {
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                opacity: 0;
+                transform: rotate(0deg);
+            }
+
+            .reset-icon path {
+                fill: none;
+                stroke: var(--accent);
+                stroke-width: 3;
+                stroke-linecap: round;
+            }
+
+            /* Animations */
+            @keyframes rotate {
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            @keyframes pulseGlow {
+                from {
+                    opacity: 0.5;
+                }
+
+                to {
+                    opacity: 0.9;
+                }
+            }
+
+            @keyframes float {
+
+                0%,
+                100% {
+                    transform: translateY(0px) rotateX(0deg);
+                }
+
+                50% {
+                    transform: translateY(-10px) rotateX(5deg);
+                }
+            }
+
+            .button.animation {
+                animation: float 3s ease-in-out infinite;
+            }
+
+            /* Gradients */
+            .gradients {
+                position: absolute;
+                width: 0;
+                height: 0;
+            }
+
+            /* Social Links */
+            .social {
+                position: absolute;
+                bottom: 30px;
+                display: flex;
+                gap: 16px;
+            }
+
+            .social a {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid rgba(0, 242, 255, 0.2);
+                transition: all 0.3s ease;
+            }
+
+            .social a:hover {
+                background: var(--primary);
+                box-shadow: var(--glow);
+                transform: translateY(-4px);
+            }
+
+            .social svg {
+                width: 20px;
+                height: 20px;
+                fill: var(--text);
+            }
+
+            .social a:hover svg {
+                fill: #000;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <button class="button" id="downloadBtn">
+                <div class="circle-bg"></div>
+
+                <svg class="circle" viewBox="0 0 180 180" width="180" height="180">
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#00f2ff" />
+                            <stop offset="50%" stop-color="#ff00aa" />
+                            <stop offset="100%" stop-color="#00f2ff" />
+                        </linearGradient>
+                        <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#ff00aa" />
+                            <stop offset="100%" stop-color="#00f2ff" />
+                        </linearGradient>
+                    </defs>
+                    <circle class="default" cx="90" cy="90" r="78"></circle>
+                    <circle class="active" cx="90" cy="90" r="78"></circle>
                 </svg>
+
+                <div class="icon-wrapper">
+                    <div class="icon">
+                        <svg class="line" viewBox="0 0 40 40">
+                            <line x1="20" y1="5" x2="20" y2="35" />
+                        </svg>
+                        <div class="arrow-container">
+                            <svg class="arrow" viewBox="0 0 60 40">
+                                <path d="" />
+                            </svg>
+                        </div>
+                        <svg class="progress-path" viewBox="0 0 500 500">
+                            <path d="" />
+                        </svg>
+                    </div>
+
+                    <svg class="success-check" viewBox="0 0 60 60">
+                        <path d="M10,30 L22,42 L50,14" />
+                    </svg>
+
+                    <svg class="reset-icon" viewBox="0 0 40 40">
+                        <path d="M10,20 Q10,10 20,10 Q30,10 30,20 M20,15 L20,25 M15,20 L25,20" />
+                    </svg>
+                </div>
+
+                <div class="particles" id="particles"></div>
+                <span class="count">0%</span>
+            </button>
+
+            <div class="social">
+                <a href="https://dribbble.com" target="_blank">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.41 15.07c-.39.39-1.02.39-1.41 0l-2.83-2.83c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l2.12 2.12 5.66-5.66c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-6.36 6.37z" />
+                    </svg>
+                </a>
+                <a href="https://twitter.com" target="_blank">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M22.46 6c-.77.35-1.6.58-2.46.69a4.28 4.28 0 0 0 1.88-2.36 8.49 8.49 0 0 1-2.71 1.03 4.24 4.24 0 0 0-7.23 3.87 12.03 12.03 0 0 1-8.74-4.43 4.24 4.24 0 0 0 1.31 5.66c-.68-.02-1.32-.21-1.88-.52v.03c0 2.07 1.47 3.8 3.43 4.2a4.26 4.26 0 0 1-1.92.07 4.25 4.25 0 0 0 3.96 2.95 8.52 8.52 0 0 1-5.29 1.82c-.34 0-.68-.02-1.02-.06a12.02 12.02 0 0 0 6.52 1.91c7.82 0 12.1-6.48 12.1-12.1 0-.18-.01-.37-.02-.55A8.64 8.64 0 0 0 24 6.02a8.41 8.41 0 0 1-2.54.7z" />
+                    </svg>
+                </a>
             </div>
         </div>
-        <span>0%</span>
-    </button>
 
-    <!-- twitter / dribbble -->
-    <a class="dribbble" href="https://dribbble.com/shots/9683055-Download-animation" target="_blank"><img
-            src="https://dribbble.com/assets/logo-small-2x-9fe74d2ad7b25fba0f50168523c15fda4c35534f9ea0b1011179275383035439.png"
-            alt=""></a>
-    <a class="twitter" target="_top" href=""><svg xmlns="http://www.w3.org/2000/svg"
-            width="72" height="72" viewBox="0 0 72 72">
-            <path
-                d="M67.812 16.141a26.246 26.246 0 0 1-7.519 2.06 13.134 13.134 0 0 0 5.756-7.244 26.127 26.127 0 0 1-8.313 3.176A13.075 13.075 0 0 0 48.182 10c-7.229 0-13.092 5.861-13.092 13.093 0 1.026.118 2.021.338 2.981-10.885-.548-20.528-5.757-26.987-13.679a13.048 13.048 0 0 0-1.771 6.581c0 4.542 2.312 8.551 5.824 10.898a13.048 13.048 0 0 1-5.93-1.638c-.002.055-.002.11-.002.162 0 6.345 4.513 11.638 10.504 12.84a13.177 13.177 0 0 1-3.449.457c-.846 0-1.667-.078-2.465-.231 1.667 5.2 6.499 8.986 12.23 9.09a26.276 26.276 0 0 1-16.26 5.606A26.21 26.21 0 0 1 4 55.976a37.036 37.036 0 0 0 20.067 5.882c24.083 0 37.251-19.949 37.251-37.249 0-.566-.014-1.134-.039-1.694a26.597 26.597 0 0 0 6.533-6.774z">
-            </path>
-        </svg></a>
+        <svg class="gradients">
+            <defs></defs>
+        </svg>
 
+        <script>
+            const $ = (s, o = document) => o.querySelector(s);
+            const $$ = (s, o = document) => o.querySelectorAll(s);
 
-    <script>
-        const $ = (s, o = document) => o.querySelector(s);
-        const $$ = (s, o = document) => o.querySelectorAll(s);
+            const button = $('#downloadBtn');
+            const activeCircle = $('.circle .active');
+            const arrow = $('.arrow path');
+            const progressPath = $('.progress-path path');
+            const countElem = $('.count');
+            const iconWrapper = $('.icon-wrapper');
+            const successCheck = $('.success-check');
+            const resetIcon = $('.reset-icon');
+            const particlesContainer = $('#particles');
 
-        $$('.button').forEach(button => {
+            let isLoading = false;
+            let isAnimating = false;
+            let progress = 0;
 
-            let count = {
-                number: 0
-            },
-                icon = $('.icon', button),
-                iconDiv = $('.icon > div', button),
-                arrow = $('.icon .arrow', button),
-                countElem = $('span', button),
-                svgPath = new Proxy({
-                    y: null,
-                    s: null,
-                    f: null,
-                    l: null
+            const svgPath = new Proxy({
+                y: 38,
+                s: 0,
+                f: 8,
+                l: 52
+            }, {
+                set(target, key, value) {
+                    target[key] = value;
+                    if (target.y !== null && target.s != null && target.f != null && target.l != null) {
+                        updateArrow();
+                    }
+                    return true;
+                }
+            });
+
+            function updateArrow() {
+                const points = [
+                    [svgPath.f, 20],
+                    [30, svgPath.y],
+                    [svgPath.l, 20]
+                ];
+                const smoothing = svgPath.s;
+                let d = points.reduce((acc, point, i, a) => {
+                    if (i === 0) return `M ${point[0]},${point[1]}`;
+                    const cp1 = getControlPoint(a[i - 1], a[i - 2] || a[i - 1], point, false, smoothing);
+                    const cp2 = getControlPoint(point, a[i - 1], a[i + 1] || point, true, smoothing);
+                    return `${acc} C ${cp1[0]},${cp1[1]} ${cp2[0]},${cp2[1]} ${point[0]},${point[1]}`;
+                }, '');
+                arrow.setAttribute('d', d);
+            }
+
+            function getControlPoint(current, previous, next, reverse, smoothing) {
+                const p = previous || current;
+                const n = next || current;
+                const o = {
+                    length: Math.sqrt(Math.pow(n[0] - p[0], 2) + Math.pow(n[1] - p[1], 2)),
+                    angle: Math.atan2(n[1] - p[1], n[0] - p[0])
+                };
+                const angle = o.angle + (reverse ? Math.PI : 0);
+                const length = o.length * smoothing;
+                return [
+                    current[0] + Math.cos(angle) * length,
+                    current[1] + Math.sin(angle) * length
+                ];
+            }
+
+            function createParticle() {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = 2 + Math.random() * 3;
+                const size = 2 + Math.random() * 3;
+                p.style.width = size + 'px';
+                p.style.height = size + 'px';
+                p.style.left = '50%';
+                p.style.top = '50%';
+                p.style.transform = 'translate(-50%, -50%)';
+                particlesContainer.appendChild(p);
+
+                gsap.to(p, {
+                    x: Math.cos(angle) * velocity * 100,
+                    y: Math.sin(angle) * velocity * 100,
+                    opacity: 1,
+                    duration: 0.3,
+                    onComplete: () => {
+                        gsap.to(p, {
+                            opacity: 0,
+                            duration: 0.5,
+                            onComplete: () => p.remove()
+                        });
+                    }
+                });
+            }
+
+            function startDownload() {
+                if (isLoading || isAnimating) return;
+                isLoading = true;
+                button.classList.add('loading', 'animation');
+
+                // Progress circle
+                gsap.to(activeCircle, {
+                    strokeDashoffset: 0,
+                    duration: 3.8,
+                    ease: "power2.inOut"
+                });
+
+                // Arrow morph
+                gsap.to(svgPath, {
+                    f: 5,
+                    l: 55,
+                    duration: 0.3,
+                    delay: 0.2
+                });
+
+                gsap.to(svgPath, {
+                    s: 0.3,
+                    y: 15,
+                    duration: 1,
+                    delay: 0.2,
+                    ease: "elastic.out(1, 0.3)"
+                });
+
+                // Progress path animation
+                const progressD = "M5,20 Q60,10 120,20 T240,20 T360,20 T480,20";
+                progressPath.setAttribute('d', progressD);
+                gsap.fromTo(progressPath.parentElement, {
+                    opacity: 0,
+                    rotate: 0
                 }, {
-                    set(target, key, value) {
-                        target[key] = value;
-                        if (target.y !== null && target.s != null && target.f != null && target.l != null) {
-                            arrow.innerHTML = getPath(target.y, target.f, target.l, target.s, null);
-                        }
-                        return true;
-                    },
-                    get(target, key) {
-                        return target[key];
+                    opacity: 0.7,
+                    rotate: 720,
+                    duration: 3.8,
+                    ease: "none",
+                    delay: 0.8
+                });
+
+                // Counter
+                gsap.to({ val: 0 }, {
+                    val: 100,
+                    duration: 3.8,
+                    delay: 0.8,
+                    ease: "power2.out",
+                    onUpdate: function () {
+                        countElem.textContent = Math.round(this.targets()[0].val) + '%';
+                        if (Math.random() < 0.3) createParticle();
                     }
                 });
 
-            svgPath.y = 30;
-            svgPath.s = 0;
-            svgPath.f = 8;
-            svgPath.l = 32;
+                // Success state
+                setTimeout(() => {
+                    button.classList.remove('animation');
+                    gsap.to(successCheck, {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.6,
+                        ease: "back.out(1.7)"
+                    });
+                    gsap.to(successCheck.querySelector('path'), {
+                        strokeDashoffset: 0,
+                        duration: 0.5,
+                        ease: "power2.out"
+                    });
 
-            button.addEventListener('click', e => {
-                if (!button.classList.contains('loading')) {
+                    // Final pulse
+                    gsap.to(button, {
+                        scale: 1.15,
+                        duration: 0.2,
+                        yoyo: true,
+                        repeat: 1
+                    });
 
-                    if (!button.classList.contains('animation')) {
+                    setTimeout(() => {
+                        isLoading = false;
+                        button.classList.add('success');
+                    }, 800);
+                }, 4600);
+            }
 
-                        button.classList.add('loading', 'animation');
+            function resetDownload() {
+                if (isAnimating) return;
+                isAnimating = true;
+                button.classList.add('reset');
+                button.classList.remove('success');
 
-                        gsap.to(svgPath, {
-                            f: 2,
-                            l: 38,
-                            duration: .3,
-                            delay: .15
-                        });
+                // Hide success
+                gsap.to(successCheck, { opacity: 0, scale: 0, duration: 0.3 });
 
-                        gsap.to(svgPath, {
-                            s: .2,
-                            y: 16,
-                            duration: .8,
-                            delay: .15,
-                            ease: Elastic.easeOut.config(1, .4)
-                        });
+                // Reset circle
+                gsap.to(activeCircle, {
+                    strokeDashoffset: 490,
+                    duration: 0.6,
+                    ease: "power2.in"
+                });
 
-                        gsap.to(count, {
-                            number: '100',
-                            duration: 3.8,
-                            delay: .8,
-                            onUpdate() {
-                                countElem.innerHTML = Math.round(count.number) + '%';
-                            }
-                        });
+                // Reset arrow
+                gsap.to(svgPath, {
+                    f: 8,
+                    l: 52,
+                    s: 0,
+                    y: 38,
+                    duration: 0.6,
+                    ease: "power2.out"
+                });
 
-                        setTimeout(() => {
-                            iconDiv.style.setProperty('overflow', 'visible');
-                            setTimeout(() => {
-                                button.classList.remove('animation');
-                            }, 600);
-                        }, 4820);
+                // Hide progress
+                gsap.to(progressPath.parentElement, {
+                    opacity: 0,
+                    rotate: 0,
+                    duration: 0.5
+                });
 
-                    }
+                // Reset counter
+                gsap.to(countElem, {
+                    opacity: 0,
+                    duration: 0.3
+                });
 
-                } else {
+                setTimeout(() => {
+                    button.classList.remove('loading', 'reset');
+                    countElem.textContent = '0%';
+                    isAnimating = false;
+                }, 700);
+            }
 
-                    if (!button.classList.contains('animation')) {
-
-                        button.classList.add('reset');
-
-                        gsap.to(svgPath, {
-                            f: 8,
-                            l: 32,
-                            duration: .4
-                        });
-
-                        gsap.to(svgPath, {
-                            s: 0,
-                            y: 30,
-                            duration: .4
-                        });
-
-                        setTimeout(() => {
-                            button.classList.remove('loading', 'reset');
-                            iconDiv.removeAttribute('style');
-                        }, 400);
-
-                    }
-
-                }
+            button.addEventListener('click', (e) => {
                 e.preventDefault();
+                if (button.classList.contains('success')) {
+                    resetDownload();
+                } else {
+                    startDownload();
+                }
             });
 
-        });
-
-        function getPoint(point, i, a, smoothing) {
-            let cp = (current, previous, next, reverse) => {
-                let p = previous || current,
-                    n = next || current,
-                    o = {
-                        length: Math.sqrt(Math.pow(n[0] - p[0], 2) + Math.pow(n[1] - p[1], 2)),
-                        angle: Math.atan2(n[1] - p[1], n[0] - p[0])
-                    },
-                    angle = o.angle + (reverse ? Math.PI : 0),
-                    length = o.length * smoothing;
-                return [current[0] + Math.cos(angle) * length, current[1] + Math.sin(angle) * length];
-            },
-                cps = cp(a[i - 1], a[i - 2], point, false),
-                cpe = cp(point, a[i - 1], a[i + 1], true);
-            return `C ${cps[0]},${cps[1]} ${cpe[0]},${cpe[1]} ${point[0]},${point[1]}`;
-        }
-
-        function getPath(update, first, last, smoothing, pointsNew) {
-            let points = pointsNew ? pointsNew : [
-                [first, 16],
-                [20, update],
-                [last, 16]
-            ],
-                d = points.reduce((acc, point, i, a) => i === 0 ? `M ${point[0]},${point[1]}` : `${acc} ${getPoint(point, i, a, smoothing)}`, '');
-            return `<path d="${d}" />`;
-        }
-
-    </script>
-</body>
+            // Initialize
+            updateArrow();
+            svgPath.y = 38;
+        </script>
+    </body>
 
 </html>
