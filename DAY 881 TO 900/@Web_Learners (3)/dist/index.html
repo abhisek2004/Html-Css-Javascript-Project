@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>abhisek2004 • Cyber Panda Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+      :root {
+        --bg: #0f0f23;
+        --card: rgba(20, 20, 40, 0.7);
+        --neon-cyan: #00f2ff;
+        --neon-magenta: #ff00aa;
+        --text: #e0e0ff;
+        --glow-cyan: 0 0 25px rgba(0, 242, 255, 0.7), 0 0 50px rgba(0, 242, 255, 0.3);
+        --glow-magenta: 0 0 25px rgba(255, 0, 170, 0.7), 0 0 50px rgba(255, 0, 170, 0.3);
+        --panda-dark: #1a1a2e;
+        --panda-light: #2d2d44;
+        --blush: rgba(255, 100, 150, 0.6);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        background: var(--bg);
+        font-family: 'Space Grotesk', sans-serif;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        perspective: 1000px;
+        background: radial-gradient(circle at center, #16213e 0%, var(--bg) 70%);
+      }
+
+      /* Floating Particles */
+      .particle {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: var(--neon-cyan);
+        border-radius: 50%;
+        opacity: 0;
+        box-shadow: 0 0 10px var(--neon-cyan);
+        pointer-events: none;
+        animation: float 8s linear infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) scale(0);
+          opacity: 0;
+        }
+
+        10% {
+          opacity: 1;
+        }
+
+        90% {
+          opacity: 1;
+        }
+
+        100% {
+          transform: translateY(-100px) scale(1);
+          opacity: 0;
+        }
+      }
+
+      /* Container */
+      .container {
+        position: relative;
+        width: 380px;
+        height: 520px;
+        background: var(--card);
+        border-radius: 32px;
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(0, 242, 255, 0.2);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), var(--glow-cyan);
+        overflow: hidden;
+        transform-style: preserve-3d;
+        transition: all 0.5s ease;
+        z-index: 10;
+      }
+
+      .container:hover {
+        transform: translateY(-10px) rotateX(5deg);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), var(--glow-cyan), var(--glow-magenta);
+      }
+
+      /* Panda Face */
+      .panda-face {
+        position: absolute;
+        top: -80px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 180px;
+        height: 180px;
+        background: var(--panda-light);
+        border-radius: 50%;
+        box-shadow: inset 0 -20px 30px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 242, 255, 0.3);
+        z-index: 2;
+        animation: floatPanda 6s ease-in-out infinite;
+      }
+
+      @keyframes floatPanda {
+
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0) rotate(0deg);
+        }
+
+        50% {
+          transform: translateX(-50%) translateY(-15px) rotate(2deg);
+        }
+      }
+
+      .ear-l,
+      .ear-r {
+        position: absolute;
+        width: 60px;
+        height: 70px;
+        background: var(--panda-dark);
+        border-radius: 50% 50% 0 0;
+        top: -30px;
+        z-index: 1;
+        box-shadow: inset 0 -10px 15px rgba(0, 0, 0, 0.4);
+      }
+
+      .ear-l {
+        left: 40px;
+        transform: rotate(-25deg);
+      }
+
+      .ear-r {
+        right: 40px;
+        transform: rotate(25deg);
+      }
+
+      .blush-l,
+      .blush-r {
+        position: absolute;
+        width: 40px;
+        height: 30px;
+        background: var(--blush);
+        border-radius: 50%;
+        top: 90px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .blush-l {
+        left: 40px;
+      }
+
+      .blush-r {
+        right: 40px;
+      }
+
+      .eye-l,
+      .eye-r {
+        position: absolute;
+        width: 45px;
+        height: 55px;
+        background: var(--panda-dark);
+        border-radius: 50%;
+        top: 65px;
+        overflow: hidden;
+        box-shadow: inset 0 -10px 15px rgba(0, 0, 0, 0.5);
+      }
+
+      .eye-l {
+        left: 45px;
+      }
+
+      .eye-r {
+        right: 45px;
+      }
+
+      .eyeball-l,
+      .eyeball-r {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        background: #fff;
+        border-radius: 50%;
+        top: 15px;
+        left: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s ease;
+      }
+
+      .eyeball-l::after,
+      .eyeball-r::after {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: #000;
+        border-radius: 50%;
+        top: 5px;
+        left: 5px;
+      }
+
+      .nose {
+        position: absolute;
+        width: 20px;
+        height: 15px;
+        background: var(--panda-dark);
+        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        top: 110px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .mouth {
+        position: absolute;
+        width: 30px;
+        height: 15px;
+        border-bottom: 5px solid var(--panda-dark);
+        border-radius: 0 0 30px 30px;
+        top: 125px;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: all 0.3s ease;
+      }
+
+      /* Hands & Paws */
+      .hand-l,
+      .hand-r {
+        position: absolute;
+        width: 50px;
+        height: 70px;
+        background: var(--panda-light);
+        border-radius: 25px;
+        bottom: 180px;
+        z-index: 3;
+        transition: transform 0.4s ease;
+        box-shadow: inset 0 -15px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .hand-l {
+        left: 50px;
+        transform: rotate(20deg);
+      }
+
+      .hand-r {
+        right: 50px;
+        transform: rotate(-20deg);
+      }
+
+      .paw-l,
+      .paw-r {
+        position: absolute;
+        width: 60px;
+        height: 30px;
+        background: var(--panda-dark);
+        border-radius: 50%;
+        bottom: 155px;
+        z-index: 2;
+      }
+
+      .paw-l {
+        left: 45px;
+      }
+
+      .paw-r {
+        right: 45px;
+      }
+
+      /* Form */
+      form {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        z-index: 4;
+      }
+
+      label {
+        display: block;
+        margin: 20px 0 8px;
+        font-size: 0.9rem;
+        color: var(--neon-cyan);
+        text-shadow: var(--glow-cyan);
+        font-weight: 600;
+      }
+
+      input {
+        width: 100%;
+        padding: 14px 18px;
+        background: rgba(10, 10, 26, 0.6);
+        border: 1px solid rgba(0, 242, 255, 0.3);
+        border-radius: 12px;
+        color: var(--text);
+        font-size: 1rem;
+        backdrop-filter: blur(5px);
+        transition: all 0.3s ease;
+        box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+      }
+
+      input:focus {
+        outline: none;
+        border-color: var(--neon-cyan);
+        box-shadow: var(--glow-cyan);
+        background: rgba(10, 10, 26, 0.8);
+      }
+
+      input::placeholder {
+        color: rgba(224, 224, 255, 0.5);
+      }
+
+      button {
+        margin-top: 25px;
+        width: 100%;
+        padding: 16px;
+        background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
+        border: none;
+        border-radius: 16px;
+        color: #000;
+        font-weight: 700;
+        font-size: 1.1rem;
+        cursor: pointer;
+        box-shadow: var(--glow-cyan);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      button::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s ease;
+      }
+
+      button:hover::before {
+        transform: translateX(100%);
+      }
+
+      button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(0, 242, 255, 0.4);
+      }
+
+      /* Your Brand */
+      .brand {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.4rem;
+        font-weight: 700;
+        background: linear-gradient(45deg, var(--neon-cyan), var(--neon-magenta));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+        z-index: 5;
+      }
+
+      /* Responsive */
+      @media (max-width: 480px) {
+        .container {
+          width: 90%;
+          height: 500px;
+        }
+
+        .panda-face {
+          width: 150px;
+          height: 150px;
+          top: -70px;
+        }
+
+        .ear-l,
+        .ear-r {
+          width: 50px;
+          height: 60px;
+          top: -25px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Floating Particles -->
+    <div id="particles"></div>
+
+    <div class="container">
+      <div class="brand">abhisek2004</div>
+
+      <!-- Panda -->
+      <div class="ear-l"></div>
+      <div class="ear-r"></div>
+      <div class="panda-face">
+        <div class="blush-l"></div>
+        <div class="blush-r"></div>
+        <div class="eye-l">
+          <div class="eyeball-l"></div>
+        </div>
+        <div class="eye-r">
+          <div class="eyeball-r"></div>
+        </div>
+        <div class="nose"></div>
+        <div class="mouth"></div>
+      </div>
+      <div class="hand-l"></div>
+      <div class="hand-r"></div>
+      <div class="paw-l"></div>
+      <div class="paw-r"></div>
+
+      <!-- Login Form -->
+      <form id="loginForm">
+        <label for="username">Enter your username</label>
+        <input type="text" id="username" placeholder="Username" required />
+        <label for="password">Enter your password</label>
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+
+    <script>
+      const usernameInput = document.getElementById('username');
+      const passwordInput = document.getElementById('password');
+      const eyeballL = document.querySelector('.eyeball-l');
+      const eyeballR = document.querySelector('.eyeball-r');
+      const blushL = document.querySelector('.blush-l');
+      const blushR = document.querySelector('.blush-r');
+      const handL = document.querySelector('.hand-l');
+      const handR = document.querySelector('.hand-r');
+      const mouth = document.querySelector('.mouth');
+      const form = document.getElementById('loginForm');
+      const particlesContainer = document.getElementById('particles');
+
+      // Eye follow cursor
+      document.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX / window.innerWidth;
+        const mouseY = e.clientY / window.innerHeight;
+        const eyeMoveX = (mouseX - 0.5) * 30;
+        const eyeMoveY = (mouseY - 0.5) * 30;
+        eyeballL.style.transform = `translate(${eyeMoveX}px, ${eyeMoveY}px)`;
+        eyeballR.style.transform = `translate(${eyeMoveX}px, ${eyeMoveY}px)`;
+      });
+
+      // Blush on focus
+      usernameInput.addEventListener('focus', () => {
+        blushL.style.opacity = '1';
+        blushR.style.opacity = '1';
+      });
+
+      passwordInput.addEventListener('focus', () => {
+        handL.style.transform = 'rotate(20deg) translateY(-20px)';
+        handR.style.transform = 'rotate(-20deg) translateY(-20px)';
+        mouth.style.borderRadius = '0 0 50px 50px';
+        mouth.style.height = '20px';
+      });
+
+      passwordInput.addEventListener('blur', () => {
+        handL.style.transform = 'rotate(20deg)';
+        handR.style.transform = 'rotate(-20deg)';
+        mouth.style.borderRadius = '0 0 30px 30px';
+        mouth.style.height = '15px';
+      });
+
+      // Form submit
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value;
+
+        if (username && password) {
+          // Success animation
+          document.querySelector('.container').style.transform = 'scale(0.95)';
+          setTimeout(() => {
+            createParticles(30);
+            blushL.style.opacity = '0';
+            blushR.style.opacity = '0';
+            mouth.style.borderBottom = 'none';
+            mouth.innerHTML = 'Success!';
+            mouth.style.color = '#00ff88';
+            mouth.style.fontWeight = '700';
+            mouth.style.textAlign = 'center';
+            mouth.style.top = '130px';
+            mouth.style.height = 'auto';
+            mouth.style.borderRadius = '10px';
+            mouth.style.background = 'rgba(0, 255, 136, 0.2)';
+            mouth.style.padding = '5px 10px';
+          }, 300);
+        }
+      });
+
+      // Create floating particles
+      function createParticles(count) {
+        for (let i = 0; i < count; i++) {
+          const p = document.createElement('div');
+          p.className = 'particle';
+          p.style.left = `${Math.random() * 100}vw`;
+          p.style.animationDelay = `${Math.random() * 5}s`;
+          p.style.animationDuration = `${5 + Math.random() * 5}s`;
+          particlesContainer.appendChild(p);
+          setTimeout(() => p.remove(), 10000);
+        }
+      }
+
+      // Initial particles
+      setInterval(() => createParticles(3), 2000);
+      createParticles(10);
+    </script>
+  </body>
+
+</html>
