@@ -165,7 +165,8 @@ Feel free to connect with me for collaboration or feedback on these projects. To
 
 ---
 
-*This README is regularly updated as new projects are added to the repository.*
+| #  | **Project Module**                  | **Variants** | **Mission Log**                                                                 | **Tech Vectors**              | **Innovation Spark**                  |
+|----|-------------------------------------|--------------|---------------------------------------------------------------------------------|-------------------------------|---------------------------------------|
 | 1  | Analog Clock                       | 1           | Timeless chrono-simulator with sweeping hands and glow pulses.                  | HTML, CSS Animations         | Retro-futuristic tick: Real-time shadow mapping. |
 | 2  | Calculator Project                 | 1           | Precision arithmetic engine for everyday computations.                         | HTML Forms, JS Logic         | Haptic feedback on taps—feels alive! |
 | 3  | Portfolio Abhisek                  | 2           | Personal star-map showcasing skills in a dynamic grid.                          | HTML Grid, CSS Flexbox, JS   | Auto-scrolling timeline of evolutions. |
