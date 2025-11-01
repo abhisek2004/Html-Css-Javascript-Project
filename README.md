@@ -155,7 +155,7 @@ MIT License—free as the void. Warp, remix, distribute. See [LICENSE](LICENSE) 
 ## ❤️ **Crew Manifest: Our Stellar Contributors**
 
 <h2 align="center">  
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Rocket.png" width="50" height="50">  
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAhWVS4qq995IvnKzi4TlCJNJAaLyjqReXeQ&s" width="50" height="50">  
 **Thank you for fueling the engines!**  
 </h2>  
 
