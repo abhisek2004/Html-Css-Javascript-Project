@@ -156,7 +156,7 @@ MIT License—free as the void. Warp, remix, distribute. See [LICENSE](LICENSE) 
 
 <h2 align="center">  
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAhWVS4qq995IvnKzi4TlCJNJAaLyjqReXeQ&s" width="50" height="50">  
-**Thank you for fueling the engines!**  
+Thank you for fueling the engines!  
 </h2>  
 
 ![Contributors](https://contrib.rocks/image?repo=abhisek2004/Html-Css-Javascript-Project)  
