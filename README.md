@@ -160,17 +160,27 @@ MIT License—free as the void. Warp, remix, distribute. See [LICENSE](LICENSE) 
 
 ---
 
-## ⭐ **Stargazers: The Constellation Grows**
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
-<div align="center">  
-[![Stargazers](https://reporoster.com/stars/abhisek2004/Html-Css-Javascript-Project)](https://github.com/abhisek2004/Html-Css-Javascript-Project/stargazers)  
-</div>  
+### ⭐ Stargazers
 
-## 🔀 **Forkers: Echo Stations Across the Grid**
+<div align="center">
+  <a href="https://github.com/abhisek2004/Html-Css-Javascript-Project/stargazers">
+    <img src="https://reporoster.com/stars/abhisek2004/Html-Css-Javascript-Project?type=svg&limit=100&names=false" alt="Stargazers" />
+  </a>
+</div>
 
-<div align="center">  
-[![Forkers](https://reporoster.com/forks/abhisek2004/Html-Css-Javascript-Project)](https://github.com/abhisek2004/Html-Css-Javascript-Project/network/members)  
-</div>  
+---
+
+### 🍴 Forkers
+
+<div align="center">
+  <a href="https://github.com/abhisek2004/Html-Css-Javascript-Project/network/members">
+    <img src="https://reporoster.com/forks/abhisek2004/Html-Css-Javascript-Project?type=svg&limit=100&names=false" alt="Forkers" />
+  </a>
+</div>
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%"> 
 
 ---
 
