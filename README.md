@@ -15,6 +15,8 @@ Greetings, digital nomad! 🚀 You've docked at the central nexus of my interste
 
 ![Futuristic Web Grid](https://www.militarytimes.com/resizer/v2/TIQ4YOM3BJHL3KLKJ42TYPUJVI.jpg?auth=8477177268eafea311598f4f41213d3a7968672d1152110ea6645432fdd7d362&width=4500&height=3000) *(Visualize a neon-lit cyber-grid: circuits weaving through cosmic voids.)*
 
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
 ## 🔭 **Stellar Payload: What's Aboard the Odyssey**
 
 - **Hyperspace Interfaces** 🤖: Nano-scale landing bays to colossal app ecosystems—seamless portals that bend to user will.  
@@ -22,6 +24,8 @@ Greetings, digital nomad! 🚀 You've docked at the central nexus of my interste
 - **Plasma Dynamics** ⚡: JavaScript reactors igniting interactivity—morphing animations, predictive validations, and emergent behaviors.  
 
 Dive deeper: Every project is a self-contained module, battle-tested for cross-dimensional compatibility (desktop, mobile, beyond). Expect dark-mode toggles, micro-interactions, and accessibility shields as standard gear.
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ## 💫 **Galactic Project Archive: 53+ Quantum Leaps Unlocked**  
 
@@ -86,13 +90,15 @@ These are the beacons I've ignited so far—each a fusion of creativity and code
 
 *Expansion Log: Variants denote iterative evolutions (e.g., color themes, feature forks). Total unique blueprints: 200+. Hyperlinks to folders: Navigate via repo tree for live deploys.*
 
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
 ## 🌌 **Why Launch 1000+ Quantum Projects? The Prime Directive**
 
 - **Neural Skill Forging** 🧠: Iterative code-fusion accelerates mastery—each project a synaptic leap in techniques from vanilla JS to DOM domination.  
 - **Portfolio Nebula** 📈: A sprawling constellation to captivate recruiters, collaborators, and AI scouts in the job singularity.  
 - **Cosmic Echo Chamber** 🌍: Broadcasting blueprints to ignite fellow devs—open-source as the ultimate warp drive for collective ascent.  
 
-*By 2027: Full immersion in React, Node, and beyond? Stay tuned for phase 2 warp.*
+*By 2026: Full immersion in React, Node, and beyond? Stay tuned for phase 2 warp.*
 
 ## 🔧 **Core Propulsion Systems: Tech Stack**
 
@@ -129,6 +135,8 @@ These are the beacons I've ignited so far—each a fusion of creativity and code
 
 *Beta Feature: AI-assisted project generator (conceptual—fork to contribute!).*
 
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
 ## 🌈 **Nexus Overview: The Grand Vision**
 
 This holodeck aggregates my web dev quanta: 53+ modules blending artistry and algorithms. From humble clocks ticking in 3D voids to e-commerce black holes devouring carts, each piece is a creativity engine. Users? Expect delight—seamless, performant, and endlessly tweakable. Fork it, remix it, launch your own odyssey!  
@@ -148,9 +156,13 @@ Warp in and amplify the signal! Devs, designers, testers—your quanta welcome.
 
 *Guidelines: Keep it vanilla HTML/CSS/JS. Add to the archive? Update the table. Feedback? Issues tab awaits.*
 
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
 ## 📜 **Quantum License**
 
 MIT License—free as the void. Warp, remix, distribute. See [LICENSE](LICENSE) for the fine print.  
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
 ## ❤️ **Crew Manifest: Our Stellar Contributors**
 
@@ -190,3 +202,7 @@ Thank you for fueling the engines!
 **Transmission End. Next Update: Q1 2026 – 100+ Modules Live.**  
 *Follow @abhisek2004 on X for live deploys. Code the cosmos! 🌟*  
 © 2025 Abhisek's Odyssey – Powered by GitHub's Infinite Grid.
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
