@@ -27,13 +27,145 @@ Dive deeper: Every project is a self-contained module, battle-tested for cross-d
 
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
-## 💫 **Galactic Project Archive: 53+ Quantum Leaps Unlocked**  
+## 💫 **Galactic Project Archive: 900+ Quantum Leaps Unlocked**  
 
-*Status: Active Expansion. Current Manifest: 53 Core Modules + Variants (Total Artifacts: 200+).*  
+*Status: Active Expansion. Current Manifest: 900+ Core Modules + Variants (Total Artifacts: 1000+).*  
 These are the beacons I've ignited so far—each a fusion of creativity and code, hyperlinked to their source folders for instant deployment. I've amplified the archive with full-spectrum details: brief mission logs, key tech vectors, and innovation sparks. More incoming via automated commits!  
 
-| #  | **Project Module**                  | **Variants** | **Mission Log**                                                                 | **Tech Vectors**              | **Innovation Spark**                  |
-|----|-------------------------------------|--------------|---------------------------------------------------------------------------------|-------------------------------|---------------------------------------|
+### 🌌 **DAY 01 TO 20**
+| # | Project Name | Tech Stack | Description |
+|---|-------------|------------|-------------|
+| 1 | Analog Clock | HTML, CSS, JS | Interactive clock with real-time movement |
+| 2 | Calculator Project | HTML, CSS, JS | Functional calculator with arithmetic operations |
+| 3 | Portfolio Abhisek | HTML, CSS, JS | Personal portfolio showcasing skills and projects |
+| 4 | Responsive Card Components | HTML, CSS | Adaptive card designs for various screen sizes |
+| 5 | Simple Webpage | HTML, CSS | Basic webpage layout with essential elements |
+| 6 | Different Pulse Effects | CSS, JS | Collection of 10 loading pulse animations |
+| 7 | Different Spinners | CSS | Various spinner loading animations |
+| 8 | Basic Form with Single Input | HTML, CSS, JS | Form validation with user input |
+| 9 | Big Bazar | HTML, CSS, JS | E-commerce website template |
+| 10 | Drawing App | HTML, Canvas, JS | Interactive drawing application |
+| 11 | Photo Gallery | HTML, CSS, JS | Image gallery with lightbox functionality |
+| 12 | Responsive Design | HTML, CSS | Webpage optimized for multiple devices |
+| 13 | Navigation | HTML, CSS, JS | Various navigation menu styles |
+| 14 | Product Landing Page | HTML, CSS, JS | Showcase page for product marketing |
+| 15 | QR Code Generator | HTML, CSS, JS | Tool to generate QR codes from text input |
+| 16 | 3D Flipping Text | CSS, JS | Text with 3D flip animations |
+| 17 | 3D Navigation Menu | CSS, JS | Navigation with 3D transition effects |
+| 18 | 3D Card With Hover | CSS | Interactive cards with 3D hover effects |
+| 19 | Basic Button Color Change | CSS, JS | Button with color transition effects |
+| 20 | Dot Liquid Loader | CSS | Animated loading indicator with liquid effect |
+
+### 🌌 **DAY 21 TO 40**
+| # | Project Name | Tech Stack | Description |
+|---|-------------|------------|-------------|
+| 21 | Different Pulse Effects | CSS | 10 unique pulse animations for UI elements |
+| 22 | Different Spinner | CSS | 10 spinner loading animations |
+| 23 | Navigation Menu | HTML, CSS | 4 styles of navigation menus |
+| 24 | Temperature Converter | HTML, CSS, JS | Tool to convert between temperature units |
+| 25 | Weather Website | HTML, CSS, JS | Weather forecast application |
+| 26 | 403 Landing Page | HTML, CSS | Custom 403 error page |
+| 27 | 404 Page | HTML, CSS | Creative 404 error page design |
+| 28 | Alert Box | HTML, CSS, JS | 5 styles of alert notifications |
+| 29 | Blog Website | HTML, CSS | Template for blog content |
+| 30 | Food Recipes | HTML, CSS, JS | Recipe collection and display |
+| 31 | Tic Tac Toe Game | HTML, CSS, JS | Interactive game with win detection |
+| 32 | Basic Calculator | HTML, CSS, JS | Simple arithmetic calculator |
+| 33 | Microsoft Landing Page | HTML, CSS | Clone of Microsoft's homepage |
+| 34 | Task Manager | HTML, CSS, JS | Application to manage and track tasks |
+| 35 | To-do List | HTML, CSS, JS | Task list with add/remove functionality |
+| 36 | Portfolio | HTML, CSS, JS | Advanced portfolio design |
+| 37 | Dot Navigation | CSS, JS | 9-dot navigation interface |
+| 38 | Dots Navigation Updated | CSS, JS | Enhanced version of dot navigation |
+| 39 | Abhisek Portfolio | HTML, CSS, JS | Comprehensive personal portfolio |
+| 40 | Age Calculator | HTML, CSS, JS | Tool to calculate age from birthdate |
+
+### 🌌 **DAY 41 TO 60**
+| # | Project Name | Tech Stack | Description |
+|---|-------------|------------|-------------|
+| 41 | Button | HTML, CSS | Various button designs and effects |
+| 42 | Calculator | HTML, CSS, JS | Advanced calculator with scientific functions |
+
+### 🌌 **DAY 61 TO 80**
+| # | Project Name | Tech Stack | Description |
+|---|-------------|------------|-------------|
+| 61 | Clock | HTML, CSS, JS | Digital clock with custom styling |
+
+### 🌌 **DAY 81 TO 100**
+| # | Project Name | Tech Stack | Description |
+|---|-------------|------------|-------------|
+| 81+ | Various Mini Projects | HTML, CSS, JS | Collection of small web components |
+
+### 🌌 **DAY 101 TO 120**
+| # | Project Name | Tech Stack | Description |
+|---|-------------|------------|-------------|
+| 101 | Mini Calendar | HTML, CSS, JS | Compact calendar widget |
+| 102 | Modern Brightness | CSS, JS | Brightness control interface |
+| 103 | Hulu Clone | HTML, CSS | Recreation of Hulu streaming platform |
+| 104 | Image Search App | HTML, CSS, JS | Application to search and display images |
+| 105 | Iconic Tab Bar | HTML, CSS | Stylish tabbed navigation |
+| 106 | Image Slider | HTML, CSS, JS | Carousel for image presentation |
+| 107 | Food Web | HTML, CSS | Food delivery website template |
+| 108 | Heart Trail Animation | CSS, JS | Interactive heart animation effects |
+| 109 | Key Sequence Detection | JS | Tool to detect specific key combinations |
+| 110 | Loading Bar | CSS, JS | Progress indicator with animations |
+| 111 | E-Commerce Web | HTML, CSS, JS | Full e-commerce website template |
+| 112 | Hospital Website | HTML, CSS | Medical facility website design |
+| 113 | Month Calendar | HTML, CSS, JS | Monthly calendar with event support |
+| 114 | Mouse Event | JS | Interactive mouse event demonstrations |
+| 115 | Random Photos | HTML, CSS, JS | Gallery with random image display |
+| 116 | Real-time Character Counter | HTML, CSS, JS | Tool to count characters as typed |
+| 117 | Food Website | HTML, CSS | Restaurant website template |
+| 118 | Food Website Main | HTML, CSS | Enhanced food service website |
+| 119 | Password Generator | HTML, CSS, JS | Tool to create secure passwords |
+| 120 | Password Generator (Alternative) | HTML, CSS, JS | Different approach to password generation |
+
+### 🌌 **DAY 121 TO 900**
+| Category | Project Types | Count |
+|----------|--------------|-------|
+| UI Components | Loaders, Buttons, Navigation, Cards | 200+ |
+| Web Applications | Weather Apps, Calculators, Note Apps, Timers | 150+ |
+| Games | Tic-tac-toe, Memory Games, Dice Games | 50+ |
+| Clones | Netflix, Microsoft, KFC, SpaceX | 30+ |
+| Animations | 3D Effects, Transitions, Particle Systems | 100+ |
+| Forms | Login, Registration, Feedback, Surveys | 80+ |
+| E-commerce | Product Pages, Shopping Carts, Checkouts | 40+ |
+| Utilities | Password Generators, QR Code Generators, Translators | 60+ |
+| Portfolios | Personal Showcases, Project Galleries | 20+ |
+| Miscellaneous | Holiday Themes, Special Effects, Experimental | 170+ |
+
+## 📚 **Resource Library**
+The repository also includes a comprehensive Cheatsheet directory with valuable references:
+- HTML Cheatsheets
+- CSS Cheatsheets
+- JavaScript Notes for Professionals
+- Git Cheat Sheet
+- React Cheatsheet
+- MongoDB Cheatsheet
+- Express Cheatsheet
+- VS Code Cheat Sheet
+- API Cheatsheet
+- Chrome Extension Development Guide
+
+## 🔮 **Journey Progress**
+
+This repository represents my ongoing journey in web development, with projects ranging from simple components to complex applications. Each project demonstrates different skills and techniques in HTML, CSS, and JavaScript.
+
+## 🚀 **How to Use This Repository**
+
+1. Browse through the day-wise folders to explore different projects
+2. Each project contains its own HTML, CSS, and JavaScript files
+3. Open the HTML file in your browser to see the project in action
+4. Study the code to understand the implementation details
+5. Use these projects as inspiration for your own web development journey
+
+## 🌟 **Connect With Me**
+
+Feel free to connect with me for collaboration or feedback on these projects. Together, we can push the boundaries of web development!
+
+---
+
+*This README is regularly updated as new projects are added to the repository.*
 | 1  | Analog Clock                       | 1           | Timeless chrono-simulator with sweeping hands and glow pulses.                  | HTML, CSS Animations         | Retro-futuristic tick: Real-time shadow mapping. |
 | 2  | Calculator Project                 | 1           | Precision arithmetic engine for everyday computations.                         | HTML Forms, JS Logic         | Haptic feedback on taps—feels alive! |
 | 3  | Portfolio Abhisek                  | 2           | Personal star-map showcasing skills in a dynamic grid.                          | HTML Grid, CSS Flexbox, JS   | Auto-scrolling timeline of evolutions. |
