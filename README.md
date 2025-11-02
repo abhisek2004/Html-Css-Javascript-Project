@@ -321,6 +321,8 @@ Thank you for fueling the engines!
 
 ![Contributors](https://contrib.rocks/image?repo=abhisek2004/Html-Css-Javascript-Project)
 
+![Alt](https://repobeats.axiom.co/api/embed/a14d068f1a30be057554c2e78c9b26ace23fe46a.svg "Repobeats analytics image")
+
 ---
 
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
