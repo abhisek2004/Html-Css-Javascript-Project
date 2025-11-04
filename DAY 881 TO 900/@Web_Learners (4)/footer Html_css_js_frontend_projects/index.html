@@ -1,52 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
-</head>
-<body>
-    
-    <div id="bubble-wrapper">
-  
-    </div>
-    
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>abhisek2004 • Neon Void</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+      :root {
+        --bg: #0a0a1a;
+        --card: rgba(15, 15, 35, 0.8);
+        --cyan: #00f2ff;
+        --magenta: #ff00aa;
+        --text: #e0e0ff;
+        --glow: 0 0 30px rgba(0, 242, 255, 0.6), 0 0 60px rgba(0, 242, 255, 0.3);
+        --glow-magenta: 0 0 30px rgba(255, 0, 170, 0.6);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        background: var(--bg);
+        font-family: 'Space Grotesk', sans-serif;
+        color: var(--text);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        position: relative;
+      }
+
+      /* Floating Bubbles */
+      #bubble-wrapper {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .bubble {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, rgba(0, 242, 255, 0.4), transparent 70%);
+        box-shadow: var(--glow);
+        opacity: 0.6;
+        animation: rise 10s linear infinite, sway 3s ease-in-out infinite alternate;
+        pointer-events: auto;
+      }
+
+      .bubble.magenta {
+        background: radial-gradient(circle at 30% 30%, rgba(255, 0, 170, 0.4), transparent 70%);
+        box-shadow: var(--glow-magenta);
+      }
+
+      .bubble:hover {
+        transform: scale(1.4);
+        opacity: 0.9;
+      }
+
+      @keyframes rise {
+        from {
+          transform: translateY(110vh);
+        }
+
+        to {
+          transform: translateY(-100px);
+        }
+      }
+
+      @keyframes sway {
+        from {
+          transform: translateX(-20px);
+        }
+
+        to {
+          transform: translateX(20px);
+        }
+      }
+
+      /* Footer */
+      #footer {
+        position: relative;
+        z-index: 2;
+        background: var(--card);
+        backdrop-filter: blur(25px);
+        border-top: 1px solid rgba(0, 242, 255, 0.3);
+        padding: 60px 30px 40px;
+        box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.7);
+      }
+
+      #footer-content {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 50px;
+      }
+
+      .footer-section {
+        transition: transform 0.4s ease;
+      }
+
+      .footer-section:hover {
+        transform: translateY(-10px);
+      }
+
+      .footer-section-title {
+        font-size: 1.7rem;
+        font-weight: 900;
+        color: var(--cyan);
+        text-shadow: var(--glow);
+        margin-bottom: 25px;
+        position: relative;
+      }
+
+      .footer-section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--cyan), var(--magenta));
+        transition: width 0.5s ease;
+      }
+
+      .footer-section:hover .footer-section-title::after {
+        width: 100%;
+      }
+
+      .footer-section-links a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--text);
+        text-decoration: none;
+        font-size: 1.15rem;
+        padding: 10px 0;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .footer-section-links a i {
+        font-size: 1.3rem;
+        opacity: 0.8;
+        transition: all 0.3s ease;
+      }
+
+      .footer-section-links a::before {
+        content: '';
+        position: absolute;
+        left: -20px;
+        top: 50%;
+        width: 8px;
+        height: 8px;
+        background: var(--magenta);
+        border-radius: 50%;
+        opacity: 0;
+        transform: translateY(-50%);
+        transition: all 0.3s ease;
+      }
+
+      .footer-section-links a:hover {
+        color: var(--magenta);
+        text-shadow: var(--glow-magenta);
+        transform: translateX(10px);
+      }
+
+      .footer-section-links a:hover i {
+        color: var(--cyan);
+        transform: scale(1.3);
+      }
+
+      .footer-section-links a:hover::before {
+        opacity: 1;
+        left: -10px;
+      }
+
+      /* Your Brand Button */
+      #brand-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 10;
+        background: linear-gradient(135deg, rgba(0, 242, 255, 0.2), rgba(255, 0, 170, 0.2));
+        backdrop-filter: blur(15px);
+        padding: 16px 32px;
+        border-radius: 50px;
+        border: 2px solid var(--cyan);
+        color: var(--text);
+        font-weight: 700;
+        font-size: 1.2rem;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        box-shadow: var(--glow);
+        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        overflow: hidden;
+      }
+
+      #brand-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, var(--cyan), var(--magenta), var(--cyan));
+        background-size: 300%;
+        z-index: -1;
+        animation: flow 6s ease infinite;
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
+
+      #brand-btn:hover::before {
+        opacity: 1;
+      }
+
+      #brand-btn:hover {
+        transform: translateY(-12px) scale(1.08);
+        box-shadow: 0 20px 40px rgba(0, 242, 255, 0.5);
+        color: #000;
+      }
+
+      #brand-btn i {
+        font-size: 1.8rem;
+        background: linear-gradient(45deg, var(--cyan), var(--magenta));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      @keyframes flow {
+
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      @media (max-width: 600px) {
+        #footer-content {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        #brand-btn {
+          bottom: 20px;
+          right: 20px;
+          padding: 12px 24px;
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Floating Bubbles -->
+    <div id="bubble-wrapper"></div>
+
+    <!-- Your Personal Footer -->
     <footer id="footer">
       <div id="footer-content">
         <div class="footer-section">
-          <h3 class="footer-section-title">General</h3>
+          <h3 class="footer-section-title">abhisek2004</h3>
           <div class="footer-section-links">
-            <a href="https://www.youtube.com/c/Hyperplexed" target="_blank">Directory</a>
-            <a href="https://www.youtube.com/c/Hyperplexed" target="_blank">About</a>
-            <a href="https://www.youtube.com/c/Hyperplexed" target="_blank">Contact Us</a>
+            <a href="https://github.com/abhisek2004" target="_blank">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://github.com/abhisek2004" target="_blank">
+              <i class="fas fa-code"></i> Projects
+            </a>
+            <a href="https://github.com/abhisek2004" target="_blank">
+              <i class="fas fa-user"></i> Profile
+            </a>
           </div>
         </div>
         <div class="footer-section">
-          <h3 class="footer-section-title">Social</h3>
+          <h3 class="footer-section-title">Connect</h3>
           <div class="footer-section-links">
-            <a href="https://www.youtube.com/c/Hyperplexed" target="_blank">Twitter</a>
-            <a href="https://www.youtube.com/c/Hyperplexed" target="_blank">CodePen</a>
-            <a href="https://www.youtube.com/c/Hyperplexed" target="_blank">YouTube</a>
+            <a href="mailto:abhisek@example.com">
+              <i class="fas fa-envelope"></i> Email Me
+            </a>
+            <a href="https://linkedin.com/in/abhisek2004" target="_blank">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://twitter.com/abhisek2004" target="_blank">
+              <i class="fab fa-twitter"></i> Twitter
+            </a>
           </div>
         </div>
         <div class="footer-section">
-          <h3 class="footer-section-title">Legal</h3>
+          <h3 class="footer-section-title">Explore</h3>
           <div class="footer-section-links">
-            <a href="https://www.youtube.com/c/Hyperplexed" target="_blank">Privacy</a>
-            <a href="https://www.youtube.com/c/Hyperplexed" target="_blank">Terms</a>
-            <a href="https://www.youtube.com/c/Hyperplexed" target="_blank">Cookies</a>
+            <a href="https://abhisek2004.bio.link" target="_blank">
+              <i class="fas fa-link"></i> All Links
+            </a>
+            <a href="https://github.com/abhisek2004/resume" target="_blank">
+              <i class="fas fa-file-pdf"></i> Resume
+            </a>
+            <a href="https://github.com/abhisek2004" target="_blank">
+              <i class="fas fa-star"></i> Star Me
+            </a>
           </div>
         </div>
       </div>
     </footer>
-    
-    <a id="yt-link" class="meta-link" href="https://youtube.com/shorts/VTw2cUVFl1c" target="_blank">
-      <i class="fa-brands fa-youtube"></i>
-      <span>60s Tutorial</span>
+
+    <!-- Your Floating Brand Button -->
+    <a id="brand-btn" href="https://github.com/abhisek2004" target="_blank">
+      <i class="fab fa-github"></i>
+      <span>abhisek2004</span>
     </a>
 
-    <script src="./app.js"></script>
-</body>
+    <script>
+      const wrapper = document.getElementById('bubble-wrapper');
+
+      function createBubble() {
+        const b = document.createElement('div');
+        b.className = 'bubble';
+        const size = Math.random() * 80 + 40;
+        b.style.width = b.style.height = size + 'px';
+        b.style.left = Math.random() * 100 + 'vw';
+        b.style.animationDuration = (Math.random() * 8 + 8) + 's';
+        b.style.animationDelay = Math.random() * 5 + 's';
+        if (Math.random() > 0.5) b.classList.add('magenta');
+        wrapper.appendChild(b);
+        setTimeout(() => b.remove(), 18000);
+      }
+
+      // Generate bubbles
+      setInterval(createBubble, 350);
+      for (let i = 0; i < 20; i++) setTimeout(createBubble, i * 200);
+    </script>
+  </body>
+
 </html>
