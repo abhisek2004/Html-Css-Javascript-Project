@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>abhisek2004 • BIO SCAN</title>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+        <style>
+            :root {
+                --bg: #0a0a1a;
+                --neon-cyan: #00f2ff;
+                --neon-magenta: #ff00aa;
+                --glow-cyan: 0 0 40px #00f2ff, 0 0 80px #00f2ff;
+                --glow-magenta: 0 0 40px #ff00aa, 0 0 80px #ff00aa;
+                --text: #e0e0ff;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                min-height: 100vh;
+                background: var(--bg);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                font-family: 'Orbitron', sans-serif;
+                perspective: 1000px;
+                background: radial-gradient(circle at center, #16213e 0%, var(--bg) 100%);
+            }
+
+            /* Particles Background */
+            .particle {
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: var(--neon-cyan);
+                border-radius: 50%;
+                box-shadow: var(--glow-cyan);
+                opacity: 0;
+                animation: float 10s linear infinite;
+                pointer-events: none;
+            }
+
+            @keyframes float {
+                0% {
+                    transform: translateY(100vh) scale(0);
+                    opacity: 0;
+                }
+
+                10% {
+                    opacity: 0.8;
+                }
+
+                90% {
+                    opacity: 0.8;
+                }
+
+                100% {
+                    transform: translateY(-100px) scale(1);
+                    opacity: 0;
+                }
+            }
+
+            /* Scanner Container */
+            .scan {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                z-index: 10;
+            }
+
+            .hand {
+                position: relative;
+                width: 420px;
+                height: 520px;
+                background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 520"><path fill="%232d2d44" d="M210 0c-50 0-90 40-90 90v50c0 30 20 55 45 65-10 15-15 35-15 55 0 40 30 75 70 85v50c0 40 30 70 70 70s70-30 70-70v-50c40-10 70-45 70-85 0-20-5-40-15-55 25-10 45-35 45-65v-50c0-50-40-90-90-90H210z"/></svg>') center/cover;
+                border-radius: 60px;
+                overflow: hidden;
+                box-shadow:
+                    0 0 80px rgba(0, 242, 255, 0.4),
+                    inset 0 0 60px rgba(0, 0, 0, 0.8);
+                transform-style: preserve-3d;
+                animation: floatHand 8s ease-in-out infinite;
+            }
+
+            @keyframes floatHand {
+
+                0%,
+                100% {
+                    transform: translateY(0) rotateX(0);
+                }
+
+                50% {
+                    transform: translateY(-20px) rotateX(5deg);
+                }
+            }
+
+            /* Scanning Beam */
+            .hand::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(transparent, var(--neon-cyan), transparent);
+                opacity: 0.3;
+                animation: scanGlow 4s ease-in-out infinite;
+            }
+
+            @keyframes scanGlow {
+
+                0%,
+                100% {
+                    transform: translateY(-100%);
+                }
+
+                50% {
+                    transform: translateY(100%);
+                }
+            }
+
+            .hand::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 12px;
+                background: var(--neon-cyan);
+                border-radius: 12px;
+                box-shadow: var(--glow-cyan);
+                animation: scanLine 4s ease-in-out infinite;
+                filter: blur(2px);
+            }
+
+            @keyframes scanLine {
+
+                0%,
+                100% {
+                    top: -10%;
+                }
+
+                50% {
+                    top: 100%;
+                }
+            }
+
+            /* Grid Overlay */
+            .grid {
+                position: absolute;
+                inset: 0;
+                background:
+                    repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(0, 242, 255, 0.1) 20px, rgba(0, 242, 255, 0.1) 40px),
+                    repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(0, 242, 255, 0.1) 20px, rgba(0, 242, 255, 0.1) 40px);
+                opacity: 0.3;
+                animation: pulseGrid 4s ease-in-out infinite;
+            }
+
+            @keyframes pulseGrid {
+
+                0%,
+                100% {
+                    opacity: 0.2;
+                }
+
+                50% {
+                    opacity: 0.5;
+                }
+            }
+
+            /* Fingerprint Points */
+            .points {
+                position: absolute;
+                inset: 0;
+                background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 520"><circle cx="120" cy="180" r="8" fill="%2300f2ff"/><circle cx="210" cy="120" r="10" fill="%23ff00aa"/><circle cx="300" cy="200" r="7" fill="%2300f2ff"/><circle cx="150" cy="320" r="9" fill="%23ff00aa"/><circle cx="270" cy="380" r="8" fill="%2300f2ff"/></svg>');
+                background-size: 420px;
+                opacity: 0;
+                animation: revealPoints 4s ease-in-out infinite;
+            }
+
+            @keyframes revealPoints {
+
+                0%,
+                40% {
+                    opacity: 0;
+                }
+
+                50%,
+                60% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0;
+                }
+            }
+
+            /* Title */
+            .scan h3 {
+                margin-top: 40px;
+                font-size: 2.4rem;
+                font-weight: 900;
+                letter-spacing: 6px;
+                text-transform: uppercase;
+                background: linear-gradient(45deg, var(--neon-cyan), var(--neon-magenta));
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-shadow: var(--glow-cyan);
+                animation: flicker 0.8s steps(1) infinite;
+            }
+
+            @keyframes flicker {
+
+                0%,
+                100% {
+                    opacity: 0.9;
+                }
+
+                50% {
+                    opacity: 1;
+                }
+            }
+
+            /* Status Bar */
+            .status {
+                margin-top: 20px;
+                padding: 12px 40px;
+                background: rgba(0, 242, 255, 0.1);
+                border: 2px solid var(--neon-cyan);
+                border-radius: 50px;
+                color: var(--neon-cyan);
+                font-size: 1.1rem;
+                font-weight: 700;
+                letter-spacing: 2px;
+                box-shadow: var(--glow-cyan);
+                animation: statusPulse 2s ease-in-out infinite;
+            }
+
+            @keyframes statusPulse {
+
+                0%,
+                100% {
+                    box-shadow: var(--glow-cyan);
+                }
+
+                50% {
+                    box-shadow: 0 0 60px #00f2ff, 0 0 100px #00f2ff;
+                }
+            }
+
+            /* Your Brand */
+            .brand {
+                position: absolute;
+                top: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 1.6rem;
+                font-weight: 900;
+                background: linear-gradient(45deg, var(--neon-cyan), var(--neon-magenta));
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-shadow: var(--glow-cyan);
+                letter-spacing: 4px;
+                z-index: 20;
+            }
+
+            /* Success Animation */
+            .success {
+                position: absolute;
+                inset: 0;
+                background: rgba(0, 255, 136, 0.2);
+                backdrop-filter: blur(10px);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 1s ease;
+            }
+
+            .success.show {
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .success h2 {
+                font-size: 3rem;
+                color: #00ff88;
+                text-shadow: 0 0 40px #00ff88;
+                margin-bottom: 20px;
+            }
+
+            .success p {
+                font-size: 1.4rem;
+                color: #e0e0ff;
+            }
+
+            /* Responsive */
+            @media (max-width: 480px) {
+                .hand {
+                    width: 320px;
+                    height: 400px;
+                }
+
+                .scan h3 {
+                    font-size: 1.8rem;
+                }
+
+                .status {
+                    font-size: 1rem;
+                    padding: 10px 30px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Floating Particles -->
+        <div id="particles"></div>
+
+        <!-- Your Brand -->
+        <div class="brand">abhisek2004</div>
+
+        <!-- BIO SCAN -->
+        <div class="scan">
+            <div class="hand">
+                <div class="grid"></div>
+                <div class="points"></div>
+            </div>
+            <h3>Bio Print Scanning</h3>
+            <div class="status">INITIALIZING...</div>
+        </div>
+
+        <!-- Success Screen -->
+        <div class="success" id="success">
+            <h2>ACCESS GRANTED</h2>
+            <p>Welcome back, <strong>abhisek2004</strong></p>
+        </div>
+
+        <script>
+            const status = document.querySelector('.status');
+            const successScreen = document.getElementById('success');
+            const particlesContainer = document.getElementById('particles');
+
+            const messages = [
+                "INITIALIZING...",
+                "SCANNING PRINT...",
+                "ANALYZING RIDGES...",
+                "MATCHING DATABASE...",
+                "VERIFIED!"
+            ];
+
+            let msgIndex = 0;
+            let scanCount = 0;
+
+            function updateStatus() {
+                status.textContent = messages[msgIndex];
+                msgIndex = (msgIndex + 1) % messages.length;
+            }
+
+            function createParticle() {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.animationDelay = Math.random() * 8 + 's';
+                p.style.animationDuration = (8 + Math.random() * 6) + 's';
+                particlesContainer.appendChild(p);
+                setTimeout(() => p.remove(), 16000);
+            }
+
+            // Start scanning
+            setInterval(updateStatus, 800);
+            setInterval(createParticle, 300);
+            for (let i = 0; i < 15; i++) createParticle();
+
+            // Auto success after 3 scans
+            setInterval(() => {
+                scanCount++;
+                if (scanCount >= 3) {
+                    successScreen.classList.add('show');
+                    status.textContent = "ACCESS GRANTED";
+                    setTimeout(() => {
+                        document.querySelector('.hand').style.boxShadow = "0 0 100px #00ff88, inset 0 0 80px rgba(0, 255, 136, 0.3)";
+                    }, 500);
+                }
+            }, 4000);
+        </script>
+    </body>
+
+</html>
