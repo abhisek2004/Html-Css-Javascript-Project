@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>abhisek2004 • COSMIC GALLERY</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a1a;
+      --card: rgba(15,15,35,0.9);
+      --cyan: #00f2ff;
+      --magenta: #ff00aa;
+      --glow: 0 0 60px #00f2ff, 0 0 120px #00f2ff;
+      --text: #e0e0ff;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; user-select:none; }
+    body {
+      min-height:100vh;
+      background:var(--bg);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
+      font-family:'Orbitron',sans-serif;
+      perspective:2000px;
+      background:radial-gradient(circle at center,#1a1a2e 0%,var(--bg) 100%);
+    }
+
+    /* Stars */
+    .star {
+      position:absolute;
+      background:#fff;
+      border-radius:50%;
+      animation:twinkle 6s infinite;
+    }
+    @keyframes twinkle {0%,100%{opacity:0.4}50%{opacity:1}}
+
+    /* Gallery */
+    .gallery {
+      position:relative;
+      width:900px; height:600px;
+      transform-style:preserve-3d;
+      animation:spin 120s linear infinite;
+    }
+    @keyframes spin {to{transform:rotateY(360deg)}}
+
+    .img-container {
+      position:absolute;
+      width:100%; height:100%;
+      transform-style:preserve-3d;
+    }
+
+    .box {
+      position:absolute;
+      width:400px; height:560px;
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:0 30px 80px rgba(0,0,0,0.8),0 0 100px rgba(0,242,255,0.4);
+      border:3px solid rgba(0,242,255,0.3);
+      backdrop-filter:blur(15px);
+      transition:all 1s cubic-bezier(0.23,1,0.32,1);
+      transform-style:preserve-3d;
+    }
+    .box img {
+      width:100%; height:100%;
+      object-fit:cover;
+      transition:transform 0.8s ease;
+    }
+    .box:hover img {transform:scale(1.1);}
+    .box::before {
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,rgba(0,242,255,0.2),rgba(255,0,170,0.2));
+      opacity:0;
+      transition:opacity 0.6s;
+      z-index:1;
+    }
+    .box:hover::before {opacity:1;}
+
+    /* Planet Positions */
+    .box:nth-child(1) {transform:translateZ(-600px) rotateY(0deg)   translateX(-200px);}
+    .box:nth-child(2) {transform:translateZ(-400px) rotateY(45deg)  translateX(-100px);}
+    .box:nth-child(3) {transform:translateZ(-200px) rotateY(90deg)  translateX(0);}
+    .box:nth-child(4) {transform:translateZ(0)     rotateY(135deg) translateX(100px);}
+    .box:nth-child(5) {transform:translateZ(-400px) rotateY(180deg) translateX(200px);}
+    .box:nth-child(6) {transform:translateZ(-600px) rotateY(225deg) translateX(300px); opacity:0.7;}
+
+    /* Planet Labels */
+    .label {
+      position:absolute;
+      bottom:-50px; left:50%;
+      transform:translateX(-50%);
+      color:var(--cyan);
+      font-size:1.4rem;
+      font-weight:900;
+      text-shadow:var(--glow);
+      letter-spacing:2px;
+      white-space:nowrap;
+    }
+
+    /* Brand */
+    .brand {
+      position:fixed;
+      bottom:30px; left:50%;
+      transform:translateX(-50%);
+      font-size:2rem;
+      font-weight:900;
+      background:linear-gradient(45deg,var(--cyan),var(--magenta));
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+      text-shadow:var(--glow);
+      z-index:10;
+    }
+
+    /* Controls */
+    .controls {
+      position:fixed;
+      top:30px; left:50%;
+      transform:translateX(-50%);
+      display:flex;
+      gap:20px;
+      z-index:10;
+    }
+    .ctrl-btn {
+      padding:12px 30px;
+      background:rgba(0,242,255,0.2);
+      border:2px solid var(--cyan);
+      border-radius:50px;
+      color:var(--cyan);
+      font-weight:700;
+      cursor:pointer;
+      backdrop-filter:blur(10px);
+      transition:0.4s;
+    }
+    .ctrl-btn:hover {
+      background:var(--cyan);
+      color:#000;
+      box-shadow:var(--glow);
+    }
+
+    @media (max-width:950px) {
+      .gallery{width:90vw;height:70vh;}
+      .box{width:300px;height:420px;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Stars -->
+  <script>
+    for(let i=0;i<250;i++){
+      const s=document.createElement('div');
+      s.className='star';
+      s.style.width=s.style.height=Math.random()*3+'px';
+      s.style.left=Math.random()*100+'vw';
+      s.style.top=Math.random()*100+'vh';
+      s.style.animationDelay=Math.random()*6+'s';
+      document.body.appendChild(s);
+    }
+  </script>
+
+  <!-- Gallery -->
+  <div class="gallery">
+    <div class="img-container">
+      <div class="box">
+        <img src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?w=800" alt="Mercury"/>
+        <div class="label">MERCURY</div>
+      </div>
+      <div class="box">
+        <img src="https://images.unsplash.com/photo-1614730321143-5df5f4c85a24?w=800" alt="Venus"/>
+        <div class="label">VENUS</div>
+      </div>
+      <div class="box">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800" alt="Earth"/>
+        <div class="label">EARTH</div>
+      </div>
+      <div class="box">
+        <img src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=800" alt="Mars"/>
+        <div class="label">MARS</div>
+      </div>
+      <div class="box">
+        <img src="https://images.unsplash.com/photo-1543782249-3f02e786e0f1?w=800" alt="Jupiter"/>
+        <div class="label">JUPITER</div>
+      </div>
+      <div class="box">
+        <img src="https://images.unsplash.com/photo-1614314107768-6018061b5b72?w=800" alt="Saturn"/>
+        <div class="label">SATURN</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <div class="ctrl-btn" id="play">PLAY</div>
+    <div class="ctrl-btn" id="pause">PAUSE</div>
+    <div class="ctrl-btn" id="reset">RESET</div>
+  </div>
+
+  <!-- Brand -->
+  <div class="brand">abhisek2004</div>
+
+  <script>
+    const gallery = document.querySelector('.gallery');
+    const playBtn = document.getElementById('play');
+    const pauseBtn = document.getElementById('pause');
+    const resetBtn = document.getElementById('reset');
+    let isPlaying = true;
+
+    playBtn.onclick = () => {
+      gallery.style.animationPlayState = 'running';
+      isPlaying = true;
+    };
+    pauseBtn.onclick = () => {
+      gallery.style.animationPlayState = 'paused';
+      isPlaying = false;
+    };
+    resetBtn.onclick = () => {
+      gallery.style.animation = 'none';
+      setTimeout(() => {
+        gallery.style.animation = 'spin 120s linear infinite';
+      }, 10);
+    };
+
+    // Mouse 3D Control
+    document.addEventListener('mousemove', e => {
+      if (!isPlaying) {
+        const x = (e.clientX / window.innerWidth - 0.5) * 60;
+        const y = (e.clientY / window.innerHeight - 0.5) * 60;
+        gallery.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+      }
+    });
+
+    // Auto-play on load
+    gallery.style.animationPlayState = 'running';
+  </script>
+</body>
+</html>
