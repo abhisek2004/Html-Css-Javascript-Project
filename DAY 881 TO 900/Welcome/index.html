@@ -2,355 +2,15 @@
 <html lang="en">
 
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ABHISEK_2003 • SOLAR WELCOME</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@600;800&display=swap"
-      rel="stylesheet">
-    <style>
-      :root {
-        --bg: #0a0a1a;
-        --cyan: #00f2ff;
-        --magenta: #ff00aa;
-        --purple: #9d00ff;
-        --glow: 0 0 80px #00f2ff, 0 0 160px #00f2ff;
-        --glow-m: 0 0 80px #ff00aa, 0 0 160px #ff00aa;
-        --text: #e0e0ff;
-      }
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="./style.css">
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        overflow: hidden;
-      }
-
-      body {
-        min-height: 100vh;
-        background: var(--bg);
-        font-family: 'Orbitron', sans-serif;
-        perspective: 2000px;
-        background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, var(--bg) 100%);
-      }
-
-      /* Animated Background Layers */
-      .background {
-        position: fixed;
-        inset: 0;
-        background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(0, 242, 255, 0.15), transparent 60%);
-        opacity: 0;
-        animation: fade 12s infinite;
-      }
-
-      .background0 {
-        animation-delay: 0s;
-      }
-
-      .background1 {
-        animation-delay: 1.5s;
-      }
-
-      .background2 {
-        animation-delay: 3s;
-      }
-
-      .background3 {
-        animation-delay: 4.5s;
-      }
-
-      .background4 {
-        animation-delay: 6s;
-      }
-
-      .background5 {
-        animation-delay: 7.5s;
-      }
-
-      .background6 {
-        animation-delay: 9s;
-      }
-
-      .background7 {
-        animation-delay: 10.5s;
-      }
-
-      @keyframes fade {
-
-        0%,
-        100% {
-          opacity: 0
-        }
-
-        50% {
-          opacity: 1
-        }
-      }
-
-      /* Floating Particles */
-      .particle {
-        position: fixed;
-        width: 4px;
-        height: 4px;
-        background: var(--cyan);
-        border-radius: 50%;
-        box-shadow: var(--glow);
-        animation: float 15s linear infinite;
-      }
-
-      @keyframes float {
-        0% {
-          transform: translateY(100vh) rotate(0deg);
-          opacity: 0;
-        }
-
-        10% {
-          opacity: 1;
-        }
-
-        90% {
-          opacity: 1;
-        }
-
-        100% {
-          transform: translateY(-100px) rotate(360deg);
-          opacity: 0;
-        }
-      }
-
-      /* Criterion Container */
-      .criterion {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 90vw;
-        height: 90vh;
-        max-width: 1200px;
-        max-height: 800px;
-      }
-
-      /* Text Letters */
-      .text {
-        position: absolute;
-        font-size: clamp(3rem, 10vw, 8rem);
-        font-weight: 900;
-        color: transparent;
-        -webkit-text-stroke: 2px var(--cyan);
-        text-shadow: var(--glow);
-        animation: letterGlow 8s ease-in-out infinite;
-      }
-
-      .text0 {
-        top: 10%;
-        left: 10%;
-        animation-delay: 0s;
-      }
-
-      .text1 {
-        top: 15%;
-        left: 25%;
-        animation-delay: 0.5s;
-      }
-
-      .text2 {
-        top: 20%;
-        left: 40%;
-        animation-delay: 1s;
-      }
-
-      .text3 {
-        top: 30%;
-        left: 55%;
-        animation-delay: 1.5s;
-      }
-
-      .text4 {
-        top: 45%;
-        left: 65%;
-        animation-delay: 2s;
-      }
-
-      .text5 {
-        top: 60%;
-        left: 60%;
-        animation-delay: 2.5s;
-      }
-
-      .text6 {
-        top: 70%;
-        left: 45%;
-        animation-delay: 3s;
-      }
-
-      .text7 {
-        top: 75%;
-        left: 30%;
-        animation-delay: 3.5s;
-        font-size: clamp(4rem, 12vw, 10rem);
-      }
-
-      @keyframes letterGlow {
-
-        0%,
-        100% {
-          color: transparent;
-          transform: scale(1) rotate(0deg);
-        }
-
-        50% {
-          color: var(--cyan);
-          transform: scale(1.3) rotate(5deg);
-        }
-      }
-
-      /* Neon Frames (Planets) */
-      .frame {
-        position: absolute;
-        width: 120px;
-        height: 120px;
-        border: 4px solid var(--cyan);
-        border-radius: 50%;
-        box-shadow: var(--glow);
-        animation: orbit 20s linear infinite, pulse 4s ease-in-out infinite;
-      }
-
-      .frame0 {
-        top: 15%;
-        left: 15%;
-        animation-delay: 0s;
-        border-color: var(--cyan);
-      }
-
-      .frame1 {
-        top: 20%;
-        left: 70%;
-        animation-delay: 2s;
-        border-color: var(--magenta);
-      }
-
-      .frame2 {
-        top: 60%;
-        left: 10%;
-        animation-delay: 4s;
-        border-color: var(--purple);
-      }
-
-      .frame3 {
-        top: 70%;
-        left: 80%;
-        animation-delay: 6s;
-        border-color: #00ff88;
-      }
-
-      .frame4 {
-        top: 40%;
-        left: 30%;
-        animation-delay: 8s;
-        border-color: #ffaa00;
-      }
-
-      .frame5 {
-        top: 50%;
-        left: 75%;
-        animation-delay: 10s;
-        border-color: #ff0066;
-      }
-
-      .frame6 {
-        top: 25%;
-        left: 45%;
-        animation-delay: 12s;
-        border-color: #00ffff;
-      }
-
-      .frame7 {
-        top: 65%;
-        left: 50%;
-        animation-delay: 14s;
-        border-color: #ffff00;
-      }
-
-      @keyframes orbit {
-        0% {
-          transform: translate(-50%, -50%) rotate(0deg) translateX(200px) rotate(0deg);
-        }
-
-        100% {
-          transform: translate(-50%, -50%) rotate(360deg) translateX(200px) rotate(-360deg);
-        }
-      }
-
-      @keyframes pulse {
-
-        0%,
-        100% {
-          box-shadow: var(--glow)
-        }
-
-        50% {
-          box-shadow: 0 0 120px #00f2ff, 0 0 240px #00f2ff
-        }
-      }
-
-      /* Planet Labels */
-      .frame::after {
-        content: attr(data-name);
-        position: absolute;
-        bottom: -40px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 1rem;
-        color: var(--cyan);
-        text-shadow: var(--glow);
-        white-space: nowrap;
-        font-weight: 700;
-      }
-
-      /* Brand & Time */
-      .brand {
-        position: fixed;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 2.5rem;
-        font-weight: 900;
-        background: linear-gradient(45deg, var(--cyan), var(--magenta), var(--purple));
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: var(--glow);
-        letter-spacing: 5px;
-        z-index: 10;
-      }
-
-      .time {
-        position: fixed;
-        top: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: var(--text);
-        background: rgba(0, 242, 255, 0.15);
-        padding: 10px 30px;
-        border-radius: 50px;
-        border: 2px solid var(--cyan);
-        backdrop-filter: blur(10px);
-        font-size: 1.1rem;
-        letter-spacing: 2px;
-        z-index: 10;
-      }
-
-      /* Mouse Interaction */
-      body:hover .background {
-        --x: var(--mouse-x, 50%);
-        --y: var(--mouse-y, 50%);
-      }
-    </style>
   </head>
 
   <body>
-
-    <!-- Background Layers -->
+    <!-- partial:index.partial.html -->
     <div class="background background0"></div>
     <div class="background background1"></div>
     <div class="background background2"></div>
@@ -359,59 +19,122 @@
     <div class="background background5"></div>
     <div class="background background6"></div>
     <div class="background background7"></div>
-
-    <!-- Particles -->
-    <script>
-      for (let i = 0; i < 80; i++) {
-        const p = document.createElement('div');
-        p.className = 'particle particle' + i;
-        p.style.left = Math.random() * 100 + 'vw';
-        p.style.animationDelay = Math.random() * 15 + 's';
-        p.style.animationDuration = (10 + Math.random() * 20) + 's';
-        document.body.appendChild(p);
-      }
-    </script>
-
-    <!-- Main Scene -->
     <div class="criterion">
-      <div class="text text0">S</div>
-      <div class="text text1">O</div>
-      <div class="text text2">L</div>
-      <div class="text text3">A</div>
-      <div class="text text4">R</div>
-      <div class="text text5"> </div>
-      <div class="text text6"> </div>
-      <div class="text text7">@ABHISEK_2003</div>
-
-      <!-- Planets as Frames -->
-      <div class="frame frame0" data-name="MERCURY"></div>
-      <div class="frame frame1" data-name="VENUS"></div>
-      <div class="frame frame2" data-name="EARTH"></div>
-      <div class="frame frame3" data-name="MARS"></div>
-      <div class="frame frame4" data-name="JUPITER"></div>
-      <div class="frame frame5" data-name="SATURN"></div>
-      <div class="frame frame6" data-name="URANUS"></div>
-      <div class="frame frame7" data-name="NEPTUNE"></div>
+      <div class="text text0">W</div>
+      <div class="text text1">e</div>
+      <div class="text text2">l</div>
+      <div class="text text3">c</div>
+      <div class="text text4">o</div>
+      <div class="text text5">m</div>
+      <div class="text text6">e</div>
+      <div class="text text7">: )</div>
+      <div class="frame frame0"></div>
+      <div class="frame frame1"></div>
+      <div class="frame frame2"></div>
+      <div class="frame frame3"></div>
+      <div class="frame frame4"></div>
+      <div class="frame frame5"></div>
+      <div class="frame frame6"></div>
+      <div class="frame frame7"></div>
+      <div class="particle particle00"></div>
+      <div class="particle particle01"></div>
+      <div class="particle particle02"></div>
+      <div class="particle particle03"></div>
+      <div class="particle particle04"></div>
+      <div class="particle particle05"></div>
+      <div class="particle particle06"></div>
+      <div class="particle particle07"></div>
+      <div class="particle particle08"></div>
+      <div class="particle particle09"></div>
+      <div class="particle particle010"></div>
+      <div class="particle particle011"></div>
+      <div class="particle particle10"></div>
+      <div class="particle particle11"></div>
+      <div class="particle particle12"></div>
+      <div class="particle particle13"></div>
+      <div class="particle particle14"></div>
+      <div class="particle particle15"></div>
+      <div class="particle particle16"></div>
+      <div class="particle particle17"></div>
+      <div class="particle particle18"></div>
+      <div class="particle particle19"></div>
+      <div class="particle particle110"></div>
+      <div class="particle particle111"></div>
+      <div class="particle particle20"></div>
+      <div class="particle particle21"></div>
+      <div class="particle particle22"></div>
+      <div class="particle particle23"></div>
+      <div class="particle particle24"></div>
+      <div class="particle particle25"></div>
+      <div class="particle particle26"></div>
+      <div class="particle particle27"></div>
+      <div class="particle particle28"></div>
+      <div class="particle particle29"></div>
+      <div class="particle particle210"></div>
+      <div class="particle particle211"></div>
+      <div class="particle particle30"></div>
+      <div class="particle particle31"></div>
+      <div class="particle particle32"></div>
+      <div class="particle particle33"></div>
+      <div class="particle particle34"></div>
+      <div class="particle particle35"></div>
+      <div class="particle particle36"></div>
+      <div class="particle particle37"></div>
+      <div class="particle particle38"></div>
+      <div class="particle particle39"></div>
+      <div class="particle particle310"></div>
+      <div class="particle particle311"></div>
+      <div class="particle particle40"></div>
+      <div class="particle particle41"></div>
+      <div class="particle particle42"></div>
+      <div class="particle particle43"></div>
+      <div class="particle particle44"></div>
+      <div class="particle particle45"></div>
+      <div class="particle particle46"></div>
+      <div class="particle particle47"></div>
+      <div class="particle particle48"></div>
+      <div class="particle particle49"></div>
+      <div class="particle particle410"></div>
+      <div class="particle particle411"></div>
+      <div class="particle particle50"></div>
+      <div class="particle particle51"></div>
+      <div class="particle particle52"></div>
+      <div class="particle particle53"></div>
+      <div class="particle particle54"></div>
+      <div class="particle particle55"></div>
+      <div class="particle particle56"></div>
+      <div class="particle particle57"></div>
+      <div class="particle particle58"></div>
+      <div class="particle particle59"></div>
+      <div class="particle particle510"></div>
+      <div class="particle particle511"></div>
+      <div class="particle particle60"></div>
+      <div class="particle particle61"></div>
+      <div class="particle particle62"></div>
+      <div class="particle particle63"></div>
+      <div class="particle particle64"></div>
+      <div class="particle particle65"></div>
+      <div class="particle particle66"></div>
+      <div class="particle particle67"></div>
+      <div class="particle particle68"></div>
+      <div class="particle particle69"></div>
+      <div class="particle particle610"></div>
+      <div class="particle particle611"></div>
+      <div class="particle particle70"></div>
+      <div class="particle particle71"></div>
+      <div class="particle particle72"></div>
+      <div class="particle particle73"></div>
+      <div class="particle particle74"></div>
+      <div class="particle particle75"></div>
+      <div class="particle particle76"></div>
+      <div class="particle particle77"></div>
+      <div class="particle particle78"></div>
+      <div class="particle particle79"></div>
+      <div class="particle particle710"></div>
+      <div class="particle particle711"></div>
     </div>
+    <!-- partial -->
 
-    <!-- Brand & Live Time -->
-    <div class="brand">WELCOME TO MY UNIVERSE</div>
-    <div class="time" id="time">November 10, 2025 06:29 PM IST</div>
-
-    <script>
-      // Live Clock (IST)
-      setInterval(() => {
-        const now = new Date();
-        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true, timeZone: 'Asia/Kolkata' };
-        document.getElementById('time').textContent = now.toLocaleString('en-US', options) + ' IST';
-      }, 1000);
-
-      // Mouse Follow Background
-      document.addEventListener('mousemove', e => {
-        document.body.style.setProperty('--mouse-x', (e.clientX / window.innerWidth * 100) + '%');
-        document.body.style.setProperty('--mouse-y', (e.clientY / window.innerHeight * 100) + '%');
-      });
-    </script>
   </body>
 
 </html>
