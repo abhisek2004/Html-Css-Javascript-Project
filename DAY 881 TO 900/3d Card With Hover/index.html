@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Hero Cards | Neon Realm</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;500&display=swap"
+      rel="stylesheet">
+    <style>
+      /* Reset & Base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+        background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+        position: relative;
+        color: #fff;
+      }
+
+      /* Animated Nebula Background */
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+          radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+        animation: nebulaShift 20s ease-in-out infinite;
+        z-index: -2;
+      }
+
+      @keyframes nebulaShift {
+
+        0%,
+        100% {
+          transform: scale(1) rotate(0deg);
+          opacity: 0.8;
+        }
+
+        50% {
+          transform: scale(1.1) rotate(180deg);
+          opacity: 1;
+        }
+      }
+
+      /* Floating Particles */
+      .particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: linear-gradient(45deg, #00f5ff, #ff00ff);
+        border-radius: 50%;
+        animation: drift 25s infinite linear;
+        opacity: 0.6;
+      }
+
+      @keyframes drift {
+        0% {
+          transform: translate(0, 0) rotate(0deg);
+          opacity: 0;
+        }
+
+        10% {
+          opacity: 1;
+        }
+
+        90% {
+          opacity: 1;
+        }
+
+        100% {
+          transform: translate(100vw, -100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      /* Header */
+      h1 {
+        font-family: 'Orbitron', monospace;
+        font-size: 3rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #00f5ff, #ff00ff, #fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-align: center;
+        letter-spacing: 2px;
+        animation: glowPulse 2s ease-in-out infinite alternate;
+        text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+      }
+
+      @keyframes glowPulse {
+        from {
+          filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.5));
+        }
+
+        to {
+          filter: drop-shadow(0 0 30px rgba(255, 0, 255, 0.8));
+        }
+      }
+
+      /* Cards Container */
+      .cards-container {
+        display: flex;
+        gap: 4rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 2rem;
+      }
+
+      /* Advanced 3D Card */
+      .card {
+        position: relative;
+        width: 320px;
+        height: 480px;
+        perspective: 1000px;
+        cursor: pointer;
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+      }
+
+      .wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow:
+          0 25px 50px rgba(0, 0, 0, 0.5),
+          0 0 0 1px rgba(255, 255, 255, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      }
+
+      .card:hover .wrapper {
+        transform: rotateY(10deg) rotateX(5deg) translateZ(50px);
+        box-shadow:
+          0 35px 70px rgba(0, 245, 255, 0.3),
+          0 0 50px rgba(255, 0, 255, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      }
+
+      .cover-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 24px;
+        filter: brightness(0.8) contrast(1.1);
+        transition: filter 0.5s ease;
+      }
+
+      .card:hover .cover-image {
+        filter: brightness(1.1) contrast(1.2) sepia(0.1) hue-rotate(10deg);
+      }
+
+      .title {
+        position: absolute;
+        bottom: 120px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        height: auto;
+        z-index: 2;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+        transition: transform 0.5s ease;
+      }
+
+      .card:hover .title {
+        transform: translateX(-50%) translateY(-10px) scale(1.05);
+        filter: drop-shadow(0 8px 16px rgba(0, 245, 255, 0.4));
+      }
+
+      .character {
+        position: absolute;
+        bottom: 20px;
+        right: -20px;
+        width: 140px;
+        height: auto;
+        z-index: 3;
+        transform: rotate(5deg) scale(0.9);
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6));
+        transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .card:hover .character {
+        transform: rotate(0deg) scale(1.1) translateY(-15px);
+        filter: drop-shadow(0 15px 30px rgba(255, 0, 255, 0.5));
+      }
+
+      /* Glassmorphic Overlay */
+      .card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+        backdrop-filter: blur(10px);
+        border-radius: 24px;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 1;
+      }
+
+      .card:hover::after {
+        opacity: 1;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .cards-container {
+          flex-direction: column;
+          align-items: center;
+          gap: 2rem;
+        }
+
+        .card {
+          width: 280px;
+          height: 420px;
+        }
+
+        h1 {
+          font-size: 2.2rem;
+        }
+      }
+
+      /* Click Feedback */
+      .card.clicked .wrapper {
+        animation: clickPulse 0.3s ease-out;
+      }
+
+      @keyframes clickPulse {
+        0% {
+          transform: scale(1) rotateY(10deg) rotateX(5deg);
+        }
+
+        50% {
+          transform: scale(0.98) rotateY(10deg) rotateX(5deg);
+        }
+
+        100% {
+          transform: scale(1) rotateY(10deg) rotateX(5deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <h1>Neon Heroes Unleashed</h1>
+
+    <div class="cards-container">
+      <!-- Dark Rider Card -->
+      <div class="card" data-hero="Dark Rider">
+        <div class="wrapper">
+          <img src="https://ggayane.github.io/css-experiments/cards/dark_rider-cover.jpg" class="cover-image"
+            alt="Dark Rider Cover" />
+        </div>
+        <img src="https://ggayane.github.io/css-experiments/cards/dark_rider-title.png" class="title"
+          alt="Dark Rider Title" />
+        <img src="https://ggayane.github.io/css-experiments/cards/dark_rider-character.webp" class="character"
+          alt="Dark Rider Character" />
+      </div>
+
+      <!-- Force Mage Card -->
+      <div class="card" data-hero="Force Mage">
+        <div class="wrapper">
+          <img src="https://ggayane.github.io/css-experiments/cards/force_mage-cover.jpg" class="cover-image"
+            alt="Force Mage Cover" />
+        </div>
+        <img src="https://ggayane.github.io/css-experiments/cards/force_mage-title.png" class="title"
+          alt="Force Mage Title" />
+        <img src="https://ggayane.github.io/css-experiments/cards/force_mage-character.webp" class="character"
+          alt="Force Mage Character" />
+      </div>
+    </div>
+
+    <script>
+      // Generate Floating Particles
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 50;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+
+        const size = Math.random() * 3 + 1;
+        const duration = Math.random() * 30 + 20;
+        const delay = Math.random() * 25;
+        const startX = Math.random() * window.innerWidth;
+        const startY = Math.random() * window.innerHeight;
+
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${startX}px`;
+        particle.style.top = `${startY}px`;
+        particle.style.animationDuration = `${duration}s`;
+        particle.style.animationDelay = `${delay}s`;
+
+        // Varied colors for neon effect
+        const hue = Math.floor(Math.random() * 60) + 180; // Blues to purples
+        particle.style.background = `hsla(${hue}, 100%, 70%, 0.8)`;
+
+        particlesContainer.appendChild(particle);
+      }
+
+      // Enhanced 3D Tilt on Mouse Move
+      const cards = document.querySelectorAll('.card');
+
+      cards.forEach(card => {
+        const wrapper = card.querySelector('.wrapper');
+        const rect = card.getBoundingClientRect();
+        const heroName = card.dataset.hero;
+
+        // Mouse move tilt
+        card.addEventListener('mousemove', (e) => {
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          const rotateY = (x - centerX) / centerX * 15;
+          const rotateX = (y - centerY) / centerY * -15;
+
+          wrapper.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg) translateZ(50px)`;
+        });
+
+        // Reset on mouse leave
+        card.addEventListener('mouseleave', () => {
+          wrapper.style.transform = 'rotateY(0deg) rotateX(0deg) translateZ(0px)';
+        });
+
+        // Click interaction with feedback
+        card.addEventListener('click', (e) => {
+          e.preventDefault();
+          card.classList.add('clicked');
+
+          // Simulate selection/activation
+          const title = card.querySelector('.title');
+          title.style.animation = 'glowPulse 1s ease-in-out infinite';
+
+          // Console log for demo (in real app, could trigger modal/API)
+          console.log(`${heroName} activated! 🚀`);
+
+          setTimeout(() => {
+            card.classList.remove('clicked');
+            title.style.animation = '';
+          }, 300);
+        });
+      });
+
+      // Parallax on scroll (subtle)
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallax = document.querySelector('.cards-container');
+        const speed = scrolled * -0.5;
+        parallax.style.transform = `translateY(${speed}px)`;
+      });
+    </script>
+  </body>
+
+</html>
