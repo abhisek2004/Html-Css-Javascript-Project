@@ -2,484 +2,312 @@
 <html lang="en">
 
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ABHISEK_2003 • SUBSCRIBE TO UNIVERSE</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Subscribe | Modern Glow</title>
         <link
-            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@600;800&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&family=Space+Grotesk:wght@600&display=swap"
             rel="stylesheet">
         <style>
-            :root {
-                --bg: #0a0a1a;
-                --card: rgba(15, 15, 35, 0.95);
-                --cyan: #00f2ff;
-                --magenta: #ff00aa;
-                --purple: #9d00ff;
-                --glow: 0 0 100px #00f2ff, 0 0 200px #00f2ff;
-                --glow-m: 0 0 100px #ff00aa, 0 0 200px #ff00aa;
-                --text: #e0e0ff;
-            }
-
+            /* Reset & Base */
             * {
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
-                overflow: hidden;
-                user-select: none;
             }
 
             body {
-                min-height: 100vh;
-                background: var(--bg);
+                height: 100vh;
+                background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #12121a);
+                background-size: 400% 400%;
+                animation: gradientShift 12s ease infinite;
                 display: flex;
-                justify-content: center;
                 align-items: center;
-                font-family: 'Space Grotesk', sans-serif;
-                perspective: 3000px;
-                background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, var(--bg) 100%);
+                justify-content: center;
+                font-family: 'Inter', sans-serif;
+                overflow: hidden;
+                position: relative;
             }
 
-            /* Twinkling Stars */
-            .star {
+            /* Animated Background Particles */
+            .particles {
                 position: absolute;
-                background: #fff;
-                border-radius: 50%;
-                animation: twinkle 5s infinite;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 1;
             }
 
-            @keyframes twinkle {
+            .particle {
+                position: absolute;
+                background: rgba(138, 43, 226, 0.6);
+                border-radius: 50%;
+                animation: float 15s infinite linear;
+                filter: blur(1px);
+            }
 
-                0%,
+            @keyframes float {
+                0% {
+                    transform: translateY(0) translateX(0) rotate(0deg);
+                    opacity: 0;
+                }
+
+                10% {
+                    opacity: 1;
+                }
+
+                90% {
+                    opacity: 1;
+                }
+
                 100% {
-                    opacity: 0.4
+                    transform: translateY(-100vh) translateX(100px) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+
+            @keyframes gradientShift {
+                0% {
+                    background-position: 0% 50%;
                 }
 
                 50% {
-                    opacity: 1
+                    background-position: 100% 50%;
+                }
+
+                100% {
+                    background-position: 0% 50%;
                 }
             }
 
-            /* Solar System Container */
+            /* Main Container */
             .main {
                 position: relative;
-                width: 90vw;
-                height: 90vh;
-                max-width: 1100px;
-                max-height: 700px;
-                transform-style: preserve-3d;
-                animation: spin 180s linear infinite;
+                z-index: 10;
+                text-align: center;
+                padding: 2rem;
             }
 
-            @keyframes spin {
+            h1 {
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: 3.2rem;
+                background: linear-gradient(135deg, #8a2be2, #ff00ff, #00d4ff);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                margin-bottom: 1.5rem;
+                letter-spacing: -0.5px;
+                animation: titleGlow 3s ease-in-out infinite alternate;
+            }
+
+            @keyframes titleGlow {
+                from {
+                    filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.5));
+                }
+
                 to {
-                    transform: rotateY(360deg)
+                    filter: drop-shadow(0 0 25px rgba(0, 212, 255, 0.8));
                 }
             }
 
-            /* Sun Core */
-            .sun {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%) translateZ(100px);
-                width: 140px;
-                height: 140px;
-                background: radial-gradient(circle, #ffd700, #ff8c00);
-                border-radius: 50%;
-                box-shadow: var(--glow), inset 0 0 60px rgba(255, 255, 255, 0.6);
-                animation: pulse 8s ease-in-out infinite;
-            }
-
-            @keyframes pulse {
-
-                0%,
-                100% {
-                    transform: translate(-50%, -50%) translateZ(100px) scale(1)
-                }
-
-                50% {
-                    transform: translate(-50%, -50%) translateZ(100px) scale(1.2)
-                }
-            }
-
-            /* Planet Orbits */
-            .orbit {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                border: 2px dashed rgba(0, 242, 255, 0.2);
-                border-radius: 50%;
-                transform: translate(-50%, -50%) rotateX(75deg);
-                animation: rotate linear infinite;
-            }
-
-            @keyframes rotate {
-                to {
-                    transform: translate(-50%, -50%) rotateX(75deg) rotate(360deg)
-                }
-            }
-
-            /* Planets */
-            .planet {
-                position: absolute;
-                top: -20px;
-                left: 50%;
-                border-radius: 50%;
-                box-shadow: 0 0 40px rgba(0, 242, 255, 0.6);
-                transform-origin: center;
-            }
-
-            .planet::after {
-                content: attr(data-name);
-                position: absolute;
-                bottom: -50px;
-                left: 50%;
-                transform: translateX(-50%);
-                color: var(--cyan);
-                font-family: 'Orbitron', sans-serif;
-                font-size: 1.1rem;
-                font-weight: 700;
-                text-shadow: var(--glow);
-                white-space: nowrap;
-            }
-
-            /* Specific Planets */
-            .mercury-orbit {
-                width: 300px;
-                height: 300px;
-                animation-duration: 8s;
-            }
-
-            .mercury {
-                width: 30px;
-                height: 30px;
-                background: #a9a9a9;
-            }
-
-            .venus-orbit {
-                width: 420px;
-                height: 420px;
-                animation-duration: 20s;
-            }
-
-            .venus {
-                width: 45px;
-                height: 45px;
-                background: #ff4500;
-            }
-
-            .earth-orbit {
-                width: 540px;
-                height: 540px;
-                animation-duration: 36s;
-            }
-
-            .earth {
-                width: 48px;
-                height: 48px;
-                background: #00bfff;
-                position: relative;
-            }
-
-            .moon-orbit {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 80px;
-                height: 80px;
-                animation-duration: 5s;
-            }
-
-            .moon {
-                width: 14px;
-                height: 14px;
-                background: #c0c0c0;
-                top: -7px;
-                left: 50%;
-            }
-
-            .mars-orbit {
-                width: 660px;
-                height: 660px;
-                animation-duration: 68s;
-            }
-
-            .mars {
-                width: 40px;
-                height: 40px;
-                background: #ff0000;
-            }
-
-            .jupiter-orbit {
-                width: 800px;
-                height: 800px;
-                animation-duration: 140s;
-            }
-
-            .jupiter {
-                width: 90px;
-                height: 90px;
-                background: #ffa07a;
-            }
-
-            .saturn-orbit {
-                width: 920px;
-                height: 920px;
-                animation-duration: 200s;
-            }
-
-            .saturn {
-                width: 78px;
-                height: 78px;
-                background: #f4a460;
-                position: relative;
-            }
-
-            .rings {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%) rotateX(90deg);
-                width: 110px;
-                height: 110px;
-                border: 5px solid #d2b48c;
-                border-radius: 50%;
-                opacity: 0.9;
-            }
-
-            .uranus-orbit {
-                width: 1040px;
-                height: 1040px;
-                animation-duration: 300s;
-            }
-
-            .uranus {
-                width: 60px;
-                height: 60px;
-                background: #00ffff;
-            }
-
-            .neptune-orbit {
-                width: 1160px;
-                height: 1160px;
-                animation-duration: 400s;
-            }
-
-            .neptune {
-                width: 58px;
-                height: 58px;
-                background: #0000ff;
-            }
-
-            /* Subscribe Button */
+            /* Subscribe Button - Advanced & Sexy */
             .btn {
-                position: fixed;
-                bottom: 60px;
-                left: 50%;
-                transform: translateX(-50%);
-                padding: 20px 60px;
-                background: linear-gradient(135deg, var(--cyan), var(--magenta));
-                color: #000;
-                font-family: 'Orbitron', sans-serif;
-                font-size: 1.8rem;
-                font-weight: 900;
-                letter-spacing: 4px;
+                position: relative;
+                padding: 1.2rem 3.2rem;
+                font-size: 1.25rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                color: #ffffff;
+                background: linear-gradient(45deg, #6a11cb, #2575fc);
                 border: none;
                 border-radius: 60px;
                 cursor: pointer;
-                box-shadow: var(--glow);
-                transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-                z-index: 100;
-                backdrop-filter: blur(15px);
-                border: 3px solid var(--cyan);
+                overflow: hidden;
+                transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+                box-shadow:
+                    0 8px 25px rgba(106, 17, 203, 0.4),
+                    0 0 30px rgba(37, 117, 252, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                outline: none;
+                z-index: 2;
             }
 
             .btn::before {
                 content: '';
                 position: absolute;
-                inset: 0;
-                background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-                transform: translateX(-100%);
-                transition: transform 0.8s;
-                border-radius: 60px;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                transition: 0.7s;
+                z-index: -1;
             }
 
             .btn:hover::before {
-                transform: translateX(100%);
+                left: 100%;
             }
 
             .btn:hover {
-                transform: translateX(-50%) translateY(-10px) scale(1.1);
-                box-shadow: 0 0 150px #00f2ff, 0 0 300px #00f2ff;
-                border-color: var(--magenta);
+                transform: translateY(-4px) scale(1.05);
+                box-shadow:
+                    0 15px 35px rgba(106, 17, 203, 0.6),
+                    0 0 50px rgba(0, 212, 255, 0.5),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+                background: linear-gradient(45deg, #8a2be2, #00d4ff);
             }
 
             .btn:active {
-                transform: translateX(-50%) scale(0.95);
+                transform: translateY(-2px) scale(1.02);
             }
 
-            /* Brand & Live Clock */
-            .brand {
-                position: fixed;
-                top: 40px;
-                left: 50%;
-                transform: translateX(-50%);
-                font-family: 'Orbitron', sans-serif;
-                font-size: 2.4rem;
-                font-weight: 900;
-                background: linear-gradient(45deg, var(--cyan), var(--magenta), var(--purple));
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
-                text-shadow: var(--glow);
-                letter-spacing: 6px;
-                z-index: 100;
+            /* Ripple Effect on Click */
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.6);
+                transform: scale(0);
+                animation: rippleAnim 0.6s linear;
+                pointer-events: none;
             }
 
-            .clock {
-                position: fixed;
-                top: 100px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: rgba(0, 242, 255, 0.15);
-                padding: 12px 35px;
-                border-radius: 50px;
-                border: 2px solid var(--cyan);
-                color: var(--text);
-                font-size: 1.1rem;
-                font-weight: 600;
-                letter-spacing: 2px;
-                backdrop-filter: blur(12px);
-                z-index: 100;
-            }
-
-            @media (max-width:900px) {
-                .main {
-                    width: 95vw;
-                    height: 95vh;
+            @keyframes rippleAnim {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
                 }
+            }
 
-                .sun {
-                    width: 100px;
-                    height: 100px;
+            /* Success Message (Hidden by default) */
+            .success-msg {
+                margin-top: 1.5rem;
+                font-size: 1.1rem;
+                color: #00ff9d;
+                opacity: 0;
+                transition: opacity 0.5s ease;
+                font-weight: 500;
+            }
+
+            .success-msg.show {
+                opacity: 1;
+            }
+
+            /* Responsive */
+            @media (max-width: 600px) {
+                h1 {
+                    font-size: 2.4rem;
                 }
 
                 .btn {
-                    padding: 16px 50px;
-                    font-size: 1.5rem;
+                    padding: 1rem 2.5rem;
+                    font-size: 1.1rem;
+                }
+            }
+
+            /* Floating Orbs */
+            .orb {
+                position: absolute;
+                border-radius: 50%;
+                background: radial-gradient(circle at 30% 30%, #ffffff, transparent);
+                filter: blur(20px);
+                opacity: 0.15;
+                animation: orbFloat 20s infinite ease-in-out;
+            }
+
+            @keyframes orbFloat {
+
+                0%,
+                100% {
+                    transform: translate(0, 0) scale(1);
                 }
 
-                .brand {
-                    font-size: 2rem;
+                50% {
+                    transform: translate(30px, -30px) scale(1.2);
                 }
             }
         </style>
     </head>
 
     <body>
+        <div class="particles" id="particles"></div>
 
-        <!-- Stars -->
-        <script>
-            for (let i = 0; i < 350; i++) {
-                const s = document.createElement('div');
-                s.className = 'star';
-                s.style.width = s.style.height = (Math.random() * 2.5 + 1) + 'px';
-                s.style.left = Math.random() * 100 + 'vw';
-                s.style.top = Math.random() * 100 + 'vh';
-                s.style.animationDelay = Math.random() * 5 + 's';
-                document.body.appendChild(s);
-            }
-        </script>
+        <!-- Floating Orbs -->
+        <div class="orb" style="width: 300px; height: 300px; top: 10%; left: 10%; animation-delay: 0s;"></div>
+        <div class="orb" style="width: 400px; height: 400px; bottom: 15%; right: 10%; animation-delay: 5s;"></div>
+        <div class="orb" style="width: 250px; height: 250px; top: 50%; left: 5%; animation-delay: 8s;"></div>
 
-        <!-- Solar System -->
         <div class="main">
-            <div class="sun"></div>
-
-            <!-- Mercury -->
-            <div class="orbit mercury-orbit">
-                <div class="planet mercury" data-name="MERCURY"></div>
-            </div>
-
-            <!-- Venus -->
-            <div class="orbit venus-orbit">
-                <div class="planet venus" data-name="VENUS"></div>
-            </div>
-
-            <!-- Earth + Moon -->
-            <div class="orbit earth-orbit">
-                <div class="planet earth" data-name="EARTH">
-                    <div class="orbit moon-orbit">
-                        <div class="planet moon"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mars -->
-            <div class="orbit mars-orbit">
-                <div class="planet mars" data-name="MARS"></div>
-            </div>
-
-            <!-- Jupiter -->
-            <div class="orbit jupiter-orbit">
-                <div class="planet jupiter" data-name="JUPITER"></div>
-            </div>
-
-            <!-- Saturn + Rings -->
-            <div class="orbit saturn-orbit">
-                <div class="planet saturn" data-name="SATURN">
-                    <div class="rings"></div>
-                </div>
-            </div>
-
-            <!-- Uranus -->
-            <div class="orbit uranus-orbit">
-                <div class="planet uranus" data-name="URANUS"></div>
-            </div>
-
-            <!-- Neptune -->
-            <div class="orbit neptune-orbit">
-                <div class="planet neptune" data-name="NEPTUNE"></div>
-            </div>
+            <h1>Join the Future</h1>
+            <button class="btn" id="subscribeBtn">Subscribe</button>
+            <p class="success-msg" id="successMsg">🎉 Subscribed Successfully!</p>
         </div>
 
-        <!-- Subscribe Button -->
-        <button class="btn" id="subscribe">SUBSCRIBE</button>
-
-        <!-- Brand & Clock -->
-        <div class="brand">@ABHISEK_2003</div>
-        <div class="clock" id="clock">November 11, 2025 09:43 AM IST</div>
-
         <script>
-            // Live IST Clock
-            setInterval(() => {
-                const now = new Date();
-                const options = {
-                    year: 'numeric', month: 'long', day: 'numeric',
-                    hour: '2-digit', minute: '2-digit', second: '2-digit',
-                    hour12: true, timeZone: 'Asia/Kolkata'
-                };
-                document.getElementById('clock').textContent = now.toLocaleString('en-US', options) + ' IST';
-            }, 1000);
+            // Create floating particles
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 40;
 
-            // Subscribe Button Animation
-            const btn = document.getElementById('subscribe');
-            btn.addEventListener('click', () => {
-                btn.textContent = 'SUBSCRIBED';
-                btn.style.background = 'linear-gradient(135deg,#00ff88,#00bfff)';
-                btn.style.borderColor = '#00ff88';
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                const size = Math.random() * 6 + 2;
+                const duration = Math.random() * 20 + 15;
+                const delay = Math.random() * 15;
+                const left = Math.random() * 100;
+
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+
+                // Random hue for variety
+                const hue = Math.floor(Math.random() * 60) + 200;
+                particle.style.background = `rgba(${hue}, ${50 + Math.random() * 100}, 255, 0.6)`;
+
+                particlesContainer.appendChild(particle);
+            }
+
+            // Subscribe Button Logic
+            const btn = document.getElementById('subscribeBtn');
+            const successMsg = document.getElementById('successMsg');
+
+            btn.addEventListener('click', function (e) {
+                // Ripple Effect
+                const ripple = document.createElement('span');
+                const rect = btn.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.classList.add('ripple');
+                ripple.style.width = ripple.style.height = `${size}px`;
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                btn.appendChild(ripple);
+
+                setTimeout(() => ripple.remove(), 600);
+
+                // Show success message
+                successMsg.classList.add('show');
+
+                // Simulate subscription
                 setTimeout(() => {
-                    btn.textContent = 'SUBSCRIBE';
-                    btn.style.background = 'linear-gradient(135deg,var(--cyan),var(--magenta))';
-                    btn.style.borderColor = 'var(--cyan)';
-                }, 2000);
+                    successMsg.classList.remove('show');
+                }, 3000);
             });
 
-            // Mouse 3D Tilt
-            const main = document.querySelector('.main');
-            document.addEventListener('mousemove', e => {
-                const x = (e.clientX / window.innerWidth - 0.5) * 40;
-                const y = (e.clientY / window.innerHeight - 0.5) * 40;
-                main.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+            // Add hover sound-like feedback (visual pulse)
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transform = 'translateY(-4px) scale(1.03)';
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translateY(0) scale(1)';
             });
         </script>
     </body>
