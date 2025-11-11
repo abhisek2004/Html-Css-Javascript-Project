@@ -1,14 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="main">
-        <button class="btn">SUBSCRIBE</button>
-    </div>
-</body>
-</html 
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Subscribe | Modern Glow</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&family=Space+Grotesk:wght@600&display=swap"
+            rel="stylesheet">
+        <style>
+            /* Reset & Base */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                height: 100vh;
+                background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #12121a);
+                background-size: 400% 400%;
+                animation: gradientShift 12s ease infinite;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Inter', sans-serif;
+                overflow: hidden;
+                position: relative;
+            }
+
+            /* Animated Background Particles */
+            .particles {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .particle {
+                position: absolute;
+                background: rgba(138, 43, 226, 0.6);
+                border-radius: 50%;
+                animation: float 15s infinite linear;
+                filter: blur(1px);
+            }
+
+            @keyframes float {
+                0% {
+                    transform: translateY(0) translateX(0) rotate(0deg);
+                    opacity: 0;
+                }
+
+                10% {
+                    opacity: 1;
+                }
+
+                90% {
+                    opacity: 1;
+                }
+
+                100% {
+                    transform: translateY(-100vh) translateX(100px) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+
+            @keyframes gradientShift {
+                0% {
+                    background-position: 0% 50%;
+                }
+
+                50% {
+                    background-position: 100% 50%;
+                }
+
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+
+            /* Main Container */
+            .main {
+                position: relative;
+                z-index: 10;
+                text-align: center;
+                padding: 2rem;
+            }
+
+            h1 {
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: 3.2rem;
+                background: linear-gradient(135deg, #8a2be2, #ff00ff, #00d4ff);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                margin-bottom: 1.5rem;
+                letter-spacing: -0.5px;
+                animation: titleGlow 3s ease-in-out infinite alternate;
+            }
+
+            @keyframes titleGlow {
+                from {
+                    filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.5));
+                }
+
+                to {
+                    filter: drop-shadow(0 0 25px rgba(0, 212, 255, 0.8));
+                }
+            }
+
+            /* Subscribe Button - Advanced & Sexy */
+            .btn {
+                position: relative;
+                padding: 1.2rem 3.2rem;
+                font-size: 1.25rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                color: #ffffff;
+                background: linear-gradient(45deg, #6a11cb, #2575fc);
+                border: none;
+                border-radius: 60px;
+                cursor: pointer;
+                overflow: hidden;
+                transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+                box-shadow:
+                    0 8px 25px rgba(106, 17, 203, 0.4),
+                    0 0 30px rgba(37, 117, 252, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                outline: none;
+                z-index: 2;
+            }
+
+            .btn::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                transition: 0.7s;
+                z-index: -1;
+            }
+
+            .btn:hover::before {
+                left: 100%;
+            }
+
+            .btn:hover {
+                transform: translateY(-4px) scale(1.05);
+                box-shadow:
+                    0 15px 35px rgba(106, 17, 203, 0.6),
+                    0 0 50px rgba(0, 212, 255, 0.5),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+                background: linear-gradient(45deg, #8a2be2, #00d4ff);
+            }
+
+            .btn:active {
+                transform: translateY(-2px) scale(1.02);
+            }
+
+            /* Ripple Effect on Click */
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.6);
+                transform: scale(0);
+                animation: rippleAnim 0.6s linear;
+                pointer-events: none;
+            }
+
+            @keyframes rippleAnim {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+
+            /* Success Message (Hidden by default) */
+            .success-msg {
+                margin-top: 1.5rem;
+                font-size: 1.1rem;
+                color: #00ff9d;
+                opacity: 0;
+                transition: opacity 0.5s ease;
+                font-weight: 500;
+            }
+
+            .success-msg.show {
+                opacity: 1;
+            }
+
+            /* Responsive */
+            @media (max-width: 600px) {
+                h1 {
+                    font-size: 2.4rem;
+                }
+
+                .btn {
+                    padding: 1rem 2.5rem;
+                    font-size: 1.1rem;
+                }
+            }
+
+            /* Floating Orbs */
+            .orb {
+                position: absolute;
+                border-radius: 50%;
+                background: radial-gradient(circle at 30% 30%, #ffffff, transparent);
+                filter: blur(20px);
+                opacity: 0.15;
+                animation: orbFloat 20s infinite ease-in-out;
+            }
+
+            @keyframes orbFloat {
+
+                0%,
+                100% {
+                    transform: translate(0, 0) scale(1);
+                }
+
+                50% {
+                    transform: translate(30px, -30px) scale(1.2);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="particles" id="particles"></div>
+
+        <!-- Floating Orbs -->
+        <div class="orb" style="width: 300px; height: 300px; top: 10%; left: 10%; animation-delay: 0s;"></div>
+        <div class="orb" style="width: 400px; height: 400px; bottom: 15%; right: 10%; animation-delay: 5s;"></div>
+        <div class="orb" style="width: 250px; height: 250px; top: 50%; left: 5%; animation-delay: 8s;"></div>
+
+        <div class="main">
+            <h1>Join the Future</h1>
+            <button class="btn" id="subscribeBtn">Subscribe</button>
+            <p class="success-msg" id="successMsg">🎉 Subscribed Successfully!</p>
+        </div>
+
+        <script>
+            // Create floating particles
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 40;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                const size = Math.random() * 6 + 2;
+                const duration = Math.random() * 20 + 15;
+                const delay = Math.random() * 15;
+                const left = Math.random() * 100;
+
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+
+                // Random hue for variety
+                const hue = Math.floor(Math.random() * 60) + 200;
+                particle.style.background = `rgba(${hue}, ${50 + Math.random() * 100}, 255, 0.6)`;
+
+                particlesContainer.appendChild(particle);
+            }
+
+            // Subscribe Button Logic
+            const btn = document.getElementById('subscribeBtn');
+            const successMsg = document.getElementById('successMsg');
+
+            btn.addEventListener('click', function (e) {
+                // Ripple Effect
+                const ripple = document.createElement('span');
+                const rect = btn.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.classList.add('ripple');
+                ripple.style.width = ripple.style.height = `${size}px`;
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                btn.appendChild(ripple);
+
+                setTimeout(() => ripple.remove(), 600);
+
+                // Show success message
+                successMsg.classList.add('show');
+
+                // Simulate subscription
+                setTimeout(() => {
+                    successMsg.classList.remove('show');
+                }, 3000);
+            });
+
+            // Add hover sound-like feedback (visual pulse)
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transform = 'translateY(-4px) scale(1.03)';
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translateY(0) scale(1)';
+            });
+        </script>
+    </body>
+
+</html>
