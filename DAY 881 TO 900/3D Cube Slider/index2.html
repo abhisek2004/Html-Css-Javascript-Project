@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Neon 3D Cube Gallery | Infinite Orbit</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Exo+2:wght@400;600&display=swap"
+            rel="stylesheet">
+        <style>
+            /* === GLOBAL & FUTURISTIC BASE === */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                min-height: 100vh;
+                background: #0d0b1a;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Exo 2', sans-serif;
+                overflow: hidden;
+                perspective: 2000px;
+                position: relative;
+                background-image:
+                    radial-gradient(circle at 30% 70%, rgba(138, 43, 226, 0.2), transparent 50%),
+                    radial-gradient(circle at 70% 30%, rgba(0, 212, 255, 0.2), transparent 50%);
+            }
+
+            /* Animated Starfield Background */
+            .stars {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            .star {
+                position: absolute;
+                background: #fff;
+                border-radius: 50%;
+                box-shadow: 0 0 8px #fff;
+                animation: twinkle 3s infinite alternate;
+            }
+
+            @keyframes twinkle {
+                0% {
+                    opacity: 0.3;
+                    transform: scale(0.8);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: scale(1.2);
+                }
+            }
+
+            /* Neon Grid Floor */
+            .grid-floor {
+                position: absolute;
+                bottom: 0;
+                width: 200vmax;
+                height: 200vmax;
+                background:
+                    linear-gradient(0deg, transparent 48%, rgba(0, 255, 255, 0.1) 50%, transparent 52%),
+                    linear-gradient(90deg, transparent 48%, rgba(138, 43, 226, 0.1) 50%, transparent 52%);
+                background-size: 60px 60px;
+                transform: rotateX(80deg) translateY(300px);
+                opacity: 0.4;
+                animation: gridPulse 12s infinite ease-in-out;
+                z-index: 1;
+            }
+
+            @keyframes gridPulse {
+
+                0%,
+                100% {
+                    background-size: 60px 60px;
+                    opacity: 0.3;
+                }
+
+                50% {
+                    background-size: 70px 70px;
+                    opacity: 0.6;
+                }
+            }
+
+            /* === 3D CUBE GALLERY === */
+            .gallery {
+                --s: 280px;
+                width: var(--s);
+                height: var(--s);
+                position: relative;
+                transform-style: preserve-3d;
+                animation: orbit 18s infinite cubic-bezier(0.25, 0.8, 0.25, 1);
+                cursor: grab;
+            }
+
+            .gallery:active {
+                cursor: grabbing;
+            }
+
+            .gallery img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 18px;
+                box-shadow:
+                    0 0 30px rgba(0, 0, 0, 0.7),
+                    inset 0 0 40px rgba(255, 255, 255, 0.1);
+                transition: all 0.6s ease;
+                backface-visibility: hidden;
+                filter: brightness(0.85) contrast(1.2);
+            }
+
+            /* Face Transformations */
+            .gallery img:nth-child(1) {
+                transform: rotateX(0deg) translateZ(calc(var(--s)/2));
+            }
+
+            .gallery img:nth-child(2) {
+                transform: rotateX(-90deg) translateZ(calc(var(--s)/2));
+            }
+
+            .gallery img:nth-child(3) {
+                transform: rotateY(90deg) translateZ(calc(var(--s)/2));
+            }
+
+            .gallery img:nth-child(4) {
+                transform: rotateX(180deg) translateZ(calc(var(--s)/2));
+            }
+
+            .gallery img:nth-child(5) {
+                transform: rotateX(90deg) translateZ(calc(var(--s)/2));
+            }
+
+            .gallery img:nth-child(6) {
+                transform: rotateY(-90deg) translateZ(calc(var(--s)/2));
+            }
+
+            /* Neon Glow on Hover */
+            .gallery img::before {
+                content: '';
+                position: absolute;
+                inset: -8px;
+                border-radius: 20px;
+                background: linear-gradient(45deg, #8a2be2, #00d4ff, #ff00ff, #8a2be2);
+                background-size: 300%;
+                filter: blur(12px);
+                opacity: 0;
+                transition: opacity 0.5s ease;
+                animation: glowFlow 5s linear infinite;
+                z-index: -1;
+            }
+
+            .gallery:hover img::before {
+                opacity: 0.7;
+            }
+
+            @keyframes glowFlow {
+                0% {
+                    background-position: 0%;
+                }
+
+                100% {
+                    background-position: 300%;
+                }
+            }
+
+            /* Face Labels (Appear on Hover) */
+            .face-label {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%) translateZ(calc(var(--s)/2 + 30px));
+                background: rgba(10, 10, 26, 0.85);
+                color: #00ff9d;
+                padding: 0.5rem 1.2rem;
+                border-radius: 30px;
+                font-size: 0.9rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(0, 255, 157, 0.4);
+                opacity: 0;
+                transition: all 0.6s ease;
+                box-shadow: 0 4px 20px rgba(0, 255, 157, 0.3);
+                pointer-events: none;
+                z-index: 10;
+            }
+
+            .gallery:hover .face-label {
+                opacity: 1;
+                transform: translateX(-50%) translateZ(calc(var(--s)/2 + 40px)) translateY(-8px);
+            }
+
+            /* Dynamic Orbit Animation */
+            @keyframes orbit {
+                0% {
+                    transform: rotate3d(0, 0, 0, 0deg) rotateY(0deg) rotateX(0deg);
+                }
+
+                14% {
+                    transform: rotate3d(-1, 1, 0, 180deg) rotateY(45deg) rotateX(15deg);
+                }
+
+                28% {
+                    transform: rotate3d(0, -1, 0, 90deg) rotateY(90deg) rotateX(-10deg);
+                }
+
+                42% {
+                    transform: rotate3d(1, 0, 0, 90deg) rotateY(135deg) rotateX(20deg);
+                }
+
+                56% {
+                    transform: rotate3d(1, 0, 0, -90deg) rotateY(180deg) rotateX(-15deg);
+                }
+
+                70% {
+                    transform: rotate3d(0, 1, 0, 90deg) rotateY(225deg) rotateX(10deg);
+                }
+
+                84% {
+                    transform: rotate3d(-1, -1, 0, 180deg) rotateY(270deg) rotateX(25deg);
+                }
+
+                100% {
+                    transform: rotate3d(0, 0, 0, 0deg) rotateY(360deg) rotateX(0deg);
+                }
+            }
+
+            /* UI Controls */
+            .controls {
+                position: absolute;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 12px;
+                z-index: 100;
+            }
+
+            .ctrl-btn {
+                width: 50px;
+                height: 50px;
+                background: rgba(138, 43, 226, 0.2);
+                border: 1.5px solid rgba(138, 43, 226, 0.5);
+                border-radius: 50%;
+                color: #8a2be2;
+                font-size: 1.2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                backdrop-filter: blur(8px);
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+            }
+
+            .ctrl-btn:hover {
+                background: rgba(138, 43, 226, 0.4);
+                color: #fff;
+                transform: scale(1.1);
+                box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+            }
+
+            .ctrl-btn:active {
+                transform: scale(0.95);
+            }
+
+            /* Auto-play Indicator */
+            .indicator {
+                position: absolute;
+                top: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: rgba(0, 255, 255, 0.8);
+                font-size: 0.9rem;
+                letter-spacing: 1px;
+                font-weight: 600;
+                text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                .gallery {
+                    --s: 200px;
+                }
+
+                .face-label {
+                    font-size: 0.8rem;
+                    padding: 0.4rem 1rem;
+                }
+
+                .controls {
+                    bottom: 20px;
+                }
+
+                .ctrl-btn {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 1rem;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .gallery {
+                    --s: 160px;
+                }
+
+                .indicator {
+                    top: 15px;
+                    font-size: 0.8rem;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Starfield -->
+        <div class="stars" id="stars"></div>
+
+        <!-- Neon Grid Floor -->
+        <div class="grid-floor"></div>
+
+        <!-- 3D Cube Gallery -->
+        <div class="gallery" id="cube">
+            <img src="https://picsum.photos/id/174/400/400" alt="Hot Air Balloon">
+            <img src="https://picsum.photos/id/175/400/400" alt="Clock Tower">
+            <img src="https://picsum.photos/id/188/400/400" alt="Old City Sky">
+            <img src="https://picsum.photos/id/211/400/400" alt="Small Boat">
+            <img src="https://picsum.photos/id/22/400/400" alt="Lonely Man">
+            <img src="https://picsum.photos/id/28/400/400" alt="Forest Path">
+
+            <!-- Face Labels -->
+            <div class="face-label">Sky Dreams</div>
+            <div class="face-label">Time Frozen</div>
+            <div class="face-label">Ancient Skies</div>
+            <div class="face-label">Silent Waters</div>
+            <div class="face-label">Solitude</div>
+            <div class="face-label">Whispers of Green</div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <div class="ctrl-btn" id="prev">Left Arrow</div>
+            <div class="ctrl-btn" id="play">Play/Pause</div>
+            <div class="ctrl-btn" id="next">Right Arrow</div>
+        </div>
+
+        <div class="indicator">AUTO-ORBIT ENABLED</div>
+
+        <script>
+            // Generate Stars
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 120; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                const size = Math.random() * 3 + 1;
+                const duration = Math.random() * 3 + 2;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                star.style.animationDuration = `${duration}s`;
+                starsContainer.appendChild(star);
+            }
+
+            // Cube Control
+            const cube = document.getElementById('cube');
+            const playBtn = document.getElementById('play');
+            const prevBtn = document.getElementById('prev');
+            const nextBtn = document.getElementById('next');
+            const indicator = document.querySelector('.indicator');
+
+            let isPlaying = true;
+            let rotation = 0;
+            const faces = ['front', 'bottom', 'right', 'back', 'top', 'left'];
+            let currentFace = 0;
+
+            // Manual Rotation
+            function rotateToFace(index) {
+                const angles = [
+                    [0, 0],     // front
+                    [-90, 0],   // bottom
+                    [0, 90],    // right
+                    [180, 0],   // back
+                    [90, 0],    // top
+                    [0, -90]    // left
+                ];
+                const [x, y] = angles[index];
+                cube.style.transition = 'transform 1.2s cubic-bezier(0.25, 0.8, 0.25, 1)';
+                cube.style.transform = `rotateX(${x}deg) rotateY(${y}deg)`;
+                updateLabel(index);
+            }
+
+            function updateLabel(index) {
+                document.querySelectorAll('.face-label').forEach((label, i) => {
+                    label.style.opacity = i === index ? '1' : '0';
+                    label.style.transform = `translateX(-50%) translateZ(calc(var(--s)/2 + 40px)) translateY(${i === index ? '-8px' : '0'})`;
+                });
+            }
+
+            prevBtn.addEventListener('click', () => {
+                currentFace = (currentFace - 1 + 6) % 6;
+                rotateToFace(currentFace);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentFace = (currentFace + 1) % 6;
+                rotateToFace(currentFace);
+            });
+
+            playBtn.addEventListener('click', () => {
+                isPlaying = !isPlaying;
+                if (isPlaying) {
+                    cube.style.animation = 'orbit 18s infinite cubic-bezier(0.25, 0.8, 0.25, 1)';
+                    indicator.textContent = 'AUTO-ORBIT ENABLED';
+                    playBtn.innerHTML = 'Pause';
+                } else {
+                    cube.style.animation = 'none';
+                    indicator.textContent = 'PAUSED';
+                    playBtn.innerHTML = 'Play';
+                }
+            });
+
+            // Mouse Drag Rotation
+            let isDragging = false;
+            let startX, startY, rotX = 0, rotY = 0;
+
+            cube.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                cube.style.transition = 'none';
+                cube.style.animation = 'none';
+                isPlaying = false;
+                indicator.textContent = 'MANUAL CONTROL';
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+                rotY += deltaX * 0.5;
+                rotX -= deltaY * 0.5;
+                cube.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+                startX = e.clientX;
+                startY = e.clientY;
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    cube.style.transition = 'transform 0.6s ease-out';
+                }
+            });
+
+            // Touch Support
+            cube.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                cube.style.transition = 'none';
+                cube.style.animation = 'none';
+                isPlaying = false;
+                indicator.textContent = 'TOUCH CONTROL';
+            });
+
+            // Initialize
+            rotateToFace(0);
+        </script>
+
+    </body>
+
+</html>
