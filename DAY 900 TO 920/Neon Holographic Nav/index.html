@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neon Holographic Nav | Quantum Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Exo+2:wght@500;700&display=swap"
+      rel="stylesheet">
+    <style>
+      /* === ULTRA-FUTURISTIC RESET & BASE === */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        background: #0a0a1a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Exo 2', sans-serif;
+        overflow: hidden;
+        position: relative;
+        perspective: 1500px;
+        background-image:
+          radial-gradient(circle at 25% 75%, rgba(138, 43, 226, 0.18), transparent 50%),
+          radial-gradient(circle at 75% 25%, rgba(0, 212, 255, 0.18), transparent 50%),
+          radial-gradient(circle at 50% 50%, rgba(255, 0, 255, 0.12), transparent 60%);
+      }
+
+      /* Animated Cyber Grid */
+      .grid-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+          linear-gradient(90deg, rgba(0, 212, 255, 0.06) 1px, transparent 1px),
+          linear-gradient(0deg, rgba(138, 43, 226, 0.06) 1px, transparent 1px);
+        background-size: 50px 50px;
+        animation: gridFlow 25s linear infinite;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      @keyframes gridFlow {
+        0% {
+          transform: translate(0, 0);
+        }
+
+        100% {
+          transform: translate(50px, 50px);
+        }
+      }
+
+      /* Floating Particles */
+      .particle {
+        position: absolute;
+        background: radial-gradient(circle, #00d4ff, transparent);
+        border-radius: 50%;
+        filter: blur(1.5px);
+        opacity: 0;
+        animation: rise 18s infinite ease-in-out;
+        z-index: 1;
+      }
+
+      @keyframes rise {
+
+        0%,
+        100% {
+          opacity: 0;
+          transform: translateY(100vh) scale(0);
+        }
+
+        10% {
+          opacity: 0.7;
+        }
+
+        90% {
+          opacity: 0.7;
+        }
+
+        100% {
+          transform: translateY(-100px) scale(1.5);
+        }
+      }
+
+      /* === HOLOGRAPHIC NAVIGATION === */
+      .navigation {
+        display: flex;
+        gap: 2.5rem;
+        list-style: none;
+        z-index: 10;
+        position: relative;
+        padding: 1.5rem 3rem;
+        border-radius: 60px;
+        background: rgba(10, 10, 26, 0.4);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(138, 43, 226, 0.3);
+        box-shadow:
+          0 8px 32px rgba(138, 43, 226, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        transform-style: preserve-3d;
+        transition: all 0.6s ease;
+      }
+
+      .navigation:hover {
+        transform: translateY(-8px) rotateX(5deg);
+        box-shadow:
+          0 20px 50px rgba(138, 43, 226, 0.4),
+          0 0 60px rgba(0, 212, 255, 0.3);
+      }
+
+      /* Navigation Items */
+      .navigation__item {
+        position: relative;
+      }
+
+      .navigation__link {
+        position: relative;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+        text-decoration: none;
+        color: #e0e0ff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        padding: 0.8rem 1.8rem;
+        display: block;
+        overflow: hidden;
+        border-radius: 50px;
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        transform-style: preserve-3d;
+        z-index: 2;
+      }
+
+      /* Holographic Text Effect */
+      .navigation__link::before {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0.8rem 1.8rem;
+        color: transparent;
+        background: linear-gradient(135deg, #8a2be2, #00d4ff, #ff00ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        transform: translateZ(20px);
+      }
+
+      .navigation__link:hover::before {
+        opacity: 1;
+      }
+
+      /* Neon Glow Capsule on Hover */
+      .navigation__link::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: radial-gradient(circle, rgba(0, 212, 255, 0.6), transparent 70%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.6s ease;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .navigation__link:hover::after {
+        width: 300px;
+        height: 300px;
+        filter: blur(20px);
+      }
+
+      /* 3D Lift & Tilt */
+      .navigation__link:hover {
+        transform: translateY(-10px) translateZ(30px) scale(1.1);
+        color: #fff;
+        text-shadow:
+          0 0 20px #8a2be2,
+          0 0 40px #00d4ff;
+      }
+
+      /* Morphing Underline */
+      .navigation__link span {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #8a2be2, #00d4ff);
+        border-radius: 2px;
+        transform: translateX(-50%);
+        transition: width 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
+      }
+
+      .navigation__link:hover span {
+        width: 80%;
+      }
+
+      /* Active State Pulse */
+      .navigation__link.active {
+        color: #00ff9d;
+        transform: translateY(-12px) translateZ(40px) scale(1.15);
+        text-shadow:
+          0 0 20px #00ff9d,
+          0 0 40px #00ff9d,
+          0 0 60px #00ff9d;
+      }
+
+      .navigation__link.active::after {
+        width: 350px;
+        height: 350px;
+        background: radial-gradient(circle, rgba(0, 255, 157, 0.5), transparent 70%);
+        filter: blur(25px);
+      }
+
+      /* Floating Label on Hover */
+      .tooltip {
+        position: absolute;
+        top: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(10, 10, 26, 0.9);
+        color: #00d4ff;
+        padding: 0.5rem 1rem;
+        border-radius: 30px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 212, 255, 0.4);
+        box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        z-index: 20;
+      }
+
+      .navigation__item:hover .tooltip {
+        opacity: 1;
+        visibility: visible;
+        top: -60px;
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .navigation {
+          gap: 1.5rem;
+          padding: 1.2rem 2rem;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .navigation__link {
+          font-size: 1.2rem;
+          padding: 0.7rem 1.5rem;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .navigation {
+          flex-direction: column;
+          align-items: center;
+          padding: 2rem 1.5rem;
+          border-radius: 40px;
+        }
+
+        .navigation__link {
+          font-size: 1.1rem;
+          padding: 0.8rem 2rem;
+        }
+
+        .tooltip {
+          font-size: 0.75rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Cyber Grid Background -->
+    <div class="grid-bg"></div>
+
+    <!-- Floating Particles Container -->
+    <div id="particles"></div>
+
+    <!-- Holographic Navigation -->
+    <ul class="navigation" id="nav">
+      <li class="navigation__item">
+        <a class="navigation__link" href="#" data-text="Home">
+          Home
+          <span></span>
+        </a>
+        <div class="tooltip">Dashboard</div>
+      </li>
+      <li class="navigation__item">
+        <a class="navigation__link" href="#" data-text="About">
+          About
+          <span></span>
+        </a>
+        <div class="tooltip">Our Vision</div>
+      </li>
+      <li class="navigation__item">
+        <a class="navigation__link" href="#" data-text="Portfolio">
+          Portfolio
+          <span></span>
+        </a>
+        <div class="tooltip">Projects</div>
+      </li>
+      <li class="navigation__item">
+        <a class="navigation__link" href="#" data-text="Team">
+          Team
+          <span></span>
+        </a>
+        <div class="tooltip">Creators</div>
+      </li>
+      <li class="navigation__item">
+        <a class="navigation__link" href="#" data-text="Contact">
+          Contact
+          <span></span>
+        </a>
+        <div class="tooltip">Get in Touch</div>
+      </li>
+    </ul>
+
+    <script>
+      // Generate Floating Particles
+      const particleContainer = document.getElementById('particles');
+      const particleCount = 35;
+
+      for (let i = 0; i < particleCount; i++) {
+        const p = document.createElement('div');
+        p.classList.add('particle');
+
+        const size = Math.random() * 5 + 2;
+        const duration = Math.random() * 20 + 15;
+        const delay = Math.random() * 15;
+        const left = Math.random() * 100;
+        const hue = Math.floor(Math.random() * 120) + 180;
+
+        p.style.width = `${size}px`;
+        p.style.height = `${size}px`;
+        p.style.left = `${left}%`;
+        p.style.animationDuration = `${duration}s`;
+        p.style.animationDelay = `${delay}s`;
+        p.style.background = `radial-gradient(circle, hsl(${hue}, 100%, 70%), transparent)`;
+
+        particleContainer.appendChild(p);
+      }
+
+      // Navigation Interaction
+      const navLinks = document.querySelectorAll('.navigation__link');
+      const nav = document.getElementById('nav');
+
+      navLinks.forEach((link, index) => {
+        // Hover 3D Tilt
+        link.addEventListener('mousemove', (e) => {
+          const rect = link.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          const rotateX = (y - centerY) / 8;
+          const rotateY = (centerX - x) / 8;
+
+          link.style.transform = `translateY(-10px) translateZ(30px) scale(1.1) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        link.addEventListener('mouseleave', () => {
+          link.style.transform = 'translateY(0) translateZ(0) scale(1) rotateX(0) rotateY(0)';
+        });
+
+        // Click Active State
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          navLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+
+          // Pulse effect
+          const pulse = document.createElement('div');
+          pulse.style.position = 'absolute';
+          pulse.style.width = '300px';
+          pulse.style.height = '300px';
+          pulse.style.background = 'radial-gradient(circle, rgba(0, 255, 157, 0.4), transparent 70%)';
+          pulse.style.borderRadius = '50%';
+          pulse.style.left = '50%';
+          pulse.style.top = '50%';
+          pulse.style.transform = 'translate(-50%, -50%)';
+          pulse.style.animation = 'pulse 1s ease-out';
+          pulse.style.zIndex = '-1';
+          nav.appendChild(pulse);
+          setTimeout(() => pulse.remove(), 1000);
+        });
+      });
+
+      // Auto-cycle active state (demo)
+      let current = 0;
+      setInterval(() => {
+        navLinks.forEach(l => l.classList.remove('active'));
+        navLinks[current].classList.add('active');
+        current = (current + 1) % navLinks.length;
+      }, 3000);
+
+      // Keyboard Navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          current = (current + 1) % navLinks.length;
+          navLinks.forEach(l => l.classList.remove('active'));
+          navLinks[current].classList.add('active');
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          current = (current - 1 + navLinks.length) % navLinks.length;
+          navLinks.forEach(l => l.classList.remove('active'));
+          navLinks[current].classList.add('active');
+        }
+      });
+
+      // Add pulse animation
+      const style = document.createElement('style');
+      style.textContent = `
+      @keyframes pulse {
+        0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+        100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+      }
+    `;
+      document.head.appendChild(style);
+    </script>
+
+  </body>
+
+</html>
