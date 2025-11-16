@@ -1,33 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weight Converter</title>
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h2>Weight Converter</h2>
-      <div class="input-wrapper">
-        <label for="kg">Kilogram:</label>
-        <input type="number" id="kg" value="10" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NeonWeight - Converter</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
+
+  <style>
+    :root {
+      --primary: #00ffea;
+      --secondary: #ff00c8;
+      --bg: #0a0a1a;
+      --glass: rgba(255, 255, 255, 0.08);
+      --text: #e0e0ff;
+      --shadow: 0 0 30px rgba(0, 255, 234, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(0, 255, 234, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 0, 200, 0.15) 0%, transparent 50%);
+    }
+
+    /* Floating Particles */
+    .particles {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      background: var(--primary);
+      border-radius: 50%;
+      opacity: 0;
+      animation: float 15s infinite linear;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) scale(1); opacity: 0; }
+    }
+
+    /* Container */
+    .container {
+      width: 420px;
+      max-width: 90%;
+      z-index: 10;
+      perspective: 1000px;
+    }
+
+    .card {
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 60px rgba(0, 255, 234, 0.2),
+        inset 0 0 30px rgba(255, 255, 255, 0.05);
+      transition: all 0.5s ease;
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: conic-gradient(from 0deg, transparent, var(--primary), transparent, var(--secondary), transparent);
+      animation: rotate 20s linear infinite;
+      opacity: 0.1;
+      z-index: -1;
+    }
+
+    @keyframes rotate {
+      100% { transform: rotate(360deg); }
+    }
+
+    .card:hover {
+      transform: translateY(-10px) rotateX(5deg);
+      box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.5),
+        0 0 80px rgba(0, 255, 234, 0.4);
+    }
+
+    /* Title */
+    .title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .title h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 20px rgba(0, 255, 234, 0.5);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+
+    /* Input Wrapper */
+    .input-wrapper {
+      position: relative;
+      margin-bottom: 1.6rem;
+    }
+
+    .input-wrapper label {
+      position: absolute;
+      top: -10px;
+      left: 1rem;
+      background: var(--bg);
+      padding: 0 8px;
+      font-size: 0.8rem;
+      color: var(--primary);
+      font-weight: 600;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .input-wrapper input {
+      width: 100%;
+      padding: 1rem 1rem 1rem 3.2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      border-radius: 14px;
+      color: white;
+      font-size: 1.1rem;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .input-wrapper input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 
+        0 0 20px rgba(0, 255, 234, 0.4),
+        inset 0 0 10px rgba(0, 255, 234, 0.1);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .input-wrapper .material-symbols-rounded {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 1.3rem;
+      transition: 0.3s;
+    }
+
+    .input-wrapper input:focus ~ .material-symbols-rounded {
+      color: var(--primary);
+      text-shadow: 0 0 10px rgba(0, 255, 234, 0.6);
+    }
+
+    /* Unit Badge */
+    .unit {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 0.2rem 0.6rem;
+      border-radius: 8#w;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .card {
+        padding: 2rem 1.5rem;
+      }
+      .title h2 {
+        font-size: 1.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Converter Card -->
+  <div class="container">
+    <div class="card">
+      <div class="title">
+        <h2>NeonWeight</h2>
       </div>
+
       <div class="input-wrapper">
-        <label for="lb">Pounds:</label>
-        <input type="number" id="lb" />
+        <label for="kg">Kilograms</label>
+        <input type="number" id="kg" value="10" step="0.01" />
+        <span class="material-symbols-rounded">balance</span>
+        <div class="unit">kg</div>
       </div>
+
       <div class="input-wrapper">
-        <label for="oz">Ounces:</label>
-        <input type="number" id="oz" />
+        <label for="lb">Pounds</label>
+        <input type="number" id="lb" step="0.01" />
+        <span class="material-symbols-rounded">monitor_weight</span>
+        <div class="unit">lb</div>
+      </div>
+
+      <div class="input-wrapper">
+        <label for="oz">Ounces</label>
+        <input type="number" id="oz" step="0.01" />
+        <span class="material-symbols-rounded">category</span>
+        <div class="unit">oz</div>
       </div>
     </div>
-    <!-- Script -->
-    <script src="script.js"></script>
-  </body>
+  </div>
+
+  <script>
+    // DOM Elements
+    const kgInput = document.getElementById('kg');
+    const lbInput = document.getElementById('lb');
+    const ozInput = document.getElementById('oz');
+
+    // Conversion Factors
+    const KG_TO_LB = 2.20462;
+    const KG_TO_OZ = 35.27396;
+    const LB_TO_OZ = 16;
+
+    // Update all fields
+    function updateValues(source) {
+      let kg, lb, oz;
+
+      if (source === 'kg') {
+        kg = parseFloat(kgInput.value) || 0;
+        lb = kg * KG_TO_LB;
+        oz = kg * KG_TO_OZ;
+      } else if (source === 'lb') {
+        lb = parseFloat(lbInput.value) || 0;
+        kg = lb / KG_TO_LB;
+        oz = lb * LB_TO_OZ;
+      } else if (source === 'oz') {
+        oz = parseFloat(ozInput.value) || 0;
+        kg = oz / KG_TO_OZ;
+        lb = oz / LB_TO_OZ;
+      }
+
+      // Update inputs with 4 decimal precision
+      if (source !== 'kg') kgInput.value = kg.toFixed(4);
+      if (source !== 'lb') lbInput.value = lb.toFixed(4);
+      if (source !== 'oz') ozInput.value = oz.toFixed(4);
+    }
+
+    // Event Listeners
+    kgInput.addEventListener('input', () => updateValues('kg'));
+    lbInput.addEventListener('input', () => updateValues('lb'));
+    ozInput.addEventListener('input', () => updateValues('oz'));
+
+    // Initialize
+    updateValues('kg');
+
+    // Floating Particles
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 25;
+
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      
+      const size = Math.random() * 5 + 2;
+      const duration = Math.random() * 20 + 10;
+      const delay = Math.random() * 15;
+      const left = Math.random() * 100;
+      
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${left}%`;
+      particle.style.animationDuration = `${duration}s`;
+      particle.style.animationDelay = `${delay}s`;
+      
+      const colors = ['#00ffea', '#ff00c8', '#a0ff00'];
+      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      
+      particlesContainer.appendChild(particle);
+    }
+
+    // 3D Tilt Effect
+    const card = document.querySelector('.card');
+    const container = document.querySelector('.container');
+
+    container.addEventListener('mousemove', (e) => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = (y - centerY) / 12;
+      const rotateY = (centerX - x) / 12;
+      
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+    });
+
+    container.addEventListener('mouseleave', () => {
+      card.style.transform = `rotateX(0) rotateY(0) translateY(0)`;
+    });
+  </script>
+
+</body>
 </html>
