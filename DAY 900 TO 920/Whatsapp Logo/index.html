@@ -19,31 +19,27 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-family: 'Segoe UI', sans-serif;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 overflow: hidden;
             }
 
-            /* Floating WhatsApp Button */
             .whatsapp-btn {
                 position: relative;
                 width: 70px;
                 height: 70px;
                 background: linear-gradient(135deg, #25d366, #128c7e);
                 border-radius: 50%;
-                box-shadow:
-                    0 10px 30px rgba(37, 211, 102, 0.4),
-                    0 4px 15px rgba(0, 0, 0, 0.2);
+                box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4), 0 4px 15px rgba(0, 0, 0, 0.2);
                 cursor: pointer;
-                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2);
-                z-index: 10;
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
                 animation: float 6s ease-in-out infinite;
+                text-decoration: none;
+                display: block;
             }
 
             .whatsapp-btn:hover {
-                transform: translateY(-8px) scale(1.1);
-                box-shadow:
-                    0 20px 40px rgba(37, 211, 102, 0.6),
-                    0 8px 25px rgba(0, 0, 0, 0.3);
+                transform: translateY(-10px) scale(1.12);
+                box-shadow: 0 25px 50px rgba(37, 211, 102, 0.6), 0 10px 30px rgba(0, 0, 0, 0.3);
             }
 
             .whatsapp-btn::before {
@@ -67,7 +63,7 @@
             }
 
             .whatsapp-btn:hover i {
-                transform: translate(-50%, -50%) rotate(110deg) scale(1.15);
+                transform: translate(-50%, -50%) rotate(110deg) scale(1.2);
                 color: #128c7e;
             }
 
@@ -78,24 +74,18 @@
                 bottom: -12px;
                 left: 50%;
                 transform: translateX(-50%) rotate(25deg);
-                width: 0;
-                height: 0;
-                border-style: solid;
-                border-width: 16px 14px 0 14px;
-                border-color: white transparent transparent transparent;
+                border: 16px solid transparent;
+                border-top-color: white;
                 filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
-                z-index: 0;
-                opacity: 0.95;
             }
 
-            /* Pulse Ring Animation */
+            /* Pulse Rings */
             .pulse-ring {
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 width: 70px;
                 height: 70px;
-                background: transparent;
                 border: 4px solid rgba(37, 211, 102, 0.3);
                 border-radius: 50%;
                 transform: translate(-50%, -50%);
@@ -111,16 +101,15 @@
                 animation-delay: 2s;
             }
 
-            /* Floating Animation */
             @keyframes float {
 
                 0%,
                 100% {
-                    transform: translateY(0px);
+                    transform: translateY(0);
                 }
 
                 50% {
-                    transform: translateY(-15px);
+                    transform: translateY(-18px);
                 }
             }
 
@@ -131,27 +120,28 @@
                 }
 
                 100% {
-                    transform: translate(-50%, -50%) scale(2.2);
+                    transform: translate(-50%, -50%) scale(2.3);
                     opacity: 0;
                 }
             }
 
-            /* Optional: Tooltip on hover */
+            /* Tooltip */
             .tooltip {
                 position: absolute;
-                top: -50px;
+                top: -56px;
                 left: 50%;
                 transform: translateX(-50%);
-                background: rgba(0, 0, 0, 0.85);
-                color: white;
-                padding: 8px 16px;
-                border-radius: 20px;
+                background: rgba(0, 0, 0, 0.9);
+                color: #fff;
+                padding: 10px 18px;
+                border-radius: 30px;
                 font-size: 14px;
+                font-weight: 600;
                 white-space: nowrap;
                 opacity: 0;
                 pointer-events: none;
                 transition: opacity 0.3s ease;
-                backdrop-filter: blur(10px);
+                backdrop-filter: blur(12px);
             }
 
             .tooltip::after {
@@ -160,52 +150,64 @@
                 top: 100%;
                 left: 50%;
                 transform: translateX(-50%);
-                border: 8px solid transparent;
-                border-top-color: rgba(0, 0, 0, 0.85);
+                border: 9px solid transparent;
+                border-top-color: rgba(0, 0, 0, 0.9);
             }
 
             .whatsapp-btn:hover .tooltip {
                 opacity: 1;
             }
-        </style>
-    </head>
 
-    <body>
-
-        <div class="whatsapp-btn">
-            <div class="pulse-ring"></div>
-            <div class="pulse-ring"></div>
-            <div class="pulse-ring"></div>
-            <i class="fas fa-phone"></i>
-            <div class="tooltip">Call us on WhatsApp</div>
-        </div>
-
-        <script>
-            // Optional: Add a subtle click ripple effect
-            document.querySelector('.whatsapp-btn').addEventListener('click', function (e) {
-                const ripple = document.createElement('span');
-                ripple.style.position = 'absolute';
-                ripple.style.borderRadius = '50%';
-                ripple.style.background = 'rgba(255,255,255,0.6)';
-                ripple.style.transform = 'scale(0)';
-                ripple.style.animation = 'ripple 0.6s ease-out';
-                ripple.style.width = ripple.style.height = '60px';
-                ripple.style.left = (e.offsetX - 30) + 'px';
-                ripple.style.top = (e.offsetY - 30) + 'px';
-                this.appendChild(ripple);
-                setTimeout(() => ripple.remove(), 600);
-            });
-
-            const style = document.createElement('style');
-            style.innerHTML = `
+            /* Ripple on Click */
             @keyframes ripple {
                 to {
                     transform: scale(2.5);
                     opacity: 0;
                 }
             }
-        `;
-            document.head.appendChild(style);
+        </style>
+    </head>
+
+    <body>
+
+        <!-- CHANGE +1234567890 TO YOUR REAL WHATSAPP NUMBER -->
+        <a href="https://wa.me/+916370597577" target="_blank" class="whatsapp-btn" id="waBtn">
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring"></div>
+            <i class="fas fa-phone"></i>
+            <div class="tooltip">Chat with us on WhatsApp</div>
+        </a>
+
+        <script>
+            // Click ripple effect
+            document.getElementById('waBtn').addEventListener('click', function (e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.width = ripple.style.height = '70px';
+                ripple.style.left = (x - 35) + 'px';
+                ripple.style.top = (y - 35) + 'px';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255,255,255,0.6)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.65s ease-out';
+                ripple.style.pointerEvents = 'none';
+                this.appendChild(ripple);
+
+                setTimeout(() => ripple.remove(), 700);
+            });
+
+            // Add ripple animation if not exists
+            if (!document.querySelector('#ripple-style')) {
+                const style = document.createElement('style');
+                style.id = 'ripple-style';
+                style.innerHTML = `@keyframes ripple { to { transform: scale(2.5); opacity: 0; } }`;
+                document.head.appendChild(style);
+            }
         </script>
 
     </body>
