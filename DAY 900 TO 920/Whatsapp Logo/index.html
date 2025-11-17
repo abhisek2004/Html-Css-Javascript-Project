@@ -1,22 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <title>WhatsApp Logo</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WhatsApp Call Button</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-<body>
+            body {
+                height: 100vh;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Segoe UI', sans-serif;
+                overflow: hidden;
+            }
 
-    <div class="white">
-        <div> <i class="fas fa-phone"></i> </div>
-    </div>
-    
-</body>
+            /* Floating WhatsApp Button */
+            .whatsapp-btn {
+                position: relative;
+                width: 70px;
+                height: 70px;
+                background: linear-gradient(135deg, #25d366, #128c7e);
+                border-radius: 50%;
+                box-shadow:
+                    0 10px 30px rgba(37, 211, 102, 0.4),
+                    0 4px 15px rgba(0, 0, 0, 0.2);
+                cursor: pointer;
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+                z-index: 10;
+                animation: float 6s ease-in-out infinite;
+            }
+
+            .whatsapp-btn:hover {
+                transform: translateY(-8px) scale(1.1);
+                box-shadow:
+                    0 20px 40px rgba(37, 211, 102, 0.6),
+                    0 8px 25px rgba(0, 0, 0, 0.3);
+            }
+
+            .whatsapp-btn::before {
+                content: '';
+                position: absolute;
+                inset: 4px;
+                background: white;
+                border-radius: 50%;
+                z-index: 1;
+            }
+
+            .whatsapp-btn i {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(90deg);
+                font-size: 34px;
+                color: #25d366;
+                z-index: 2;
+                transition: all 0.3s ease;
+            }
+
+            .whatsapp-btn:hover i {
+                transform: translate(-50%, -50%) rotate(110deg) scale(1.15);
+                color: #128c7e;
+            }
+
+            /* Speech Bubble Tail */
+            .whatsapp-btn::after {
+                content: '';
+                position: absolute;
+                bottom: -12px;
+                left: 50%;
+                transform: translateX(-50%) rotate(25deg);
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 16px 14px 0 14px;
+                border-color: white transparent transparent transparent;
+                filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+                z-index: 0;
+                opacity: 0.95;
+            }
+
+            /* Pulse Ring Animation */
+            .pulse-ring {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 70px;
+                height: 70px;
+                background: transparent;
+                border: 4px solid rgba(37, 211, 102, 0.3);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                animation: pulse 3s infinite;
+                pointer-events: none;
+            }
+
+            .pulse-ring:nth-child(2) {
+                animation-delay: 1s;
+            }
+
+            .pulse-ring:nth-child(3) {
+                animation-delay: 2s;
+            }
+
+            /* Floating Animation */
+            @keyframes float {
+
+                0%,
+                100% {
+                    transform: translateY(0px);
+                }
+
+                50% {
+                    transform: translateY(-15px);
+                }
+            }
+
+            @keyframes pulse {
+                0% {
+                    transform: translate(-50%, -50%) scale(1);
+                    opacity: 1;
+                }
+
+                100% {
+                    transform: translate(-50%, -50%) scale(2.2);
+                    opacity: 0;
+                }
+            }
+
+            /* Optional: Tooltip on hover */
+            .tooltip {
+                position: absolute;
+                top: -50px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(0, 0, 0, 0.85);
+                color: white;
+                padding: 8px 16px;
+                border-radius: 20px;
+                font-size: 14px;
+                white-space: nowrap;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease;
+                backdrop-filter: blur(10px);
+            }
+
+            .tooltip::after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                border: 8px solid transparent;
+                border-top-color: rgba(0, 0, 0, 0.85);
+            }
+
+            .whatsapp-btn:hover .tooltip {
+                opacity: 1;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="whatsapp-btn">
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring"></div>
+            <i class="fas fa-phone"></i>
+            <div class="tooltip">Call us on WhatsApp</div>
+        </div>
+
+        <script>
+            // Optional: Add a subtle click ripple effect
+            document.querySelector('.whatsapp-btn').addEventListener('click', function (e) {
+                const ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255,255,255,0.6)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s ease-out';
+                ripple.style.width = ripple.style.height = '60px';
+                ripple.style.left = (e.offsetX - 30) + 'px';
+                ripple.style.top = (e.offsetY - 30) + 'px';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+
+            const style = document.createElement('style');
+            style.innerHTML = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2.5);
+                    opacity: 0;
+                }
+            }
+        `;
+            document.head.appendChild(style);
+        </script>
+
+    </body>
 
 </html>
