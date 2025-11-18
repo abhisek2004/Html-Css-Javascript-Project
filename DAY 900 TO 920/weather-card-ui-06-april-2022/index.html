@@ -1,34 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Card UI</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jajpur Weather • Modern Card</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-<body>
-    <div class="card">
-        <h3 class="city">MUMBAI</h3>
-        <h4>PARTLY CLOUD</h4>
-        <div class="value">
-            <img src="icon.png" alt="">
-            <h2>30°</h2>
-        </div>
-        <div class="footer_box">
-            <div class="left">
-                <p>max</p>
-                <p>33°</p>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                min-height: 100vh;
+                font-family: 'Poppins', sans-serif;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                position: relative;
+            }
+
+            /* Dynamic animated background */
+            body::before {
+                content: '';
+                position: absolute;
+                width: 600px;
+                height: 600px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent);
+                top: -200px;
+                left: -200px;
+                animation: drift 20s infinite alternate;
+                filter: blur(80px);
+            }
+
+            body::after {
+                content: '';
+                position: absolute;
+                width: 800px;
+                height: 800px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(102, 126, 234, 0.2), transparent);
+                bottom: -300px;
+                right: -200px;
+                animation: drift 25s infinite alternate-reverse;
+                filter: blur(100px);
+            }
+
+            @keyframes drift {
+                0% {
+                    transform: translate(0, 0);
+                }
+
+                100% {
+                    transform: translate(100px, 150px);
+                }
+            }
+
+            .card {
+                width: 340px;
+                height: 520px;
+                background: rgba(255, 255, 255, 0.15);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-radius: 28px;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                box08-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+                padding: 30px;
+                color: white;
+                position: relative;
+                overflow: hidden;
+                transition: transform 0.4s ease;
+            }
+
+            .card:hover {
+                transform: translateY(-15px) scale(1.02);
+            }
+
+            /* Subtle inner glow border */
+            .card::before {
+                content: '';
+                position: absolute;
+                inset: 2px;
+                background: rgba(255, 255, 255, 0.08);
+                border-radius: 26px;
+                z-index: -1;
+            }
+
+            .city {
+                font-size: 2.2rem;
+                font-weight: 700;
+                letter-spacing: 2px;
+                margin-bottom: 4px;
+                text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            }
+
+            .weather-desc {
+                font-size: 1.1rem;
+                opacity: 0.9;
+                margin-bottom: 30px;
+                font-weight: 500;
+            }
+
+            .value {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 40px 0;
+                position: relative;
+            }
+
+            .value img {
+                width: 140px;
+                height: 140px;
+                filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+                animation: floatIcon 6s ease-in-out infinite;
+            }
+
+            @keyframes floatIcon {
+
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(-20px);
+                }
+            }
+
+            .temp {
+                font-size: 6.5rem;
+                font-weight: 700;
+                position: absolute;
+                right: 20px;
+                bottom: 10px;
+                text-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            }
+
+            .temp::after {
+                content: '°';
+                font-size: 4rem;
+                position: absolute;
+                top: 10px;
+                right: -25px;
+            }
+
+            .footer_box {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 40px;
+                padding-top: 30px;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .left,
+            .right {
+                text-align: center;
+                font-weight: 600;
+            }
+
+            .left p:first-child,
+            .right p:first-child {
+                font-size: 0.9rem;
+                opacity: 0.8;
+                margin-bottom: 6px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            .left p:last-child,
+            .right p:last-child {
+                font-size: 1.8rem;
+            }
+
+            .line {
+                width: 1px;
+                background: rgba(255, 255, 255, 0.3);
+                margin: 0 20px;
+            }
+
+            /* Micro animation on load */
+            .card>* {
+                opacity: 0;
+                animation: fadeInUp 0.8s forwards;
+            }
+
+            .city {
+                animation-delay: 0.2s;
+            }
+
+            .weather-desc {
+                animation-delay: 0.4s;
+            }
+
+            .value {
+                animation-delay: 0.6s;
+            }
+
+            .footer_box {
+                animation-delay: 0.9s;
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="card">
+            <h3 class="city">JAJPUR</h3>
+            <p class="weather-desc">Partly Cloudy</p>
+
+            <div class="value">
+                <!-- You can replace this with any cloudy icon URL or use an SVG below -->
+                <img src="https://i.ibb.co/Km7fbf2/cloudy.png" alt="Partly Cloudy">
+                <h2 class="temp">30</h2>
             </div>
-            <div class="line"></div>
-            <div class="Right">
-                <p>min</p>
-                <p>29°</p>
+
+            <div class="footer_box">
+                <div class="left">
+                    <p>Max</p>
+                    <p>33°</p>
+                </div>
+                <div class="line"></div>
+                <div class="right">
+                    <p>Min</p>
+                    <p>29°</p>
+                </div>
             </div>
         </div>
-    </div>
-</body>
+
+    </body>
 
 </html>
