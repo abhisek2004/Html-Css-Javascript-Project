@@ -1,17 +1,214 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>CodePen - Wavy</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet" href="./style.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<html lang="en">
 
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<a class="btn" href="#0">Hover me</a><a class="btn outlined" href="#0">Hover me</a>
-<!-- partial -->
-  
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sexy Modern Buttons</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
+
+      body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        font-family: 'Inter', sans-serif;
+        overflow: hidden;
+      }
+
+      /* Animated background blobs */
+      body::before {
+        content: '';
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(138, 43, 226, 0.3), transparent);
+        top: -20%;
+        left: -20%;
+        animation: float 20s infinite linear;
+        filter: blur(80px);
+      }
+
+      body::after {
+        content: '';
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(0, 255, 255, 0.2), transparent);
+        bottom: -30%;
+        right: -10%;
+        animation: float 25s infinite reverse linear;
+        filter: blur(100px);
+      }
+
+      @keyframes float {
+        0% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+
+        100% {
+          transform: translate(100px, -100px) rotate(360deg);
+        }
+      }
+
+      /* Base button style */
+      .btn {
+        position: relative;
+        padding: 18px 48px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        border: none;
+        border-radius: 60px;
+        cursor: pointer;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Filled Neony Violet-Cyan Gradient Button */
+      .btn.filled {
+        background: linear-gradient(135deg, #8a2be2, #00d4ff);
+        color: white;
+      }
+
+      .btn.filled::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, #00d4ff, #8a2be2);
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
+
+      .btn.filled:hover::before {
+        opacity: 1;
+      }
+
+      .btn.filled span {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Outlined Neon Glow Button */
+      .btn.outlined {
+        background: transparent;
+        color: #00ffff;
+        border: 2px solid transparent;
+        background-clip: padding-box;
+        box-shadow:
+          0 0 20px rgba(0, 255, 255, 0.5),
+          inset 0 0 20px rgba(0, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+      }
+
+      .btn.outlined::after {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, #ff00ff, #00ffff, #8a2be2, #00ff88);
+        border-radius: 60px;
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.4s;
+        background-size: 300% 300%;
+        animation: gradientShift 8s ease infinite;
+      }
+
+      .btn.outlined:hover::after {
+        opacity: 1;
+      }
+
+      .btn.outlined:hover {
+        color: white;
+        transform: translateY(-4px);
+        box-shadow:
+          0 20px 40px rgba(0, 255, 255, 0.4),
+          0 0 40px rgba(138, 43, 226, 0.6);
+      }
+
+      /* Ripple effect */
+      .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        transform: scale(0);
+        animation: rippleAnim 0.7s linear;
+        pointer-events: none;
+      }
+
+      @keyframes rippleAnim {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+
+        50% {
+          background-position: 100% 50%;
+        }
+
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* Hover scale */
+      .btn:hover {
+        transform: translateY(-6px) scale(1.05);
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Sexy Filled Gradient Button -->
+    <button class="btn filled">
+      <span>Hover Me</span>
+    </button>
+
+    <!-- Sexy Outlined Neon Button -->
+    <button class="btn outlined">
+      <span>Hover Me</span>
+    </button>
+
+    <script>
+      document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('click', function (e) {
+          let ripple = document.createElement('span');
+          ripple.classList.add('ripple');
+
+          let x = e.clientX - e.target.getBoundingClientRect().left;
+          let y = e.clientY - e.target.getBoundingClientRect().top;
+
+          ripple.style.left = `${x}px`;
+          ripple.style.top = `${y}px`;
+          ripple.style.width = ripple.style.height = `${Math.max(this.offsetWidth, this.offsetHeight) * 2}px`;
+
+          this.appendChild(ripple);
+
+          setTimeout(() => ripple.remove(), 700);
+        });
+      });
+    </script>
+  </body>
+
 </html>
