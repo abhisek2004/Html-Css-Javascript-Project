@@ -1,6 +1,14 @@
-// Array of words with their corresponding hints
+const wordDisplay = document.querySelector(".word-display");
+const hintText = document.querySelector(".hint-text");
+const timeLeft = document.querySelector(".time-left b");
+const inputField = document.querySelector(".word-input");
+const refreshBtn = document.querySelector(".refresh-btn");
+const checkBtn = document.querySelector(".check-btn");
+const message = document.querySelector(".message");
 
-let words = [
+let currentWord, timer;
+
+const words = [
   { word: "addition", hint: "The process of adding numbers" },
   { word: "meeting", hint: "Event in which people come together" },
   { word: "number", hint: "Math symbol used for counting" },
@@ -183,55 +191,69 @@ let words = [
   { word: "identity", hint: "Who or what someone is" },
 ];
 
-const wordText = document.querySelector(".word"),
-  hintText = document.querySelector(".hint span"),
-  timeText = document.querySelector(".time b"),
-  inputField = document.querySelector("input"),
-  refreshBtn = document.querySelector(".refresh-word"),
-  checkBtn = document.querySelector(".check-word");
-
-let correctWord, timer;
-
-// Function to initialize the timer
-const initTimer = (maxTime) => {
+const initGame = () => {
   clearInterval(timer);
+  message.textContent = "";
+  message.classList.remove("correct", "wrong");
+  inputField.value = "";
+
+  let randomObj = words[Math.floor(Math.random() * words.length)];
+  currentWord = randomObj.word.toLowerCase();
+
+  let scrambled = currentWord
+    .split("")
+    .sort(() => Math.random() - 0.5)
+    .join("");
+  while (scrambled === currentWord) {
+    scrambled = currentWord
+      .split("")
+      .sort(() => Math.random() - 0.5)
+      .join("");
+  }
+
+  wordDisplay.textContent = scrambled.toUpperCase();
+  hintText.textContent = randomObj.hint;
+
+  let time = 30;
+  timeLeft.textContent = time;
+
   timer = setInterval(() => {
-    if (maxTime > 0) {
-      maxTime--;
-      return (timeText.innerText = maxTime);
+    if (time > 0) {
+      time--;
+      timeLeft.textContent = time;
+    } else {
+      clearInterval(timer);
+      showMessage(
+        "⏰ Time's up! The word was: " + currentWord.toUpperCase(),
+        "wrong"
+      );
+      inputField.disabled = true;
     }
-    alert(`Time off! ${correctWord.toUpperCase()} was the correct word`);
-    initGame();
   }, 1000);
 };
 
-// Function to initialize the game
-const initGame = () => {
-  initTimer(30);
-  let randomObj = words[Math.floor(Math.random() * words.length)];
-  let wordArray = randomObj.word.split("");
-  for (let i = wordArray.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    [wordArray[i], wordArray[j]] = [wordArray[j], wordArray[i]];
-  }
-  wordText.innerText = wordArray.join("");
-  hintText.innerText = randomObj.hint;
-  correctWord = randomObj.word.toLowerCase();
-  inputField.value = "";
-  inputField.setAttribute("maxlength", correctWord.length);
-};
-initGame();
-
-// Function to check the user's input word
 const checkWord = () => {
   let userWord = inputField.value.toLowerCase();
-  if (!userWord) return alert("Please enter the word to check!");
-  if (userWord !== correctWord)
-    return alert(`Oops! ${userWord} is not a correct word`);
-  alert(`Congrats! ${correctWord.toUpperCase()} is the correct word`);
-  initGame();
+  if (!userWord) return showMessage("Please enter a word!", "wrong");
+
+  if (userWord === currentWord) {
+    clearInterval(timer);
+    showMessage("🎉 Congrats! You got it right!", "correct");
+  } else {
+    showMessage("❌ Oops! Wrong word. Try again!", "wrong");
+  }
 };
 
-// Event listeners for the refresh and check buttons
+const showMessage = (text, type) => {
+  message.textContent = text;
+  message.classList.add(type);
+};
+
 refreshBtn.addEventListener("click", initGame);
 checkBtn.addEventListener("click", checkWord);
+inputField.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") checkWord();
+});
+
+// Start game on load
+initGame();
