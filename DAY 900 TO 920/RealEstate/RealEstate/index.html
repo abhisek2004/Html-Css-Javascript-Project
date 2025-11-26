@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estate Sphere</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts (Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        };
+
+    </script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+
+    <!-- Loader -->
+    <div class="loader">
+        <svg class="pl" viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="pl-grad1" x1="1" y1="0.5" x2="0" y2="0.5">
+                    <stop offset="0%" stop-color="hsl(313,90%,55%)" />
+                    <stop offset="100%" stop-color="hsl(223,90%,55%)" />
+                </linearGradient>
+                <linearGradient id="pl-grad2" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="hsl(313,90%,55%)" />
+                    <stop offset="100%" stop-color="hsl(223,90%,55%)" />
+                </linearGradient>
+            </defs>
+            <circle class="pl__ring" cx="100" cy="100" r="82" fill="none" stroke="url(#pl-grad1)" stroke-width="36"
+                stroke-dasharray="0 257 1 257" stroke-dashoffset="0.01" stroke-linecap="round"
+                transform="rotate(-90,100,100)" />
+            <line class="pl__ball" stroke="url(#pl-grad2)" x1="100" y1="18" x2="100.01" y2="182" stroke-width="36"
+                stroke-dasharray="1 165" stroke-linecap="round" />
+        </svg>
+    </div>
+
+
+    <!-- Header -->
+    <nav class="w-full h-16 flex justify-between items-center px-4 shadow-sm sm:px-60 sm:shadow-sm relative">
+        <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">
+            Estate<span class="text-green-600 dark:text-green-400">Sphere</span>
+        </div>
+
+        <!-- Menu Button for Large Screens -->
+        <div class="hidden sm:flex justify-center items-center gap-8">
+            <a href="#" class="flex justify-center items-center gap-2">
+                <i class="fa-regular fa-heart text-2xl"></i>Saved
+            </a>
+            <a href="/login" class="flex justify-center items-center gap-2">
+                <i class="fa-regular fa-user text-2xl"></i>Login
+            </a>
+            <a href="/signUpPage" class="flex justify-center items-center gap-2">
+                <i class="fa-regular fa-user text-2xl"></i>SignUp
+            </a>
+            <div class="relative">
+                <button id="menu-lg-btn" class="flex items-center gap-2 ">
+
+                </button>
+                <div id="menu-lg-content"
+                    class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 shadow-lg rounded hidden">
+                    <ul class="p-4 space-y-5">
+                        <li class="flex items-center gap-3"><i class="fa-regular fa-eye"></i> Recently Viewed</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-headset"></i> Help & Support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Screen Menu -->
+        <div class="sm:hidden flex text-2xl justify-center items-center gap-5">
+            <a href="#">
+                <i class="fa-regular fa-heart"></i>
+            </a>
+            <a href="#">
+                <i class="fa-regular fa-user"></i>
+            </a>
+            <i id="menu-btn" class="fas fa-bars cursor-pointer"></i>
+        </div>
+
+        <!-- Day-Night Toggle Button for Large Screens -->
+        <button id="theme-toggle"
+            class="fixed z-10 bottom-4 sm:h-10 sm:top-3 right-4 p-2 rounded-full border border-gray-200 transition-all sm:flex">
+            <i id="theme-icon" class="fas fa-moon text-yellow-500 dark:text-gray-300 p-1"></i>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Content -->
+    <div id="menu-content"
+        class="fixed top-0 right-0 h-screen w-3/4 bg-white shadow-lg dark:bg-gray-800 transform translate-x-full transition-transform duration-500 z-50 sm:hidden">
+        <div class="flex justify-between items-center p-4 border-b dark:border-gray-600">
+            <h2 class="text-lg font-bold dark:text-gray-100">Menu</h2>
+            <button id="close-btn" class="text-2xl dark:text-gray-200">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="p-4 space-y-5 text-gray-700 dark:text-gray-300">
+            <li class="flex items-center gap-3"><i class="fa-regular fa-eye"></i> Recently Viewed</li>
+            <li class="flex items-center gap-3"><i class="fa-regular fa-heart"></i> Saved Properties</li>
+            <li class="flex items-center gap-3"><i class="fa-regular fa-circle-question"></i> Help And Support</li>
+            <li class="flex items-center gap-3"><i class="fa-regular fa-user"></i> Log In</li>
+        </ul>
+    </div>
+
+    <!--Main hero section for search & content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero-section"
+            class="relative bg-img-light dark:bg-img-dark py-36 px-4 sm:px-12 lg:px-40 text-center">
+            <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 font-poppins">Find Your Dream Home</h1>
+            <p class="text-lg sm:text-xl max-w-2xl mx-auto">
+                Explore the best properties, compare prices, and make your move confidently.
+            </p>
+
+
+
+            <!-- Floating Search Form (centered + overlapping below) -->
+            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-full max-w-5xl px-4">
+                <div
+                    class="bg-white dark:bg-gray-900 shadow-xl rounded-2xl p-6 sm:p-8 grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="relative">
+                        <i
+                            class="fas fa-map-marker-alt absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" placeholder="Location..."
+                            class="pl-12 w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white" />
+                    </div>
+                    <div class="relative">
+                        <i class="fas fa-home absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <select
+                            class="pl-12 w-full p-3  rounded-lg border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white">
+                            <option>Property Type</option>
+                            <option>House</option>
+                            <option>Apartment</option>
+                            <option>Villa</option>
+                        </select>
+                    </div>
+                    <div class="relative">
+                        <i
+                            class="fa-solid fa-indian-rupee-sign absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <select
+                            class="pl-12 w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white">
+                            <option>Price Range</option>
+                            <option>₹5 Lakh+</option>
+                            <option>₹10 Lakh+</option>
+                            <option>₹50 Lakh+</option>
+                        </select>
+                    </div>
+                    <button
+                        class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg font-semibold flex items-center justify-center transition duration-300">
+                        <i class="fas fa-search mr-2"></i> Search
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+
+        <div class="relative -z-10 pt-32 sm:pt-32 px-4 sm:px-12 lg:px-40 pb-20  dark:bg-gray-900">
+            <!-- Features Section -->
+            <div class="relative z-10 px-4 text-center text-white dark:bg-gray-900">
+                <!-- Features Section -->
+                <div class="mt-10 sm:mt-1 grid grid-cols-1 sm:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div
+                        class="bg-white dark:bg-slate-800 bg-opacity-90 text-gray-800 dark:text-white rounded-lg p-6 flex flex-col items-center text-center group">
+                        <div
+                            class="bg-blue-100 dark:bg-blue-900 p-4 rounded-full mb-4 flex items-center justify-center">
+                            <i class="fas fa-search-dollar text-blue-500 dark:text-blue-300 text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl">Smart Search</h3>
+                        <p class="text-base w-60">Find properties that match your exact criteria with our advanced
+                            search technology.</p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div
+                        class="bg-white dark:bg-slate-800 bg-opacity-90 text-gray-800 dark:text-white rounded-lg p-6 flex flex-col items-center text-center group">
+                        <div
+                            class="bg-green-100 dark:bg-green-900 p-4 rounded-full mb-4 flex items-center justify-center">
+                            <i class="fas fa-hand-holding-usd text-green-500 dark:text-green-300 text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl">Best Prices</h3>
+                        <p class="text-base w-60">We compare prices from multiple sources to ensure you get the best
+                            deal available.</p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div
+                        class="bg-white dark:bg-slate-800 bg-opacity-90 text-gray-800 dark:text-white rounded-lg p-6 flex flex-col items-center text-center group">
+                        <div
+                            class="bg-purple-100 dark:bg-purple-900 p-4 rounded-full mb-4 flex items-center justify-center">
+                            <i class="fas fa-home text-purple-500 dark:text-purple-300 text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl">Verified Listings</h3>
+                        <p class="text-base w-60">All our listings are verified to ensure accuracy and prevent fraud.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- carousel for featured properties -->
+        <div class="bg-gray-50 dark:bg-slate-900 p-6 rounded-lg sm:px-60 lg:px-60">
+            <!-- Title Section -->
+            <div class="flex flex-wrap justify-between items-center mb-4">
+                <h2 class="text-lg font-bold font-urbanist">Featured Properties in</h2>
+                <select
+                    class="border border-gray-300 rounded-md px-3 py-2 text-sm mt-2 lg:mt-0 dark:text-black focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Ahmedabad">Ahmedabad</option>
+                    <option value="Kolkata">Kolkata</option>
+                </select>
+            </div>
+
+
+            <!-- Carousel Container -->
+            <div class="relative overflow-hidden">
+                <!-- Carousel Inner -->
+                <div id="carousel" class="flex space-x-4 transition-transform duration-500">
+                    <!-- Card 1 -->
+                    <div class="p-2">
+                        <div class="bg-white dark:bg-gray-800 border rounded-lg shadow-sm p-4">
+                            <img src="https://newprojects.99acres.com/projects/romell_group/romell_orbis/images/s05nqlx_1750843995_611468069_med.jpg"
+                                alt="Mumbai Flat" class="w-full h-32 object-cover rounded-md mb-3" />
+                            <h3 class="font-bold text-sm">2 BHK Apartment in Andheri</h3>
+                            <p class="text-xs text-gray-500">Mumbai, Maharashtra</p>
+                            <p class="font-semibold mt-1 text-sm">₹85 Lakh</p>
+                            <div class="flex items-center mt-2 text-sm">
+                                <i class="fas fa-bed mr-1 text-blue-500"></i> 2 Beds
+                                <i class="fas fa-bath ml-3 mr-1 text-blue-500"></i> 2 Baths
+                            </div>
+                            <button
+                                class="text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white text-xs font-bold px-3 py-1 mt-3 rounded-md w-full">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="p-2">
+                        <div class="bg-white dark:bg-gray-800 border rounded-lg shadow-sm p-4">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                                alt="Bangalore Villa" class="w-full h-32 object-cover rounded-md mb-3" />
+                            <h3 class="font-bold text-sm">Luxury Villa in Whitefield</h3>
+                            <p class="text-xs text-gray-500">Bangalore, Karnataka</p>
+                            <p class="font-semibold mt-1 text-sm">₹1.5 Cr</p>
+                            <div class="flex items-center mt-2 text-sm">
+                                <i class="fas fa-bed mr-1 text-blue-500"></i> 4 Beds
+                                <i class="fas fa-bath ml-3 mr-1 text-blue-500"></i> 3 Baths
+                            </div>
+                            <button
+                                class="text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white text-xs font-bold px-3 py-1 mt-3 rounded-md w-full">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="p-2">
+                        <div class="bg-white dark:bg-gray-800 border rounded-lg shadow-sm p-4">
+                            <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=800&q=80"
+                                alt="Pune House" class="w-full h-32 object-cover rounded-md mb-3" />
+                            <h3 class="font-bold text-sm">3 BHK Row House in Wakad</h3>
+                            <p class="text-xs text-gray-500">Pune, Maharashtra</p>
+                            <p class="font-semibold mt-1 text-sm">₹70 Lakh</p>
+                            <div class="flex items-center mt-2 text-sm">
+                                <i class="fas fa-bed mr-1 text-blue-500"></i> 3 Beds
+                                <i class="fas fa-bath ml-3 mr-1 text-blue-500"></i> 2 Baths
+                            </div>
+                            <button
+                                class="text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white text-xs font-bold px-3 py-1 mt-3 rounded-md w-full">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="p-2">
+                        <div class="bg-white dark:bg-gray-800 border rounded-lg shadow-sm p-4">
+                            <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80"
+                                alt="Hyderabad Flat" class="w-full h-32 object-cover rounded-md mb-3" />
+                            <h3 class="font-bold text-sm">2 BHK Flat in Gachibowli</h3>
+                            <p class="text-xs text-gray-500">Hyderabad, Telangana</p>
+                            <p class="font-semibold mt-1 text-sm">₹60 Lakh</p>
+                            <div class="flex items-center mt-2 text-sm">
+                                <i class="fas fa-bed mr-1 text-blue-500"></i> 2 Beds
+                                <i class="fas fa-bath ml-3 mr-1 text-blue-500"></i> 2 Baths
+                            </div>
+                            <button
+                                class="text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white text-xs font-bold px-3 py-1 mt-3 rounded-md w-full">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="p-2">
+                        <div class="bg-white dark:bg-gray-800 border rounded-lg shadow-sm p-4">
+                            <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=800&q=80"
+                                alt="Delhi Apartment" class="w-full h-32 object-cover rounded-md mb-3" />
+                            <h3 class="font-bold text-sm">3 BHK in Dwarka Sector 10</h3>
+                            <p class="text-xs text-gray-500">Delhi NCR</p>
+                            <p class="font-semibold mt-1 text-sm">₹95 Lakh</p>
+                            <div class="flex items-center mt-2 text-sm">
+                                <i class="fas fa-bed mr-1 text-blue-500"></i> 3 Beds
+                                <i class="fas fa-bath ml-3 mr-1 text-blue-500"></i> 2 Baths
+                            </div>
+                            <button
+                                class="text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white text-xs font-bold px-3 py-1 mt-3 rounded-md w-full">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Arrows for Large Screens -->
+                <button id="prevBtn"
+                    class="hidden lg:block rounded-full p-3 shadow-lg bg-slate-100 absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-black hover:text-gray-700">
+                    <i class="fas fa-chevron-left fa-lg"></i>
+                </button>
+                <button id="nextBtn"
+                    class="hidden lg:block rounded-full p-3 shadow-lg bg-slate-100 absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-black hover:text-gray-700">
+                    <i class="fas fa-chevron-right fa-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- why choose us section -->
+        <div class="text-center px-4 sm:px-60 py-16 dark:bg-gray-900">
+            <h2 class="text-2xl font-bold mb-8">Why Choose Prime Properties?</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="flex flex-col items-center bg-white dark:bg-slate-700 shadow-md p-6 rounded-lg">
+                    <div class="bg-blue-100 dark:bg-blue-900 p-4 rounded-full mb-4 flex items-center justify-center">
+                        <i class="fas fa-clipboard-check text-blue-500 dark:text-blue-300 text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Verified Listings</h3>
+                    <p class="text-sm text-gray-600 dark:text-white">Every property is personally verified by our team
+                        to ensure accuracy.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="flex flex-col items-center bg-white dark:bg-slate-700 shadow-md p-6 rounded-lg">
+                    <div class="bg-green-100 dark:bg-green-900 p-4 rounded-full mb-4 flex items-center justify-center">
+                        <i class="fas fa-chart-line text-green-500 dark:text-green-300 text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Market Insights</h3>
+                    <p class="text-sm text-gray-600 dark:text-white">Get detailed market analysis and pricing trends for
+                        informed decisions.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="flex flex-col items-center bg-white dark:bg-slate-700 shadow-md p-6 rounded-lg">
+                    <div
+                        class="bg-purple-100 dark:bg-purple-900 p-4 rounded-full mb-4 flex items-center justify-center">
+                        <i class="fas fa-handshake text-purple-500 dark:text-purple-300 text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Trusted Agents</h3>
+                    <p class="text-sm text-gray-600 dark:text-white">Connect with our network of trusted real estate
+                        professionals.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="flex flex-col items-center bg-white dark:bg-slate-700 shadow-md p-6 rounded-lg">
+                    <div
+                        class="bg-yellow-100 dark:bg-yellow-900 p-4 rounded-full mb-4 flex items-center justify-center">
+                        <i class="fas fa-lock text-yellow-500 dark:text-yellow-300 text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Secure Transactions</h3>
+                    <p class="text-sm text-gray-600 dark:text-white">Safe and secure property transactions with escrow
+                        services.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Locations Section -->
+        <div class="container mx-auto py-12 px-4 sm:px-8 md:px-16 lg:px-60 dark:bg-gray-900 font-['Poppins']">
+            <h1 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-800 dark:text-white">Top Locations in
+                India
+            </h1>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+
+                <!-- Mumbai -->
+                <div
+                    class="relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Mumbai" class="h-72 w-full object-cover" />
+                    <div class="p-4">
+                        <h2 class="text-xl font-semibold text-center mb-2 text-gray-800 dark:text-white">Mumbai</h2>
+                        <p class="text-sm text-center text-gray-600 dark:text-gray-300">2,580 properties available</p>
+                    </div>
+                </div>
+
+                <!-- Delhi -->
+                <div
+                    class="relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                    <img src="https://media.istockphoto.com/id/2159502135/photo/creating-a-focal-point-statement-wall-ideas-for-your-living-room.webp?a=1&b=1&s=612x612&w=0&k=20&c=hCMj88xXhWFF3sm0UhhFwj8Jb9lLDkhAvxn04uZq6EI="
+                        alt="Delhi" class="h-72 w-full object-cover" />
+                    <div class="p-4">
+                        <h2 class="text-xl font-semibold text-center mb-2 text-gray-800 dark:text-white">Delhi</h2>
+                        <p class="text-sm text-center text-gray-600 dark:text-gray-300">1,920 properties available</p>
+                    </div>
+                </div>
+
+                <!-- Bengaluru -->
+                <div
+                    class="relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?q=80&w=710&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Bengaluru" class="h-72 w-full object-cover" />
+                    <div class="p-4">
+                        <h2 class="text-xl font-semibold text-center mb-2 text-gray-800 dark:text-white">Bengaluru</h2>
+                        <p class="text-sm text-center text-gray-600 dark:text-gray-300">1,540 properties available</p>
+                    </div>
+                </div>
+
+                <!-- Pune -->
+                <div
+                    class="relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                    <img src="https://plus.unsplash.com/premium_photo-1713893930797-a19e94c4d51d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGJ1aWxkaW5nJTIwcHVuZXxlbnwwfHwwfHx8MA%3D%3D"
+                        alt="Pune" class="h-72 w-full object-cover" />
+                    <div class="p-4">
+                        <h2 class="text-xl font-semibold text-center mb-2 text-gray-800 dark:text-white">Pune</h2>
+                        <p class="text-sm text-center text-gray-600 dark:text-gray-300">1,210 properties available</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <!-- Property Types, Top Neighborhoods, Top Agents, Popular Amenities -->
+        <div class="py-5 px-4 sm:px-60 dark:bg-gray-900">
+            <div class="container mx-auto">
+                <div class="flex flex-wrap -mx-4">
+                    <!-- Property Types -->
+                    <div class="w-full sm:w-1/2 lg:w-1/4 px-4">
+                        <div class="rounded-lg p-2">
+                            <h3 class="text-xl font-semibold text-gray-700 mb-4 dark:text-gray-400">Property Types</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">
+                                Explore a wide variety of properties across India:
+                                <span class="font-medium">1/2/3 BHK Apartments</span> – ideal for nuclear families,
+                                <span class="font-medium">Independent Houses</span> – privacy and space,
+                                <span class="font-medium">Villas</span> – premium living in gated communities,
+                                <span class="font-medium">Studio Flats</span> – budget-friendly urban homes,
+                                and <span class="font-medium">Plots</span> – for custom-built dreams.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Top Neighborhoods -->
+                    <div class="w-full sm:w-1/2 lg:w-1/4 px-4">
+                        <div class="rounded-lg p-2">
+                            <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-400 mb-4">Top Localities</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">
+                                Find your home in India’s most sought-after neighborhoods:
+                                <span class="font-medium">South Delhi</span> – elite urban lifestyle,
+                                <span class="font-medium">Powai, Mumbai</span> – lakeside living,
+                                <span class="font-medium">Whitefield, Bengaluru</span> – tech hub homes,
+                                <span class="font-medium">Gachibowli, Hyderabad</span> – smart city vibe,
+                                and <span class="font-medium">Sector 150, Noida</span> – green luxury.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Top Agents -->
+                    <div class="w-full sm:w-1/2 lg:w-1/4 px-4">
+                        <div class="rounded-lg p-2">
+                            <h3 class="text-xl font-semibold text-gray-700 mb-4 dark:text-gray-400">Top Agents</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">
+                                Work with trusted Indian property advisors:
+                                <span class="font-medium">Ravi Mehra</span> – Delhi/NCR specialist,
+                                <span class="font-medium">Neha Kulkarni</span> – Pune & Mumbai expert,
+                                <span class="font-medium">Ankit Sharma</span> – Bangalore tech corridor,
+                                <span class="font-medium">Farzana Khan</span> – Hyderabad premium homes,
+                                and <span class="font-medium">Rajeev Menon</span> – Kochi waterfront listings.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Popular Amenities -->
+                    <div class="w-full sm:w-1/2 lg:w-1/4 px-4">
+                        <div class="rounded-lg p-2">
+                            <h3 class="text-xl font-semibold text-gray-600 dark:text-gray-400 mb-4">Popular Amenities
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">
+                                Most searched features by Indian home buyers:
+                                <span class="font-medium">24x7 Security</span> – gated community safety,
+                                <span class="font-medium">Power Backup</span> – uninterrupted lifestyle,
+                                <span class="font-medium">Clubhouse & Gym</span> – fitness & leisure,
+                                <span class="font-medium">Park Facing Homes</span> – greenery at your doorstep,
+                                and <span class="font-medium">Modular Kitchens</span> – smart living design.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="sm:px-60 dark:bg-gray-800 bg-slate-100">
+        <div class="dark:bg-gray-800 bg-slate-100 py-4 text-gray-400">
+            <div class="container px-4 mx-auto">
+                <div class="-mx-4 flex flex-wrap justify-between">
+                    <div class="px-4 my-4 w-full xl:w-1/5">
+                        <a href="/" class="block w-56 mb-10">
+                            <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                                Estate<span class="text-green-600 dark:text-green-400">Sphere</span>
+                            </div>
+                        </a>
+                        <p class="text-justify">
+                            Prime Properties is your trusted partner in finding the perfect home, offering comprehensive
+                            real estate services across the country.
+                        </p>
+                    </div>
+
+                    <div class="px-4 my-4 w-full sm:w-auto">
+                        <div>
+                            <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-500">Company</h2>
+                        </div>
+                        <ul class="leading-8">
+                            <li><a href="#" class="hover:text-blue-400">About Us</a></li>
+                            <li><a href="#" class="hover:text-blue-400">Terms &amp; Conditions</a></li>
+                            <li><a href="#" class="hover:text-blue-400">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-blue-400">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="px-4 my-4 w-full sm:w-auto">
+                        <div>
+                            <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-500">Resources</h2>
+                        </div>
+                        <ul class="leading-8">
+                            <ul>
+                                <li><a href="#" class="hover:text-blue-400">Buying Guide</a></li>
+                                <li><a href="#" class="hover:text-blue-400">Selling Guide</a></li>
+                                <li><a href="#" class="hover:text-blue-400">Mortgage Calculator</a></li>
+                                <li><a href="#" class="hover:text-blue-400">Neighborhood Reviews</a></li>
+                                <li><a href="#" class="hover:text-blue-400">See More</a></li>
+                            </ul>
+                        </ul>
+                    </div>
+                    <div class="px-4 my-4 w-full sm:w-auto xl:w-1/5">
+                        <div>
+                            <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-500">Connect With Us</h2>
+                        </div>
+                        <a href="#"
+                            class="inline-flex items-center justify-center h-8 w-8 border border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
+                            <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                <path
+                                    d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="inline-flex items-center justify-center h-8 w-8 border border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
+                            <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path
+                                    d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="inline-flex items-center justify-center h-8 w-8 border border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
+                            <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path
+                                    d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
+                                </path>
+                            </svg>
+                        </a>
+
+                        <a href="#"
+                            class="inline-flex items-center justify-center h-8 w-8 border border-gray-100 rounded-full hover:text-blue-400 hover:border-blue-400">
+                            <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                <path
+                                    d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-blue-500 py-2 text-gray-100">
+            <div class="container mx-auto px-4">
+                <div class="-mx-4 flex flex-wrap justify-between">
+                    <div class="px-4 w-full text-sm text-center sm:w-auto sm:text-left">
+                        Copyright ©
+                        <script>new Date().getFullYear() > 2020 && document.write(" " + new Date().getFullYear())</script>
+                        Estate Sphere. All Rights Reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FontAwesome CDN -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
