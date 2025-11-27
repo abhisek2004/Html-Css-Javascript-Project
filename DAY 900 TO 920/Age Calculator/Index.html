@@ -1,54 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Age Calculator</title>
-    <link rel="stylesheet" href="styles.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #1a1a2e, #16213e);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+        color: white;
+      }
+
+      /* Animated floating orbs */
+      body::before,
+      body::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(138, 43, 226, 0.3), transparent);
+        filter: blur(80px);
+        animation: float 20s infinite ease-in-out;
+      }
+
+      body::before {
+        width: 600px;
+        height: 600px;
+        top: -10%;
+        left: -10%;
+      }
+
+      body::after {
+        width: 800px;
+        height: 800px;
+        bottom: -20%;
+        right: -15%;
+        background: radial-gradient(circle, rgba(0, 255, 255, 0.25), transparent);
+        animation-delay: -10s;
+      }
+
+      @keyframes float {
+
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+
+        50% {
+          transform: translateY(-100px) rotate(10deg);
+        }
+      }
+
+      .container {
+        width: 420px;
+        padding: 50px 40px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+      }
+
+      .container:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 30px 80px rgba(138, 43, 226, 0.3);
+      }
+
+      h1 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        background: linear-gradient(90deg, #8a2be2, #00d4ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 8px;
+        letter-spacing: 2px;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+        opacity: 0.8;
+        margin-bottom: 40px;
+        font-weight: 500;
+      }
+
+      label {
+        display: block;
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+        font-weight: 600;
+        text-align: left;
+      }
+
+      input[type="date"] {
+        width: 100%;
+        padding: 16px 20px;
+        font-size: 1.1rem;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 16px;
+        color: white;
+        outline: none;
+        margin-bottom: 25px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      input[type="date"]:focus {
+        border-color: #8a2be2;
+        box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+        opacity: 0.7;
+        cursor: pointer;
+      }
+
+      button {
+        padding: 16px 50px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        background: linear-gradient(45deg, #8a2be2, #00d4ff);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 10px 30px rgba(138, 43, 226, 0.4);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      button:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(138, 43, 226, 0.5);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: 0.7s;
+      }
+
+      button:hover::before {
+        left: 100%;
+      }
+
+      #result {
+        margin-top: 30px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        min-height: 60px;
+        padding: 20px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease;
+      }
+
+      #result.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .success {
+        color: #00ff9d;
+        text-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
+      }
+
+      .error {
+        color: #ff6b6b;
+        text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+      }
+
+      .Abhisek {
+        position: absolute;
+        bottom: 20px;
+        font-size: 0.9rem;
+        opacity: 0.6;
+        letter-spacing: 3px;
+      }
+    </style>
   </head>
+
   <body>
+
     <div class="container">
-      <h1>Age Calculator</h1>
-      <label for="birthdate">Enter Your Birthdate:</label>
-      <input type="date" id="birthdate" />
+      <h1>Age</h1>
+      <p class="subtitle">Calculator • Premium Edition</p>
+
+      <label for="birthdate">Enter Your Birthdate</label>
+      <input type="date" id="birthdate" required />
+
       <button onclick="calculateAge()">Calculate Age</button>
+
       <p id="result"></p>
+
+      <div class="Abhisek">Made with ♥ in Abhisek</div>
     </div>
 
     <script>
       function calculateAge() {
-        const birthdate = document.getElementById("birthdate").value;
+        const birthdateInput = document.getElementById("birthdate").value;
         const resultElement = document.getElementById("result");
 
-        if (birthdate) {
-          const today = new Date();
-          const birthDate = new Date(birthdate);
-
-          let ageYears = today.getFullYear() - birthDate.getFullYear();
-          let ageMonths = today.getMonth() - birthDate.getMonth();
-          let ageDays = today.getDate() - birthDate.getDate();
-
-          if (ageDays < 0) {
-            ageMonths--;
-            ageDays += new Date(
-              today.getFullYear(),
-              today.getMonth(),
-              0
-            ).getDate();
-          }
-
-          if (ageMonths < 0) {
-            ageYears--;
-            ageMonths += 12;
-          }
-
-          resultElement.innerText = `Your age is ${ageYears} years, ${ageMonths} months, and ${ageDays} days.`;
-          resultElement.style.color = "green"; // Set the text color to green
-        } else {
-          resultElement.innerText = "Please enter your birthdate"; // Clear the result if birthdate is not entered
-          resultElement.style.color = "red";
+        if (!birthdateInput) {
+          resultElement.textContent = "Please select your birthdate";
+          resultElement.className = "error show";
+          return;
         }
+
+        const today = new Date();
+        const birthDate = new Date(birthdateInput);
+
+        if (birthDate > today) {
+          resultElement.textContent = "Birthdate cannot be in the future!";
+          resultElement.className = "error show";
+          return;
+        }
+
+        let years = today.getFullYear() - birthDate.getFullYear();
+        let months = today.getMonth() - birthDate.getMonth();
+        let days = today.getDate() - birthDate.getDate();
+
+        if (days < 0) {
+          months--;
+          const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+          days += lastMonth.getDate();
+        }
+
+        if (months < 0) {
+          years--;
+          months += 12;
+        }
+
+        const totalDays = Math.floor((today - birthDate) / (1000 * 60 * 60 * 24));
+
+        resultElement.innerHTML = `
+        You are <strong>${years}</strong> years, 
+        <strong>${months}</strong> months & 
+        <strong>${days}</strong> days old<br><br>
+        <small style="opacity:0.8;font-size:0.9rem;">Total lived: ${totalDays.toLocaleString()} days on Earth</small>
+      `;
+        resultElement.className = "success show";
       }
+
+      // Auto-calculate on Enter key
+      document.getElementById("birthdate").addEventListener("keypress", function (e) {
+        if (e.key === "Enter") calculateAge();
+      });
     </script>
+
   </body>
+
 </html>
