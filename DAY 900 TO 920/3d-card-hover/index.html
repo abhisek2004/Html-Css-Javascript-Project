@@ -1,33 +1,86 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>2much_tech - 3D Card Hover</title>
-  <link rel="stylesheet" href="./style.css">
+<html lang="en">
 
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<a href="https://www.mythrillfiction.com/the-dark-rider" alt="Mythrill" target="_blank">
-  <div class="card">
-    <div class="wrapper">
-      <img src="https://ggayane.github.io/css-experiments/cards/dark_rider-cover.jpg" class="cover-image" />
-    </div>
-    <img src="https://ggayane.github.io/css-experiments/cards/dark_rider-title.png" class="title" />
-    <img src="https://ggayane.github.io/css-experiments/cards/dark_rider-character.webp" class="character" />
-  </div>
-</a>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2much_tech - 3D Card Hover</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Exo+2:wght@600&display=swap"
+      rel="stylesheet">
+  </head>
 
-<a href="https://www.mythrillfiction.com/force-mage" alt="Mythrill" target="_blank">
-  <div class="card">
-    <div class="wrapper">
-      <img src="https://ggayane.github.io/css-experiments/cards/force_mage-cover.jpg" class="cover-image" />
+  <body>
+
+    <div class="scene">
+
+      <!-- CARD 1 - THE DARK RIDER -->
+      <a href="https://www.moviesavailableon.com/Images/photos/actress/image-46298.jpg" target="_blank"
+        class="card-link">
+        <div class="card">
+          <div class="card-glow"></div>
+          <div class="card-inner">
+            <img src="https://www.moviesavailableon.com/Images/photos/actress/image-46298.jpg" class="cover"
+              alt="Dark Rider">
+            <img src="https://www.moviesavailableon.com/Images/photos/actress/image-46298.jpg" class="title"
+              alt="The Dark Rider">
+            <img src="https://www.moviesavailableon.com/Images/photos/actress/image-46298.jpg" class="character"
+              alt="Character">
+            <div class="shine"></div>
+            <div class="particles"></div>
+          </div>
+          <div class="label">THE DARK RIDER</div>
+        </div>
+      </a>
+
+      <!-- CARD 2 - FORCE MAGE -->
+      <a href="https://www.moviesavailableon.com/Images/photos/actress/image-46298.jpg" target="_blank"
+        class="card-link">
+        <div class="card">
+          <div class="card-glow"></div>
+          <div class="card-inner">
+            <img src="https://www.moviesavailableon.com/Images/photos/actress/image-46298.jpg" class="cover"
+              alt="Force Mage">
+            <img src="https://www.moviesavailableon.com/Images/photos/actress/image-46298.jpg" class="title"
+              alt="Force Mage">
+            <img src="https://www.moviesavailableon.com/Images/photos/actress/image-46298.jpg" class="character"
+              alt="Character">
+            <div class="shine"></div>
+            <div class="particles"></div>
+          </div>
+          <div class="label">FORCE MAGE</div>
+        </div>
+      </a>
+
     </div>
-    <img src="https://ggayane.github.io/css-experiments/cards/force_mage-title.png" class="title" />
-    <img src="https://ggayane.github.io/css-experiments/cards/force_mage-character.webp" class="character" />
-  </div>
-</a>
-<!-- partial -->
-  
-</body>
+
+    <script>
+      // Ultra-smooth 3D tilt + glow intensity on mouse move
+      document.querySelectorAll('.card').forEach(card => {
+        card.onmousemove = function (e) {
+          const rect = this.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = (y - centerY) / 10;
+          const rotateY = (centerX - x) / 10;
+
+          this.style.transform = `perspective(perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.07, 1.07, 1.07)`;
+
+          // Glow intensity
+          const glow = this.querySelector('.card-glow');
+          glow.style.opacity = '1';
+        }
+
+        card.onmouseleave = function () {
+          this.style.transform = 'perspective(1200px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+          const glow = this.querySelector('.card-glow');
+          glow.style.opacity = '0';
+        }
+      });
+    </script>
+
+  </body>
+
 </html>
