@@ -1,0 +1,162 @@
+/* for loader */
+/* Loader styles */
+.container {
+  display: block;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+  z-index: 9999;
+}
+
+.pl {
+  display: block;
+  width: 6.25em;
+  height: 6.25em;
+}
+
+/* hero bg image */
+.bg-img-light {
+  background-image: url("https://img.freepik.com/free-photo/low-angle-shot-facade-white-modern-building-blue-clear-sky_181624-48219.jpg?t=st=1752072795~exp=1752076395~hmac=f20f2e64e61c97a0373555bbbba662b88e6390e3357ab4c7cc66ab0fed9053d5&w=2000");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-img-dark {
+  background-image: url("https://images.unsplash.com/photo-1643350124916-d00c9b9f7a39?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFyayUyMGJ1aWxkaW5nfGVufDB8fDB8fHww");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.pl__ring,
+.pl__ball {
+  animation: ring 2s ease-out infinite;
+}
+
+.pl__ball {
+  animation-name: ball;
+}
+
+/* Dark theme  */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: hsl(var(--hue), 10%, 10%);
+    --fg: hsl(var(--hue), 10%, 90%);
+  }
+}
+
+/* Animation */
+@keyframes ring {
+  from {
+    stroke-dasharray: 0 257 0 0 1 0 0 258;
+  }
+
+  25% {
+    stroke-dasharray: 0 0 0 0 257 0 258 0;
+  }
+
+  50%,
+  to {
+    stroke-dasharray: 0 0 0 0 0 515 0 0;
+  }
+}
+
+@keyframes ball {
+  from,
+  50% {
+    animation-timing-function: ease-in;
+    stroke-dashoffset: 1;
+  }
+
+  64% {
+    animation-timing-function: ease-in;
+    stroke-dashoffset: -109;
+  }
+
+  78% {
+    animation-timing-function: ease-in;
+    stroke-dashoffset: -145;
+  }
+
+  92% {
+    animation-timing-function: ease-in;
+    stroke-dashoffset: -157;
+  }
+
+  57%,
+  71%,
+  85%,
+  99%,
+  to {
+    animation-timing-function: ease-out;
+    stroke-dashoffset: -163;
+  }
+}
+/* Custom Animation for Horizontal Scroll */
+
+@keyframes scroll-slow {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll-slow {
+  animation: scroll-slow 20s linear infinite;
+}
+
+/* for carousel */
+#carousel {
+  /* Make sure the flexbox allows horizontal scrolling */
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  /* Optional for smooth snapping */
+}
+
+#carousel .p-2 {
+  flex-shrink: 0;
+  /* Prevent cards from shrinking */
+  width: 250px;
+  /* or dynamic width depending on your card size */
+}
+
+@media (min-width: 1024px) {
+  /* On large screens, we hide the overflow and implement sliding */
+  #carousel {
+    overflow-x: hidden;
+    /* Hide overflow */
+  }
+}
+
+/* Search form styles */
+.search-form {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.search-form.dark {
+  background: rgba(31, 41, 55, 0.9);
+}
+
+.search-input {
+  border-right: 1px solid #e5e7eb;
+}
+
+.dark .search-input {
+  border-right: 1px solid #4b5563;
+}
