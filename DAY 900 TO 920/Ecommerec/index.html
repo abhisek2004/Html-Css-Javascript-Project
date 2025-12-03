@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura - Modern Fashion</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts (Urbanist) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Custom base styles */
+        body {
+            font-family: 'Urbanist', sans-serif;
+            background-color: #ffffff;
+            color: #1a2a3a;
+        }
+
+        /* Animation for sections revealing on scroll */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Active tab style */
+        .tab-active {
+            font-weight: 700;
+            color: #1a2a3a;
+            border-bottom: 2px solid #1a2a3a;
+        }
+    </style>
+</head>
+
+<body class="antialiased md:px-40">
+
+<!-- Header Section -->
+<header id="header" class="bg-white/80 backdrop-blur-lg border-b border-gray-200 sticky top-0 z-50">
+    <nav class="container mx-auto px-4 lg:px-8 py-4 flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold text-gray-800">Aura.</a>
+        <div class="hidden lg:flex items-center space-x-8">
+            <a href="#home" class="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
+            <a href="#shop" class="text-gray-600 hover:text-gray-900 transition-colors">Shop</a>
+            <a href="#story" class="text-gray-600 hover:text-gray-900 transition-colors">Our Story</a>
+            <a href="#testimonials" class="text-gray-600 hover:text-gray-900 transition-colors">Testimonials</a>
+        </div>
+        <div class="flex items-center space-x-5">
+            <button aria-label="Search" class="text-gray-600 hover:text-gray-900 transition-transform hover:scale-110">
+                <i class="fa-solid fa-search"></i>
+            </button>
+            <button aria-label="User Account"
+                class="text-gray-600 hover:text-gray-900 transition-transform hover:scale-110">
+                <i class="fa-solid fa-user"></i>
+            </button>
+            <button id="cart-button" aria-label="Shopping Cart"
+                class="relative text-gray-600 hover:text-gray-900 transition-transform hover:scale-110">
+                <i class="fa-solid fa-shopping-bag"></i>
+                <span id="cart-count"
+                    class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+            </button>
+            <button id="menu-toggle" aria-label="Open Menu" class="lg:hidden text-gray-600 hover:text-gray-900">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
+        <a href="#home" class="block py-3 px-6 text-gray-600 hover:bg-gray-50">Home</a>
+        <a href="#shop" class="block py-3 px-6 text-gray-600 hover:bg-gray-50">Shop</a>
+        <a href="#story" class="block py-3 px-6 text-gray-600 hover:bg-gray-50">Our Story</a>
+        <a href="#testimonials" class="block py-3 px-6 text-gray-600 hover:bg-gray-50">Testimonials</a>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section id="home" class="container mx-auto px-4 lg:px-8 py-16 reveal-on-scroll">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div class="w-full lg:w-1/2">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
+                    Elevate Your <span class="text-cyan-600">Wardrobe</span> with Irresistible Fashion Finds!
+                </h1>
+                <div class="mt-6 flex items-center space-x-4">
+                    <div class="flex -space-x-2">
+                        <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white object-cover"
+                            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop&q=80"
+                            alt="User 1">
+                        <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white object-cover"
+                            src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?w=100&h=100&fit=crop&q=80"
+                            alt="User 2">
+                        <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white object-cover"
+                            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&q=80"
+                            alt="User 3">
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-800">80K+</p>
+                        <p class="text-sm text-gray-500">Happy Customers</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full lg:w-1/2 grid grid-cols-2 grid-rows-2 gap-4 h-[500px]">
+                <div class="col-span-1 row-span-1 bg-gray-100 rounded-2xl overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1673512199219-633aa32b266d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bGVhdGhlciUyMGphY2tldHN8ZW58MHx8MHx8fDA%3D"
+                        alt="Man in a stylish jacket" class="w-full h-full object-cover">
+                </div>
+                <div class="col-span-1 row-span-2 bg-gray-100 rounded-2xl p-6 flex flex-col justify-end text-white"
+                    style="background: url('https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=400&h=800&fit=crop&q=80') no-repeat center center/cover;">
+                    <div class="bg-black/10 backdrop-blur-sm p-4 rounded-lg">
+                        <h2 class="text-xl font-bold">Explore Last Year's Bestsellers</h2>
+                        <button
+                            class="mt-3 bg-white text-gray-900 font-bold py-2 px-4 rounded-lg hover:bg-gray-200 transition-all">View
+                            Items</button>
+                    </div>
+                </div>
+                <div class="col-span-1 row-span-1 bg-gray-100 rounded-2xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1613915617430-8ab0fd7c6baf?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZmFzaGlvbiUyMG1vZGVsfGVufDB8fDB8fHww"
+                        alt="Woman in elegant clothing" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Links Section -->
+    <section class="container mx-auto px-4 lg:px-8 py-8 reveal-on-scroll">
+        <div class="flex items-center justify-center lg:justify-start space-x-6 overflow-x-auto pb-4">
+            <a href="#"
+                class="flex items-center space-x-2 text-lg font-semibold text-gray-700 hover:text-gray-900 transition-colors whitespace-nowrap">
+                <span>MAN CLOTH</span> <i class="fa-solid fa-arrow-right text-sm"></i>
+            </a>
+            <a href="#"
+                class="flex items-center space-x-2 text-lg font-semibold text-gray-700 hover:text-gray-900 transition-colors whitespace-nowrap">
+                <span>WOMEN CLOTH</span> <i class="fa-solid fa-arrow-right text-sm"></i>
+            </a>
+            <a href="#"
+                class="flex items-center space-x-2 text-lg font-semibold text-gray-700 hover:text-gray-900 transition-colors whitespace-nowrap">
+                <span>RAINY CLOTH</span> <i class="fa-solid fa-arrow-right text-sm"></i>
+            </a>
+            <a href="#"
+                class="flex items-center space-x-2 text-lg font-semibold text-gray-700 hover:text-gray-900 transition-colors whitespace-nowrap">
+                <span>KIDS CLOTH</span> <i class="fa-solid fa-arrow-right text-sm"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-gray-50 py-16 reveal-on-scroll">
+        <div class="container mx-auto px-4 lg:px-8 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="text-center p-6 bg-white rounded-xl border border-gray-200">
+                <i class="fa-solid fa-truck-fast text-3xl text-cyan-600 mb-4"></i>
+                <h3 class="font-bold text-lg">Super Fast</h3>
+                <p class="text-gray-500 text-sm">Enjoy express delivery</p>
+            </div>
+            <div class="text-center p-6 bg-white rounded-xl border border-gray-200">
+                <i class="fa-solid fa-shield-halved text-3xl text-cyan-600 mb-4"></i>
+                <h3 class="font-bold text-lg">Secure Payment</h3>
+                <p class="text-gray-500 text-sm">Your payments are safe</p>
+            </div>
+            <div class="text-center p-6 bg-white rounded-xl border border-gray-200">
+                <i class="fa-solid fa-box-open text-3xl text-cyan-600 mb-4"></i>
+                <h3 class="font-bold text-lg">Easy Returns</h3>
+                <p class="text-gray-500 text-sm">Hassle-free return policy</p>
+            </div>
+            <div class="text-center p-6 bg-white rounded-xl border border-gray-200">
+                <i class="fa-solid fa-headset text-3xl text-cyan-600 mb-4"></i>
+                <h3 class="font-bold text-lg">24/7 Support</h3>
+                <p class="text-gray-500 text-sm">We're here to help</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Sellers Section -->
+    <section id="shop" class="container mx-auto px-4 lg:px-8 py-16 reveal-on-scroll">
+        <div class="text-center mb-10">
+            <p class="text-cyan-600 font-semibold">Our Best Sellers</p>
+            <div class="flex justify-center items-center space-x-8 mt-4">
+                <button class="tab-button tab-active py-2 text-lg" data-tab="men">MEN</button>
+                <button class="tab-button py-2 text-lg text-gray-500" data-tab="women">WOMEN</button>
+            </div>
+        </div>
+
+        <!-- Men's Products Grid -->
+        <div id="men-products" class="tab-content grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <div
+                class="group relative bg-white border border-gray-200 rounded-xl p-4 transition-all hover:shadow-xl hover:-translate-y-1">
+                <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-100">
+                    <img src="https://plus.unsplash.com/premium_photo-1727942419701-0428352a21e1?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Men's Cotton T-Shirt"
+                        class="w-full h-full object-cover object-center transition-transform group-hover:scale-105">
+                    <div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">SALE
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-md font-semibold text-gray-800">Men's Cotton T-Shirt</h3>
+                    <p class="mt-1 text-lg font-bold text-gray-900">$25.00</p>
+                    <div class="mt-2 flex items-center space-x-2"><span
+                            class="block w-4 h-4 rounded-full bg-black border-2 border-white ring-1 ring-gray-400"></span><span
+                            class="block w-4 h-4 rounded-full bg-blue-800 border-2 border-white ring-1 ring-gray-400"></span><span
+                            class="block w-4 h-4 rounded-full bg-gray-300 border-2 border-white ring-1 ring-gray-400"></span>
+                    </div>
+                </div>
+                <button
+                    class="add-to-cart-btn absolute bottom-4 right-4 bg-gray-800 text-white rounded-full h-10 w-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    data-id="1" data-name="Men's Cotton T-Shirt" data-price="25.00"
+                    data-image="https://plus.unsplash.com/premium_photo-1727942419701-0428352a21e1?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <div
+                class="group relative bg-white border border-gray-200 rounded-xl p-4 transition-all hover:shadow-xl hover:-translate-y-1">
+                <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-100">
+                    <img src="https://plus.unsplash.com/premium_photo-1673735186578-1a6cd08b8100?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFuJTIwamVhbnN8ZW58MHx8MHx8fDA%3D"
+                        alt="Slim Fit Jeans"
+                        class="w-full h-full object-cover object-center transition-transform group-hover:scale-105">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-md font-semibold text-gray-800">Slim Fit Jeans</h3>
+                    <p class="mt-1 text-lg font-bold text-gray-900">$75.00</p>
+                    <div class="mt-2 flex items-center space-x-2"><span
+                            class="block w-4 h-4 rounded-full bg-blue-900 border-2 border-white ring-1 ring-gray-400"></span><span
+                            class="block w-4 h-4 rounded-full bg-black border-2 border-white ring-1 ring-gray-400"></span>
+                    </div>
+                </div>
+                <button
+                    class="add-to-cart-btn absolute bottom-4 right-4 bg-gray-800 text-white rounded-full h-10 w-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    data-id="2" data-name="Slim Fit Jeans" data-price="75.00"
+                    data-image="https://plus.unsplash.com/premium_photo-1673735186578-1a6cd08b8100?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFuJTIwamVhbnN8ZW58MHx8MHx8fDA%3D">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <div
+                class="group relative bg-white border border-gray-200 rounded-xl p-4 transition-all hover:shadow-xl hover:-translate-y-1">
+                <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-100">
+                    <img src="https://images.pexels.com/photos/6851631/pexels-photo-6851631.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        alt="Leather Biker Jacket"
+                        class="w-full h-full object-cover object-center transition-transform group-hover:scale-105">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-md font-semibold text-gray-800">Leather Biker Jacket</h3>
+                    <p class="mt-1 text-lg font-bold text-gray-900">$150.00</p>
+                    <div class="mt-2 flex items-center space-x-2"><span
+                            class="block w-4 h-4 rounded-full bg-black border-2 border-white ring-1 ring-gray-400"></span>
+                    </div>
+                </div>
+                <button
+                    class="add-to-cart-btn absolute bottom-4 right-4 bg-gray-800 text-white rounded-full h-10 w-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    data-id="3" data-name="Leather Biker Jacket" data-price="150.00"
+                    data-image="https://images.pexels.com/photos/6851631/pexels-photo-6851631.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <div
+                class="group relative bg-white border border-gray-200 rounded-xl p-4 transition-all hover:shadow-xl hover:-translate-y-1">
+                <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-100">
+                    <img src="https://pictures.kartmax.in/live/inside/800x800/sites/aPfvUDpPwMn1ZadNKhP7/product-images/HLSH022876_1.JPG"
+                        alt="Formal Oxford Shirt"
+                        class="w-full h-full object-cover object-center transition-transform group-hover:scale-105">
+                    <div class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">NEW
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-md font-semibold text-gray-800">Formal Oxford Shirt</h3>
+                    <p class="mt-1 text-lg font-bold text-gray-900">$60.00</p>
+                    <div class="mt-2 flex items-center space-x-2"><span
+                            class="block w-4 h-4 rounded-full bg-white border-2 border-gray-300"></span><span
+                            class="block w-4 h-4 rounded-full bg-blue-200 border-2 border-white ring-1 ring-gray-400"></span>
+                    </div>
+                </div>
+                <button
+                    class="add-to-cart-btn absolute bottom-4 right-4 bg-gray-800 text-white rounded-full h-10 w-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    data-id="4" data-name="Formal Oxford Shirt" data-price="60.00"
+                    data-image="https://pictures.kartmax.in/live/inside/800x800/sites/aPfvUDpPwMn1ZadNKhP7/product-images/HLSH022876_1.JPG">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Women's Products Grid -->
+    <div id="women-products" class="tab-content hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    
+        <!-- Summer Floral Dress -->
+        <div
+            class="group relative bg-white border border-gray-200 rounded-xl p-4 transition-all hover:shadow-xl hover:-translate-y-1">
+            <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-100">
+                <img src="https://images.unsplash.com/photo-1511130558090-00af810c21b1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZmxvcmFsJTIwZHJlc3N8ZW58MHx8MHx8fDA%3D"
+                    alt="Summer Floral Dress"
+                    class="w-full h-full object-cover object-center transition-transform group-hover:scale-105">
+                <div class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</div>
+            </div>
+            <div class="mt-4">
+                <h3 class="text-md font-semibold text-gray-800">Summer Floral Dress</h3>
+                <p class="mt-1 text-lg font-bold text-gray-900">$85.00</p>
+                <div class="mt-2 flex items-center space-x-2">
+                    <span class="block w-4 h-4 rounded-full bg-red-300 border-2 border-white ring-1 ring-gray-400"></span>
+                    <span
+                        class="block w-4 h-4 rounded-full bg-yellow-200 border-2 border-white ring-1 ring-gray-400"></span>
+                </div>
+            </div>
+            <button
+                class="add-to-cart-btn absolute bottom-4 right-4 bg-gray-800 text-white rounded-full h-10 w-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                data-id="5" data-name="Summer Floral Dress" data-price="85.00"
+                data-image="https://images.unsplash.com/photo-1511130558090-00af810c21b1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZmxvcmFsJTIwZHJlc3N8ZW58MHx8MHx8fDA%3D">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </div>
+    
+        <!-- Elegant White Top -->
+        <div
+            class="group relative bg-white border border-gray-200 rounded-xl p-4 transition-all hover:shadow-xl hover:-translate-y-1">
+            <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-100">
+                <img src="https://plus.unsplash.com/premium_photo-1706151921319-35258691ffba?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d2hpdGUlMjBjbG90aGVzfGVufDB8fDB8fHww"
+                    alt="Elegant White Top"
+                    class="w-full h-full object-cover object-center transition-transform group-hover:scale-105">
+            </div>
+            <div class="mt-4">
+                <h3 class="text-md font-semibold text-gray-800">Elegant White Top</h3>
+                <p class="mt-1 text-lg font-bold text-gray-900">$55.00</p>
+                <div class="mt-2 flex items-center space-x-2">
+                    <span class="block w-4 h-4 rounded-full bg-white border-2 border-gray-300"></span>
+                    <span class="block w-4 h-4 rounded-full bg-gray-200 border-2 border-white ring-1 ring-gray-400"></span>
+                </div>
+            </div>
+            <button
+                class="add-to-cart-btn absolute bottom-4 right-4 bg-gray-800 text-white rounded-full h-10 w-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                data-id="6" data-name="Elegant White Blouse" data-price="55.00"
+                data-image="https://plus.unsplash.com/premium_photo-1706151921319-35258691ffba?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d2hpdGUlMjBjbG90aGVzfGVufDB8fDB8fHww">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </div>
+    
+        <!-- High-Rise Blue Jeans -->
+        <div
+            class="group relative bg-white border border-gray-200 rounded-xl p-4 transition-all hover:shadow-xl hover:-translate-y-1">
+            <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-100">
+                <img src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d29tZW4lMjBqZWFuc3xlbnwwfHwwfHx8MA%3D%3D"
+                    alt="High-Rise Blue Jeans"
+                    class="w-full h-full object-cover object-center transition-transform group-hover:scale-105">
+                <div class="absolute top-2 left-2 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">TRENDING</div>
+            </div>
+            <div class="mt-4">
+                <h3 class="text-md font-semibold text-gray-800">High-Rise Blue Jeans</h3>
+                <p class="mt-1 text-lg font-bold text-gray-900">$70.00</p>
+                <div class="mt-2 flex items-center space-x-2">
+                    <span class="block w-4 h-4 rounded-full bg-blue-400 border-2 border-white ring-1 ring-gray-400"></span>
+                    <span class="block w-4 h-4 rounded-full bg-blue-900 border-2 border-white ring-1 ring-gray-400"></span>
+                </div>
+            </div>
+            <button
+                class="add-to-cart-btn absolute bottom-4 right-4 bg-gray-800 text-white rounded-full h-10 w-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                data-id="9" data-name="High-Rise Blue Jeans" data-price="70.00"
+                data-image="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d29tZW4lMjBqZWFuc3xlbnwwfHwwfHx8MA%3D%3D">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </div>
+    
+        <!-- Cropped Denim Jacket -->
+        <div
+            class="group relative bg-white border border-gray-200 rounded-xl p-4 transition-all hover:shadow-xl hover:-translate-y-1">
+            <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-100">
+                <img src="https://plus.unsplash.com/premium_photo-1682095661711-f5d67d0e75a9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d29tZW5zJTIwZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D"
+                    alt="Cropped Denim Jacket"
+                    class="w-full h-full object-cover object-center transition-transform group-hover:scale-105">
+                <div class="absolute top-2 left-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded">BESTSELLER
+                </div>
+            </div>
+            <div class="mt-4">
+                <h3 class="text-md font-semibold text-gray-800">Cropped Denim Jacket</h3>
+                <p class="mt-1 text-lg font-bold text-gray-900">$88.00</p>
+                <div class="mt-2 flex items-center space-x-2">
+                    <span
+                        class="block w-4 h-4 rounded-full bg-yellow-600 border-2 border-white ring-1 ring-gray-400"></span>
+                    <span class="block w-4 h-4 rounded-full bg-blue-200 border-2 border-white ring-1 ring-gray-400"></span>
+                </div>
+            </div>
+            <button
+                class="add-to-cart-btn absolute bottom-4 right-4 bg-gray-800 text-white rounded-full h-10 w-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                data-id="10" data-name="Cropped Denim Jacket" data-price="88.00"
+                data-image="https://plus.unsplash.com/premium_photo-1682095661711-f5d67d0e75a9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d29tZW5zJTIwZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </div>
+    </div>
+
+        <div class="text-center mt-12">
+            <button
+                class="bg-gray-800 text-white font-bold py-3 px-8 rounded-lg hover:bg-gray-700 transition-all hover:scale-105">View
+                All</button>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section id="story" class="bg-gray-50 py-16 reveal-on-scroll">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Exceptional Goods are <span
+                        class="text-cyan-600">What</span></h2>
+                <p class="text-3xl md:text-4xl font-bold text-gray-900 -mt-2"><span
+                        class="inline-block border-b-4 border-cyan-500 pb-1">Make this Story Great</span></p>
+            </div>
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="w-full lg:w-1/2 grid grid-cols-5 grid-rows-3 gap-4 h-[450px]">
+                    <div class="col-span-3 row-span-3 bg-gray-200 rounded-2xl overflow-hidden relative group">
+                        <img src="https://images.unsplash.com/photo-1542060748-10c28b62716f?w=600&h=800&fit=crop&q=80"
+                            alt="Textured fabric" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+                            <button
+                                class="bg-white/80 rounded-full h-16 w-16 flex items-center justify-center text-2xl text-gray-800 transition-transform group-hover:scale-110">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-span-2 row-span-2 bg-gray-200 rounded-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop&q=80"
+                            alt="Stylish man portrait" class="w-full h-full object-cover">
+                    </div>
+                    <div class="col-span-2 row-span-1 bg-gray-200 rounded-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556227151-799479f586bc?q=80&w=709&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Fashion accessory" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        At Aura, our story is woven with a love for fashion and a commitment to authenticity. Born out
+                        of a passion for quality textiles and timeless style, we embark on a journey to redefine your
+                        wardrobe. We believe that great clothing is not just about looking good, but feeling confident
+                        and expressing your true self.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="container mx-auto px-4 lg:px-8 py-16 reveal-on-scroll">
+        <div class="text-center mb-12">
+            <p class="text-cyan-600 font-semibold">Voices of Passion</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-1">What Our Customers Say</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+            <div class="bg-white border border-gray-200 rounded-xl p-6">
+                <i class="fa-solid fa-quote-left text-2xl text-cyan-500 mb-4"></i>
+                <p class="text-gray-600">Exceptional quality and style! I am in love with my new jacket. The attention
+                    to detail is remarkable. Silky will be my go-to from now on.</p>
+                <div class="mt-6 flex items-center space-x-4">
+                    <img class="h-12 w-12 rounded-full object-cover"
+                        src="https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?w=100&h=100&fit=crop&q=80"
+                        alt="Jonathan M.">
+                    <div>
+                        <p class="font-bold text-gray-800">Jonathan M.</p>
+                        <p class="text-sm text-gray-500">Verified Buyer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-xl p-6 md:scale-105 md:shadow-xl">
+                <div class="w-full h-48 rounded-lg overflow-hidden mb-6">
+                    <img src="https://plus.unsplash.com/premium_photo-1707932496423-1ee96181ade8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y3VzdG9tZXIlMjB3aXRoJTIwcHJvZHVjdCUyMGZhc2hpb24lMjBtZW4lMjBjbG9zZXVwfGVufDB8fDB8fHww"
+                        alt="Customer with product" class="w-full h-full object-cover">
+                </div>
+                <p class="text-center font-semibold text-lg text-gray-800">A Seamless Shopping Experience</p>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-xl p-6">
+                <i class="fa-solid fa-quote-left text-2xl text-cyan-500 mb-4"></i>
+                <p class="text-gray-600">The customer service is top-notch. They helped me find the perfect size and the
+                    delivery was incredibly fast. Highly recommended!</p>
+                <div class="mt-6 flex items-center space-x-4">
+                    <img class="h-12 w-12 rounded-full object-cover"
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&q=80"
+                        alt="Jessica P.">
+                    <div>
+                        <p class="font-bold text-gray-800">Jessica P.</p>
+                        <p class="text-sm text-gray-500">Verified Buyer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="bg-gray-50 py-16 reveal-on-scroll">
+        <div class="container mx-auto px-4 lg:px-8 text-center max-w-2xl">
+            <h2 class="text-3xl font-bold text-gray-900">Newsletter</h2>
+            <p class="text-gray-600 mt-2">Subscribe to get the latest news on sales, new releases and more.</p>
+            <form class="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <div class="relative flex-grow">
+                    <i class="fa-solid fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <input type="email" placeholder="Your email here"
+                        class="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none"
+                        required>
+                </div>
+                <button type="submit"
+                    class="bg-gray-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-700 transition-transform hover:scale-105">Subscribe</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<!-- Footer Section -->
+<footer class="bg-white border-t border-gray-200">
+    <div class="container mx-auto px-4 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-1">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">Pages</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900">Home</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900">Shop</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900">Our Story</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-span-1 md:col-span-1">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">Follow Us</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900">Instagram</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900">Facebook</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900">Twitter</a></li>
+                </ul>
+            </div>
+            <div class="col-span-1 md:col-span-2">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">About Us</h3>
+                <p class="text-gray-600">At Aura, we believe fashion is more than just clothes, it's a way to express
+                    who you are. We're dedicated to bringing you high-quality, stylish apparel that you'll love.</p>
+            </div>
+        </div>
+    </div>
+    <div class="border-t border-gray-200 py-4">
+        <p class="text-center text-sm text-gray-500">Copyright © 2025 Aura. All Rights Reserved.</p>
+    </div>
+</footer>
+
+
+<!-- Cart & Checkout Modal -->
+<div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex justify-end">
+    <div class="bg-white w-full max-w-md h-full flex flex-col transform transition-transform translate-x-full"
+        id="cart-panel">
+        <!-- Cart Header -->
+        <div class="flex justify-between items-center p-4 border-b">
+            <h2 class="text-xl font-bold">Your Cart</h2>
+            <button id="close-cart-btn" class="text-gray-500 hover:text-gray-800">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Cart Items -->
+        <div id="cart-items-container" class="flex-grow p-4 overflow-y-auto">
+            <!-- Cart items will be injected here -->
+            <div id="empty-cart-message" class="text-center text-gray-500 py-16">
+                <i class="fas fa-shopping-bag text-4xl mb-4"></i>
+                <p>Your cart is empty.</p>
+            </div>
+        </div>
+
+        <!-- Cart Footer -->
+        <div class="p-4 border-t bg-gray-50">
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-lg font-semibold">Subtotal</span>
+                <span id="cart-subtotal" class="text-lg font-bold">$0.00</span>
+            </div>
+            <button id="checkout-btn"
+                class="w-full bg-gray-800 text-white font-bold py-3 rounded-lg hover:bg-gray-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Mobile Menu Toggle ---
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // --- Product Tabs ---
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update button styles
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('tab-active');
+                        btn.classList.add('text-gray-500');
+                    });
+                    button.classList.add('tab-active');
+                    button.classList.remove('text-gray-500');
+
+                    // Show/hide content
+                    const tab = button.dataset.tab;
+                    tabContents.forEach(content => {
+                        if (content.id === `${tab}-products`) {
+                            content.classList.remove('hidden');
+                        } else {
+                            content.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            // --- Scroll Animations ---
+            const scrollElements = document.querySelectorAll('.reveal-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            scrollElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            // --- Shopping Cart Functionality ---
+            const cartButton = document.getElementById('cart-button');
+            const cartModal = document.getElementById('cart-modal');
+            const cartPanel = document.getElementById('cart-panel');
+            const closeCartBtn = document.getElementById('close-cart-btn');
+            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+            const cartItemsContainer = document.getElementById('cart-items-container');
+            const cartCount = document.getElementById('cart-count');
+            const cartSubtotal = document.getElementById('cart-subtotal');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            const checkoutBtn = document.getElementById('checkout-btn');
+
+            let cart = JSON.parse(localStorage.getItem('silkyCart')) || [];
+
+            function openCart() {
+                cartModal.classList.remove('hidden');
+                setTimeout(() => cartPanel.classList.remove('translate-x-full'), 10);
+            }
+
+            function closeCart() {
+                cartPanel.classList.add('translate-x-full');
+                setTimeout(() => cartModal.classList.add('hidden'), 300);
+            }
+
+            function updateCartUI() {
+                cartItemsContainer.innerHTML = ''; // Clear current items
+                if (cart.length === 0) {
+                    emptyCartMessage.style.display = 'block';
+                } else {
+                    emptyCartMessage.style.display = 'none';
+                    cart.forEach(item => {
+                        const itemElement = document.createElement('div');
+                        itemElement.className = 'flex items-center gap-4 mb-4';
+                        itemElement.innerHTML = `
+                            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 rounded-md object-cover">
+                            <div class="flex-grow">
+                                <h4 class="font-semibold">${item.name}</h4>
+                                <p class="text-sm text-gray-500">$${item.price}</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button class="quantity-change text-lg" data-id="${item.id}" data-change="-1">-</button>
+                                <span class="font-bold">${item.quantity}</span>
+                                <button class="quantity-change text-lg" data-id="${item.id}" data-change="1">+</button>
+                            </div>
+                            <button class="remove-from-cart text-red-500 hover:text-red-700" data-id="${item.id}">&times;</button>
+                        `;
+                        cartItemsContainer.appendChild(itemElement);
+                    });
+                }
+
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCount.textContent = totalItems;
+                cartCount.classList.toggle('hidden', totalItems === 0);
+
+                const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+                cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+
+                checkoutBtn.disabled = cart.length === 0;
+            }
+
+            function saveCart() {
+                localStorage.setItem('silkyCart', JSON.stringify(cart));
+            }
+
+            function addToCart(item) {
+                const existingItem = cart.find(cartItem => cartItem.id === item.id);
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({ ...item, quantity: 1 });
+                }
+                saveCart();
+                updateCartUI();
+                openCart();
+            }
+
+            function changeQuantity(itemId, change) {
+                const item = cart.find(cartItem => cartItem.id === itemId);
+                if (item) {
+                    item.quantity += change;
+                    if (item.quantity <= 0) {
+                        cart = cart.filter(cartItem => cartItem.id !== itemId);
+                    }
+                }
+                saveCart();
+                updateCartUI();
+            }
+
+            function removeFromCart(itemId) {
+                cart = cart.filter(cartItem => cartItem.id !== itemId);
+                saveCart();
+                updateCartUI();
+            }
+
+            // Event Listeners
+            cartButton.addEventListener('click', openCart);
+            closeCartBtn.addEventListener('click', closeCart);
+            cartModal.addEventListener('click', (e) => {
+                if (e.target === cartModal) {
+                    closeCart();
+                }
+            });
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const { id, name, price, image } = e.currentTarget.dataset;
+                    addToCart({ id, name, price: parseFloat(price), image });
+                });
+            });
+
+            cartItemsContainer.addEventListener('click', e => {
+                if (e.target.matches('.quantity-change')) {
+                    const id = e.target.dataset.id;
+                    const change = parseInt(e.target.dataset.change, 10);
+                    changeQuantity(id, change);
+                }
+                if (e.target.matches('.remove-from-cart')) {
+                    const id = e.target.dataset.id;
+                    removeFromCart(id);
+                }
+            });
+
+            // Initial UI update on load
+            updateCartUI();
+        });
+    </script>
+
+</body>
+
+</html>
