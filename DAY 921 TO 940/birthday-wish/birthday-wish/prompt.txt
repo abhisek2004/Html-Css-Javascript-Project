@@ -1,0 +1,65 @@
+Subject: Create a Complete, Interactive, 2025-Modern Birthday Greeting Website
+Overall Vision & Goal:
+Your task is to generate a complete, self-contained HTML file for an immersive and highly impressive interactive birthday greeting website. The target audience for this greeting is someone very special (a crush, girlfriend, or best friend), so the tone should be heartfelt, personal, and visually stunning. The design must adhere to ultra-modern 2025 web trends, combining sophisticated animations, a dark-mode aesthetic, and a guided, emotional journey. The final output should be a single .html file that works out of the box.
+Core Design System & Global Styles (The "Look and Feel"):
+Background Layers: The background is the most important feature and has two layers:
+Layer 1: Animated Aurora Gradient: Create a full-screen, dark background (#0c0a09) with a mesmerizing, slowly shifting aurora effect. This should be a subtle, looping animation of soft, blended radial gradients in these colors: deep pink (hsla(333,70%,55%,.4)), purple (hsla(282, 82%, 54%, .3)), blue (hsla(210, 89%, 60%, .3)), and gold (hsla(35, 90%, 60%, .3)). The animation should make the lights feel like they are breathing and flowing.
+Layer 2: 3D Floating Hearts: Using Three.js, render 20-25 3D hearts that float gently in the background space. They should have a pink/red color palette, random sizes and rotations, and drift with a subtle sine-wave motion. They should have a slight sheen, as if lit.
+Main Content Cards (The "Steps"):
+Each step of the greeting is presented on a "glassmorphism" card.
+Style: These cards have a very dark, semi-transparent background, a heavy "frosted glass" effect (backdrop blur), and a thin, subtle white border to catch the light. They should have a soft shadow to make them feel like they are floating above the aurora.
+Typography:
+Headings: Use the elegant serif font "Playfair Display" for all main h1 and h2 titles. These titles should have a beautiful text gradient effect, clipping a gradient of light pinks and white to the text.
+Body Text: Use the modern and clean sans-serif font "Satoshi" for all paragraphs and button text. Body text should be a light gray/off-white.
+Buttons:
+Style: All buttons should be pill-shaped with a vibrant pink-to-red gradient background and bold white text. They need a soft glow effect around them.
+Interaction: On hover, the button should lift up slightly, scale up (e.g., to 105%), and its glow should become more intense. On click, it should have a subtle "pressed down" animation.
+Progress Bar:
+A thin, horizontal bar fixed at the top-center of the screen. It should sit on a semi-transparent glass-like track. The bar itself should be a pink-to-red gradient and must fill up smoothly from left to right as the user progresses through the steps.
+The 5-Step Interactive Journey:
+The website will guide the user through 5 distinct steps. Each new step should animate in by fading and sliding up, with its internal elements (text, buttons) also animating in with a slight stagger.
+Step 1: The Grand Welcome
+Icon: A large, glowing, gently beating heart emoji (❤️) with a pulsating glow effect.
+Headline: "Hey Beautiful,"
+Paragraph: "I built a little world for you, just to bring a smile to your face on your special day."
+Button: "Let's Begin"
+Step 2: The Core Message
+Icon: A large party popper emoji (🎉).
+Headline: "Happy Birthday!"
+Paragraph: "Another year of you making the world brighter. Your existence is a gift, and I'm so lucky to witness it."
+Button: "There's more..."
+Step 3: The Reasons Why (Bento Grid)
+Headline: "A Few Things I Adore About You"
+Layout: Display the reasons in a modern "bento grid" layout.
+Card 1 (Larger, spans two columns): Title: "✨ Your Unmatched Kindness", Text: "The genuine warmth you show to everyone is something truly rare and beautiful."
+Card 2 (Smaller): Title: "😊 That Smile", Text: "It's a work of art."
+Card 3 (Larger, spans two columns): Title: "🌟 Your Radiant Spirit", Text: "Your passion for life is infectious. Being around you makes everything feel more exciting and possible."
+Button: "Remember this?"
+Step 4: The Shared Memory
+Headline: "That One Time..."
+Visual: Do not just show an image. Display it inside a "floating polaroid." The polaroid should have a classic white border and a caption area. It should be slightly tilted in 3D space.
+Image: Use the placeholder https://i.ibb.co/6Z6XgCg/crush.webp.
+Caption: "Our favorite memory."
+Interaction: On hover, the polaroid should tilt towards the user's cursor with a subtle parallax effect.
+Paragraph: "Every moment with you feels like a scene from a movie I'd watch on repeat."
+Button: "One last thing..."
+Step 5: The Birthday Wish & Finale
+Icon: A large birthday cake emoji (🎂).
+Headline: "My Wish For You"
+Paragraph: "May the next year bring you all the love, success, and pure happiness you so rightfully deserve. May your dreams soar higher than ever."
+Final Text: A space is reserved for a final message that appears later.
+Button: "Celebrate!"
+Animation and Functionality Logic:
+Step Navigation: Clicking a button on any step (1-4) smoothly transitions to the next step. The current step fades and scales down while the next step fades in and scales up to its final position.
+The "Celebrate!" Button Grand Finale Sequence: This is the climax. When the user clicks "Celebrate!", a multi-stage animation sequence must occur:
+The "Celebrate!" button itself should fade out and become disabled.
+The final wish text, "Happy Birthday, my crush! ❤️", elegantly fades and slides up into view.
+A multi-layered confetti explosion begins and lasts for about 5 seconds.
+It starts with powerful bursts of confetti shooting up from the bottom corners of the screen.
+This is followed by a continuous, gentle shower of both standard colorful confetti and emoji confetti (❤️, 💖, ✨).
+Simultaneously, the background 3D hearts perform their final animation: they should all gracefully swirl outwards and float up off the screen before fading away completely.
+Final Output Requirements:
+The final output must be a single, self-contained HTML file.
+All CSS and JavaScript must be included directly within the HTML file in <style> and <script> tags.
+The <head> must include CDN links for all necessary libraries: Tailwind CSS, Three.js, GSAP (Core), and canvas-confetti.
+The website must be fully responsive, ensuring a beautiful and functional experience on both large desktop screens and mobile phones.
