@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
+        <title>New Year</title>
+    </head>
+    <body>
+        <div class="banner">
+            <h2>2026</h2>
+        </div>
+        <div class="content">
+            <h2>2025</h2>
+        </div>
+
+        <!-- Added "OK" that follows the mouse -->
+        <div class="ok-follow">OK</div>
+
+        <script>
+            let pos = document.documentElement;
+            pos.addEventListener("mousemove", e => {
+                pos.style.setProperty('--x', e.clientX + 'px');
+                pos.style.setProperty('--y', e.clientY + 'px');
+            })
+        </script>
+
+        <style>
+            /* Minimal style for the "OK" text - does not affect your existing design */
+            .ok-follow {
+                position: fixed;
+                top: var(--y);
+                left: var(--x);
+                transform: translate(-50%, -50%);
+                font-size: 32px;
+                font-weight: bold;
+                color: #fff;
+                pointer-events: none; /* so it doesn't block clicks */
+                z-index: 9999;
+                user-select: none;
+            }
+        </style>
+    </body>
+</html>
