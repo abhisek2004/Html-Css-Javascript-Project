@@ -1,0 +1,81 @@
+:root {
+	--spd: 2s;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: radial-gradient(circle at 50% 100%, #111, #333);
+}
+
+.monitor {
+	width: 50vmin;
+	height: 50vmin;
+	background: 
+		linear-gradient(-90deg, #fff 0 0.5vmin, #fff0 1vmin 100%), 
+		linear-gradient(90deg, #212121 60%, #02ff4e 80% 100%);
+	background-size: 200% 100%;
+	background-position: 0 0;
+	background-color: #212121;
+	position: relative;
+	animation: pulse var(--spd) ease -0.5s infinite;
+	border-radius: 0.75vmin;
+	overflow: hidden;
+	border: 4vmin solid #141414;
+	border-color: #141414 #555555 #757575 #232323;
+	color: #00800060;
+	line-height: 50.05vmin;
+	font-size: 1.7vmin;
+	text-indent: 1.5vmin;
+	word-spacing: 42.45vmin;
+}
+
+.monitor:before, 
+.monitor:after {
+	position: absolute;
+	left: 0;
+	background: #212121;
+	width: 100%;
+	height: 100%;
+	font-family: Arial, Helvetica, serif;
+	font-size: 1.5vmin;
+}
+
+.monitor:after {
+	box-shadow: 0 0 0 2px #000;
+	clip-path: polygon(0% 50.75%, 35.85% 50.75%, 42.85% 29%, 54.75% 65%, 59.9% 44%, 66% 60%, 70% 48.25%, 72% 50.75%, 100% 50.75%, 100% 100%, 0% 100%, 0% 50%, 35.35% 50%, 42.85% 27%, 54.6% 62.5%, 59.8% 42%, 66% 58.25%, 69.75% 47%, 72% 50%, 100% 50%, 100% 0%, 0% 0%);
+	content: "0.4 \A 0.3 \A 0.2 \A 0.1 \A 0.0 \A -0.1 \A -0.2 \A -0.3 \A -0.4";
+	line-height: 5.125vmin;
+	padding-top: 1.95vmin;
+	padding-left: 1.5vmin;
+	white-space: pre-wrap;
+	text-shadow: 45vmin 0 0 #00800060;
+	box-sizing: border-box;
+	text-indent: 0;
+}
+
+.monitor:before {
+	z-index: 2;
+	background: 
+		repeating-linear-gradient(90deg, #fff0 0 calc(5vmin - 2px), #02ff3911 0 5vmin, #fff0 0 calc(5vmin + 1px)), 
+		repeating-linear-gradient(0deg, #fff0 0 calc(5vmin - 2px), #02ff3911 0 5vmin, #fff0 0 calc(5vmin + 1px));
+	background-position: 0 0, 0 0.4vmin;
+	box-shadow: 0 0 2vmin 0 #000 inset, 0 0 0 0.15vmin #000 inset;
+	content: "0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9";
+	word-spacing: 2.65vmin;
+	text-indent: 3.75vmin;
+	text-align: left; 
+	line-height: 4.25vmin;
+	text-shadow: 0 46vmin 0 #00800060;
+}
+
+@keyframes pulse {
+	  0% { background-position-x: 0; }
+	100% { background-position-x: -200%; }
+}
