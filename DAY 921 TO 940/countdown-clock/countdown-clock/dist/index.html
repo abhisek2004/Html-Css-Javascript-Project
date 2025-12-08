@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Countdown Clock</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://use.typekit.net/nac3qra.css"><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<svg id="mainSVG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+<defs>
+    <marker
+      id="arrow"
+      viewBox="0 0 10 10"
+      refX="5"
+      refY="5"
+      markerWidth="3"
+      markerHeight="3"
+      orient="auto-start-reverse"
+			fill="#2f4858"
+						>
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+	<line class="line" x1="0" x2="0" y1="0" y2="0" />
+	<polygon class="tri" points="8.66 1 .87 14.5 16.45 14.5 8.66 1" fill="#fff" stroke="#000" stroke-miterlimit="10"/>
+	</defs>
+	<g id="container" >
+	</g>
+	<text x="0" y="0" id="displayText">01:00</text> 
+</svg>
+<!-- partial -->
+  <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/35984/ScrubGSAPTimeline_3_1.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MotionPathPlugin.min.js?v=8'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MotionPathHelper.min.js?v=6'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/DrawSVGPlugin3.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MorphSVGPlugin3.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/CustomEase3.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/CustomWiggle3.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/SplitText3.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/InertiaPlugin.min.js'></script>
+<script src='https://unpkg.co/gsap@3/dist/Draggable.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
