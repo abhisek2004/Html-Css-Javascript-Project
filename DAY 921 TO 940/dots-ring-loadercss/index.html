@@ -2,16 +2,336 @@
 <html lang="en">
 
   <head>
-    <meta charset="UTF-8">
-    <title>Ring Loader</title>
-    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ABHISEK_2003 • NEON RING LOADER</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@600;800&display=swap"
+      rel="stylesheet">
+    <style>
+      :root {
+        --bg: #0a0a1a;
+        --cyan: #00f2ff;
+        --magenta: #ff00aa;
+        --purple: #9d00ff;
+        --glow-cyan: 0 0 80px #00f2ff, 0 0 160px #00f2ff;
+        --glow-magenta: 0 0 80px #ff00aa, 0 0 160px #ff00aa;
+        --text: #e0e0ff;
+      }
 
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        user-select: none;
+      }
+
+      body {
+        min-height: 100vh;
+        background: var(--bg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        font-family: 'Space Grotesk', sans-serif;
+        perspective: 2000px;
+        background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, var(--bg) 100%);
+      }
+
+      /* Twinkling Stars */
+      .star {
+        position: absolute;
+        background: #fff;
+        border-radius: 50%;
+        animation: twinkle 5s infinite;
+      }
+
+      @keyframes twinkle {
+
+        0%,
+        100% {
+          opacity: 0.3
+        }
+
+        50% {
+          opacity: 1
+        }
+      }
+
+      /* Background Pulse */
+      .bg {
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.15), transparent 70%);
+        animation: bgPulse 12s ease-in-out infinite;
+      }
+
+      @keyframes bgPulse {
+
+        0%,
+        100% {
+          opacity: 0.3
+        }
+
+        50% {
+          opacity: 0.8
+        }
+      }
+
+      /* Loader Container */
+      .dots {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        transform-style: preserve-3d;
+        animation: rotate3D 20s linear infinite;
+      }
+
+      @keyframes rotate3D {
+        to {
+          transform: rotateY(360deg) rotateX(10deg)
+        }
+      }
+
+      /* Orbiting Dots */
+      .dot {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: var(--cyan);
+        border-radius: 50%;
+        box-shadow: var(--glow-cyan);
+        animation: floatDot 8s ease-in-out infinite;
+      }
+
+      .dot:nth-child(1) {
+        top: 50%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .dot:nth-child(2) {
+        top: 20%;
+        left: 20%;
+        animation-delay: 1s;
+      }
+
+      .dot:nth-child(3) {
+        top: 10%;
+        left: 50%;
+        animation-delay: 2s;
+      }
+
+      .dot:nth-child(4) {
+        top: 20%;
+        right: 20%;
+        animation-delay: 3s;
+      }
+
+      .dot:nth-child(5) {
+        top: 50%;
+        right: 10%;
+        animation-delay: 4s;
+      }
+
+      .dot:nth-child(6) {
+        bottom: 20%;
+        right: 20%;
+        animation-delay: 5s;
+      }
+
+      .dot:nth-child(7) {
+        bottom: 10%;
+        left: 50%;
+        animation-delay: 6s;
+      }
+
+      .dot:nth-child(8) {
+        bottom: 20%;
+        left: 20%;
+        animation-delay: 7s;
+      }
+
+      .dot:nth-child(9) {
+        top: 35%;
+        left: 35%;
+        animation-delay: 0.5s;
+      }
+
+      .dot:nth-child(10) {
+        top: 35%;
+        right: 35%;
+        animation-delay: 2.5s;
+      }
+
+      .dot:nth-child(11) {
+        bottom: 35%;
+        left: 35%;
+        animation-delay: 4.5s;
+      }
+
+      .dot:nth-child(12) {
+        bottom: 35%;
+        right: 35%;
+        animation-delay: 6.5s;
+      }
+
+      @keyframes floatDot {
+
+        0%,
+        100% {
+          transform: translateZ(0) scale(1);
+        }
+
+        50% {
+          transform: translateZ(150px) scale(1.4);
+        }
+      }
+
+      /* Central Neon Ring */
+      .ring {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
+        border: 8px solid transparent;
+        border-top: 8px solid var(--cyan);
+        border-right: 8px solid var(--magenta);
+        border-bottom: 8px solid var(--purple);
+        border-left: 8px solid var(--cyan);
+        border-radius: 50%;
+        box-shadow: var(--glow-cyan), var(--glow-magenta);
+        animation: ringSpin 4s linear infinite, ringPulse 3s ease-in-out infinite;
+      }
+
+      @keyframes ringSpin {
+        to {
+          transform: translate(-50%, -50%) rotate(360deg)
+        }
+      }
+
+      @keyframes ringPulse {
+
+        0%,
+        100% {
+          box-shadow: var(--glow-cyan)
+        }
+
+        50% {
+          box-shadow: 0 0 120px #00f2ff, 0 0 240px #00f2ff, 0 0 120px #ff00aa
+        }
+      }
+
+      /* Checkbox Trigger (Hidden) */
+      input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      /* Loading Text */
+      .loading {
+        position: absolute;
+        top: calc(50% + 180px);
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2.2rem;
+        font-weight: 900;
+        background: linear-gradient(45deg, var(--cyan), var(--magenta), var(--purple));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: var(--glow-cyan);
+        letter-spacing: 6px;
+        animation: textFlicker 2s steps(1) infinite;
+      }
+
+      @keyframes textFlicker {
+
+        0%,
+        100% {
+          opacity: 0.9
+        }
+
+        50% {
+          opacity: 1
+        }
+      }
+
+      /* Brand */
+      .brand {
+        position: fixed;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2rem;
+        font-weight: 900;
+        background: linear-gradient(45deg, var(--cyan), var(--magenta));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: var(--glow-cyan);
+        letter-spacing: 4px;
+        z-index: 10;
+      }
+
+      /* Click to Activate Full Glow */
+      input[type="checkbox"]:checked~.dots .ring {
+        animation-duration: 1.5s;
+        border-width: 12px;
+        box-shadow: 0 0 200px #00f2ff, 0 0 400px #00f2ff, 0 0 200px #ff00aa;
+      }
+
+      input[type="checkbox"]:checked~.dots .dot {
+        animation-duration: 4s;
+        box-shadow: 0 0 120px #00f2ff;
+      }
+
+      @media (max-width:600px) {
+        .dots {
+          width: 300px;
+          height: 300px;
+        }
+
+        .ring {
+          width: 150px;
+          height: 150px;
+        }
+
+        .loading {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <!-- partial:index.partial.html -->
-    <input type="checkbox" />
+
+    <!-- Stars -->
+    <script>
+      for (let i = 0; i < 300; i++) {
+        const s = document.createElement('div');
+        s.className = 'star';
+        s.style.width = s.style.height = (Math.random() * 2.5 + 1) + 'px';
+        s.style.left = Math.random() * 100 + 'vw';
+        s.style.top = Math.random() * 100 + 'vh';
+        s.style.animationDelay = Math.random() * 5 + 's';
+        document.body.appendChild(s);
+      }
+    </script>
+
+    <!-- Background Pulse -->
     <div class="bg"></div>
+
+    <!-- Neon Ring Loader -->
+    <input type="checkbox" id="activate" />
+    <label for="activate" style="position:fixed;inset:0;cursor:pointer;z-index:9;"></label>
+
     <div class="dots">
       <div class="dot"></div>
       <div class="dot"></div>
@@ -27,8 +347,23 @@
       <div class="dot"></div>
       <div class="ring"></div>
     </div>
-    <!-- partial -->
 
+    <div class="loading">LOADING UNIVERSE</div>
+    <script>
+      // Click anywhere to boost loader
+      document.body.addEventListener('click', () => {
+        document.getElementById('activate').checked = true;
+        setTimeout(() => {
+          document.getElementById('activate').checked = false;
+        }, 3000);
+      });
+
+      // Mouse follow glow
+      document.addEventListener('mousemove', e => {
+        document.body.style.setProperty('--mouse-x', e.clientX + 'px');
+        document.body.style.setProperty('--mouse-y', e.clientY + 'px');
+      });
+    </script>
   </body>
 
 </html>
