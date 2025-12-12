@@ -1,33 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
+<head>
     <meta charset="UTF-8">
-    <title>Tic Tac Toe Game</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.0.2/tailwind.min.css'>
-    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --x: 0px;
+            --y: 0px;
+        }
 
-  </head>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a001f, #1a0033, #000);
+            background-size: 400% 400%;
+            animation: bgShift 20s ease infinite;
+            font-family: 'Roboto Mono', monospace;
+            color: #00ffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            cursor: none; /* Custom neon OK cursor */
+        }
 
-  <body>
-    <!-- partial:index.partial.html -->
+        @keyframes bgShift {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-    <body class="w-screen h-screen ctr">
-      <div class="tabel ctr">
-        <div class="board"><span id="col-0"></span><span id="col-1"></span><span id="col-2"></span><span
-            id="col-3"></span><span id="col-4"></span><span id="col-5"></span><span id="col-6"></span><span
-            id="col-7"></span><span id="col-8"></span></div>
-        <button id="reset">Reset</button>
-      </div>
-      <!--design on dribbble: https://dribbble.com/shots/6546099-Empty-Spaces-10-->
-    </body>
-    <!-- partial -->
+        .game-container {
+            text-align: center;
+            padding: 40px;
+            background: rgba(10, 5, 30, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 2px solid rgba(0, 255, 255, 0.5);
+            box-shadow: 0 0 100px rgba(0, 255, 255, 0.6), inset 0 0 50px rgba(255, 0, 255, 0.3);
+            animation: containerGlow 5s ease infinite;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00, #ff0066);
+            background-size: 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowFlow 6s linear infinite;
+            text-shadow: 0 0 40px rgba(0, 255, 255, 0.8);
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 120px);
+            grid-template-rows: repeat(3, 120px);
+            gap: 15px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            border: 2px dashed rgba(0, 255, 255, 0.4);
+            box-shadow: inset 0 0 60px rgba(0, 255, 255, 0.3);
+        }
+
+        .board span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-shadow: 0 0 30px currentColor;
+            color: transparent;
+            position: relative;
+        }
+
+        .board span:hover {
+            background: rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.7);
+            transform: scale(1.05);
+        }
+
+        .board span.x::before {
+            content: 'X';
+            color: #ff00ff;
+            text-shadow: 0 0 40px #ff00ff;
+            animation: appearX 0.6s ease-out;
+        }
+
+        .board span.o::before {
+            content: 'O';
+            color: #00ffff;
+            text-shadow: 0 0 40px #00ffff;
+            animation: appearO 0.6s ease-out;
+        }
+
+        #reset {
+            margin-top: 30px;
+            padding: 15px 40px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            background: transparent;
+            color: #00ffff;
+            border: 2px solid #00ffff;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+
+        #reset:hover {
+            background: #00ffff;
+            color: #000;
+            box-shadow: 0 0 50px #00ffff;
+            transform: translateY(-5px);
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 1.4rem;
+        }
+
+        footer a {
+            color: #ff00ff;
+            text-decoration: none;
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
+        }
+
+        /* GOD-TIER SEXY OK CURSOR */
+        .ok-follow {
+            position: fixed;
+            top: var(--y);
+            left: var(--x);
+            transform: translate(-50%, -50%);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 80px;
+            font-weight: 900;
+            pointer-events: none;
+            z-index: 9999;
+            user-select: none;
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff0066, #00ff00);
+            background-size: 600%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowFlow 3s linear infinite, float 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px #ff00ff) drop-shadow(0 0 80px #00ffff);
+            mix-blend-mode: screen;
+        }
+
+        .ok-follow::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,0,255,0.5), rgba(0,255,255,0.3), transparent 70%);
+            border-radius: 50%;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 2s ease infinite;
+        }
+
+        @keyframes rainbowFlow { 0% { background-position: 0%; } 100% { background-position: 600%; } }
+        @keyframes float { 0%,100% { transform: translate(-50%,-50%) translateY(0); } 50% { transform: translate(-50%,-50%) translateY(-20px); } }
+        @keyframes pulse { 0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 0.6; } 50% { transform: translate(-50%,-50%) scale(1.5); opacity: 1; } }
+        @keyframes containerGlow { 0%,100% { box-shadow: 0 0 100px rgba(0,255,255,0.6); } 50% { box-shadow: 0 0 140px rgba(255,0,255,0.9); } }
+        @keyframes appearX { from { transform: scale(0) rotate(0); opacity: 0; } to { transform: scale(1) rotate(360deg); opacity: 1; } }
+        @keyframes appearO { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <h1>TIC TAC TOE</h1>
+        <div class="board">
+            <span id="col-0"></span><span id="col-1"></span><span id="col-2"></span>
+            <span id="col-3"></span><span id="col-4"></span><span id="col-5"></span>
+            <span id="col-6"></span><span id="col-7"></span><span id="col-8"></span>
+        </div>
+        <button id="reset">RESET GAME</button>
+    </div>
+
     <footer>
-      <a href="https://github.com/abhisek2004">@ Created and Design By Abhisek Panda</a>
+        <a href="https://github.com/abhisek2004">@ Created & Designed By Abhisek Panda</a>
     </footer>
-    <script src="./script.js"></script>
-  </body>
 
+    <!-- ULTIMATE NEON OK CURSOR -->
+    <div class="ok-follow">*</div>
+
+    <script>
+        const cells = document.querySelectorAll('.board span');
+        const resetBtn = document.getElementById('reset');
+        let currentPlayer = 'X';
+        let gameBoard = Array(9).fill(null);
+        let gameActive = true;
+
+        const winningCombinations = [
+            [0,1,2], [3,4,5], [6,7,8],
+            [0,3,6], [1,4,7], [2,5,8],
+            [0,4,8], [2,4,6]
+        ];
+
+        function handleClick(e) {
+            const cell = e.target;
+            const index = Array.from(cells).indexOf(cell);
+
+            if (gameBoard[index] || !gameActive) return;
+
+            gameBoard[index] = currentPlayer;
+            cell.classList.add(currentPlayer.toLowerCase());
+            checkWinner();
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        }
+
+        function checkWinner() {
+            for (let combo of winningCombinations) {
+                const [a,b,c] = combo;
+                if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
+                    gameActive = false;
+                    combo.forEach(i => cells[i].style.boxShadow = '0 0 60px #ffff00');
+                    return;
+                }
+            }
+            if (gameBoard.every(cell => cell)) gameActive = false;
+        }
+
+        function resetGame() {
+            gameBoard = Array(9).fill(null);
+            cells.forEach(cell => {
+                cell.classList.remove('x', 'o');
+                cell.style.boxShadow = '';
+            });
+            currentPlayer = 'X';
+            gameActive = true;
+        }
+
+        cells.forEach(cell => cell.addEventListener('click', handleClick));
+        resetBtn.addEventListener('click', resetGame);
+
+        // Mouse follower
+        let pos = document.documentElement;
+        pos.addEventListener("mousemove", e => {
+            pos.style.setProperty('--x', e.clientX + 'px');
+            pos.style.setProperty('--y', e.clientY + 'px');
+        });
+    </script>
+</body>
 </html>
