@@ -1,49 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting Alert | 2026 Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --x: 0px;
+            --y: 0px;
+        }
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Greeting Alert</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                text-align: center;
-                margin: 20px;
-                background-color: rgb(13, 206, 249);
-            }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-            footer {
-                font-size: large;
-                text-align: center;
-                color: #fa0404be;
-                height: 20px;
-                margin: 0 20px;
-                padding-top: 20px;
-                font-size: 25px;
-            }
-        </style>
-    </head>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background-size: 400% 400%;
+            animation: bgAnimate 15s ease infinite;
+            font-family: 'Roboto Mono', monospace;
+            color: #fff;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 20px;
+            cursor: none; /* Custom futuristic cursor */
+        }
 
-    <body>
+        @keyframes bgAnimate {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-        <script>
-            const currentTime = new Date();
-            const currentHour = currentTime.getHours();
-            let greetingMessage;
-            if (currentHour < 12) {
-                greetingMessage = "Good morning!";
-            } else if (currentHour < 18) {
-                greetingMessage = "Good afternoon!";
-            } else {
-                greetingMessage = "Good evening!";
-            }
-            alert(greetingMessage);
-        </script>
-        <footer>
-            <a href="https://github.com/abhisek2004"> @ Created and Design By Abhisek Panda</a>
-        </footer>
+        .greeting-container {
+            text-align: center;
+            padding: 40px;
+            background: rgba(10, 10, 30, 0.5);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            border: 2px solid rgba(0, 255, 255, 0.4);
+            box-shadow: 0 0 80px rgba(0, 255, 255, 0.5);
+            animation: containerPulse 4s ease-in-out infinite;
+            max-width: 800px;
+        }
 
-    </body>
+        .greeting-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 6rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ff00);
+            background-size: 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(0, 255, 255, 0.8);
+            animation: rainbowFlow 5s linear infinite, glow 3s ease infinite;
+            letter-spacing: 4px;
+        }
 
+        .sub-text {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            opacity: 0.9;
+            text-shadow: 0 0 20px #00ffff;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+
+        footer a {
+            color: #00ffff;
+            text-decoration: none;
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+            transition: all 0.4s;
+        }
+
+        footer a:hover {
+            transform: scale(1.2);
+            filter: brightness(1.5);
+        }
+
+        /* GOD-TIER SEXY OK CURSOR */
+        .ok-follow {
+            position: fixed;
+            top: var(--y);
+            left: var(--x);
+            transform: translate(-50%, -50%);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 70px;
+            font-weight: 900;
+            pointer-events: none;
+            z-index: 9999;
+            user-select: none;
+            background: linear-gradient(120deg, #ff00ff, #00ffff, #ffff00, #ff0066, #00ff00);
+            background-size: 500%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowFlow 3s linear infinite, levitate 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px #00ffff) drop-shadow(0 0 80px #ff00ff);
+            mix-blend-mode: screen;
+        }
+
+        .ok-follow::before {
+            content: '';
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(0,255,255,0.6), rgba(255,0,255,0.3), transparent 70%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulseOrb 2.5s ease infinite;
+        }
+
+        @keyframes rainbowFlow {
+            0%   { background-position: 0%; }
+            100% { background-position: 500%; }
+        }
+
+        @keyframes levitate {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+            50%      { transform: translate(-50%, -50%) translateY(-25px); }
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 40px rgba(0,255,255,0.8); }
+            50%      { text-shadow: 0 0 80px rgba(255,0,255,1); }
+        }
+
+        @keyframes containerPulse {
+            0%, 100% { box-shadow: 0 0 80px rgba(0,255,255,0.5); }
+            50%      { box-shadow: 0 0 120px rgba(255,0,255,0.8); }
+        }
+
+        @keyframes pulseOrb {
+            0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 0.7; }
+            50%      { transform: translate(-50%,-50%) scale(1.4); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="greeting-container">
+        <div class="greeting-text" id="greeting">Loading...</div>
+        <div class="sub-text">Welcome to the Future</div>
+    </div>
+
+    <footer>
+        <a href="https://github.com/abhisek2004">@ Created & Designed By Abhisek Panda</a>
+    </footer>
+
+    <script>
+        // Dynamic greeting based on time
+        const currentTime = new Date();
+        const currentHour = currentTime.getHours();
+        let greetingMessage;
+
+        if (currentHour < 12) {
+            greetingMessage = "Good Morning!";
+        } else if (currentHour < 18) {
+            greetingMessage = "Good Afternoon!";
+        } else {
+            greetingMessage = "Good Evening!";
+        }
+
+        // Display greeting in futuristic style instead of alert()
+        document.getElementById('greeting').textContent = greetingMessage;
+
+        // Mouse follower for --x and --y
+        let pos = document.documentElement;
+        pos.addEventListener("mousemove", e => {
+            pos.style.setProperty('--x', e.clientX + 'px');
+            pos.style.setProperty('--y', e.clientY + 'px');
+        });
+    </script>
+</body>
 </html>
