@@ -1,16 +1,252 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Button Hover Glow Effect</title>
-  
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"><link rel="stylesheet" href="./style.css">
+<html lang="en">
 
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<button class="glow-on-hover" type="button">HOVER ME, THEN CLICK ME!</button>
-<!-- partial -->
-  
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Glow | Cyberpunk 2026 Edition</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Roboto+Mono:wght@500;700&display=swap"
+      rel="stylesheet">
+    <style>
+      :root {
+        --x: 0px;
+        --y: 0px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #0d001a, #1f0033, #000);
+        background-size: 400% 400%;
+        animation: bgFlow 18s ease infinite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        font-family: 'Roboto Mono', monospace;
+        cursor: none;
+        /* Custom neon OK cursor takes over */
+      }
+
+      @keyframes bgFlow {
+        0% {
+          background-position: 0% 50%;
+        }
+
+        50% {
+          background-position: 100% 50%;
+        }
+
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* ULTRA MODERN SEXY GLOW BUTTON */
+      .glow-on-hover {
+        position: relative;
+        padding: 24px 80px;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2.8rem;
+        font-weight: 900;
+        letter-spacing: 6px;
+        color: #fff;
+        background: transparent;
+        border: 3px solid transparent;
+        border-radius: 50px;
+        cursor: pointer;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        box-shadow:
+          0 0 40px rgba(0, 255, 255, 0.4),
+          0 0 80px rgba(255, 0, 255, 0.3);
+        animation: buttonPulse 4s ease infinite;
+      }
+
+      .glow-on-hover::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg,
+            #ff00ff, #00ffff, #ffff00, #ff0066, #00ff00, #0066ff, #ff00ff);
+        background-size: 600%;
+        border-radius: 50px;
+        filter: blur(20px);
+        opacity: 0.8;
+        animation: gradientShift 5s linear infinite;
+        z-index: -1;
+        transition: all 0.6s;
+      }
+
+      .glow-on-hover::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+        z-index: -1;
+      }
+
+      .glow-on-hover:hover::after {
+        width: 400px;
+        height: 400px;
+      }
+
+      .glow-on-hover:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow:
+          0 0 120px rgba(0, 255, 255, 0.9),
+          0 0 200px rgba(255, 0, 255, 0.7);
+        border-color: rgba(0, 255, 255, 0.6);
+      }
+
+      .glow-on-hover span {
+        position: relative;
+        z-index: 2;
+        background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00);
+        background-size: 400%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: textRainbow 6s linear infinite;
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0%;
+        }
+
+        100% {
+          background-position: 600%;
+        }
+      }
+
+      @keyframes textRainbow {
+        0% {
+          background-position: 0%;
+        }
+
+        100% {
+          background-position: 400%;
+        }
+      }
+
+      @keyframes buttonPulse {
+
+        0%,
+        100% {
+          box-shadow: 0 0 40px rgba(0, 255, 255, 0.4), 0 0 80px rgba(255, 0, 255, 0.3);
+        }
+
+        50% {
+          box-shadow: 0 0 80px rgba(0, 255, 255, 0.7), 0 0 140px rgba(255, 0, 255, 0.5);
+        }
+      }
+
+      /* GOD-TIER OK CURSOR */
+      .ok-follow {
+        position: fixed;
+        top: var(--y);
+        left: var(--x);
+        transform: translate(-50%, -50%);
+        font-family: 'Orbitron', sans-serif;
+        font-size: 90px;
+        font-weight: 900;
+        pointer-events: none;
+        z-index: 9999;
+        user-select: none;
+        background: linear-gradient(120deg, #ff00ff, #00ffff, #ffff00, #ff0066, #00ff00, #0066ff);
+        background-size: 600%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: rainbowFlow 3.5s linear infinite, levitate 4s ease-in-out infinite;
+        filter: drop-shadow(0 0 50px #00ffff) drop-shadow(0 0 100px #ff00ff);
+        mix-blend-mode: screen;
+        letter-spacing: -4px;
+      }
+
+      .ok-follow::before {
+        content: '';
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        background: radial-gradient(circle, rgba(0, 255, 255, 0.6), rgba(255, 0, 255, 0.4), transparent 70%);
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: pulseOrb 2.2s ease infinite;
+      }
+
+      @keyframes rainbowFlow {
+        0% {
+          background-position: 0%;
+        }
+
+        100% {
+          background-position: 600%;
+        }
+      }
+
+      @keyframes levitate {
+
+        0%,
+        100% {
+          transform: translate(-50%, -50%) translateY(0);
+        }
+
+        50% {
+          transform: translate(-50%, -50%) translateY(-30px);
+        }
+      }
+
+      @keyframes pulseOrb {
+
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0.7;
+        }
+
+        50% {
+          transform: translate(-50%, -50%) scale(1.5);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <button class="glow-on-hover" type="button">
+      <span>HOVER ME, THEN CLICK ME!</span>
+    </button>
+
+
+    <script>
+      // Mouse follower for the sexy cursor
+      let pos = document.documentElement;
+      pos.addEventListener("mousemove", e => {
+        pos.style.setProperty('--x', e.clientX + 'px');
+        pos.style.setProperty('--y', e.clientY + 'px');
+      });
+    </script>
+  </body>
+
 </html>
