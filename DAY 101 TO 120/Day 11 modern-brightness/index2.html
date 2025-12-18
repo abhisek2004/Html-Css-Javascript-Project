@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Lamp Intensity Controller</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;600&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+        font-family: 'Inter', sans-serif;
+        color: #fff;
+        overflow: hidden;
+        position: relative;
+      }
+
+      body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%);
+        animation: nebula 15s ease-in-out infinite alternate;
+        z-index: -1;
+      }
+
+      @keyframes nebula {
+        0% { opacity: 0.5; transform: scale(1); }
+        100% { opacity: 0.8; transform: scale(1.1); }
+      }
+
+      .lamp-wrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 60px;
+        transform: perspective(1000px) rotateX(10deg);
+        transition: transform 0.3s ease;
+      }
+
+      body[data-light="10"] .lamp-wrapper {
+        transform: perspective(1000px) rotateX(5deg) scale(1.05);
+      }
+
+      .lamp-rope {
+        width: 4px;
+        height: 120px;
+        background: linear-gradient(to bottom, #333, #555);
+        border-radius: 2px;
+        margin-bottom: 10px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      }
+
+      .lamp {
+        position: relative;
+        width: 120px;
+        height: 180px;
+        transform-style: preserve-3d;
+      }
+
+      .lamp-part {
+        position: absolute;
+        background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+        border-radius: 10px;
+        box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.05), 0 5px 15px rgba(0, 0, 0, 0.5);
+      }
+
+      .lamp-part.-top {
+        top: 0;
+        width: 120px;
+        height: 40px;
+        border-radius: 20px 20px 5px 5px;
+      }
+
+      .lamp-part.-top-part {
+        top: -15px;
+        left: 10px;
+        width: 100px;
+        height: 30px;
+        background: linear-gradient(145deg, #ff6b6b, #ee5a52);
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+      }
+
+      .lamp-part.-top-part.right {
+        right: 10px;
+        left: auto;
+        background: linear-gradient(145deg, #4ecdc4, #44a08d);
+        box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+      }
+
+      .lamp-part.-body {
+        top: 40px;
+        width: 100px;
+        height: 80px;
+        left: 10px;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+      }
+
+      .lamp-part.-body.right {
+        right: 10px;
+        left: auto;
+        background: linear-gradient(145deg, #45b7d1, #96c93d);
+      }
+
+      .lamp-part.-bottom {
+        top: 120px;
+        width: 120px;
+        height: 60px;
+        border-radius: 60px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .blub {
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 40px;
+        background: radial-gradient(circle, #fff 0%, #ffd700 50%, #ffed4e 100%);
+        border-radius: 50%;
+        box-shadow: 
+          0 0 20px rgba(255, 255, 0, 0.5),
+          inset -10px -10px 20px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        filter: brightness(var(--bulb-brightness, 0.1));
+        animation: pulse 2s ease-in-out infinite alternate;
+      }
+
+      body[data-light="0"] .blub {
+        filter: brightness(0.1) saturate(0.2);
+        box-shadow: 0 0 5px rgba(255, 255, 0, 0.1);
+      }
+
+      body[data-light="10"] .blub {
+        filter: brightness(2) saturate(1.5);
+        box-shadow: 0 0 50px rgba(255, 255, 0, 1), 0 0 100px rgba(255, 165, 0, 0.6);
+      }
+
+      @keyframes pulse {
+        0% { transform: translateX(-50%) scale(1); }
+        100% { transform: translateX(-50%) scale(1.05); }
+      }
+
+      .wall-light-shadow {
+        position: absolute;
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 100px;
+        background: radial-gradient(ellipse, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        filter: blur(20px);
+        opacity: var(--shadow-opacity, 0.2);
+        transition: opacity 0.3s ease;
+      }
+
+      body[data-light="10"] .wall-light-shadow {
+        --shadow-opacity: 0.8;
+      }
+
+      .controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        padding: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+
+      .icon.sun {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        background: radial-gradient(circle, #ffd700 0%, #ffed4e 100%);
+        border-radius: 50%;
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+        animation: rotate 10s linear infinite;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .icon.sun::after {
+        content: '☀️';
+        font-size: 24px;
+        filter: drop-shadow(0 0 5px rgba(255, 255, 0, 0.8));
+      }
+
+      @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      .ray {
+        position: absolute;
+        background: rgba(255, 215, 0, 0.6);
+        border-radius: 50%;
+        animation: rayPulse 2s ease-in-out infinite alternate;
+      }
+
+      .ray:nth-child(1) { width: 4px; height: 20px; top: -10px; left: 50%; transform: translateX(-50%) rotate(0deg); }
+      .ray:nth-child(2) { width: 4px; height: 20px; top: 50%; left: 10px; transform: translateY(-50%) rotate(45deg); }
+      .ray:nth-child(3) { width: 4px; height: 20px; bottom: -10px; left: 50%; transform: translateX(-50%) rotate(90deg); }
+      .ray:nth-child(4) { width: 4px; height: 20px; top: 50%; right: 10px; transform: translateY(-50%) rotate(135deg); }
+      .ray:nth-child(5) { width: 4px; height: 20px; top: -10px; left: 50%; transform: translateX(-50%) rotate(180deg); }
+      .ray:nth-child(6) { width: 4px; height: 20px; top: 50%; left: 10px; transform: translateY(-50%) rotate(225deg); }
+      .ray:nth-child(7) { width: 4px; height: 20px; bottom: -10px; left: 50%; transform: translateX(-50%) rotate(270deg); }
+      .ray:nth-child(8) { width: 4px; height: 20px; top: 50%; right: 10px; transform: translateY(-50%) rotate(315deg); }
+
+      @keyframes rayPulse {
+        0% { opacity: 0.5; }
+        100% { opacity: 1; }
+      }
+
+      input[type="range"] {
+        -webkit-appearance: none;
+        width: 250px;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        outline: none;
+        margin: 20px 0;
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(45deg, #ffd700, #ffed4e);
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        transition: transform 0.2s ease;
+      }
+
+      input[type="range"]::-webkit-slider-thumb:hover {
+        transform: scale(1.2);
+      }
+
+      input[type="range"]::-moz-range-thumb {
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(45deg, #ffd700, #ffed4e);
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        border: none;
+      }
+
+      .intensity-label {
+        font-family: 'Orbitron', monospace;
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+        opacity: 0.8;
+        margin-top: 10px;
+      }
+
+      body[data-light="0"] .controls {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      body[data-light="10"] .controls {
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+      }
+
+      @media (max-width: 480px) {
+        .lamp {
+          width: 100px;
+          height: 150px;
+        }
+        .controls {
+          padding: 20px;
+        }
+        input[type="range"] {
+          width: 200px;
+        }
+      }
+    </style>
+  </head>
+
+  <body data-light="0">
+    <div class="lamp-wrapper">
+      <div class="lamp-rope"></div>
+      <div class="lamp">
+        <div class="lamp-part -top">
+          <div class="lamp-part -top-part"></div>
+          <div class="lamp-part -top-part right"></div>
+        </div>
+        <div class="lamp-part -body"></div>
+        <div class="lamp-part -body right"></div>
+        <div class="lamp-part -bottom"></div>
+        <div class="blub"></div>
+      </div>
+      <div class="wall-light-shadow"></div>
+    </div>
+
+    <div class="controls">
+      <div class="icon sun">
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+      </div>
+      <input type="range" id="slider" value="0" min="0" max="10" step="1">
+      <div class="intensity-label" id="intensity">Dimmed</div>
+    </div>
+
+    <script>
+      const slider = document.getElementById('slider');
+      const body = document.body;
+      const intensityLabel = document.getElementById('intensity');
+
+      const intensities = [
+        'Dimmed', 'Faint', 'Low', 'Soft', 'Medium', 'Bright', 'High', 'Intense', 'Vivid', 'Blazing', 'Radiant'
+      ];
+
+      slider.addEventListener('input', (e) => {
+        const value = e.target.value;
+        body.setAttribute('data-light', value);
+        intensityLabel.textContent = intensities[value] || 'Radiant';
+        
+        // Dynamic bulb brightness
+        const brightness = 0.1 + (parseInt(value) / 10) * 1.9;
+        document.querySelector('.blub').style.setProperty('--bulb-brightness', brightness);
+        
+        // Shadow opacity
+        const shadowOpacity = 0.2 + (parseInt(value) / 10) * 0.6;
+        document.querySelector('.wall-light-shadow').style.setProperty('--shadow-opacity', shadowOpacity);
+      });
+    </script>
+  </body>
+</html>
