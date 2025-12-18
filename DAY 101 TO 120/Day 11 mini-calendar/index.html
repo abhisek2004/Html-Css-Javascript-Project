@@ -4,16 +4,149 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mini Calendar</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Modern Dynamic Calendar</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;600&display=swap');
+
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+      }
+
+      .calendar-container {
+        position: relative;
+        width: 380px;
+        height: 520px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 30px;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        overflow: hidden;
+        padding: 40px;
+        text-align: center;
+        color: #fff;
+      }
+
+      .calendar-container::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(138, 43, 226, 0.2), transparent 70%);
+        animation: rotate 20s linear infinite;
+        z-index: -1;
+      }
+
+      @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      .day-name {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin: 0;
+        opacity: 0.9;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      .day-number {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 9rem;
+        font-weight: 700;
+        margin: 20px 0 10px;
+        line-height: 1;
+        background: linear-gradient(45deg, #a855f7, #e0aaff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+      }
+
+      .month-name {
+        font-size: 3.5rem;
+        font-weight: 600;
+        margin: 0;
+        letter-spacing: 1px;
+      }
+
+      .year {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2.5rem;
+        margin: 20px 0 0;
+        opacity: 0.8;
+      }
+
+      .glow {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, #a855f7 0%, transparent 70%);
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.4;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+      }
+
+      @media (max-width: 480px) {
+        .calendar-container {
+          width: 90%;
+          height: 480px;
+          padding: 30px;
+        }
+        .day-number {
+          font-size: 7rem;
+        }
+        .month-name {
+          font-size: 3rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="calendar-container">
-      <p class="month-name" id="month-name">April</p>
-      <p class="day-name" id="day-name">Friday</p>
-      <p class="day-number" id="day-number">20</p>
-      <p class="year" id="year">2020</p>
+      <div class="glow"></div>
+      <p class="day-name" id="day-name"></p>
+      <p class="day-number" id="day-number"></p>
+      <p class="month-name" id="month-name"></p>
+      <p class="year" id="year"></p>
     </div>
-    <script src="index.js"></script>
+
+    <script>
+      const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+
+      const dayNames = [
+        "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+      ];
+
+      function updateCalendar() {
+        const now = new Date();
+        document.getElementById("day-name").textContent = dayNames[now.getDay()];
+        document.getElementById("day-number").textContent = now.getDate().toString().padStart(2, '0');
+        document.getElementById("month-name").textContent = monthNames[now.getMonth()];
+        document.getElementById("year").textContent = now.getFullYear();
+      }
+
+      // Update immediately and then every minute for smooth real-time feel
+      updateCalendar();
+      setInterval(updateCalendar, 60000);
+    </script>
   </body>
 </html>
