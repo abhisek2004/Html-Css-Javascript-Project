@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: black;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main{
+    width: 100%;
+    height: 100vh;
+}
+.box{
+    color: rgb(80, 80, 80);
+    width: 250px;
+    height: 250px;
+    background: rgb(24, 24, 24);
+    font-size: 2rem;
+    font-family: cursive;
+    position: relative;
+}
+.box::before{
+    content: '';
+    position: absolute;
+    width: 258px;
+    height: 258px;
+    background: linear-gradient(45deg,#3dec28,#00000000,#00000000,#1c58c9);
+    z-index: -1;
+    transition: all .6s;
+}
+.box:hover::before{
+    transform: rotate(270deg);
+}
