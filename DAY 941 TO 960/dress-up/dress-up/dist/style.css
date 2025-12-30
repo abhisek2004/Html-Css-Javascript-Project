@@ -1,0 +1,59 @@
+#container {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 24px auto;
+  max-width: 640px;
+}
+
+#model {
+  height: 512px;
+  position: relative;
+  width: 256px;
+}
+#model #pantsImg,
+#model #shirtImg,
+#model #shoesImg {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+#model #pantsImg {
+  left: 81px;
+  top: 233px;
+}
+#model #shirtImg {
+  left: 67px;
+  top: 95px;
+}
+#model #shoesImg {
+  left: 84px;
+  top: 450px;
+}
+
+#sliderPicker {
+  border: solid 2px #999;
+  border-radius: 8px;
+  font: normal 14px/1.2 sans-serif;
+  height: auto;
+  margin-top: 80px;
+  max-height: 250px;
+  padding: 24px;
+}
+#sliderPicker p {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 2;
+}
+#sliderPicker #colorPicker {
+  padding: 0 24px;
+}
+#sliderPicker ul[id=colorTarget] {
+  display: flex;
+  flex-flow: row nowrap;
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+}
+#sliderPicker ul[id=colorTarget] li {
+  margin-right: 1em;
+}
