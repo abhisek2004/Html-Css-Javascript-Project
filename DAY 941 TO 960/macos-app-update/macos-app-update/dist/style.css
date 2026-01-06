@@ -1,0 +1,193 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #2f2f2f;
+  font-family: "Inter", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+svg{
+  padding: 0;
+  margin: 0;
+  transform: translate3d(0,0,0);
+}
+
+.app {
+  padding: 18px;
+  background: #53565B;
+  border-radius: 10px;
+  min-width: 201px;
+  height: 101px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions .default {
+  width: 12px;
+  height: 12px;
+  background: gray;
+  border-radius: 50%;
+  position: relative;
+}
+
+.actions .default svg {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.actions:hover > .default svg {
+  opacity: 1;
+}
+
+.actions:hover .close {
+  background: #EC6A5E;
+}
+.actions:hover .min {
+  background: #F3BE4F;
+}
+.actions:hover .max {
+  background: #60C555;
+}
+
+.update {
+  background: #68A7FF;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.update svg{
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 0;
+  left: 0;
+}
+
+.update svg path.svg-update{
+  opacity: 1;
+  transform: scale(1);
+}
+
+.update svg circle.svg-progress{
+  stroke-dashoffset: 16px;
+  stroke-dasharray: 16px;
+  transform: rotate(270deg);
+  transform-origin: center;
+}
+
+.update.progress svg path.svg-update,
+.update.refresh svg path.svg-update {
+  opacity: 0;
+  transform: scale(.5);
+}
+
+.update.progress svg circle.svg-progress {
+  stroke-dashoffset: 0px;
+  transform: rotate(270deg);
+  transition: all 4s linear;
+}
+
+.update svg path.svg-refresh{
+  opacity: 0;
+  transform: scale(.2) rotate(-135deg);
+  transition: all .3s ease;
+  transform-origin: center;
+}
+
+.update.refresh svg path.svg-refresh{
+  opacity: 1;
+  transform: scale(1) rotate(0);
+}
+
+.tooltip {
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translate3D(-50%, -10px, 0) scale(.5);
+  opacity: 0;
+  top: calc(100% + 10px);
+  background: black;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 5px;
+  transition: all .1s ease;
+  pointer-events: none;
+  font-size: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+}
+
+.tooltip:before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: black;
+  display: block;
+  position: absolute;
+  top: -3px;
+  left: calc(50% - 4px);
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+
+.update .tooltip:after {
+  content: "Download Update";
+  white-space: nowrap;
+}
+
+.update:not(.progress,.refresh)::before{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 8px;
+  height: 8px;
+  background-color: #68A7FF;
+  transform-origin: center;
+  border-radius: 999px;
+}
+
+.update:hover:before {
+  animation: anim-update 1.2s linear infinite;
+}
+
+.update:hover .tooltip {
+  transform: translate3D(-50%, 0, 0) scale(1);
+  opacity: 1;
+}
+
+.update.progress .tooltip {
+  visibility: hidden;
+}
+
+.update.refresh .tooltip {
+  visibility: visible;
+}
+.update.refresh .tooltip:after {
+  content: "Reopen App";
+}
+
+@keyframes anim-update {
+  0%{
+    transform: scale(0);
+    opacity: 1;
+  }
+  100%{
+    transform: scale(4);
+    opacity: 0;
+  }
+}
