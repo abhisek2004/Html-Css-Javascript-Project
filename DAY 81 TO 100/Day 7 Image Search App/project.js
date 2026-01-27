@@ -48,3 +48,5 @@ let page = 1
      let searchValue = searchInput.value ;
     getData(searchValue, page++)
  })
+
+
