@@ -1,4 +1,3 @@
-// Force a hover to see the effect
 const share = document.querySelector('.share');
 
 setTimeout(() => {
