@@ -3,18 +3,18 @@ let username = document.getElementById("username");
 let password = document.getElementById("password");
 
 function handle1() {
-	rect.setAttribute("class", "rect2");
+  rect.setAttribute("class", "rect2");
 }
 
 function handle2() {
-	rect.setAttribute("class", "rect1");
+  rect.setAttribute("class", "rect1");
 }
 
-//For codepen header!!!
+//For  header!!!
 setTimeout(() => {
-	password.focus();
+  password.focus();
 }, 500);
 
 setTimeout(() => {
-	username.focus();
+  username.focus();
 }, 1500);

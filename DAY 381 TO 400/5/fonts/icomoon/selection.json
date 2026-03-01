@@ -11331,14 +11331,14 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "tags": [
-          "codepen"
+          ""
         ],
         "defaultCode": 61899,
         "grid": 14
       },
       "attrs": [],
       "properties": {
-        "name": "codepen",
+        "name": "",
         "id": 417,
         "order": 1273,
         "prevSize": 28,
