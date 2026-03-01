@@ -47,7 +47,6 @@
   border: 0;
 }
 
-
 /* pswp__ui--over-close class it added when mouse is over element that should close gallery */
 
 .pswp__ui--over-close .pswp__button--close {
@@ -64,9 +63,9 @@
 }
 
 @media (-webkit-min-device-pixel-ratio: 1.1),
-(-webkit-min-device-pixel-ratio: 1.09375),
-(min-resolution: 105dpi),
-(min-resolution: 1.1dppx) {
+  (-webkit-min-device-pixel-ratio: 1.09375),
+  (min-resolution: 105dpi),
+  (min-resolution: 1.1dppx) {
   /* Serve SVG sprite if browser supports SVG and resolution is more than 105dpi */
   .pswp--svg .pswp__button,
   .pswp--svg .pswp__button--arrow--left:before,
@@ -112,14 +111,12 @@
   background-position: -132px 0;
 }
 
-
 /* no arrows on touch screens */
 
 .pswp--touch .pswp__button--arrow--left,
 .pswp--touch .pswp__button--arrow--right {
   visibility: hidden;
 }
-
 
 /*
   Arrow buttons hit area
@@ -146,7 +143,7 @@
 
 .pswp__button--arrow--left:before,
 .pswp__button--arrow--right:before {
-  content: '';
+  content: "";
   top: 35px;
   background-color: rgba(0, 0, 0, 0.3);
   height: 30px;
@@ -163,7 +160,6 @@
   right: 6px;
   background-position: -94px -44px;
 }
-
 
 /*
 
@@ -203,7 +199,7 @@
 .pswp__share-tooltip {
   z-index: 1620;
   position: absolute;
-  background: #FFF;
+  background: #fff;
   top: 56px;
   border-radius: 2px;
   display: block;
@@ -253,7 +249,6 @@
   transform: translateY(0);
 }
 
-
 /* increase size of share links on touch devices */
 
 .pswp--touch .pswp__share-tooltip a {
@@ -261,7 +256,7 @@
 }
 
 a.pswp__share--facebook:before {
-  content: '';
+  content: "";
   display: block;
   width: 0;
   height: 0;
@@ -269,35 +264,34 @@ a.pswp__share--facebook:before {
   top: -12px;
   right: 15px;
   border: 6px solid transparent;
-  border-bottom-color: #FFF;
+  border-bottom-color: #fff;
   -webkit-pointer-events: none;
   -moz-pointer-events: none;
   pointer-events: none;
 }
 
 a.pswp__share--facebook:hover {
-  background: #3E5C9A;
-  color: #FFF;
+  background: #3e5c9a;
+  color: #fff;
 }
 
 a.pswp__share--facebook:hover:before {
-  border-bottom-color: #3E5C9A;
+  border-bottom-color: #3e5c9a;
 }
 
 a.pswp__share--twitter:hover {
-  background: #55ACEE;
-  color: #FFF;
+  background: #55acee;
+  color: #fff;
 }
 
 a.pswp__share--pinterest:hover {
-  background: #CCC;
-  color: #CE272D;
+  background: #ccc;
+  color: #ce272d;
 }
 
 a.pswp__share--download:hover {
-  background: #DDD;
+  background: #ddd;
 }
-
 
 /*
 
@@ -312,11 +306,10 @@ a.pswp__share--download:hover {
   height: 44px;
   font-size: 13px;
   line-height: 44px;
-  color: #FFF;
+  color: #fff;
   opacity: 0.75;
   padding: 0 10px;
 }
-
 
 /*
   
@@ -334,7 +327,7 @@ a.pswp__share--download:hover {
 
 .pswp__caption small {
   font-size: 11px;
-  color: #BBB;
+  color: #bbb;
 }
 
 .pswp__caption__center {
@@ -344,13 +337,12 @@ a.pswp__share--download:hover {
   font-size: 13px;
   padding: 10px;
   line-height: 20px;
-  color: #CCC;
+  color: #ccc;
 }
 
 .pswp__caption--empty {
   display: none;
 }
-
 
 /* Fake caption element, used to calculate height of next/prev image */
 
@@ -358,12 +350,11 @@ a.pswp__share--download:hover {
   visibility: hidden;
 }
 
-
 /*
 
   5. Loading indicator (preloader)
 
-  You can play with it here - http://codepen.io/dimsemenov/pen/yyBWoR
+  You can play with it here - http://.io/dimsemenov/pen/yyBWoR
 
  */
 
@@ -437,7 +428,7 @@ a.pswp__share--download:hover {
   box-sizing: border-box;
   width: 14px;
   height: 14px;
-  border: 2px solid #FFF;
+  border: 2px solid #fff;
   border-radius: 50%;
   border-left-color: transparent;
   border-bottom-color: transparent;
@@ -510,13 +501,11 @@ a.pswp__share--download:hover {
   }
 }
 
-
 /*
   
   6. Additional styles
 
  */
-
 
 /* root element of UI */
 
@@ -526,7 +515,6 @@ a.pswp__share--download:hover {
   opacity: 1;
   z-index: 1550;
 }
-
 
 /* top black bar with buttons and "1 of X" indicator */
 
@@ -548,7 +536,6 @@ a.pswp__share--download:hover {
   transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1);
 }
 
-
 /* pswp--has_mouse class is added only when two subsequent mousemove events occur */
 
 .pswp--has_mouse .pswp__button--arrow--left,
@@ -561,14 +548,12 @@ a.pswp__share--download:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-
 /* pswp__ui--fit class is added when main image "fits" between top bar and bottom bar (caption) */
 
 .pswp__ui--fit .pswp__top-bar,
 .pswp__ui--fit .pswp__caption {
   background-color: rgba(0, 0, 0, 0.3);
 }
-
 
 /* pswp__ui--idle class is added when mouse isn't moving for several seconds (JS option timeToIdle) */
 
@@ -580,7 +565,6 @@ a.pswp__share--download:hover {
 .pswp__ui--idle .pswp__button--arrow--right {
   opacity: 0;
 }
-
 
 /*
   pswp__ui--hidden class is added when controls are hidden
@@ -594,7 +578,6 @@ a.pswp__share--download:hover {
   /* Force paint & create composition layer for controls. */
   opacity: 0.001;
 }
-
 
 /* pswp__ui--one-slide class is added when there is just one item in gallery */
 
@@ -611,4 +594,3 @@ a.pswp__share--download:hover {
 .pswp--minimal--dark .pswp__top-bar {
   background: none;
 }
-

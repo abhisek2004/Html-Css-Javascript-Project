@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Geist";
-  src: url("https://assets.codepen.io/605876/GeistVF.ttf") format("truetype");
+  src: url("https://assets..io/605876/GeistVF.ttf") format("truetype");
 }
 
 * {
@@ -24,7 +24,7 @@ main {
 }
 
 body {
-  font-family: 'Geist', arial;
+  font-family: "Geist", arial;
   font-weight: 100;
 }
 
@@ -48,11 +48,8 @@ ul::after {
   background: hsl(0 0% 10%);
   pointer-events: none;
   z-index: -2;
-  inset:
-    calc(var(--top) * 1px)
-    calc(100% - (var(--right) * 1px))
-    calc(100% - (var(--bottom) * 1px))
-    calc(var(--left) * 1px);
+  inset: calc(var(--top) * 1px) calc(100% - (var(--right) * 1px))
+    calc(100% - (var(--bottom) * 1px)) calc(var(--left) * 1px);
   transition: inset 0.2s;
 }
 
@@ -61,30 +58,49 @@ ul[data-enhanced]:hover {
 }
 ul[data-enhanced]::after {
   opacity: var(--active, 0);
-  transition: opacity 0.2s, inset 0.2s 0.2s;
+  transition:
+    opacity 0.2s,
+    inset 0.2s 0.2s;
 }
 ul[data-enhanced]:hover::after {
-  transition: opacity 0.2s 0.2s, inset 0.2s;
+  transition:
+    opacity 0.2s 0.2s,
+    inset 0.2s;
 }
 
-@supports(anchor-name: --anchor) {
-  li:nth-of-type(1) article { anchor-name: --develop; }
-  li:nth-of-type(2) article { anchor-name: --preview; }
-  li:nth-of-type(3) article { anchor-name: --ship; }
-  li:nth-of-type(4) article { anchor-name: --profit; }
+@supports (anchor-name: --anchor) {
+  li:nth-of-type(1) article {
+    anchor-name: --develop;
+  }
+  li:nth-of-type(2) article {
+    anchor-name: --preview;
+  }
+  li:nth-of-type(3) article {
+    anchor-name: --ship;
+  }
+  li:nth-of-type(4) article {
+    anchor-name: --profit;
+  }
 
-  :root { --anchor: --develop; }
-  :root:has(li:nth-of-type(1):hover) { --anchor: --develop; }
-  :root:has(li:nth-of-type(2):hover) { --anchor: --preview; }
-  :root:has(li:nth-of-type(3):hover) { --anchor: --ship; }
-  :root:has(li:nth-of-type(4):hover) { --anchor: --profit; }  
+  :root {
+    --anchor: --develop;
+  }
+  :root:has(li:nth-of-type(1):hover) {
+    --anchor: --develop;
+  }
+  :root:has(li:nth-of-type(2):hover) {
+    --anchor: --preview;
+  }
+  :root:has(li:nth-of-type(3):hover) {
+    --anchor: --ship;
+  }
+  :root:has(li:nth-of-type(4):hover) {
+    --anchor: --profit;
+  }
 
   ul::after {
-    inset:
-      anchor(var(--anchor) top)
-      anchor(var(--anchor) right)
-      anchor(var(--anchor) bottom)
-      anchor(var(--anchor) left);
+    inset: anchor(var(--anchor) top) anchor(var(--anchor) right)
+      anchor(var(--anchor) bottom) anchor(var(--anchor) left);
   }
 
   ul:has(li:hover) {
@@ -92,12 +108,16 @@ ul[data-enhanced]:hover::after {
   }
   ul::after {
     opacity: var(--active, 0);
-    transition: opacity 0.2s, inset 0.2s 0.2s;
+    transition:
+      opacity 0.2s,
+      inset 0.2s 0.2s;
   }
   ul:hover::after {
-    transition: opacity 0.2s 0.2s, inset 0.2s;
+    transition:
+      opacity 0.2s 0.2s,
+      inset 0.2s;
   }
-  
+
   article::after {
     content: unset;
     display: none;
@@ -128,10 +148,12 @@ article::before {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(var(--bg) 0 2px, transparent 2px 38px) -20px -20px / 40px 40px,
-    linear-gradient(90deg, var(--bg) 0 2px, transparent 2px 38px) -20px -20px / 40px 40px;
+    linear-gradient(var(--bg) 0 2px, transparent 2px 38px) -20px -20px / 40px
+      40px,
+    linear-gradient(90deg, var(--bg) 0 2px, transparent 2px 38px) -20px -20px /
+      40px 40px;
   -webkit-mask: linear-gradient(-35deg, var(--bg) 0%, transparent 45%);
-          mask: linear-gradient(-35deg, var(--bg) 0%, transparent 45%);
+  mask: linear-gradient(-35deg, var(--bg) 0%, transparent 45%);
   z-index: -1;
   opacity: var(--li-active, 0);
   transition: opacity 0.2s;
@@ -152,7 +174,7 @@ article p {
   background: linear-gradient(hsl(0 0% 80%), hsl(0 0% 50%));
   color: transparent;
   -webkit-background-clip: text;
-          background-clip: text;
+  background-clip: text;
   font-weight: 80;
 }
 
@@ -166,7 +188,15 @@ article svg path {
   transition: stroke 0.2s;
 }
 
-li:nth-of-type(1) { --hue: 30; }
-li:nth-of-type(2) { --hue: 280; }
-li:nth-of-type(3) { --hue: 210; }
-li:nth-of-type(4) { --hue: 120; }
+li:nth-of-type(1) {
+  --hue: 30;
+}
+li:nth-of-type(2) {
+  --hue: 280;
+}
+li:nth-of-type(3) {
+  --hue: 210;
+}
+li:nth-of-type(4) {
+  --hue: 120;
+}

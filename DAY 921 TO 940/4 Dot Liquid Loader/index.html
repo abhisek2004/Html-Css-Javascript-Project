@@ -1,32 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>CodePen - Liquid Loader  💧</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Condiment&display=swap" rel="stylesheet"><link rel="stylesheet" href="./style.css">
+<html lang="en">
 
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<div class="container">
-  <div class="liquid"></div>
-  <div class="liquid"></div>
-  <div class="liquid"></div>
-  <div class="liquid"></div>
-</div>
-<svg>
-  <filter id="gooey">
-    <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
-    <feColorMatrix values="
+  <head>
+    <meta charset="UTF-8">
+    <title> - Liquid Loader 💧</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Condiment&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+
+  <body>
+    <!-- partial:index.partial.html -->
+    <div class="container">
+      <div class="liquid"></div>
+      <div class="liquid"></div>
+      <div class="liquid"></div>
+      <div class="liquid"></div>
+    </div>
+    <svg>
+      <filter id="gooey">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+        <feColorMatrix values="
         1 0 0 0 0
         0 1 0 0 0
         0 0 1 0 0
         0 0 0 20 -10
         " />
-  </filter>
-</svg>
-<!-- partial -->
-  
-</body>
+      </filter>
+    </svg>
+    <!-- partial -->
+
+  </body>
+
 </html>
