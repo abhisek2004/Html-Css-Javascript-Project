@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/f6816dd194.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="share">
+            <ol>
+                <li><a href="#"><i class="fab fa-instagram fa-2x"></i></a></li>
+                <li><a href="#"><i class="fab fa-facebook fa-2x"></i></a></li>
+                <li><a href="#"><i class="fab fa-whatsapp fa-2x"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter fa-2x"></i></a></li>
+            </ol>
+            <div class="toggle"></div>
+        </div>
+    </div>
+
+    <script>
+        const toggle = document.querySelector('.toggle');
+
+        toggle.addEventListener('click',()=>{
+            const sharebtn = document.querySelector('.share');
+            sharebtn.classList.toggle('active');
+        })
+    </script>
+</body>
+</html>
