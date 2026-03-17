@@ -1,0 +1,12 @@
+<css-doodle click-to-update><style>
+  @grid: 30 / 60vmin noclip;
+  border-radius: 50%;
+  background: hsl(@y(* -12), 80%, 60%);
+  background: lch(90, 120, @y(*10deg));
+  animation: f @once.p(5s, 7.5s) ease infinite;
+  animation-delay: $s(-90/@I*@i(-1)*@x/@y);
+  @keyframes f {
+    0%, 25%, 80% {opacity: 1; scale: .2}
+    25%, 75%, 100% {opacity: 0; scale: @r(2, 3)}
+  }
+ </style></css-doodle>
