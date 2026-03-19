@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AcadEase – Time Management for B.Tech Students</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <header class="top-nav">
+    <div class="logo">
+      <img src="icon.jpeg" alt="AcadEase Logo" class="logo-icon" />
+      <span class="logo-text">AcadEase</span>
+    </div>
+
+    <nav class="top-nav-links">
+      <a href="#home">Home</a>
+      <a href="#calendar">Calendar</a>
+      <a href="#exams">Exams</a>
+      <a href="#tasks">Tasks</a>
+      <a href="#resources">Resources</a>
+      <a href="#announcements">Announcements</a>
+      <a href="#features">Features</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#doubts">Doubts</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Top-right actions: theme toggle, profile, mobile nav -->
+    <div class="top-nav-actions">
+      <!-- Theme toggle -->
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        🌙
+      </button>
+
+      <!-- Profile button + dropdown -->
+      <div class="profile-wrapper">
+        <button
+          class="profile-btn"
+          id="profileBtn"
+          aria-label="Open profile menu"
+        >
+          <span class="profile-avatar">V
+
+          </span>
+          <span class="profile-name">Vaibhav</span>
+          <span class="profile-caret">▾</span>
+        </button>
+
+        <div class="profile-dropdown" id="profileDropdown" aria-label="Profile menu">
+          <div class="profile-header">
+            <div class="profile-avatar-large">VM</div>
+            <div>
+              <p class="profile-fullname">Vaibhav Mittal</p>
+              <p class="profile-email">vaibhav@kiet.edu</p>
+            </div>
+          </div>
+          <div class="profile-details">
+            <p><span>Roll No:</span> 202501100400xxx</p>
+            <p><span>Branch:</span> Computer Science & Engineering(AI & ML)</p>
+            <p><span>Section:</span> CSE-E</p>
+            <p><span>Course:</span> B.Tech</p>
+            <p><span>Semester:</span> 1st</p>
+          </div>
+          <button class="profile-logout-btn" id="logoutBtn">
+            Logout
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile nav toggle -->
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <!-- Side Navigation Bar -->
+  <aside class="side-nav" id="sideNav">
+    <h2>Navigate</h2>
+    <ul>
+      <li><a href="#home">🏠 Home</a></li>
+      <li><a href="#dashboard">📊 Dashboard</a></li>
+      <li><a href="#calendar">📅 Calendar</a></li>
+      <li><a href="#exams">📝 Exams</a></li>
+      <li><a href="#tasks">✅ Tasks</a></li>
+      <li><a href="#resources">📚 Resources</a></li>
+      <li><a href="#doubts">❓ Doubts</a></li>
+      <li><a href="#announcements">📣 Announcements</a></li>
+      <li><a href="#features">⚙️ Features</a></li>
+      <li><a href="#quiz">🧠 Quiz</a></li>
+      <li><a href="#about">ℹ️ About</a></li>
+      <li><a href="#contact">📨 Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- Backdrop for mobile side nav -->
+  <div class="side-nav-backdrop" id="sideNavBackdrop"></div>
+
+  <main class="main-content">
+    <!-- HOME / HERO SECTION -->
+    <section id="home" class="section home">
+      <div class="section-header">
+        <h1>Master Your B.Tech Journey</h1>
+        <p class="tagline">
+          Time management made simple – plan, track, and conquer your college life in one place.
+        </p>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-text">
+          <h2>What does AcadEase do?</h2>
+          <p>
+            AcadEase is a time management hub built specially for
+            B.Tech students. Organize classes, exams, assignments, club
+            events, and doubt sessions – all on a single, smart dashboard.
+          </p>
+          <ul class="hero-bullets">
+            <li>📚 Track resources, notes, and PYQs subject-wise.</li>
+            <li>📝 Never miss a deadline with exam & assignment reminders.</li>
+            <li>⏳ Study smarter using Pomodoro & study timers.</li>
+            <li>🤝 Get doubts solved via student–student & student–teacher boards.</li>
+          </ul>
+          <button class="primary-btn" onclick="document.querySelector('#dashboard').scrollIntoView({behavior:'smooth'})">
+            View Your Dashboard
+          </button>
+        </div>
+        <div class="hero-dashboard">
+          <div class="dashboard-card">
+            <h3>Today at a Glance</h3>
+            <p class="mini-tagline">One look, total control.</p>
+            <ul class="mini-stats">
+              <li><span>Classes Today</span><strong>4</strong></li>
+              <li><span>Pending Tasks</span><strong>3</strong></li>
+              <li><span>Upcoming Exam</span><strong>DSA – 12 Mar 2026</strong></li>
+            </ul>
+          </div>
+          <div class="dashboard-card progress">
+            <h3>Weekly Progress</h3>
+            <div class="progress-item">
+              <span>Overall Progress</span>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 68%"></div>
+              </div>
+              <span class="progress-value">68%</span>
+            </div>
+            <div class="progress-item">
+              <span>Data Structures</span>
+              <div class="progress-bar">
+                <div class="progress-fill alt" style="width: 80%"></div>
+              </div>
+              <span class="progress-value">80%</span>
+            </div>
+            <div class="progress-item">
+              <span>Engineering Maths</span>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 60%"></div>
+              </div>
+              <span class="progress-value">60%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Getting Started strip -->
+      <div class="getting-started">
+        <h3>Getting Started in 3 Steps</h3>
+        <ol>
+          <li><span>1.</span> Add today’s tasks in the <strong>To-Do List</strong>.</li>
+          <li><span>2.</span> Check upcoming exams in the <strong>Exams</strong> section.</li>
+          <li><span>3.</span> Start a <strong>Pomodoro</strong> or <strong>Study Timer</strong> to focus.</li>
+        </ol>
+      </div>
+
+      <!-- Home Feature Overview -->
+      <section id="dashboard" class="sub-section">
+        <h2>Dashboard Overview</h2>
+        <p class="tagline">All your academic life, one smart screen.</p>
+        <div class="cards-grid">
+          <article class="card">
+            <h3>Overall Progress</h3>
+            <p>
+              View your combined course completion, tasks completed, and exam
+              readiness in percentage form. The dashboard auto-updates based
+              on your tasks and resources.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Subject-wise Insights</h3>
+            <p>
+              Track how you’re doing in each subject with individual progress
+              bars and completion ratios for notes, assignments, and PYQs.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Why Students Choose Us</h3>
+            <p>
+              Designed for first-year and senior B.Tech students, AcadEase
+              focuses on real campus needs – exams, clubs, projects, and
+              your time.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Feature Snapshot</h3>
+            <p>
+              Calendar, exams, resources, doubts, announcements, GPA
+              calculator, timers, quizzes – everything you need, nothing
+              extra.
+            </p>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <!-- CALENDAR PAGE -->
+    <section id="calendar" class="section">
+      <div class="section-header">
+        <h2>Calendar</h2>
+        <p class="tagline">
+          See your 2026 college year at a glance & never miss what matters.
+        </p>
+      </div>
+
+      <div class="calendar-layout">
+        <div class="calendar-events">
+          <h3>Upcoming Events – 2026</h3>
+          <ul class="event-list">
+            <li>
+              <strong>Tech Club Orientation</strong>
+              <span>10 Jan 2026</span>
+              <span class="event-label">Important Event</span>
+            </li>
+            <li>
+              <strong>Mid-Sem Exams Start</strong>
+              <span>12 Mar 2026</span>
+              <span class="event-label">Academic</span>
+            </li>
+            <li>
+              <strong>Annual Sports Meet</strong>
+              <span>05 Apr 2026</span>
+              <span class="event-label sports">Sports</span>
+            </li>
+            <li>
+              <strong>Hackathon – CodeSprint</strong>
+              <span>20 Aug 2026</span>
+              <span class="event-label tech">Hackathon</span>
+            </li>
+            <li>
+              <strong>End-Sem Exams Start</strong>
+              <span>25 Nov 2026</span>
+              <span class="event-label">Academic</span>
+            </li>
+          </ul>
+        </div>
+        <div class="calendar-card">
+          <h3>Mini Calendar View</h3>
+          <p class="mini-tagline">Highlighting your important 2026 dates.</p>
+          <div class="mini-calendar" aria-label="January 2026 calendar">
+            <div class="mini-calendar-header">
+              <span>January 2026</span>
+              <span class="dots-legend">
+                <span class="dot academic"></span> Academic
+                <span class="dot event"></span> Event
+              </span>
+            </div>
+            <div class="mini-calendar-grid">
+              <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+              <span></span><span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+              <span>6</span><span>7</span><span>8</span><span>9</span>
+              <span class="has-event" data-tooltip="Tech Club Orientation">
+                10<span class="dot event"></span>
+              </span>
+              <span>11</span><span>12</span>
+              <span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span>
+              <span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span>
+              <span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXAMS PAGE -->
+    <section id="exams" class="section">
+      <div class="section-header">
+        <h2>Exams</h2>
+        <p class="tagline">
+          Track every test – from class quizzes to end-sems – with clarity.
+        </p>
+      </div>
+
+      <div class="exams-grid">
+        <div class="card">
+          <h3>Previous Exams – 2025</h3>
+          <p class="mini-tagline">See what you scored & where to improve.</p>
+          <div class="table-wrapper">
+            <table class="data-table" aria-label="Previous exams 2025">
+              <caption class="visually-hidden">Previous exams and scores for 2025</caption>
+              <thead>
+                <tr>
+                  <th>Exam Name</th>
+                  <th>Date (2025)</th>
+                  <th>Subject</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Mid-Sem 1</td>
+                  <td>15 Mar 2025</td>
+                  <td>Engineering Mathematics I</td>
+                  <td>78 / 100</td>
+                </tr>
+                <tr>
+                  <td>Class Test – DSA</td>
+                  <td>02 Sep 2025</td>
+                  <td>Data Structures & Algorithms</td>
+                  <td>17 / 20</td>
+                </tr>
+                <tr>
+                  <td>End-Sem 1</td>
+                  <td>10 Dec 2025</td>
+                  <td>Basic Electrical Engineering</td>
+                  <td>81 / 100</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="table-scroll-hint">Tip: Scroll horizontally on smaller screens to see all columns.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Upcoming Exams – 2026</h3>
+          <p class="mini-tagline">
+            Mid-sems, end-sems & class tests sorted by priority.
+          </p>
+          <div class="table-wrapper">
+            <table class="data-table" aria-label="Upcoming exams 2026">
+              <caption class="visually-hidden">Upcoming exams and priorities for 2026</caption>
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Exam Name</th>
+                  <th>Date (2026)</th>
+                  <th>Priority</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Mid-Sem</td>
+                  <td>Mid-Sem 2 – DSA</td>
+                  <td>12 Mar 2026</td>
+                  <td class="pri-high"> High</td>
+                </tr>
+                <tr>
+                  <td>Class Test</td>
+                  <td>CT – Operating Systems</td>
+                  <td>05 May 2026</td>
+                  <td class="pri-medium"> Medium</td>
+                </tr>
+                <tr>
+                  <td>End-Sem</td>
+                  <td>End-Sem 2 – All Subjects</td>
+                  <td>25 Nov 2026</td>
+                  <td class="pri-high"> High</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="table-scroll-hint">Tip: Scroll horizontally on smaller screens to see all columns.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TASKS PAGE -->
+    <section id="tasks" class="section">
+      <div class="section-header">
+        <h2>Tasks</h2>
+        <p class="tagline">
+          Organize every B.Tech task – from labs to long-term projects.
+        </p>
+      </div>
+
+      <div class="tasks-layout">
+        <div class="card">
+          <h3>Pending Tasks (B.Tech)</h3>
+          <p class="mini-tagline">Know what’s due next at a glance.</p>
+          <div class="table-wrapper">
+            <table class="data-table" aria-label="Pending tasks 2026">
+              <caption class="visually-hidden">Pending academic tasks for 2026</caption>
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Task</th>
+                  <th>Due Date (2026)</th>
+                  <th>Priority</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Data Structures</td>
+                  <td>Implement Linked List Lab</td>
+                  <td>18 Feb 2026</td>
+                  <td class="pri-high"> High</td>
+                </tr>
+                <tr>
+                  <td>Engineering Maths II</td>
+                  <td>Tutorial Sheet 3</td>
+                  <td>22 Feb 2026</td>
+                  <td class="pri-medium"> Medium</td>
+                </tr>
+                <tr>
+                  <td>Computer Networks</td>
+                  <td>OSI Model Presentation</td>
+                  <td>05 Mar 2026</td>
+                  <td class="pri-low"> Low</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="table-scroll-hint">Tip: Scroll horizontally on smaller screens to see all columns.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Completed Tasks – 2025</h3>
+          <p class="mini-tagline">
+            Celebrate what you’ve already achieved last year.
+          </p>
+          <div class="table-wrapper">
+            <table class="data-table" aria-label="Completed tasks 2025">
+              <caption class="visually-hidden">Completed academic tasks for 2025</caption>
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Task</th>
+                  <th>Completed On (2025)</th>
+                  <th>Priority</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Programming in C</td>
+                  <td>Mini Project – Student Record System</td>
+                  <td>20 Nov 2025</td>
+                  <td class="pri-high"> High</td>
+                </tr>
+                <tr>
+                  <td>Engineering Graphics</td>
+                  <td>AutoCAD Lab File</td>
+                  <td>09 Oct 2025</td>
+                  <td class="pri-medium"> Medium</td>
+                </tr>
+                <tr>
+                  <td>Environmental Studies</td>
+                  <td>Case Study Report</td>
+                  <td>01 Sep 2025</td>
+                  <td class="pri-low"> Low</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="table-scroll-hint">Tip: Scroll horizontally on smaller screens to see all columns.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- To-Do Subsection -->
+      <div class="todo-card card">
+        <h3>Today’s To-Do List</h3>
+        <p class="tagline">Small tasks, big progress.</p>
+
+        <form id="todoForm" class="todo-form">
+          <input
+            type="text"
+            id="todoText"
+            placeholder="Add a new task (e.g., Revise DSA stack)"
+            required
+          />
+          <input type="date" id="todoDate" required />
+          <select id="todoPriority" required>
+            <option value="">Priority</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+          <button type="submit" class="primary-btn">Add</button>
+        </form>
+
+        <p id="todoEmpty" class="empty-state"></p>
+        <ul id="todoList" class="todo-list" aria-label="To-do list"></ul>
+      </div>
+
+      <!-- Simple Weekly Analytics -->
+      <div class="card analytics-card">
+        <h3>Weekly Task Completion</h3>
+        <p class="mini-tagline">Visual snapshot of your productivity.</p>
+        <div class="analytics-bars">
+          <div class="analytics-bar">
+            <span class="analytics-label">Mon</span>
+            <div class="analytics-bar-track">
+              <div class="analytics-bar-fill" style="height: 40%"></div>
+            </div>
+          </div>
+          <div class="analytics-bar">
+            <span class="analytics-label">Tue</span>
+            <div class="analytics-bar-track">
+              <div class="analytics-bar-fill" style="height: 60%"></div>
+            </div>
+          </div>
+          <div class="analytics-bar">
+            <span class="analytics-label">Wed</span>
+            <div class="analytics-bar-track">
+              <div class="analytics-bar-fill" style="height: 80%"></div>
+            </div>
+          </div>
+          <div class="analytics-bar">
+            <span class="analytics-label">Thu</span>
+            <div class="analytics-bar-track">
+              <div class="analytics-bar-fill" style="height: 55%"></div>
+            </div>
+          </div>
+          <div class="analytics-bar">
+            <span class="analytics-label">Fri</span>
+            <div class="analytics-bar-track">
+              <div class="analytics-bar-fill" style="height: 70%"></div>
+            </div>
+          </div>
+          <div class="analytics-bar">
+            <span class="analytics-label">Sat</span>
+            <div class="analytics-bar-track">
+              <div class="analytics-bar-fill" style="height: 35%"></div>
+            </div>
+          </div>
+          <div class="analytics-bar">
+            <span class="analytics-label">Sun</span>
+            <div class="analytics-bar-track">
+              <div class="analytics-bar-fill" style="height: 20%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESOURCES PAGE -->
+    <section id="resources" class="section">
+      <div class="section-header">
+        <h2>Resources</h2>
+        <p class="tagline">
+          All your notes, PYQs, assignments & papers – organized by subject.
+        </p>
+      </div>
+
+      <div class="resources-summary">
+        <div class="resource-stat">
+          <h3>Notes</h3>
+          <p>Total: <span id="notesTotal">0</span></p>
+          <p>Completed: <span id="notesCompleted">0</span></p>
+        </div>
+        <div class="resource-stat">
+          <h3>PYQ</h3>
+          <p>Total: <span id="pyqTotal">0</span></p>
+          <p>Completed: <span id="pyqCompleted">0</span></p>
+        </div>
+        <div class="resource-stat">
+          <h3>Assignments</h3>
+          <p>Total: <span id="assignTotal">0</span></p>
+          <p>Completed: <span id="assignCompleted">0</span></p>
+        </div>
+        <div class="resource-stat">
+          <h3>Previous Papers</h3>
+          <p>Total: <span id="paperTotal">0</span></p>
+          <p>Completed: <span id="paperCompleted">0</span></p>
+        </div>
+      </div>
+
+      <div class="cards-grid resource-grid">
+        <article class="card">
+          <h3>Notes (Subject-wise)</h3>
+          <p class="mini-tagline">Quick revision at the right time.</p>
+          <ul class="resource-list" id="notesList"></ul>
+        </article>
+        <article class="card">
+          <h3>PYQ (Subject-wise)</h3>
+          <p class="mini-tagline">Solve what the examiner loves to ask.</p>
+          <ul class="resource-list" id="pyqList"></ul>
+        </article>
+        <article class="card">
+          <h3>Assignments</h3>
+          <p class="mini-tagline">Keep every lab & tutorial in check.</p>
+          <ul class="resource-list" id="assignList"></ul>
+        </article>
+        <article class="card">
+          <h3>Previous Year Question Papers</h3>
+          <p class="mini-tagline">
+            Practice real papers, build real confidence.
+          </p>
+          <ul class="resource-list" id="paperList"></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- DOUBTS PAGE -->
+    <section id="doubts" class="section">
+      <div class="section-header">
+        <h2>Doubts</h2>
+        <p class="tagline">
+          Never stay stuck – get your doubts solved, one-on-one or with peers.
+        </p>
+      </div>
+
+      <div class="doubts-grid">
+        <div class="card">
+          <h3>Student–Teacher Dashboard</h3>
+          <p class="mini-tagline">
+            Ask clearly, learn deeply – one-on-one doubt solving.
+          </p>
+          <ul class="guidelines">
+            <li>State the subject, topic, and where you are stuck.</li>
+            <li>Attach screenshots or code snippets if needed.</li>
+            <li>Be respectful of teacher time & slots.</li>
+            <li>Follow allotted doubt hours by each faculty.</li>
+          </ul>
+          <form class="doubt-form">
+            <input type="text" placeholder="Subject (e.g., DSA)" required />
+            <input type="text" placeholder="Topic (e.g., Trees)" required />
+            <textarea placeholder="Describe your doubt briefly..." required></textarea>
+            <button type="submit" class="primary-btn">Raise Doubt</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Student–Student Forum</h3>
+          <p class="mini-tagline">
+            Discuss, debate, and learn together across all subjects.
+          </p>
+          <ul class="guidelines">
+            <li>Use tags like [DSA], [Maths], [CN], [OS].</li>
+            <li>No spamming, sharing exam papers, or rude behavior.</li>
+            <li>Upvote helpful answers & mark solutions.</li>
+            <li>Keep discussions topic-focused.</li>
+          </ul>
+          <div class="forum-sample">
+            <div class="forum-post">
+              <h4>[DSA] Confused about time complexity of merge sort?</h4>
+              <p>Asked by: Ananya • 3 replies</p>
+            </div>
+            <div class="forum-post">
+              <h4>[Maths] Doubt in Laplace transform question 5(b)</h4>
+              <p>Asked by: Vaibhav • 2 replies</p>
+            </div>
+            <div class="forum-post">
+              <h4>[CN] Is subnetting important for mid-sems?</h4>
+              <p>Asked by: Rohan • 5 replies</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANNOUNCEMENT PAGE -->
+    <section id="announcements" class="section">
+      <div class="section-header">
+        <h2>Announcements</h2>
+        <p class="tagline">
+          Stay in sync with tech clubs, sports, hackathons & campus buzz.
+        </p>
+      </div>
+
+      <div class="announcement-controls">
+        <label for="announcementFilter">Filter by type:</label>
+        <select id="announcementFilter">
+          <option value="all">All</option>
+          <option value="tech">Tech Club</option>
+          <option value="sports">Sports</option>
+          <option value="hackathon">Hackathon</option>
+          <option value="academic">Classes/Meetings</option>
+          <option value="show">Auditorium Shows</option>
+        </select>
+
+        <label for="announcementSort">Sort by:</label>
+        <select id="announcementSort">
+          <option value="date">Date</option>
+          <option value="priority">Priority</option>
+        </select>
+      </div>
+
+      <div class="announcement-banners" id="announcementContainer">
+        <article
+          class="announcement-banner pri-high"
+          data-type="tech"
+          data-priority="1"
+          data-date="2026-01-10"
+        >
+          <h3>Tech Club Orientation</h3>
+          <p>
+            Join the official coding & robotics club. Introduction to projects,
+            teams, and schedules.
+          </p>
+          <div class="banner-meta">
+            <span>📅 10 Jan 2026</span>
+            <span class="badge tech">Tech Club</span>
+            <span class="badge high">High Priority</span>
+          </div>
+        </article>
+
+        <article
+          class="announcement-banner pri-medium"
+          data-type="sports"
+          data-priority="2"
+          data-date="2026-04-05"
+        >
+          <h3>Annual Sports Meet</h3>
+          <p>
+            Athletics, football, cricket, and more! Register for your favorite
+            events.
+          </p>
+          <div class="banner-meta">
+            <span>📅 05 Apr 2026</span>
+            <span class="badge sports">Sports</span>
+            <span class="badge medium">Medium Priority</span>
+          </div>
+        </article>
+
+        <article
+          class="announcement-banner pri-high"
+          data-type="hackathon"
+          data-priority="1"
+          data-date="2026-08-20"
+        >
+          <h3>CodeSprint Hackathon</h3>
+          <p>
+            24-hour overnight coding marathon. Build solutions, win prizes, find
+            your team.
+          </p>
+          <div class="banner-meta">
+            <span>📅 20 Aug 2026</span>
+            <span class="badge hackathon">Hackathon</span>
+            <span class="badge high">High Priority</span>
+          </div>
+        </article>
+
+        <article
+          class="announcement-banner pri-low"
+          data-type="show"
+          data-priority="3"
+          data-date="2026-02-18"
+        >
+          <h3>Cultural Night – Auditorium Show</h3>
+          <p>
+            Music, drama, and dance performances by students across all
+            branches.
+          </p>
+          <div class="banner-meta">
+            <span>📅 18 Feb 2026</span>
+            <span class="badge show">Auditorium</span>
+            <span class="badge low">Low Priority</span>
+          </div>
+        </article>
+
+        <article
+          class="announcement-banner pri-medium"
+          data-type="academic"
+          data-priority="2"
+          data-date="2026-03-01"
+        >
+          <h3>Special Lecture – AI & ML</h3>
+          <p>
+            Guest lecture by industry expert on practical AI applications in
+            engineering.
+          </p>
+          <div class="banner-meta">
+            <span>📅 01 Mar 2026</span>
+            <span class="badge academic">Class / Meeting</span>
+            <span class="badge medium">Medium Priority</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FEATURES PAGE -->
+    <section id="features" class="section">
+      <div class="section-header">
+        <h2>Features</h2>
+        <p class="tagline">
+          Smart tools that turn your time into results – not stress.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- GPA Calculator -->
+        <div class="card">
+          <h3>GPA Calculator</h3>
+          <p class="mini-tagline">
+            Quickly estimate your semester GPA by subject.
+          </p>
+          <div class="table-wrapper">
+            <table class="data-table gpa-table" aria-label="GPA calculator inputs">
+              <caption class="visually-hidden">Enter subject, credits and grades to estimate GPA</caption>
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Credits</th>
+                  <th>Grade (O/A/B/C/D/F)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="text" value="Data Structures" aria-label="Subject name 1" /></td>
+                  <td><input type="number" min="0" value="4" aria-label="Credits for subject 1" /></td>
+                  <td><input type="text" maxlength="2" value="A" aria-label="Grade for subject 1" /></td>
+                </tr>
+                <tr>
+                  <td><input type="text" value="Maths II" aria-label="Subject name 2" /></td>
+                  <td><input type="number" min="0" value="3" aria-label="Credits for subject 2" /></td>
+                  <td><input type="text" maxlength="2" value="B" aria-label="Grade for subject 2" /></td>
+                </tr>
+                <tr>
+                  <td><input type="text" value="OS" aria-label="Subject name 3" /></td>
+                  <td><input type="number" min="0" value="3" aria-label="Credits for subject 3" /></td>
+                  <td><input type="text" maxlength="2" value="O" aria-label="Grade for subject 3" /></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button id="calcGpaBtn" class="primary-btn">Calculate GPA</button>
+          <p class="gpa-result" id="gpaResult">Estimated GPA: –</p>
+        </div>
+
+        <!-- Pomodoro Timer -->
+        <div class="card">
+          <h3>Pomodoro Timer</h3>
+          <p class="mini-tagline">Study 25 minutes, break 5 – repeat.</p>
+          <div class="timer-display" id="pomodoroDisplay">25:00</div>
+          <div class="timer-controls">
+            <button id="pomodoroStart" class="secondary-btn">Start</button>
+            <button id="pomodoroPause" class="secondary-btn">Pause</button>
+            <button id="pomodoroReset" class="secondary-btn">Reset</button>
+          </div>
+        </div>
+
+        <!-- Study Timer -->
+        <div class="card">
+          <h3>Custom Study Timer</h3>
+          <p class="mini-tagline">
+            Track deep work sessions for any duration you like.
+          </p>
+          <label for="studyMinutes">Minutes:</label>
+          <input type="number" id="studyMinutes" min="1" value="45" />
+          <div class="timer-display" id="studyDisplay">45:00</div>
+          <div class="timer-controls">
+            <button id="studyStart" class="secondary-btn">Start</button>
+            <button id="studyPause" class="secondary-btn">Pause</button>
+            <button id="studyReset" class="secondary-btn">Reset</button>
+          </div>
+        </div>
+
+        <!-- Extra Features Info -->
+        <div class="card">
+          <h3>Other Helpful Features</h3>
+          <p class="mini-tagline">
+            Everything supports one mission – better time management.
+          </p>
+          <ul class="feature-list">
+            <li> Color-coded priorities for tasks & announcements.</li>
+            <li> Subject-based organization of all resources.</li>
+            <li> Exam breakdowns with previous vs upcoming sections.</li>
+            <li> Quick navigation using top bar & left sidebar together.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ PAGE -->
+    <section id="quiz" class="section">
+      <div class="section-header">
+        <h2>Quiz Center</h2>
+        <p class="tagline">
+          Test yourself – beginner to advanced – across all subjects.
+        </p>
+      </div>
+
+      <div class="quiz-layout card">
+        <div class="quiz-controls">
+          <label for="quizSubject">Subject:</label>
+          <select id="quizSubject">
+            <option value="DSA">Data Structures</option>
+            <option value="Maths">Engineering Maths</option>
+            <option value="CN">Computer Networks</option>
+            <option value="OS">Operating Systems</option>
+          </select>
+
+          <label>Difficulty:</label>
+          <div class="quiz-difficulty">
+            <label><input type="radio" name="difficulty" value="Beginner" checked /> Beginner</label>
+            <label><input type="radio" name="difficulty" value="Intermediate" /> Intermediate</label>
+            <label><input type="radio" name="difficulty" value="Advanced" /> Advanced</label>
+          </div>
+
+          <button id="startQuizBtn" class="primary-btn">Load Sample Quiz</button>
+        </div>
+
+        <div class="quiz-content" id="quizContent">
+          <p class="mini-tagline">
+            Choose a subject & difficulty to see a sample set of MCQs.
+          </p>
+        </div>
+
+        <div class="quiz-actions">
+          <button id="checkQuizBtn" class="secondary-btn">Check Score</button>
+          <p id="quizScore" class="quiz-score"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT US PAGE -->
+    <section id="contact" class="section">
+      <div class="section-header">
+        <h2>Contact Us</h2>
+        <p class="tagline">
+          Share feedback, report issues, or request new features.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <form id="contactForm" class="card contact-form">
+          <h3>Send us a message</h3>
+          <label for="contactName">Name</label>
+          <input type="text" id="contactName" required />
+
+          <label for="contactEmail">Email</label>
+          <input type="email" id="contactEmail" required />
+
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" rows="4" required></textarea>
+
+          <button type="submit" class="primary-btn">Submit</button>
+          <p id="contactStatus" class="form-status"></p>
+        </form>
+
+        <div class="card">
+          <h3>Connect with the Team</h3>
+          <p>
+            AcadEase is a student-focused initiative to make college life
+            manageable and meaningful.
+          </p>
+          <ul class="contact-info">
+            <li>📧 support@AcadEase.com</li>
+            <li>🏫 Department of Computer Science and Engineering, KIET Group Of Institutions</li>
+          </ul>
+
+          <!-- <h4>Tagline for Support</h4> -->
+          <p class="mini-tagline">
+            We listen, we improve – your feedback shapes our next feature.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section">
+      <div class="section-header">
+        <h2>About AcadEase</h2>
+        <p class="tagline">
+          Built by students, for students – focused on time, focus & growth.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="card about-stats">
+          <div class="stat">
+            <span id="studentsJoined">1,250+</span>
+            <p>Students Joined</p>
+          </div>
+          <div class="stat">
+            <span id="avgRating">4.7★</span>
+            <p>Average Rating</p>
+          </div>
+          <div class="stat">
+            <span id="resourceCount">650+</span>
+            <p>Resources Tracked</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Our Mission</h3>
+          <p>
+            To give every B.Tech student a simple yet powerful digital assistant
+            for managing time, studies, and campus life. No distractions, no
+            confusion – just clarity.
+          </p>
+          <!-- <h4>Tagline</h4> -->
+          <p class="mini-tagline">
+            Because engineering is tough – your planner shouldn’t be.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025–2026 AcadEase. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
