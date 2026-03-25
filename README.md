@@ -11,6 +11,7 @@
 **Initiating Neural Sync...**  
 _November 01, 2025 – Timestamp: Epoch of Infinite Code_
 
+
 Greetings, digital nomad! 🚀 You've docked at the central nexus of my interstellar web dev saga. I'm Abhisek, charting a bold trajectory to deploy **1000+ hyper-projects** before my graduation warp in 2027. This GitHub starbase isn't just a repo—it's a living holodeck, pulsing with raw innovation in HTML, CSS, and JavaScript. Each artifact here is a fragment of my evolution: from binary sparks to full-spectrum simulations, fueling my quest to redefine the web's fabric. Join the voyage—let's code the future! ⚡
 
 ![Futuristic Web Grid](https://www.militarytimes.com/resizer/v2/TIQ4YOM3BJHL3KLKJ42TYPUJVI.jpg?auth=8477177268eafea311598f4f41213d3a7968672d1152110ea6645432fdd7d362&width=4500&height=3000) _(Visualize a neon-lit cyber-grid: circuits weaving through cosmic voids.)_
@@ -356,3 +357,5 @@ _Follow @abhisek2004 on X for live deploys. Code the cosmos! 🌟_
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
+

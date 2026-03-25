@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+.title{
+    text-align: center;
+    padding: 1.5rem 0;
+    border-bottom: 3px solid #29323c;
+    /* color: #323e46; */
+}
+
+.main{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #e8cbc0, #636fa4);
+}
+
+.container{
+    width: 400px;
+    height: 250px;
+    cursor: pointer;
+    margin: 5rem 0;
+    border-radius: 10px;
+    perspective: 800px;
+}
+
+.container:hover > .card{
+    transform: rotateY(180deg);
+}
+
+.card{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 1500ms;
+    transform-style: preserve-3d;
+}
+
+.front, .back{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 15px;
+}
+
+.front{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)) , url('./1.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 3px 3px 1px 0px rgb(201, 150, 63);
+}
+
+.front__content{
+    color: rgb(214, 167, 87);
+    padding: 20px;
+}
+
+.front__content h1{
+     text-align: right;
+     font-size: 20px;
+     font-weight: 600;
+     text-shadow: 1px 1px 0.5px rgb(90, 60, 5);
+}
+
+.front__content h2{
+     text-align: right;
+     font-size: 14px;
+     font-weight: 200;
+     line-height: 0.9;
+}
+
+.front__content h3{
+     text-align: right;
+     font-size: 14px;
+     font-weight: 100;
+}
+
+.front__content img{
+    width: 50px;
+    filter: none;
+}
+
+.number{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.number span{
+    font-size: 33px;
+    letter-spacing: 0.02em;
+    font-weight: 700;
+    text-shadow: 1px 1px 0.5px rgb(90, 60, 5);
+}
+
+.front__content h4{
+    text-align: left;
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.name h2{
+    text-transform: uppercase;
+    text-align: right;
+    font-size: 20px;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    text-shadow: 1px 1px 0.5px rgb(90, 60, 5);
+}
+
+.name h3{
+    text-align: right;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.back{
+    background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)) , url('https://c4.wallpaperflare.com/wallpaper/146/166/434/naruto-shippuden-itachi-uchiha-sharingan-anime-wallpaper-preview.jpg');
+    background-size: cover;
+    background-position: center;
+    transform: rotateY(180deg);
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    flex-direction: column;
+    font-size: 15px;
+    box-shadow: 3px 3px 1px 0px rgb(201, 150, 63);
+}
+
+.back__content{
+    position: relative;
+    color: #d6a757;
+}
+
+.back__content span{
+    margin: 10px;
+    display: inline-block;
+    
+}
+
+.back__content h2{
+    margin: 10px 40px;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.back__content p{
+    margin: 10px 20px;
+    font-size: 14px;
+    font-weight: 200;
+    /* text-align: left; */
+}
+
+.black{
+    width: 100%;
+    height: 45px;
+    background-color: rgb(27, 27, 27);
+}
+
+.cvv{
+    width: 70%;
+    height: 44px;
+    margin-left: 40px;
+    background: gray;
+    z-index: 2;
+}
+
+.div{
+    position: absolute;
+    z-index: 1;
+    top: 58%;
+    right: 8%;
+    width: 12%;
+    height: 33px;
+    background: white;
+}
+
+.div span{
+    color: black;
+    font-weight: 600;
+    font-size: 18px;
+    display: inline-block;
+    z-index: 4;
+}
+
+
+
