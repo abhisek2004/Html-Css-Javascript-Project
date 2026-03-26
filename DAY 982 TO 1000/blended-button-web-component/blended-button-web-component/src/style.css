@@ -1,0 +1,24 @@
+body {
+     background: plum;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     height: 100vh;
+     margin: 0;
+}
+
+blended-button {
+     transform: scale(1.2);
+     /*--bb-color1: purple;*/
+     /*--bb-blend: difference;*/
+     --bb-height: 50px;
+     --bb-width: 300px;
+     /*--bb-font-size: 2em;*/
+}
+blended-button:nth-of-type(2) {
+     --bb-color1: turquoise;
+     --bb-color2: purple;
+     --bb-blend: hard-light;
+     margin-top: 50px;
+}
