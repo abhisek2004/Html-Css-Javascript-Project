@@ -358,7 +358,7 @@ svg {
 .active.plate7 .x {
   transition: transform 400ms 50ms;
 }
-/* Όγδοο πιάτο */
+
 .plate8 .line {
   transition: stroke-dasharray 400ms 100ms, stroke-dashoffset 400ms 100ms, transform 400ms 100ms;
 }
