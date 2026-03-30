@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+@property --num {
+  syntax: "<integer>";
+  initial-value: 1000000;
+  inherits: false;
+}
+
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: auto;
+  height: 100vh;
+  background-color: #000813;
+}
+
+.container {
+display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  padding: 32px;
+}
+
+svg {
+  fill: none;
+  position: absolute;
+  z-index:-1;
+}
+
+.balance-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.label {
+font-family: 'Inter', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+text-align: center;
+color: #B3B5B9;
+  margin-bottom: 4px;
+}
+
+.amount, .amount2 {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+font-weight: 300;
+font-size: 32px;
+line-height: 40px;
+  color: #FCBC2C;
+  transition: opacity 1.2s linear;
+  
+  &.amount2 {
+    color: #FFF;
+  }
+}
+
+.countup {
+  animation: counter 1.2s 1;
+  counter-reset: num var(--num);
+}
+
+.countup::after {
+  content: counter(num);
+  }
+
+@keyframes counter {
+  from {
+    --num: 0;
+  }
+  to {
+    --num: 1000000;
+  }
+}
+
+.restart-btn {
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #fff;
+  border: none;
+  border-radius: 999px;
+  color: #000814;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+}
+
+.toggle-switch {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.toggle-switch input[type="checkbox"] {
+  margin-right: 10px;
+}
