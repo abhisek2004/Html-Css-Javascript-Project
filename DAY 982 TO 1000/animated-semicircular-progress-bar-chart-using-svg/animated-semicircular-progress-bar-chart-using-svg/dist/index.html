@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Animated semicircular progress bar chart using SVG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+
+  <body>
+    <!-- partial:index.partial.html -->
+    <div class="container">
+      <svg width="278" height="89" viewBox="0 0 278 89" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        <defs>
+          <clipPath id="cutoff">
+            <path x="-4" y="-4" d="M4.09863 85C29.6533 36.8181 80.3275 4 138.667 4C197.006 4 247.68 36.8181 273.235 85"
+              stroke-width="10" stroke-linecap="round" />
+          </clipPath>
+        </defs>
+
+        <filter id="big-shadow">
+
+          <!-- Take source alpha, offset it by angle/distance and blur it by size -->
+          <feOffset id="offset" in="SourceAlpha" dx="0" dy="0" result="SA-offset" />
+          <feGaussianBlur id="blur" in="SA-offset" stdDeviation="40" result="SA-o-blur" />
+
+          <!-- Apply a contour by using a color curve transform on the alpha and clipping the result to the input -->
+
+          <feComponentTransfer in="SA-o-blur" result="SA-o-b-contIN">
+            <feFuncA id="contour" type="table" tableValues="0 10" />
+          </feComponentTransfer>
+
+          <feComposite operator="in" in="SA-o-blur" in2="SA-o-b-contIN" result="SA-o-b-cont" />
+
+          <!-- Adjust the spread by multiplying alpha by a constant factor -->
+          <feComponentTransfer in="SA-o-b-cont" result="SA-o-b-c-sprd">
+            <feFuncA id="spread-ctrl" type="linear" slope="20" />
+          </feComponentTransfer>
+
+          <!-- Adjust color and opacity by adding fixed offsets and an opacity multiplier -->
+          <feColorMatrix id="recolor" in="SA-o-b-c-sprd" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"
+            result="SA-o-b-c-s-recolor" />
+
+          <!-- Generate a reasonably grainy noise input with baseFrequency between approx .5 to 2.0. And add the noise with k1 and k2 multipliers that sum to 1 -->
+          <feTurbulence result="fNoise" type="fractalNoise" numOctaves="6" baseFrequency="1.98" />
+          <feColorMatrix in="fNoise" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 7 -3"
+            result="clipNoise" />
+          <feComposite id="noisemix" operator="arithmetic" in="SA-o-b-c-s-recolor" in2="clipNoise" k1="0" k2="1"
+            result="SA-o-b-c-s-r-mix" />
+
+          <!-- Merge the shadow with the original -->
+          <feMerge>
+            <feMergeNode in="SA-o-b-c-s-r-mix" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <path id="chart-path" d="M4.09863 85C29.6533 36.8181 80.3275 4 138.667 4C197.006 4 247.68 36.8181 273.235 85"
+          stroke="#62676F" stroke-width="8" stroke-linecap="round" />
+        <path id="chart-progress"
+          d="M4.09863 85C29.6533 36.8181 80.3275 4 138.667 4C197.006 4 247.68 36.8181 273.235 85" stroke="#FCBC2C"
+          stroke-width="8" stroke-linecap="round" filter="url(#big-shadow)" clip-path="url(#cutoff)" />
+      </svg>
+      <div class="balance-container">
+        <span class="label">Available to spend</span>
+        <span class="amount">£<span class="countup"></span></span>
+      </div>
+    </div>
+
+    <div class="container">
+      <svg width="278" height="89" viewBox="0 0 278 89" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path id="chart-path" d="M4.09863 85C29.6533 36.8181 80.3275 4 138.667 4C197.006 4 247.68 36.8181 273.235 85"
+          stroke="#62676F" stroke-width="8" stroke-linecap="round" />
+        <path id="chart-progress1"
+          d="M4.09863 85C29.6533 36.8181 80.3275 4 138.667 4C197.006 4 247.68 36.8181 273.235 85" stroke="#2DB023"
+          stroke-width="8" stroke-linecap="round" />
+        <path id="chart-progress2"
+          d="M4.09863 85C29.6533 36.8181 80.3275 4 138.667 4C197.006 4 247.68 36.8181 273.235 85" stroke="#FCBC2C"
+          stroke-width="8" stroke-linecap="round" />
+      </svg>
+      <div class="balance-container">
+        <span class="label">Available to spend</span>
+        <span class="amount2">£<span class="countup"></span></span>
+      </div>
+    </div>
+
+    <div class="toggle-switch">
+      <input type="checkbox" id="animation-toggle" name="animation-toggle">
+      <label for="animation-toggle">Couting up animation</label>
+    </div>
+
+    <button id="restart-button" class="restart-btn">Restart Animations</button>
+    <!-- partial -->
+    <script src='https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js'></script>
+    <script src="./script.js"></script>
+
+  </body>
+
+</html>
