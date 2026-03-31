@@ -1,0 +1,183 @@
+* {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+:root {
+	--hue: 223;
+	--bg: hsl(var(--hue),10%,80%);
+	--fg: hsl(var(--hue),10%,10%);
+	--trans-dur: 0.3s;
+	font-size: calc(16px + (24 - 16) * (100vw - 320px) / (2560 - 320));
+}
+body {
+	background-color: var(--bg);
+	color: var(--fg);
+	display: flex;
+	font: 1em/1.5 sans-serif;
+	height: 100vh;
+	transition:
+		background-color var(--trans-dur),
+		color var(--trans-dur);
+}
+.pl {
+	display: block;
+	margin: auto;
+	width: 16em;
+	height: auto;
+}
+.pl__bottles,
+.pl__bottle--bounce,
+.pl__bottle--in,
+.pl__bottle--out,
+.pl__cap--on,
+.pl__fill--full,
+.pl__fill--half,
+.pl__fill--startle1,
+.pl__fill--startle2,
+.pl__rod {
+	animation: move-right 0.6s linear infinite;
+}
+.pl__bottle {
+	transform-origin: 8px 56px;
+}
+.pl__bottle--bounce {
+	animation-name: bounce;
+}
+.pl__bottle--in,
+.pl__bottle--out {
+	animation-name: fade-in;
+}
+.pl__bottle--in {
+	opacity: 0;
+}
+.pl__bottle--out {
+	animation-direction: reverse;
+}
+.pl__bottle--out ~ .pl__bottle {
+	opacity: 0;
+}
+.pl__bottle-glass,
+.pl__cap,
+.pl__rod {
+	stroke: hsl(var(--hue),10%,30%);
+}
+.pl__bottle-glass {
+	fill: hsla(var(--hue),10%,30%,0.05);
+	transition:
+		fill var(--trans-dur),
+		stroke var(--trans-dur);
+}
+.pl__bottle-glare {
+	stroke: hsl(0,0%,100%);
+}
+.pl__cap,
+.pl__rod {
+	transition: stroke var(--trans-dur);
+}
+.pl__cap {
+	fill: hsl(0,0%,100%);
+}
+.pl__cap--on {
+	animation-name: cap-on;
+	animation-timing-function: ease-in;
+}
+.pl__fill {
+	fill: hsla(43,90%,50%,0.8);
+	stroke: hsl(43,90%,95%);
+	stroke-width: 4px;
+}
+.pl__fill--full {
+	animation-name: fill-up-full;
+}
+.pl__fill--half {
+	animation-name: fill-up-half;
+}
+.pl__fill--startle1 {
+	animation-name: fill-startle1;
+}
+.pl__fill--startle2 {
+	animation-name: fill-startle2;
+}
+.pl__rod {
+	animation-name: down-up;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: hsl(var(--hue),10%,20%);
+		--fg: hsl(var(--hue),10%,90%);
+	}
+	.pl__bottle-glass,
+	.pl__cap,
+	.pl__rod {
+		stroke: hsl(var(--hue),10%,50%);
+	}
+	.pl__bottle-glass {
+		fill: hsla(var(--hue),10%,50%,0.05);
+	}
+}
+/* Animations */
+@keyframes bounce {
+	from,
+	50%,
+	to {
+		animation-timing-function: ease-out;
+		transform: translate(56px,0) scale(1,1);
+	}
+	66.7% {
+		animation-timing-function: ease-in;
+		transform: translate(56px,0) scale(1.1,0.9);
+	}
+	83.3% {
+		animation-timing-function: ease-out;
+		transform: translate(56px,0) scale(0.95,1.05);
+	}
+}
+@keyframes cap-on {
+	from { transform: translate(0,0); }
+	50%,
+	to { transform: translate(0,23px); }
+}
+@keyframes fill-startle1 {
+	from { transform: translate(0,8px); }
+	to { transform: translate(-20px,8px); }
+}
+@keyframes fill-startle2 {
+	from { transform: translate(-20px,8px); }
+	25% { transform: translate(-30px,8px); }
+	to { transform: translate(0,8px); }
+}
+@keyframes fill-up-half {
+	from { transform: translate(-30px,56px); }
+	to { transform: translate(-15px,32px); }
+}
+@keyframes fill-up-full {
+	from { transform: translate(-15px,32px); }
+	to { transform: translate(0,8px); }
+}
+@keyframes move-right {
+	from { transform: translate(0,24px); }
+	to { transform: translate(28px,24px); }
+}
+@keyframes fade-in {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+@keyframes down-up {
+	from,
+	to {
+		animation-timing-function: ease-in;
+		transform: translate(0,0);
+	}
+	50% {
+		animation-timing-function: ease-out;
+		transform: translate(0,24px);
+	}
+	66.7% {
+		animation-timing-function: ease-in;
+		transform: translate(0,31px);
+	}
+}
