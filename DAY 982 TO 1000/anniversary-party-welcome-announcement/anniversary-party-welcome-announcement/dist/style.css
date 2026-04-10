@@ -1,0 +1,88 @@
+html {
+  height: 100%;
+
+  --color1: #ffffff;
+  --color2: #f7bb98;
+  --color3: #00639d;
+
+  --line-color: #d0b53b;
+
+  /* This animation is mostly so my TV had some variance if we left it on for a while */
+  background-color: #140802;
+  -webkit-animation: ambientBg 311s linear infinite;
+          animation: ambientBg 311s linear infinite;
+}
+
+body {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  background: #2f2f2f;
+}
+body > svg {
+  grid-row-start: 1;
+  grid-column-start: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.filled-heading {
+  text-transform: uppercase;
+  font-family: "Limelight", sans-serif;
+  font-size: 5em;
+  line-height: 0.9;
+}
+
+#background path {
+  -webkit-animation: pulse 6s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+          animation: pulse 6s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+}
+
+@-webkit-keyframes pulse {
+  0%,
+  100% {
+    transform: scale(0) rotate(33deg);
+  }
+  20%,
+  80% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(0) rotate(33deg);
+  }
+  20%,
+  80% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@-webkit-keyframes ambientBg {
+  0%, 100% {
+    background-color: #140802;
+  }
+  33% {
+    background-color: #000018;
+  }
+  66% {
+    background-color: #0f1100;
+  }
+}
+
+@keyframes ambientBg {
+  0%, 100% {
+    background-color: #140802;
+  }
+  33% {
+    background-color: #000018;
+  }
+  66% {
+    background-color: #0f1100;
+  }
+}
