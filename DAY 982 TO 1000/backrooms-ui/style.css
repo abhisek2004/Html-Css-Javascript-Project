@@ -1,0 +1,493 @@
+@import url('https://fonts.googleapis.com/css2?family=Sometype+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+	--bg: #fef5b9;
+	--box: #fced97;
+	--light: #fffbaf;
+	--dark: #825a48;
+	--body: #251418;
+	--alt: #918d61;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+::selection {
+	background: var(--body);
+	color: var(--bg);
+}
+
+html {
+	overflow-x: hidden;
+}
+
+body {
+	margin: 0;
+	padding: 0 0 20px 0;
+	background: #2f2f2f;
+	position: relative;
+	background: var(--bg);
+	color: var(--body);
+	width: 100%;
+	min-height: 100vh;
+	font-family: 'Sometype Mono', monospace;
+	background-image: url("https://assets.codepen.io/5896374/seamless-yellow-carpet.jpg");
+	overflow-x:hidden;
+	transition: all 0.3s steps(3);
+}
+
+body::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: black;
+	z-index: 999;
+	opacity: 0;
+	pointer-events: none;
+	transition: inherit;
+}
+
+body.toggled::before {
+	opacity: 0.5;
+	mix-blend-mode: color-burn;
+}
+
+main {
+	display: flex;
+	flex-wrap: wrap;
+	width: 1050px;
+	margin: auto;
+	max-width: 100%;
+}
+
+.box {
+	margin: auto;
+	max-width: 100%;
+	display: grid;
+	padding: 20px;
+	position: relative;
+	border-radius: 10px;
+	border: 2px solid;
+	background: var(--box);
+	box-shadow: 5px 5px 3px inset rgba(255, 255, 255, 0.65),
+		5px 10px 10px 5px inset var(--light), -6px -6px 1px inset var(--dark),
+		3px 3px 0 rgba(0, 0, 0, 0.1), 5px 5px 0 rgba(0, 0, 0, 0.1),
+		7px 7px 0 rgba(0, 0, 0, 0.1), 9px 9px 0 rgba(0, 0, 0, 0.1);
+}
+
+.box-wrap {
+	position: relative;
+}
+
+.main-box {
+	width: 300px;
+	min-height: 300px;
+	max-width: 92%;
+	margin: 20px auto;
+}
+
+.box::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	border-radius: inherit;
+	pointer-events: none;
+}
+
+.box-inner {
+	padding: 20px;
+	background: var(--alt);
+	border-radius: 3px;
+	border: 2px solid;
+	box-shadow: 2px 2px 5px inset rgba(0, 0, 0, 0.5), -3px -3px 5px rgba(0,0,0,0.25), 4px 4px 5px rgba(255,255,255,0.75);
+	position: relative;
+	z-index: 3;
+	max-width: 100%;
+}
+
+.box-inner::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+      45deg,
+      var(--alt) 25%,
+      transparent 25%,
+      transparent 75%,
+      var(--alt) 75%,
+      var(--alt) 0
+    ),
+    linear-gradient(
+      45deg,
+      var(--alt) 25%,
+      transparent 25%,
+      transparent 75%,
+      var(--alt) 75%,
+      var(--alt) 0
+    ),
+    rgba(0, 0, 0, 0);
+  background-size: 10px 10px, 10px 10px;
+  background-position: 0px 0, 5px 5px;
+	filter: brightness(0.8);
+	opacity: 0.25;
+	mix-blend-mode: multiply;
+}
+
+.box.toggler {
+	height: 100%;
+	width: 150px;
+	align-content: center;
+}
+
+.box.frame::before {
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: calc(100% - 22px);
+	height: calc(100% - 22px);
+	border: 2px solid;
+	border-radius: 5px;
+	pointer-events: none;
+}
+
+.box-inner .box:not(.toggler) {
+	margin-bottom: 20px;
+	display: block;
+}
+
+.box-inner .box:last-of-type {
+	margin-bottom: 0;
+}
+
+.toggler-inner {
+	width: 55px;
+	height: 110px;
+	border: 2px solid;
+	border-radius: 3px;
+	margin: auto;
+	background-image: linear-gradient(to bottom, var(--box) 0%, var(--box) 20%, var(--bg) 30%,var(--light) 60%, var(--dark) 95%);
+	box-shadow: 0 0 3px 3px inset var(--bg),3px 3px 0 rgba(0, 0, 0, 0.1), 5px 5px 0 rgba(0, 0, 0, 0.1),
+		7px 7px 0 rgba(0, 0, 0, 0.1);
+	position: relative;
+	cursor: pointer;
+	transition: all 0.2s steps(2);
+	transform: perspective(400px);
+	transform-style: preserve-3d;
+}
+
+.toggler-inner::before {
+	content: "";
+	background: inherit;
+	transform-style: preserve-3d;
+	transform: perspective(500px) rotateX(35deg);
+	position: absolute;
+	top: calc(-12% - 2px);
+	left: -2px;
+	width: 100%;
+	height: 112%;
+	transition: inherit;
+	border: 2px solid;
+	border-radius: inherit;
+	box-shadow: inherit;
+	transition: inherit;
+}
+
+.toggler-inner::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: -5%;
+	height: 70%;
+	width: calc(110% + 5px);
+	border-radius: inherit;
+	background: black;
+	opacity: 0.3;
+	filter: blur(2px);
+	transform: skewx(20deg) translatex(25%);
+	pointer-events: none;
+	transition: inherit;
+}
+
+.toggler-inner.active::before {
+	transform: perspective(500px) rotateX(-35deg);
+	top: -3%;
+}
+
+.toggler-inner.active::after {
+	height: 20%;
+	transform: skewx(20deg) translatex(10%);
+	width: 110%;
+}
+
+nav {
+	width: 100%;
+	border-top: 2px solid;
+	margin-bottom: 20px;
+	border-bottom: 2px solid;
+	text-align: center;
+	background: var(--light);
+	position: sticky;
+	top: 0;
+	z-index: 9;
+}
+
+nav::before {
+	content: "";
+	box-shadow: 5px 5px 3px inset rgba(255, 255, 255, 0.65),
+		5px 10px 10px 5px inset var(--light), -6px -6px 1px inset var(--dark),
+		3px 3px 0 rgba(0, 0, 0, 0.1), 5px 5px 0 rgba(0, 0, 0, 0.1),
+		7px 7px 0 rgba(0, 0, 0, 0.1), 9px 9px 0 rgba(0, 0, 0, 0.1);
+	position: absolute;
+	top: 0;
+	left: -20px;
+	width: calc(100% + 40px);
+	height: 100%;
+	z-index: -1;
+	pointer-events: none;
+}
+
+.nav-wrap {
+	display: flex;
+	width: calc(100% - 20px);
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+nav a {
+	padding: 10px;
+	flex-grow: 1;
+	color: inherit;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-decoration: none;
+	border-right: 2px solid;
+	transition: all 0.15s steps(2);
+}
+
+nav a:first-of-type {
+	border-left: 2px solid;
+}
+
+nav a:focus,
+nav a:hover {
+	background: var(--light);
+	box-shadow: -2px -2px 2px 2px inset rgba(255, 255, 255, 0.5),
+		2px 2px 1px 2px inset var(--dark);
+}
+
+nav a:focus {
+	filter: brightness(0.9);
+}
+
+nav a span {
+	display: inline-block;
+	transition: inherit;
+}
+
+nav a:focus span,
+nav a:hover span {
+	transform: translatey(3px);
+}
+
+h1 {
+	width: 100%;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 0;
+	padding: 20px;
+}
+
+h2, h3, h4 {
+	margin: 0.5em 0;
+}
+
+h3 {
+	border-bottom: 2px solid;
+	padding-bottom: 0.5em;
+}
+
+.button {
+	background: var(--body);
+	max-width: max-content;
+	display: inline-block;
+	font-weight: bold;
+	border: 1px solid transparent;
+	color: var(--light);
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	padding: 0.5em 1em;
+	border-radius: 3px;
+	box-shadow: 0.2em 0.2em 0.2em 0.1em inset var(--dark), 0.2em 0.2em 0.2em rgba(0,0,0,0.25);
+	transition: all 0.2s steps(2);
+}
+
+.button:hover {
+	color: var(--bg);
+	background: var(--dark);
+	box-shadow: -0.2em -0.2em 0.2em 0.1em inset var(--body), 0.2em 0.2em 0.2em rgba(0,0,0,0.25);
+}
+
+.button:focus {
+	background: var(--dark);
+	box-shadow: 0.2em 0.2em 0.2em 0.1em inset var(--body);
+}
+
+.button.alt {
+	background: var(--bg);
+	color: var(--body);
+	box-shadow: 0em 0em 0em 0.1em inset rgba(0,0,0,0), 0.2em 0.2em 0.2em rgba(0,0,0,0.25);
+	border-color: currentcolor;
+}
+
+.button.alt:hover {
+	background: var(--light);
+}
+
+.button.alt:focus {
+	box-shadow: 0.2em 0.2em 0.2em 0.1em inset rgba(0,0,0,0.25);
+}
+
+.screw {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	width: 18px;
+	left: calc(50% - 9px);
+}
+
+.screw::after,
+.screw::before {
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	border: 2px solid;
+	border-radius: 100%;
+	background: linear-gradient(160deg, #d4d4d4 0%, #825a48 35%, #825a48 40%, #251418 40%, #251418 60%, #825a48 60%, #825a48 65%, #d4d4d4 100%);
+	box-shadow: 3px 3px 3px rgba(0,0,0,0.3), 3px 3px 3px inset rgba(255,200,200,0.25), -3px -3px 3px inset rgba(0,0,0,0.25);
+}
+
+.screw::before {
+	content: "";
+	top: 18px;
+}
+
+.screw::after {
+	content: "";
+	bottom: 18px;
+	transform: rotate(85deg);
+		box-shadow: 3px -3px 3px rgba(0,0,0,0.3), 3px -3px 3px inset rgba(255,200,200,0.25), -3px 3px 3px inset rgba(0,0,0,0.25);
+}
+
+.screw.right {
+	left: unset;
+	right: 20px;
+}
+.screw.left {
+	left: 20px;
+}
+
+.hinge {
+	position: absolute;
+	top: 20px;
+	width: 16px;
+	height: calc(100% - 40px);
+	border-radius: 3px;
+	border: 2px solid;
+	background: linear-gradient(0deg, #a28b81 0%, #825a48 40%, #825a48 45%, #251418 45%, #251418 55%, #825a48 55%, #825a48 60%, #a28b81 100%);
+	background-size: 30px 30px;
+	box-shadow: 3px 3px 3px rgba(0,0,0,0.3), 3px 3px 3px inset rgba(255,200,200,0.25), -3px -3px 3px inset rgba(0,0,0,0.25);
+}
+
+.hinge.left {
+	left: -8px;
+	box-shadow: -3px 3px 3px rgba(0,0,0,0.3), 3px 3px 3px inset rgba(255,200,200,0.25), -3px -3px 3px inset rgba(0,0,0,0.25);
+}
+
+.hinge.right {
+	right: -8px;
+}
+
+.open-left {
+  position: relative;
+	transform: perspective(1000px) rotateY(0deg);
+	transform-origin: left center;
+  transition: transform 1s steps(10);
+}
+
+.open-left.toggled {
+  transform: perspective(1000px) rotateY(-92deg);
+}
+
+.open-left.toggled a::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	max-width: unset;
+	background: black;
+	opacity: 0.05;
+}
+
+.open-left .screw {
+	transform: scalex(100%) translatex(0%);
+	transition: transform 0.5s steps(5);
+}
+
+.open-left.toggled .screw {
+	transform: scalex(500%) translatex(-70%);
+	transition-delay: 0.5s;
+}
+
+.column-wrap {
+	margin: 0 auto;
+	max-width: max-content;
+}
+
+.outlet {
+	border: 2px solid;
+	width: 60px;
+	height: 50px;
+	margin: 5px auto;
+	background: var(--light);
+	border-radius: 40% 40% 50% 50%;
+	box-shadow: 3px 3px 3px rgba(0,0,0,0.25), 3px 3px 3px inset rgba(0,0,0,0.15), -3px -3px 3px inset rgba(255,255,255,0.5);
+	position: relative;
+}
+
+.outlet::before {
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: 15px;
+	background: var(--body);
+	width: 6px;
+	height: 16px;
+	border-radius: 3px;
+	box-shadow: 19px 0;
+}
+
+.outlet::after {
+	content: "";
+	position: absolute;
+	left: 22.5px;
+	bottom: 7px;
+	width: 10px;
+	height: 10px;
+	background: var(--body);
+	border-radius: 90% 90% 3px 3px;
+}
