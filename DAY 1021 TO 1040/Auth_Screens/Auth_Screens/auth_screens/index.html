@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In/Up Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="auth-wrapper" id="authWrapper">
+        <div class="auth-form-box register-form-box">
+            <form action="#" onsubmit="return false;">
+                <h1>Create Account</h1>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Google"><i class="fab fa-google"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email for registration</span>
+                <input type="text" placeholder="Full Name" required />
+                <input type="email" placeholder="Email Address" required />
+                <input type="password" placeholder="Password" required />
+                <button type="submit">Sign Up</button>
+                <div class="mobile-switch">
+                    <p>Already have an account?</p>
+                    <button id="mobileLoginBtn">Sign In</button>
+                </div>
+            </form>
+        </div>
+        <div class="auth-form-box login-form-box">
+            <form action="#" onsubmit="return false;">
+                <h1>Sign In</h1>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Google"><i class="fab fa-google"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your account</span>
+                <input type="email" placeholder="Email Address" required />
+                <input type="password" placeholder="Password" required />
+                <a href="#">Forgot your password?</a>
+                <button type="submit">Sign In</button>
+                <div class="mobile-switch">
+                    <p>Don't have an account?</p>
+                    <button id="mobileRegisterBtn">Sign Up</button>
+                </div>
+            </form>
+        </div>
+        <div class="slide-panel-wrapper">
+            <div class="slide-panel">
+                <div class="panel-content panel-content-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Stay connected by logging in with your credentials and continue your experience</p>
+                    <button class="transparent-btn" id="loginBtn">Sign In</button>
+                </div>
+                <div class="panel-content panel-content-right">
+                    <h1>Hey There!</h1>
+                    <p>Begin your amazing journey by creating an account with us today</p>
+                    <button class="transparent-btn" id="registerBtn">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const registerBtn = document.getElementById('registerBtn');
+        const loginBtn = document.getElementById('loginBtn');
+        const mobileRegisterBtn = document.getElementById('mobileRegisterBtn');
+        const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+        const authWrapper = document.getElementById('authWrapper');
+
+        if (registerBtn) {
+            registerBtn.addEventListener('click', () => {
+                authWrapper.classList.add("panel-active");
+            });
+        }
+
+        if (loginBtn) {
+            loginBtn.addEventListener('click', () => {
+                authWrapper.classList.remove("panel-active");
+            });
+        }
+
+        if (mobileRegisterBtn) {
+            mobileRegisterBtn.addEventListener('click', () => {
+                authWrapper.classList.add("panel-active");
+            });
+        }
+
+        if (mobileLoginBtn) {
+            mobileLoginBtn.addEventListener('click', () => {
+                authWrapper.classList.remove("panel-active");
+            });
+        }
+    </script>
+</body>
+
+</html>

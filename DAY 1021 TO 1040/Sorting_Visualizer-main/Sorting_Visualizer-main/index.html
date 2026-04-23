@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithm Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Sorting Algorithm Visualizer</h1>
+            <p class="subtitle">Interactive visualization of popular sorting algorithms</p>
+        </header>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <div class="controls-section">
+                <h3>Algorithm Selection</h3>
+                <div class="algorithm-buttons">
+                    <button class="btn btn--secondary algorithm-btn active" data-algorithm="bubble">Bubble Sort</button>
+                    <button class="btn btn--secondary algorithm-btn" data-algorithm="selection">Selection Sort</button>
+                    <button class="btn btn--secondary algorithm-btn" data-algorithm="insertion">Insertion Sort</button>
+                    <button class="btn btn--secondary algorithm-btn" data-algorithm="merge">Merge Sort</button>
+                    <button class="btn btn--secondary algorithm-btn" data-algorithm="quick">Quick Sort</button>
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <h3>Array Controls</h3>
+                <div class="array-controls">
+                    <div class="form-group">
+                        <label class="form-label">Array Size: <span id="array-size-value">50</span></label>
+                        <input type="range" id="array-size" min="10" max="100" value="50" class="slider">
+                    </div>
+                    <button class="btn btn--outline" id="generate-array">Generate New Array</button>
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <h3>Animation Controls</h3>
+                <div class="animation-controls">
+                    <div class="form-group">
+                        <label class="form-label">Speed: <span id="speed-value">5</span></label>
+                        <input type="range" id="speed" min="1" max="10" value="5" class="slider">
+                        <div class="speed-labels">
+                            <span>Slow</span>
+                            <span>Fast</span>
+                        </div>
+                    </div>
+                    <div class="playback-controls">
+                        <button class="btn btn--primary" id="play-btn">Play</button>
+                        <button class="btn btn--secondary" id="pause-btn" disabled>Pause</button>
+                        <button class="btn btn--outline" id="reset-btn">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visualization Area -->
+        <div class="visualization-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="array-container" id="array-container">
+                <!-- Array bars will be generated here -->
+            </div>
+        </div>
+
+        <!-- Statistics and Algorithm Info -->
+        <div class="info-panel">
+            <div class="statistics-card card">
+                <div class="card__body">
+                    <h3>Statistics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Comparisons:</span>
+                            <span class="stat-value" id="comparisons">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Swaps:</span>
+                            <span class="stat-value" id="swaps">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Array Access:</span>
+                            <span class="stat-value" id="array-access">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Time:</span>
+                            <span class="stat-value" id="time-elapsed">0ms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="algorithm-info-card card">
+                <div class="card__body">
+                    <h3 id="current-algorithm">Bubble Sort</h3>
+                    <p id="algorithm-description">Repeatedly compares adjacent elements and swaps them if they are in wrong order</p>
+                    <div class="complexity-info">
+                        <div class="complexity-item">
+                            <span class="complexity-label">Time Complexity:</span>
+                            <div class="complexity-cases">
+                                <span>Best: <span id="best-case">O(n)</span></span>
+                                <span>Average: <span id="average-case">O(n²)</span></span>
+                                <span>Worst: <span id="worst-case">O(n²)</span></span>
+                            </div>
+                        </div>
+                        <div class="complexity-item">
+                            <span class="complexity-label">Space Complexity: <span id="space-complexity">O(1)</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Color Legend -->
+        <div class="legend card">
+            <div class="card__body">
+                <h4>Color Legend</h4>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <div class="color-box" style="background-color: #3498db;"></div>
+                        <span>Default</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="color-box" style="background-color: #f39c12;"></div>
+                        <span>Comparing</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="color-box" style="background-color: #e74c3c;"></div>
+                        <span>Swapping</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="color-box" style="background-color: #27ae60;"></div>
+                        <span>Sorted</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="color-box" style="background-color: #9b59b6;"></div>
+                        <span>Pivot</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Brahmpreet Singh. All Rights Reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

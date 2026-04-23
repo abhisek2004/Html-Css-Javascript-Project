@@ -1,0 +1,107 @@
+ :root {
+        --bg: #000;
+        --text: #fff;
+        --muted: #d1d5db;
+        --border: rgba(255, 255, 255, 0.2);
+        --hover: rgba(255, 255, 255, 0.1);
+        --cyan: #22d3ee;
+        --purple: #a855f7;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        overflow: hidden;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+          Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      }
+
+      main {
+        position: relative;
+        min-height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        color: var(--text);
+      }
+
+      .ribbon-bg {
+        position: fixed;
+        inset: 0;
+        background: #000;
+        z-index: -10;
+      }
+
+      canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+        cursor: none;
+        touch-action: none;
+      }
+
+      .overlay {
+        position: relative;
+        z-index: 10;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+      }
+
+      h1 {
+        margin: 0;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        font-size: 4.5rem;
+        line-height: 1;
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        background-image: linear-gradient(to right, var(--cyan), var(--purple));
+        filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.25));
+      }
+
+      p {
+        margin: 1.5rem 0 0;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        font-weight: 300;
+        max-width: 32rem;
+        text-align: center;
+        color: var(--muted);
+      }
+
+      .cta {
+        margin-top: 3rem;
+        pointer-events: auto;
+      }
+
+      button {
+        padding: 0.75rem 2rem;
+        border: 1px solid var(--border);
+        border-radius: 9999px;
+        background: transparent;
+        color: var(--text);
+        cursor: pointer;
+        transition: background-color 150ms ease;
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+      }
+
+      button:hover {
+        background: var(--hover);
+      }
+
+      @media (max-width: 640px) {
+        h1 {
+          font-size: 3.25rem;
+        }
+      }
