@@ -1,0 +1,386 @@
+:root {
+  --electric-1-border: #48dd84;
+  --electric-1-light: oklch(from var(--electric-1-border) l c h);
+  --gradient-1: oklch(from var(--electric-1-border) 0.3 calc(c / 2) h / 0.4);
+  
+  --electric-2-border: #48c4dd;
+  --electric-2-light: oklch(from var(--electric-2-border) l c h);
+  --gradient-2: oklch(from var(--electric-2-border) 0.3 calc(c / 2) h / 0.4);
+  
+  --electric-3-border: #dd48c4;
+  --electric-3-light: oklch(from var(--electric-3-border) l c h);
+  --gradient-3: oklch(from var(--electric-3-border) 0.3 calc(c / 2) h / 0.4);
+  
+  --color-neutral-900: oklch(0.185 0 0);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: oklch(0.145 0 0);
+  color: oklch(0.985 0 0);
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-container {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  perspective: 1000px;
+  padding: 40px 20px;
+}
+
+.svg-container {
+  position: absolute;
+  pointer-events: none;
+}
+
+.card-wrapper-1 {
+  padding: 2px;
+  border-radius: 24px;
+  position: relative;
+  background: linear-gradient(-30deg, var(--gradient-1), transparent, var(--gradient-1)),
+    linear-gradient(to bottom, var(--color-neutral-900), var(--color-neutral-900));
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.card-wrapper-1:hover {
+  transform: rotateY(-15deg) rotateX(10deg);
+}
+
+.inner-wrapper-1 {
+  position: relative;
+}
+
+.border-layer-1 {
+  border: 2px solid rgba(72, 221, 132, 0.5);
+  border-radius: 24px;
+  padding-right: 4px;
+  padding-bottom: 4px;
+}
+
+.card-main-1 {
+  width: 350px;
+  height: 500px;
+  border-radius: 24px;
+  border: 2px solid var(--electric-1-border);
+  margin-top: -4px;
+  margin-left: -4px;
+  filter: url(#turbulent-1);
+}
+
+.glow-1-layer-1 {
+  border: 2px solid rgba(72, 221, 132, 0.6);
+  border-radius: 24px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: blur(1px);
+}
+
+.glow-1-layer-2 {
+  border: 2px solid var(--electric-1-light);
+  border-radius: 24px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: blur(4px);
+}
+
+.overlay-1-1 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 24px;
+  opacity: 1;
+  mix-blend-mode: overlay;
+  transform: scale(1.1);
+  filter: blur(16px);
+  /* background: linear-gradient(-30deg, white, transparent 30%, transparent 70%, white); */
+}
+
+.background-glow-1 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 24px;
+  filter: blur(32px);
+  transform: scale(1.1);
+  opacity: 0.3;
+  z-index: -1;
+  background: linear-gradient(-30deg, var(--electric-1-light), transparent, var(--electric-1-border));
+}
+
+.card-wrapper-2 {
+  padding: 2px;
+  border-radius: 24px;
+  position: relative;
+  background: linear-gradient(-30deg, var(--gradient-2), transparent, var(--gradient-2)),
+    linear-gradient(to bottom, var(--color-neutral-900), var(--color-neutral-900));
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.card-wrapper-2:hover {
+  transform: rotateY(15deg) rotateX(10deg);
+}
+
+.inner-wrapper-2 {
+  position: relative;
+}
+
+.border-layer-2 {
+  border: 2px solid rgba(72, 196, 221, 0.5);
+  border-radius: 24px;
+  padding-right: 4px;
+  padding-bottom: 4px;
+}
+
+.card-main-2 {
+  width: 350px;
+  height: 500px;
+  border-radius: 24px;
+  border: 2px solid var(--electric-2-border);
+  margin-top: -4px;
+  margin-left: -4px;
+  filter: url(#turbulent-2);
+}
+
+.glow-2-layer-1 {
+  border: 2px solid rgba(72, 196, 221, 0.6);
+  border-radius: 24px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: blur(1px);
+}
+
+.glow-2-layer-2 {
+  border: 2px solid var(--electric-2-light);
+  border-radius: 24px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: blur(4px);
+}
+
+.overlay-2-1 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 24px;
+  opacity: 1;
+  mix-blend-mode: overlay;
+  transform: scale(1.1);
+  filter: blur(16px);
+  /* background: linear-gradient(-30deg, white, transparent 30%, transparent 70%, white); */
+}
+
+.background-glow-2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 24px;
+  filter: blur(32px);
+  transform: scale(1.1);
+  opacity: 0.3;
+  z-index: -1;
+  background: linear-gradient(-30deg, var(--electric-2-light), transparent, var(--electric-2-border));
+}
+
+.card-wrapper-3 {
+  padding: 2px;
+  border-radius: 24px;
+  position: relative;
+  background: linear-gradient(-30deg, var(--gradient-3), transparent, var(--gradient-3)),
+    linear-gradient(to bottom, var(--color-neutral-900), var(--color-neutral-900));
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.card-wrapper-3:hover {
+  transform: rotateY(-15deg) rotateX(-10deg);
+}
+
+.inner-wrapper-3 {
+  position: relative;
+}
+
+.border-layer-3 {
+  border: 2px solid rgba(221, 72, 196, 0.5);
+  border-radius: 24px;
+  padding-right: 4px;
+  padding-bottom: 4px;
+}
+
+.card-main-3 {
+  width: 350px;
+  height: 500px;
+  border-radius: 24px;
+  border: 2px solid var(--electric-3-border);
+  margin-top: -4px;
+  margin-left: -4px;
+  filter: url(#turbulent-3);
+}
+
+.glow-3-layer-1 {
+  border: 2px solid rgba(221, 72, 196, 0.6);
+  border-radius: 24px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: blur(1px);
+}
+
+.glow-3-layer-2 {
+  border: 2px solid var(--electric-3-light);
+  border-radius: 24px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: blur(4px);
+}
+
+.overlay-3-1 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 24px;
+  opacity: 1;
+  mix-blend-mode: overlay;
+  transform: scale(1.1);
+  filter: blur(16px);
+  /* background: linear-gradient(-30deg, white, transparent 30%, transparent 70%, white); */
+}
+
+.background-glow-3 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 24px;
+  filter: blur(32px);
+  transform: scale(1.1);
+  opacity: 0.3;
+  z-index: -1;
+  background: linear-gradient(-30deg, var(--electric-3-light), transparent, var(--electric-3-border));
+}
+
+.card-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-header {
+  display: flex;
+  flex-direction: column;
+  padding: 48px;
+  padding-bottom: 16px;
+  height: 100%;
+}
+
+.content-footer {
+  display: flex;
+  flex-direction: column;
+  padding: 48px;
+  padding-top: 16px;
+}
+
+.glass-badge {
+  background: radial-gradient(47.2% 50% at 50.39% 88.37%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%),
+    rgba(255, 255, 255, 0.04);
+  position: relative;
+  transition: background 0.3s ease;
+  border-radius: 14px;
+  width: fit-content;
+  height: fit-content;
+  padding: 8px 16px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.glass-badge:hover {
+  background: radial-gradient(47.2% 50% at 50.39% 88.37%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%),
+    rgba(255, 255, 255, 0.08);
+}
+
+.glass-badge::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1px;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.48) 16.73%, rgba(255, 255, 255, 0.08) 30.2%,
+    rgba(255, 255, 255, 0.08) 68.2%, rgba(255, 255, 255, 0.6) 81.89%);
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+.card-title {
+  font-size: 36px;
+  font-weight: 500;
+  margin-top: auto;
+}
+
+.card-description {
+  opacity: 0.5;
+}
+
+.card-divider {
+  margin-top: auto;
+  border: none;
+  height: 1px;
+  background-color: currentColor;
+  opacity: 0.1;
+  mask-image: linear-gradient(to right, transparent, black, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black, transparent);
+}
