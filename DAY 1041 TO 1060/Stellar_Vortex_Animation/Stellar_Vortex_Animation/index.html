@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar Vortex</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="glcanvas"></canvas>
+
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        attribute vec2 a_position;
+        void main() {
+            gl_Position = vec4(a_position, 0.0, 1.0);
+        }
+    </script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        #ifdef GL_ES
+        precision highp float;
+        #endif
+        uniform vec2 u_resolution;
+        uniform vec2 u_mouse;
+        uniform float u_time;
+        
+        vec3 palette_fire(float t, float factor) {
+            vec3 a = vec3(0.1, 0.2, 0.5);
+            vec3 b = vec3(0.3, 0.5, 0.7);
+            vec3 c = vec3(0.8, 1.0, 1.2);
+            vec3 d = vec3(0.2, 0.4, 0.6);
+           
+            a += 0.15 * sin(vec3(0.3, 0.1, 0.2) * factor);
+            b += 0.25 * cos(vec3(0.1, 0.4, 0.2) * factor);
+           
+            return a + b * cos(6.28318 * (c * t + d));
+        }
+        
+        void main() {
+            vec2 st = (gl_FragCoord.xy / u_resolution.xy) * 2.0 - 1.0;
+            st.x *= u_resolution.x/u_resolution.y;
+            vec3 color = vec3(0.0);
+            vec2 mouse_st = vec2(u_mouse.x, u_resolution.y - u_mouse.y) / u_resolution.xy;
+            mouse_st = (mouse_st * 2.0 - 1.0) * vec2(1.0, -1.0);
+            mouse_st.x *= u_resolution.x / u_resolution.y;
+           
+            vec2 mouse_vec = st - mouse_st;
+            float mouse_dist = length(mouse_vec);
+            float mouse_push = smoothstep(0.7, 0.0, mouse_dist) * 0.5;
+           
+            if (u_mouse.x > 0.0) {
+                st += normalize(mouse_vec) * mouse_push;
+            }
+            float R_global = length(st);
+            float angle_global = atan(st.y, st.x);
+            float twist = 0.8 * sin(R_global * 2.0 - u_time * 0.6);
+            st *= mat2(cos(twist), sin(twist), -sin(twist), cos(twist));
+            for (float i = 1.0; i < 6.0; i++) {
+                vec2 st0 = st;
+                float sgn = 1.0 - 2.0 * mod(i, 2.0);
+               
+                float t = u_time * 0.03 - float(i) * 0.5;
+                st0 *= mat2(cos(t), sin(t), -sin(t), cos(t));
+               
+                float R = length(st0);
+                float d = R * i;
+                float angle = atan(st0.y, st0.x);
+                float num_arms = 6.0 + 2.0 * sin(u_time * 0.15 + i * 0.5);
+                float angle_warped = angle * num_arms;
+                float dist_warp_factor = 1.0 + 0.4 * sin(angle * 8.0 + u_time * 0.7 - i);
+                float d_warped = d * dist_warp_factor;
+               
+                vec3 pal = palette_fire(-exp((length(d_warped) * -0.9)), abs(d_warped) * 0.4);
+                float radial = exp(-R);
+                radial *= smoothstep(1.2, 0.5, R);
+                pal *= radial;
+                float phase = -(d_warped + sgn * angle_warped) + u_time * 0.4;
+               
+                float v = sin(phase);
+                v = max(abs(v), 0.01);
+                float w = pow(0.02 / v, 0.8);
+                color += pal * w;
+            }
+            gl_FragColor = vec4(color, 1.0);
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
