@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./script.js" defer></script>
+    <script src="https://kit.fontawesome.com/2360d5f79f.js" crossorigin="anonymous" defer></script>
+</head>
+
+<body>
+    <section class="main-section">
+        <h1><i class="fa-solid fa-dumbbell"></i> BMI CALCULATOR</h1>
+        <form>
+            <div>
+                <input type="number" min="0" max="1000" placeholder="Enter your age here" id="age">
+            </div>
+            <div>
+                <input type="text" placeholder="Enter your height" id="height">
+                <select id="heightOption">
+                    <option value="meter">meter</option>
+                    <option value="cm">cm</option>
+                    <option value="foot">foot</option>
+                </select>
+            </div>
+            <div>
+                <input type="text" placeholder="Enter your weight" id="weight">
+                <select id="weightOption">
+                    <option value="kg">kg</option>
+                    <option value="lbs">lbs</option>
+                    <option value="pound">pound</option>
+                </select>
+            </div>
+            <div class="gender">
+                <span class="female"><i class="fa-solid fa-person-dress"></i></span>
+                <input id="female" type="radio" name="tip" value="female" checked="checked">
+                <span><i class="fa-solid fa-person"></i></span>
+                <input id="male" type="radio" name="tip" value="male">
+            </div>
+            <div class="buttons">
+                <button type="submit">Calculate</button>
+                <button type="reset" id="reset">Reset</button>
+            </div>
+            <div class="output">
+                <p>BMI: <span></span></p>
+                <p>Category: <span></span></p>
+            </div>
+        </form>
+    </section>
+
+</body>
+
+</html>
