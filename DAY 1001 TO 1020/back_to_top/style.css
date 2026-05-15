@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+div{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 8rem;
+}
+.fe{
+    background: rgb(255, 54, 54);
+}
+.se{
+    background: rgb(60, 60, 255);
+}
+.th{
+    background: rgb(255, 60, 219);
+}
+.fo{
+    background: rgb(129, 57, 252);
+}
+.btn{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+    background-color: black;
+    color: white;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.4s;
+}
+.btn:hover{
+    height: 80px;
+}
