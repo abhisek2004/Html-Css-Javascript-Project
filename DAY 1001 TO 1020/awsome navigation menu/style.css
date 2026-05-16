@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: black;
+}
+.container{
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 10px;
+    background: #252525;
+}
+.container::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50px;
+    box-shadow: 0 0 0 5px rgb(94,94,94),0 0 0 10px rgb(59,59,59);
+}
+.container input{
+    -webkit-appearance: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    cursor: pointer;
+}
+.menu{
+    width: 300px;
+    height: 300px;
+    background-color: #0093e9;
+    background-image: linear-gradient(160deg,#0093e9 0%,#80d0c7 100%);
+    position: absolute;
+    top: -630%;
+    left: -120px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+}
+.menu div{
+    display: flex;
+    align-items: center;
+    margin: 10px 30px 0 35px;
+    padding: 10px 0 10px 15px;
+    color: white;
+    background: rgba(255, 255, 255, 0.336);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .4s;
+}
+.menu div p{
+    margin-left: 10px;
+    font-family: 'Roboto Slab', serif;
+}
+.menu div:hover{
+    transform: translateX(12px);
+}
+input:checked ~ .menu{
+    display: flex;
+    animation:  anim 0.5s;
+}
+@keyframes anim{
+    0%{
+        clip-path: circle(0% at 50% 50%);
+    }
+    100%{
+        clip-path: circle(100% at 50% 50%);
+    }
+}
