@@ -1,0 +1,136 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100px' height='40px' style='background-color: %2378D6C6;' viewBox='0 0 626 626'%3E%3Ctext x='-370' y='440' fill='%23FFF' font-family='Arial' font-size='320' font-weight='600'%3EBUBBLE%3C/text%3E%3C/svg%3E");
+  background-position: center;
+  background-size: 100vw auto;
+}
+
+.bubble {
+  position: relative;
+  width: 20rem;
+  height: 20rem;
+  transform: translate(calc(var(--left) - 50vw), calc(var(--top) - 50vh));
+  transition: transform 2s ease-in-out;
+  animation: bubble-waving;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  opacity: 0.95;
+  box-shadow: 2rem 2rem 1rem 1rem rgba(65, 145, 151, 0.3);
+  overflow: hidden;
+}
+@keyframes bubble-waving {
+  0%, 100% {
+    border-radius: 45% 50% 55% 45%;
+  }
+  20% {
+    border-radius: 50% 50% 55% 50%;
+  }
+  40% {
+    border-radius: 50% 55% 45% 55%;
+  }
+  60% {
+    border-radius: 55% 50% 50% 55%;
+  }
+  80% {
+    border-radius: 45% 55% 50% 50%;
+  }
+}
+.bubble:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100px' height='40px' style='background-color: %2378D6C6;' viewBox='0 0 626 626'%3E%3Ctext x='-370' y='440' fill='%23FFF' font-family='Arial' font-size='320' font-weight='600'%3EBUBBLE%3C/text%3E%3C/svg%3E");
+  background-position: center;
+  background-size: 100vw auto;
+  background-position: calc(10rem - var(--left)) calc(10rem - var(--top));
+  opacity: 0.8;
+  transition: background-position 2s ease-in-out;
+  filter: blur(5px);
+  animation: mirror;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes mirror {
+  0%, 100% {
+    transform: scale(-1, -1.2);
+  }
+  20% {
+    transform: scale(-1.2, -1);
+  }
+  40% {
+    transform: scale(-1, -1.2);
+  }
+  60% {
+    transform: scale(-1, -1);
+  }
+  80% {
+    transform: scale(-1.2, -1.2);
+  }
+}
+.bubble__rainbow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(150deg, transparent, #78D6C6, transparent, #d44a6f);
+}
+.bubble__white {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 20%, transparent, #FFF);
+}
+.bubble__bright-circle {
+  position: absolute;
+  border-radius: 50%;
+  animation: bubble-waving;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.bubble__bright-circle--first {
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  background: linear-gradient(45deg, #FFF -50%, transparent, #FFF 150%);
+}
+.bubble__bright-circle--second {
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background: linear-gradient(120deg, #FFF -50%, transparent, #FFF 150%);
+  animatio-delay: -1s;
+}
+.bubble__brightness {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(0deg, #FFF, transparent);
+  transform-origin: center;
+}
+.bubble__brightness--first {
+  top: 10%;
+  left: 10%;
+  width: 30%;
+  height: 15%;
+  transform: rotate(-34deg);
+}
+.bubble__brightness--second {
+  right: 15%;
+  bottom: 15%;
+  width: 15%;
+  height: 10%;
+  transform: rotate(-45deg);
+}
