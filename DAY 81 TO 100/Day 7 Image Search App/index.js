@@ -36,14 +36,9 @@ const getData = async (searchValue, pageNo) => {
          
            <img src=${data.urls.small} alt="">
            <a href=${data.links.html} target="_blank">${data.alt_description}</a>
-        
         `
-    })
-
-    
-    
+    }) 
 }
-
 button.addEventListener("click", function(){
     let searchValue = searchVal.value ;
     getData(searchValue , 1)
