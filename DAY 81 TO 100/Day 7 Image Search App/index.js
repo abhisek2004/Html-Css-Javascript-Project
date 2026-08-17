@@ -26,7 +26,6 @@ const getData = async (searchValue, pageNo) => {
     }else{
         document.querySelector(".moreBtn").style.display="block"
     }
-//    searchVal.value=""
     results.forEach(function(data){
         console.log(data);
 
