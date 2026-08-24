@@ -220,22 +220,70 @@ These are the beacons I've ignited so far—each a fusion of creativity and code
 | 119 | Password Generator               | HTML, CSS, JS | Tool to create secure passwords           |
 | 120 | Password Generator (Alternative) | HTML, CSS, JS | Different approach to password generation |
 
-### 🌌 **DAY 121 TO 900**
+#### **DAY 141 TO 159**
 
-| Category         | Project Types                                        | Count |
-| ---------------- | ---------------------------------------------------- | ----- |
-| UI Components    | Loaders, Buttons, Navigation, Cards                  | 200+  |
-| Web Applications | Weather Apps, Calculators, Note Apps, Timers         | 150+  |
-| Games            | Tic-tac-toe, Memory Games, Dice Games                | 50+   |
-| Clones           | Netflix, Microsoft, KFC, SpaceX                      | 30+   |
-| Animations       | 3D Effects, Transitions, Particle Systems            | 100+  |
-| Forms            | Login, Registration, Feedback, Surveys               | 80+   |
-| E-commerce       | Product Pages, Shopping Carts, Checkouts             | 40+   |
-| Utilities        | Password Generators, QR Code Generators, Translators | 60+   |
-| Portfolios       | Personal Showcases, Project Galleries                | 20+   |
-| Miscellaneous    | Holiday Themes, Special Effects, Experimental        | 170+  |
+| Project Name | Tech Stack | Description |
+| --- | --- | --- |
+| Day 21 Marvel | HTML, CSS | Marvel-themed visual landing page. |
+| Day 21 Meal Finder With Category | HTML, CSS, JS | Meal finder with category-based browsing. |
+| Digital Clock With Reflection | HTML, CSS | Digital clock with a reflective display effect. |
+| Double Slider Signup-Login Form | HTML, CSS, JS | Combined sign-up and login form with a sliding layout. |
+| Download Button | HTML, CSS | Animated download button component. |
+| Download Process Bar | HTML, CSS | Progress bar for showing download status. |
+| Drop Liquid Loading | HTML, CSS | Liquid drop loading animation. |
+| Drop-down Menu | HTML, CSS | Expandable drop-down navigation menu. |
+| Dynamic Calendar JavaScript | HTML, CSS, JS | Interactive calendar generated and controlled with JavaScript. |
+| Dynamic Island iPhone | HTML, CSS | iPhone-inspired dynamic notification island interface. |
+| Dynamic Star Rating | HTML, CSS, JS | Interactive star rating component. |
+| Dynamic Stopwatch | HTML, CSS, JS | Stopwatch with start, pause, and reset controls. |
+| Elegant Profile Card Design | HTML, CSS | Styled profile card component. |
+| Engineer Core Summer Training | HTML | Information page for an engineering summer training program. |
 
-_Expansion Log: Variants denote iterative evolutions (e.g., color themes, feature forks). Total unique blueprints: 200+. Hyperlinks to folders: Navigate via repo tree for live deploys._
+#### **DAY 160 TO 180**
+
+| Project Name | Tech Stack | Description |
+| --- | --- | --- |
+| Loan Calculator | HTML, CSS, JS | Calculator for estimating loan payments. |
+| Login Page | HTML, CSS, JS | Login interface with interactive form behavior. |
+| Double Slider Signup-Login Form | HTML, CSS, JS | Alternate sliding sign-up and login form design. |
+| Dozecafe Website Template | HTML, CSS, JS | Cafe website template with interactive sections. |
+| ECommerce Website | HTML, CSS, JS | E-commerce storefront layout with product interactions. |
+| ECommerce3 | HTML, CSS, JS | Alternate e-commerce storefront design. |
+| English Dictionary | HTML, CSS, JS | Dictionary interface for searching English words. |
+| ExpenseTracker Skolers | HTML, CSS, JS | Expense tracking interface with stored transaction data. |
+| Front-end Pizza Website | HTML, CSS, JS | Pizza restaurant website with menu-focused sections. |
+| Glassmorphism Hover Effect | HTML, CSS | Glassmorphism card hover effect. |
+| Login Form | HTML, CSS | Simple styled login form. |
+| Login Form (2) | HTML, CSS | Alternate styled login form. |
+| 2025 New Year Countdown | HTML, CSS, JS | Countdown timer for the 2025 New Year. |
+| Note App | HTML, CSS, JS | Browser note-taking interface. |
+| Video Trailer Popup | HTML, CSS, JS | Popup player for viewing video trailers. |
+| Weather App | HTML, CSS, JS | Weather dashboard interface with forecast visuals. |
+
+#### **DAY 181 TO 200**
+
+| Project Name | Tech Stack | Description |
+| --- | --- | --- |
+| Detect Battery Status | HTML, CSS, JS | Displays the device battery status in the browser. |
+| Dice Roll Game | HTML, CSS, JS | Interactive dice rolling game. |
+| Digital Clock | HTML, CSS, JS | Real-time digital clock display. |
+| Expense Tracker | HTML, CSS, JS | Tracks income and expenses in a browser interface. |
+| Facebook Login Page | HTML, CSS | Facebook-inspired login page recreation. |
+| Feedback Form | HTML, CSS | Form for collecting user feedback. |
+| Feedback UI | HTML, CSS, JS | Interactive feedback selection interface. |
+| Firebase Auth | HTML, Firebase | Authentication interface using Firebase services. |
+| Five Star Rating | HTML, CSS, JS | Five-star rating control with user interaction. |
+| Flex Card Hover Slider | HTML, CSS, JS | Expanding flex cards with hover-based slider behavior. |
+| Forest Parallax Website | HTML, CSS, JS | Forest-themed page with parallax scrolling effects. |
+| Form Validation - Email & Password | HTML, CSS, JS | Client-side validation for email and password fields. |
+| Frame Hover Effect | HTML, CSS | Decorative frame effect triggered on hover. |
+| Full Overlay Navigation | HTML, CSS, JS | Full-screen overlay navigation menu. |
+| Gaming Website | HTML, CSS, JS, SQLite | Gaming website interface with supporting project data. |
+| Glassmorphism Login Form | HTML, CSS | Login form styled with a glassmorphism aesthetic. |
+| Glassmorphism Credit Card | HTML, CSS | Glassmorphism credit card interface. |
+| Glassmorphism Login Form With Theme | HTML, CSS, JS | Login form with glass styling and theme switching. |
+| Glowing Button | HTML, CSS | Button component with a glowing visual effect. |
+| Glowing Gradient Button | HTML, CSS | Button component with glowing gradient styling. |
 
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
