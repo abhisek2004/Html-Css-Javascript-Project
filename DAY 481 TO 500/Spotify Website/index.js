@@ -103,6 +103,7 @@ upperAudio.forEach(function (element) {
       playBtn.classList.add("fa-circle-play");
       gif.style.opacity = "0";
 
+      
     }
   });
 });
