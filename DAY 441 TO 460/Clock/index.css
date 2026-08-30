@@ -1,45 +1,112 @@
-  
-*{
-    margin: 0%;
-    padding: 0%;
-}
-html, body{
-    display: grid;
-    place-items: center;
-    background: rgb(1, 43, 57);
-font-family: 'Lato', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.wrapper{
-    width: 420px;
-    height: 110px;
-    /* background: red; */
-     background: linear-gradient(135deg, #14ffe9,#ffeb3B, #ff00e0);
 
-    margin-top: 33%;
-    border-radius: 4px;
+html,
+body {
+    width: 100%;
+    height: 100%;
 }
-.wrapper .clock{
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(circle at top left, #123c52, transparent 40%),
+        radial-gradient(circle at bottom right, #081c26, transparent 45%),
+        #06141c;
+
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Main Clock Container */
+.wrapper {
     position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    width: 405px;
-    height: 95px;
-    background: rgb(1, 43, 57);
+    width: 460px;
+    padding: 3px;
+    border-radius: 20px;
 
+    background: linear-gradient(
+        135deg,
+        #00f5ff,
+        #7b2cff,
+        #ff00c8,
+        #00f5ff
+    );
 
+    background-size: 300% 300%;
+    animation: gradientMove 6s ease infinite;
+
+    box-shadow:
+        0 0 20px rgba(0, 245, 255, 0.3),
+        0 0 50px rgba(123, 44, 255, 0.2);
 }
-.clock #time{
-    font-size: 65px;
+
+/* Inner Clock */
+.wrapper .clock {
+    width: 100%;
+    height: 140px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 18px;
+
+    background: rgba(8, 20, 28, 0.95);
+    backdrop-filter: blur(15px);
+
+    box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.03);
+}
+
+/* Time */
+.clock #time {
+    font-size: 58px;
+    font-weight: 600;
+    letter-spacing: 4px;
+
     color: white;
-    padding: 12px;
+
+    text-shadow:
+        0 0 10px rgba(0, 245, 255, 0.8),
+        0 0 25px rgba(123, 44, 255, 0.5);
 }
 
+/* Animated Gradient */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
 
+    50% {
+        background-position: 100% 50%;
+    }
 
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
+/* Responsive */
+@media (max-width: 500px) {
 
+    .wrapper {
+        width: 90%;
+    }
 
+    .wrapper .clock {
+        height: 120px;
+    }
 
+    .clock #time {
+        font-size: 38px;
+        letter-spacing: 2px;
+    }
+}
