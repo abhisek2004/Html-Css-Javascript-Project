@@ -18,9 +18,9 @@
   "homepage": "https://github.com/shradha-khapra/webd-project#readme",
   "dependencies": {
     "body-parser": "^2.3.0",
-    "cookie-parser": "^1.4.3",
+    "cookie-parser": "^1.4.7",
     "express": "^4.22.2",
     "hbs": "^4.2.1",
-    "passport": "^0.4.0"
+    "passport": "^0.6.0"
   }
 }
