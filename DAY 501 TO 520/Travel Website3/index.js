@@ -8,8 +8,6 @@ let bar = document.getElementById("bar");
 
 
 
-
-
 let count = 0;
 
 slide.forEach(function(slides, index){
