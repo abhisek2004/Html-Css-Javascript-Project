@@ -367,47 +367,96 @@ MIT License—free as the void. Warp, remix, distribute. See [LICENSE](LICENSE) 
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAhWVS4qq995IvnKzi4TlCJNJAaLyjqReXeQ&s" width="50" height="50">  
 Thank you for fueling the engines!  
 </h2>
-
-![Contributors](https://contrib.rocks/image?repo=abhisek2004/Html-Css-Javascript-Project)
-
-![Alt](https://repobeats.axiom.co/api/embed/a14d068f1a30be057554c2e78c9b26ace23fe46a.svg "Repobeats analytics image")
-
----
-
-<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
-
-### ⭐ Stargazers
+## 👥 Contributors
 
 <div align="center">
-  <a href="https://github.com/abhisek2004/Html-Css-Javascript-Project/stargazers">
-    <img src="https://reporoster.com/stars/abhisek2004/Html-Css-Javascript-Project?type=svg&limit=100&names=false" alt="Stargazers" />
-  </a>
+
+<a href="https://github.com/abhisek2004/Html-Css-Javascript-Project/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=abhisek2004/Html-Css-Javascript-Project" alt="Contributors" />
+</a>
+
 </div>
 
 ---
 
-### 🍴 Forkers
+## ⭐ Stargazers
 
 <div align="center">
-  <a href="https://github.com/abhisek2004/Html-Css-Javascript-Project/network/members">
-    <img src="https://reporoster.com/forks/abhisek2004/Html-Css-Javascript-Project?type=svg&limit=100&names=false" alt="Forkers" />
-  </a>
-</div>
 
-<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+<a href="https://github.com/abhisek2004/Html-Css-Javascript-Project/stargazers">
+  <img src="https://reporoster.com/stars/abhisek2004/Html-Css-Javascript-Project?type=svg&limit=100&names=false" alt="Stargazers" />
+</a>
+
+</div>
 
 ---
 
-**Transmission End. Next Update: Q1 2026 – 950+ Modules Live.**  
-_Follow @abhisek2004 on X for live deploys. Code the cosmos! 🌟_  
-© 2025 Abhisek's Odyssey – Powered by GitHub's Infinite Grid.
+## 🍴 Forkers
 
-<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
-<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
-<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+<div align="center">
 
+<a href="https://github.com/abhisek2004/Html-Css-Javascript-Project/network/members">
+  <img src="https://reporoster.com/forks/abhisek2004/Html-Css-Javascript-Project?type=svg&limit=100&names=false" alt="Forkers" />
+</a>
 
+</div>
 
+---
 
+## 📊 Repository Activity
 
+<div align="center">
 
+<img src="https://repobeats.axiom.co/api/embed/a14d068f1a30be057554c2e78c9b26ace23fe46a.svg" alt="Repository Activity" />
+
+</div>
+
+---
+
+<div align="center">
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%" alt="Animated Divider">
+
+</div>
+
+---
+
+## 🚀 Project Status
+
+**Current Status:** 🟢 Active Development
+**Repository:** HTML • CSS • JavaScript
+**Focus:** Practical Web Development Projects & Experiments
+
+New projects, improvements, UI updates, and JavaScript features are added regularly.
+
+---
+
+## 🌟 Support the Project
+
+If you find this repository useful:
+
+⭐ **Star the repository**
+🍴 **Fork the repository**
+💡 **Suggest improvements**
+🐛 **Report bugs**
+🤝 **Contribute to the project**
+
+Every contribution helps the project grow!
+
+---
+
+<div align="center">
+
+### 💻 Keep Building. Keep Learning. Keep Coding.
+
+**© 2026 Abhisek's Odyssey**
+
+</div>
+
+---
+
+<div align="center">
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%" alt="Animated Divider">
+
+</div>
