@@ -1,236 +1,878 @@
-*{
-    margin: 0%;
-    padding: 0%;
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-body{
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
     font-family: 'Roboto', sans-serif;
+    background: #f7f9f9;
+    color: #222;
+    line-height: 1.5;
 }
-nav{
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: rgb(9, 76, 76);
-    color: white;
-    position: fixed;
+
     width: 100%;
-    top: 0%;
-    height: 100px;
-}
-.searchBar{
-    display: flex;
-}
-.searchBar input{
-    width: 330px;
-    height: 11px;
-    padding: 14px;
-    font-size: 18px;
-    border: none;
-    outline: none;
-   border-radius: 22px;
-}
-.searchBar button{
-    width: 60px;
-    background-color: orange;
+    height: 82px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    background: rgba(9, 76, 76, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
     color: white;
-    font-size: 20px;
-    border: none;
-    border-top-right-radius: 22px;
-    border-bottom-right-radius: 22px;
-    margin-left: -21px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
-.icons{
+
+
+/* =========================
+   SEARCH BAR
+========================= */
+
+.searchBar {
     display: flex;
-    gap: 20px;
     align-items: center;
 }
-.icons i{
-    font-size: 25px;
+
+.searchBar input {
+    width: 330px;
+    height: 46px;
+
+    padding: 0 48px 0 18px;
+
+    font-size: 16px;
+
+    border: 2px solid transparent;
+    outline: none;
+
+    border-radius: 25px;
+
+    background: white;
+    color: #222;
+
+    transition: 0.3s ease;
 }
-#cartNum{
-    position: absolute;
-    margin-left: 53px;
-    margin-top: -36px;
-    width: 30px;
-    height: 30px;
-    border-radius: 18px;
-    background-color: red;
+
+.searchBar input:focus {
+    border-color: orange;
+    box-shadow: 0 0 0 4px rgba(255, 165, 0, 0.15);
+}
+
+.searchBar button {
+    width: 58px;
+    height: 46px;
+
+    margin-left: -58px;
+
+    border: none;
+    border-radius: 25px;
+
+    background: linear-gradient(135deg, #ff9800, #ff6d00);
+
     color: white;
-    text-align: center;
-    font-size: 18px;
+    font-size: 19px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
 }
-.recommendation{
+
+.searchBar button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+}
+
+
+/* =========================
+   ICONS
+========================= */
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.icons i {
+    font-size: 23px;
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.icons i:hover {
+    color: #ff9800;
+    transform: translateY(-3px) scale(1.1);
+}
+
+
+/* CART NUMBER */
+
+#cartNum {
+    position: absolute;
+
+    margin-left: 48px;
+    margin-top: -34px;
+
+    min-width: 23px;
+    height: 23px;
+
+    padding: 2px 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #ff3d00;
+    color: white;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    border: 2px solid #094c4c;
+
+    box-shadow: 0 3px 10px rgba(255, 61, 0, 0.4);
+}
+
+
+/* =========================
+   RECOMMENDATION
+========================= */
+
+.recommendation {
     width: 90%;
-    background-color: orange;
+    max-width: 1200px;
+
+    margin: 120px auto 0;
+
+    min-height: 190px;
+
+    padding: 35px 20px;
+
     text-align: center;
-    border-radius: 11px;
-    height: 200px;
-    padding: 20px;
-    /* position: relative;
-    top: 123px; */
-    margin: auto;
-    margin-top: 113px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff9800,
+            #ff6d00
+        );
+
+    color: white;
+
+    box-shadow:
+        0 15px 35px rgba(255, 109, 0, 0.25);
+
+    position: relative;
+    overflow: hidden;
 }
-ul{
+
+
+/* Decorative circles */
+
+.recommendation::before,
+.recommendation::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.recommendation::before {
+    width: 180px;
+    height: 180px;
+
+    top: -90px;
+    left: -50px;
+}
+
+.recommendation::after {
+    width: 220px;
+    height: 220px;
+
+    right: -80px;
+    bottom: -130px;
+}
+
+
+/* =========================
+   CATEGORY MENU
+========================= */
+
+ul {
     display: flex;
     justify-content: center;
-    margin-top: 53px;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 18px;
+
+    margin-top: 38px;
+
+    position: relative;
+    z-index: 2;
 }
-ul li{
+
+ul li {
     list-style: none;
 }
-ul li a{
+
+ul li a {
+    display: inline-block;
+
+    padding: 10px 25px;
+
+    background: rgba(255, 255, 255, 0.95);
+    color: #094c4c;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    border-radius: 30px;
+
     text-decoration: none;
-    padding: 10px 33px;
-    background-color: #fff;
-    color: black;
-    font-size: 19px;
-    border-radius: 22px;
-    margin-inline: 20px;
+
     cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+
+    transition: 0.3s ease;
 }
-.head{
+
+ul li a:hover {
+    background: #094c4c;
+    color: white;
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================
+   SECTION HEADINGS
+========================= */
+
+.head {
     text-align: center;
-    padding: 88px;
+
+    padding: 80px 20px 35px;
+
+    color: #094c4c;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    position: relative;
 }
-.foodCard{
+
+.head::after {
+    content: "";
+
+    display: block;
+
+    width: 55px;
+    height: 4px;
+
+    margin: 12px auto 0;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        #ff9800,
+        #ff5722
+    );
+}
+
+
+/* =========================
+   FOOD CARDS
+========================= */
+
+.foodCard {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 
+    gap: 28px;
+
+    width: 95%;
+    max-width: 1300px;
+
+    margin: auto;
 }
-.foodCard .card{
+
+.foodCard .card {
     width: 300px;
-    height: 320px;
-    background-color: #e4e3e3;
+    min-height: 350px;
+
+    background: white;
+
     text-align: center;
-    margin-inline: 22px;
-    margin-top: 22px;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(0, 0, 0, 0.06);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
 }
-.card img{
+
+.foodCard .card:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.15);
+}
+
+
+/* FOOD IMAGE */
+
+.card img {
     width: 100%;
     height: 210px;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: 0.5s ease;
 }
-.card p{
-    padding: 12px;
+
+.card:hover img {
+    transform: scale(1.06);
 }
-.card a{
-    padding: 4px 9px;
-    background-color: orangered;
+
+
+/* FOOD TEXT */
+
+.card p {
+    padding: 16px 12px 10px;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    color: #333;
+}
+
+
+/* FOOD BUTTON */
+
+.card a {
+    display: inline-block;
+
+    padding: 8px 17px;
+
+    margin: 8px 5px;
+
+    background: linear-gradient(
+        135deg,
+        #ff9800,
+        #ff5722
+    );
+
     color: white;
-    border-radius: 11px;
-    margin-top: 11px;
+
+    border-radius: 20px;
+
     text-decoration: none;
-    margin-inline: 9px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    box-shadow:
+        0 5px 12px rgba(255, 87, 34, 0.25);
+
+    transition: 0.3s ease;
 }
-.chefs{
+
+.card a:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 18px rgba(255, 87, 34, 0.4);
+}
+
+
+/* =========================
+   CHEFS
+========================= */
+
+.chefs {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 
+    gap: 28px;
+
+    width: 95%;
+    max-width: 1300px;
+
+    margin: auto;
 }
-.chefCard{
+
+.chefCard {
     width: 300px;
-    height: 320px;
-    background-color: #e6e6e6;
-    margin-inline: 22px;
-    margin-top: 22px;
+    min-height: 330px;
+
+    background: white;
+
+    margin: 0;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(0, 0, 0, 0.06);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08);
+
+    transition: 0.35s ease;
 }
-.chefCard img{
+
+.chefCard:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.15);
+}
+
+.chefCard img {
     width: 100%;
     height: 220px;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: 0.5s ease;
 }
-.chefCard p{
-    padding: 13px;
+
+.chefCard:hover img {
+    transform: scale(1.05);
 }
-.footer{
+
+.chefCard p {
+    padding: 16px;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    color: #094c4c;
+
+    text-align: center;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 66px;
-    margin-top: 55px;
-    background-color: rgb(16, 109, 109);
+
+    gap: 40px;
+
+    padding: 60px 30px;
+
+    margin-top: 80px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #064747,
+            #106d6d
+        );
+
     color: white;
 
+    box-shadow:
+        0 -10px 30px rgba(0, 0, 0, 0.08);
 }
-.text p{
-    margin-top: 11px;
+
+.text {
+    min-width: 200px;
 }
-.chefData{
+
+.text h2,
+.text h3 {
+    margin-bottom: 15px;
+}
+
+.text p {
+    margin-top: 8px;
+
+    color: rgba(255, 255, 255, 0.75);
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.text p:hover {
+    color: #ff9800;
+    transform: translateX(5px);
+}
+
+
+/* =========================
+   CHEF POPUP
+========================= */
+
+.chefData {
     display: none;
+
     position: fixed;
-    top: 4%;
+
+    top: 50%;
     left: 50%;
-    right: 50%;
-    transform: translate(-50%, 40%);
-    background-color: #cbcaca;
-    width: 500px;
-    padding: 21px;
-    
-}
-.chefDetail img{
-    width: 250px;
-    height: 250px;
-}
-.textChef{
-    display: flex;
-    flex-direction: row;
-    gap: 11px;
-    padding: 11px;
-}
-.chefDetail p{
-    margin-top: 22px;
-}
-.chefData button{
-    position: absolute;
-    margin-left: -22px;
-    margin-top: -22px;
-    border: none;
-    background-color: orange;
-    color: white;
-    font-size: 20px;
-    padding: 6px;
-}
-.loginPage{
-    display: none;
-}
-.showData{
-    display: block;
-    position: fixed;
-    top: 15%;
-    right: 4%;
-    width: 270px;
-    padding: 20px;
-    background-color: black;
-    color: white;
-    text-align: center;
-}
-.showData input{
-    width: 90%;
-    padding: 8px;
-    font-size: 17px;
-    border: none;
-    margin-top: 15px;
-}
-.showData button{
-    width: 90px;
-    height: 28px;
-    background-color: orange;
-    color: white;
-    border: none;
-    font-size: 18px;
-    margin-top: 22px;
+
+    transform: translate(-50%, -50%);
+
+    width: 550px;
+    max-width: 90%;
+
+    padding: 25px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    backdrop-filter: blur(15px);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.35);
+
+    z-index: 2000;
+
+    animation: popup 0.3s ease;
 }
 
-@media screen and (max-width:800px){
-    .searchBar{
-        display: none;
+@keyframes popup {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
     }
 }
 
-@media screen and (max-width:700px){
-    ul{
-        display: flex;
+.chefDetail img {
+    width: 250px;
+    height: 250px;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.textChef {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 10px;
+}
+
+.chefDetail p {
+    margin-top: 15px;
+
+    color: #555;
+}
+
+
+/* CLOSE BUTTON */
+
+.chefData button {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #ff5722;
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.chefData button:hover {
+    transform: rotate(90deg);
+
+    background: #e53935;
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+.loginPage {
+    display: none;
+}
+
+.showData {
+    display: block;
+
+    position: fixed;
+
+    top: 100px;
+    right: 25px;
+
+    width: 290px;
+
+    padding: 25px;
+
+    background: rgba(15, 15, 15, 0.95);
+
+    backdrop-filter: blur(15px);
+
+    color: white;
+
+    text-align: center;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.4);
+
+    z-index: 1500;
+
+    animation: loginSlide 0.3s ease;
+}
+
+@keyframes loginSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.showData input {
+    width: 90%;
+
+    padding: 11px;
+
+    font-size: 15px;
+
+    border: none;
+    outline: none;
+
+    margin-top: 15px;
+
+    border-radius: 8px;
+
+    background: #f4f4f4;
+}
+
+.showData input:focus {
+    box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.3);
+}
+
+.showData button {
+    width: 110px;
+    height: 38px;
+
+    background: linear-gradient(
+        135deg,
+        #ff9800,
+        #ff5722
+    );
+
+    color: white;
+
+    border: none;
+
+    border-radius: 20px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    margin-top: 22px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.showData button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 18px rgba(255, 87, 34, 0.35);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media screen and (max-width: 800px) {
+
+    nav {
+        height: 70px;
+
+        justify-content: space-between;
+
+        padding: 0 20px;
+    }
+
+    .searchBar {
+        display: none;
+    }
+
+    .icons {
+        gap: 18px;
+    }
+
+    .recommendation {
+        width: 92%;
+
+        margin-top: 95px;
+
+        padding: 25px 15px;
+
+        min-height: 250px;
+    }
+
+    ul {
         flex-direction: column;
-        gap: 22px;
+
+        gap: 14px;
+
+        margin-top: 28px;
+    }
+
+    ul li a {
+        width: 180px;
+    }
+
+    .head {
+        padding: 60px 20px 30px;
+
+        font-size: 25px;
+    }
+
+    .foodCard,
+    .chefs {
+        gap: 20px;
+    }
+
+    .foodCard .card,
+    .chefCard {
+        width: 90%;
+        max-width: 330px;
+    }
+
+    .footer {
+        text-align: center;
+
+        flex-direction: column;
+
+        align-items: center;
+    }
+}
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media screen and (max-width: 450px) {
+
+    .recommendation {
+        border-radius: 16px;
+    }
+
+    .foodCard .card,
+    .chefCard {
+        width: 92%;
+    }
+
+    .chefData {
+        padding: 18px;
+    }
+
+    .textChef {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .chefDetail img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .showData {
+        width: 250px;
+        right: 50%;
+
+        transform: translateX(50%);
     }
 }
