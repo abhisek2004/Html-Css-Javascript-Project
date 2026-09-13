@@ -1,35 +1,133 @@
 body {
   margin: 0;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: brown;
+  justify-content: center;
+
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #141e30, #243b55);
+  color: white;
 }
 
+/* Image Section */
 .image-container {
   text-align: center;
+  padding: 25px;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.image-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* Image */
 .image-container img {
-  margin: 10px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  background-color: lightgray;
+  display: block;
+  margin: 10px auto;
+
   width: 300px;
   height: 300px;
+  object-fit: cover;
+
+  border-radius: 16px;
+
+  background-color: #ddd;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.35),
+    0 0 20px rgba(138, 43, 226, 0.25);
+
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+.image-container img:hover {
+  transform: scale(1.03);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.45),
+    0 0 30px rgba(138, 43, 226, 0.5);
+}
+
+/* Button */
 .btn {
-  background-color: slateblue;
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(
+    135deg,
+    #6a5acd,
+    #8a2be2
+  );
+
   border: none;
-  padding: 10px 20px;
+  padding: 12px 28px;
   margin: 20px;
+
   color: white;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  font-size: 16px;
+  font-weight: 600;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 8px 20px rgba(106, 90, 205, 0.4);
+
   cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    opacity 0.3s ease;
 }
 
+/* Button Hover */
 .btn:hover {
-  opacity: 0.9;
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 30px rgba(138, 43, 226, 0.55);
+
+  opacity: 1;
+}
+
+/* Button Click */
+.btn:active {
+  transform: scale(0.96);
+}
+
+/* Shine Animation */
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+
+  width: 60%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.btn:hover::before {
+  left: 140%;
 }
