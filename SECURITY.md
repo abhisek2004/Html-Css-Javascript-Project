@@ -23,3 +23,6 @@ Please report security vulnerabilities via email:
 We aim to acknowledge and review all security reports within **48 hours**.
 
 Thank you for helping us keep this project and its users safe.
+
+
+
