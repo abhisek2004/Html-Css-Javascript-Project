@@ -1,44 +1,127 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  height: 100vh;
   align-items: center;
-  background-color: wheat;
+  background: linear-gradient(135deg, #1e1e2f, #3b3b5c);
+  font-family: Arial, sans-serif;
 }
 
+/* Slider */
 .slider-container {
   position: relative;
-  width: 500px;
+  width: 600px;
+  height: 350px;
   overflow: hidden;
-  height: 300px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 18px;
+  background: #111;
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.45),
+    0 0 20px rgba(255, 255, 255, 0.08);
 }
 
+/* Images wrapper */
 .image-container {
   display: flex;
-  transition: transform 0.4s ease-in-out;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
 }
 
+/* Images */
+.image-container img {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+  user-select: none;
+}
+
+/* Buttons */
 .btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.45);
   color: white;
-  font-size: 20px;
-  opacity: 0.5;
+
+  font-size: 22px;
   cursor: pointer;
+
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
 }
 
+/* Previous */
 .btn.prev {
-  left: 10px;
+  left: 15px;
 }
 
+/* Next */
 .btn.next {
-  right: 10px;
+  right: 15px;
 }
 
+/* Hover */
 .btn:hover {
   opacity: 1;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Dots */
+.dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dot.active {
+  width: 25px;
+  border-radius: 10px;
+  background: white;
+}
+
+/* Mobile Responsive */
+@media (max-width: 650px) {
+  .slider-container {
+    width: 90%;
+    height: 250px;
+  }
+
+  .btn {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
 }
