@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap');
 
 * {
     margin: 0;
@@ -13,74 +13,175 @@ body {
 }
 
 body {
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-
-    background:
-        radial-gradient(circle at top left, #123c52, transparent 40%),
-        radial-gradient(circle at bottom right, #081c26, transparent 45%),
-        #06141c;
 
     font-family: 'Orbitron', sans-serif;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.12), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(255, 0, 200, 0.12), transparent 30%),
+        #030712;
+
+    overflow: hidden;
 }
 
-/* Main Clock Container */
+/* Main Container */
 .wrapper {
     position: relative;
-    width: 460px;
-    padding: 3px;
-    border-radius: 20px;
+    width: 520px;
+    padding: 2px;
+
+    border-radius: 28px;
 
     background: linear-gradient(
-        135deg,
-        #00f5ff,
-        #7b2cff,
-        #ff00c8,
-        #00f5ff
+        90deg,
+        #00eaff,
+        #0066ff,
+        #9d00ff,
+        #ff00a8,
+        #00eaff
     );
 
-    background-size: 300% 300%;
-    animation: gradientMove 6s ease infinite;
+    background-size: 400% 400%;
+    animation: borderFlow 8s linear infinite;
 
     box-shadow:
-        0 0 20px rgba(0, 245, 255, 0.3),
-        0 0 50px rgba(123, 44, 255, 0.2);
+        0 0 20px rgba(0, 234, 255, 0.25),
+        0 0 60px rgba(157, 0, 255, 0.15);
 }
 
-/* Inner Clock */
-.wrapper .clock {
+/* Glass Clock */
+.clock {
+    position: relative;
+
     width: 100%;
-    height: 140px;
+    height: 180px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    border-radius: 18px;
+    border-radius: 26px;
 
-    background: rgba(8, 20, 28, 0.95);
-    backdrop-filter: blur(15px);
+    background: rgba(3, 7, 18, 0.94);
 
-    box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+
+    overflow: hidden;
+}
+
+/* Decorative Grid */
+.clock::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 30px 30px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        black,
+        transparent
+    );
+}
+
+/* Glowing Center */
+.clock::after {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(0, 234, 255, 0.08),
+        transparent 70%
+    );
+
+    filter: blur(10px);
+
+    animation: pulse 4s ease-in-out infinite;
 }
 
 /* Time */
-.clock #time {
-    font-size: 58px;
-    font-weight: 600;
-    letter-spacing: 4px;
+#time {
+    position: relative;
+    z-index: 2;
 
-    color: white;
+    font-size: 64px;
+    font-weight: 700;
+
+    letter-spacing: 6px;
+
+    color: #ffffff;
 
     text-shadow:
-        0 0 10px rgba(0, 245, 255, 0.8),
-        0 0 25px rgba(123, 44, 255, 0.5);
+        0 0 5px #ffffff,
+        0 0 15px #00eaff,
+        0 0 35px rgba(0, 234, 255, 0.7);
+
+    animation: timeGlow 3s ease-in-out infinite alternate;
 }
 
-/* Animated Gradient */
-@keyframes gradientMove {
+/* Small HUD Lines */
+.wrapper::before {
+    content: "";
+
+    position: absolute;
+
+    top: 12px;
+    left: 25px;
+
+    width: 70px;
+    height: 2px;
+
+    background: #00eaff;
+
+    box-shadow:
+        0 0 10px #00eaff,
+        0 0 20px #00eaff;
+}
+
+.wrapper::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 12px;
+    right: 25px;
+
+    width: 70px;
+    height: 2px;
+
+    background: #ff00a8;
+
+    box-shadow:
+        0 0 10px #ff00a8,
+        0 0 20px #ff00a8;
+}
+
+/* Border Animation */
+@keyframes borderFlow {
     0% {
         background-position: 0% 50%;
     }
@@ -94,19 +195,63 @@ body {
     }
 }
 
-/* Responsive */
-@media (max-width: 500px) {
+/* Center Glow */
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(0.8);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* Time Glow */
+@keyframes timeGlow {
+    from {
+        text-shadow:
+            0 0 5px #ffffff,
+            0 0 15px #00eaff,
+            0 0 30px rgba(0, 234, 255, 0.6);
+    }
+
+    to {
+        text-shadow:
+            0 0 8px #ffffff,
+            0 0 25px #00eaff,
+            0 0 50px rgba(0, 234, 255, 0.9);
+    }
+}
+
+/* Tablet */
+@media (max-width: 600px) {
 
     .wrapper {
         width: 90%;
     }
 
-    .wrapper .clock {
-        height: 120px;
+    .clock {
+        height: 150px;
     }
 
-    .clock #time {
-        font-size: 38px;
+    #time {
+        font-size: 45px;
+        letter-spacing: 3px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 400px) {
+
+    .clock {
+        height: 125px;
+    }
+
+    #time {
+        font-size: 32px;
         letter-spacing: 2px;
     }
 }
