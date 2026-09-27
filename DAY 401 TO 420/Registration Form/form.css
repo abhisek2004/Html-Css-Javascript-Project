@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,100&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+```css
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -11,140 +12,383 @@
     font-family: 'Poppins', sans-serif;
 }
 
-:root{
-    --color:#000;
+:root {
+    --primary: #0c8765;
+    --primary-dark: #075c47;
+    --secondary: #14b889;
+    --background: #f4f8f7;
+    --card: rgba(255, 255, 255, 0.95);
+    --input: #f8faf9;
+    --text: #222;
+    --muted: #777;
+    --border: #dce8e4;
+    --shadow: 0 20px 50px rgba(0, 0, 0, 0.10);
 }
 
-html{
+html {
     font-size: 62.5%;
     overflow-x: hidden;
 }
 
-.container{
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, rgba(20, 184, 137, 0.12), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(12, 135, 101, 0.10), transparent 30%),
+        var(--background);
+    color: var(--text);
+}
+
+.container {
     max-width: 1100px;
-    width: 90%;
-    margin: 0% auto;
+    width: 92%;
+    margin: 0 auto;
 }
 
-.banner img{
-    margin: 1.5rem;
-    width: 98%;
-    height: auto;
-}
+/* =========================
+   BANNER
+========================= */
 
-.banner h1{
-    margin: 1rem auto;
-    padding: 0.5rem;
-    letter-spacing: 0.3rem;
+.banner {
+    padding: 2rem 0;
     text-align: center;
+}
+
+.banner img {
     display: block;
-    color: #333;
-    font-size: 2.5rem;
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    margin: 0 auto 2rem;
+    border-radius: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.banner h1 {
+    margin: 1.5rem auto;
+    padding: 0.5rem;
+    color: var(--text);
+    font-size: 3rem;
     font-weight: 700;
+    letter-spacing: 0.25rem;
     text-transform: uppercase;
 }
 
-.banner p{
-    color: #777;
-    text-align: center;
-    font-size: 1.8rem;
-
+.banner p {
+    max-width: 700px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 1.6rem;
+    line-height: 1.8;
 }
 
-.flex2{
+/* =========================
+   FLEX LAYOUT
+========================= */
+
+.flex2,
+.flex3 {
     display: flex;
     justify-content: space-between;
+    gap: 2rem;
 }
 
-.flex3{
-    display: flex;
-    justify-content: space-between;
+/* =========================
+   FORM
+========================= */
+
+.form {
+    margin: 4rem auto;
+    padding: 3rem;
+    background: var(--card);
+    border: 1px solid rgba(12, 135, 101, 0.12);
+    border-radius: 2.5rem;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(12px);
 }
 
-.form{
-    margin: 5rem auto;
-    background: #DBEFEA;
-    padding: 2rem 0;
-    border-radius: 3.5rem 0 3.5rem 0;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-}
+/* =========================
+   FORM SECTIONS
+========================= */
 
-.one, .flex{
+.one,
+.flex {
     flex-basis: 48%;
-    font-size: 1.6rem;
-    margin: 1.2rem;
-}
-
-.two{
-    flex-basis: 33%;
-    font-size: 1.6rem;
-    margin: 1.2rem;
-}
-
-.one legend{
-    margin: 1rem 0;
-}
-
-#name, #email, #mobile {
-    width: 100%;
-    padding: 1.2rem;
-    height: 40px;
-    margin: 1rem 0;
-    border-radius: 1.5rem 0 1.5rem 0;
-    background: #F5f5f5;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-}
-
-.one label, .flex label, .two label{
-    padding: 0 0.8rem;
-}
-
-#name::placeholder, #email::placeholder, #mobile::placeholder, #bio::placeholder{
     font-size: 1.5rem;
+    margin: 1rem;
 }
 
-.one .gender input{
-    margin: 0 0.2rem;
+.two {
+    flex-basis: 33%;
+    font-size: 1.5rem;
+    margin: 1rem;
 }
 
-.flex textarea{
-    width: 100%;
-    height: 100%;
-    padding: 1.2rem;
+.one legend {
     margin: 1rem 0;
-    border-radius: 2.5rem 0 2.5rem 0;
-    background: #F5f5f5;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    color: var(--primary-dark);
+    font-size: 1.7rem;
+    font-weight: 600;
 }
 
-#file{
-    margin: 0.5 rem;
+/* =========================
+   LABELS
+========================= */
+
+.one label,
+.flex label,
+.two label {
+    display: inline-block;
     padding: 0 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #444;
+    font-weight: 500;
 }
 
-.div{
+/* =========================
+   INPUTS
+========================= */
+
+#name,
+#email,
+#mobile {
+    width: 100%;
+    height: 48px;
+    padding: 1.2rem 1.5rem;
+    margin: 0.8rem 0 1.5rem;
+    color: var(--text);
+    background: var(--input);
+    border: 1px solid var(--border);
+    border-radius: 1.2rem;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+#name:focus,
+#email:focus,
+#mobile:focus {
+    border-color: var(--primary);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(12, 135, 101, 0.10);
+    transform: translateY(-1px);
+}
+
+/* =========================
+   PLACEHOLDER
+========================= */
+
+#name::placeholder,
+#email::placeholder,
+#mobile::placeholder,
+#bio::placeholder {
+    color: #999;
+    font-size: 1.4rem;
+}
+
+/* =========================
+   GENDER
+========================= */
+
+.one .gender {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.one .gender input {
+    accent-color: var(--primary);
+    margin: 0;
+    cursor: pointer;
+}
+
+.one .gender label {
+    margin: 0;
+    cursor: pointer;
+}
+
+/* =========================
+   TEXTAREA
+========================= */
+
+.flex textarea {
+    width: 100%;
+    min-height: 180px;
+    padding: 1.5rem;
+    margin: 0.8rem 0;
+    resize: vertical;
+    color: var(--text);
+    background: var(--input);
+    border: 1px solid var(--border);
+    border-radius: 1.5rem;
+    box-shadow: none;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+}
+
+.flex textarea:focus {
+    border-color: var(--primary);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(12, 135, 101, 0.10);
+}
+
+/* =========================
+   FILE INPUT
+========================= */
+
+#file {
+    width: 100%;
+    margin: 0.8rem 0;
+    padding: 1rem;
+    color: #555;
+    background: #f8faf9;
+    border: 1px dashed var(--primary);
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+/* =========================
+   SUBMIT AREA
+========================= */
+
+.div {
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
 }
 
-.submit{
-    border: 2px solid #0C8765;
-    display: block;
-    color: #0C8765;
-    font-size: 2.2rem;
-    padding: 0.4rem;
-    margin: 1.5rem;
-    text-align: center;
-    border-radius: 1rem 0 1rem 0;
-    font-weight: 500;
-    letter-spacing: 0.3rem;
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.submit {
+    width: 180px;
+    height: 50px;
+    padding: 0.8rem 1.5rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #fff;
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    border: none;
+    border-radius: 1.2rem;
+
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.15rem;
+
     cursor: pointer;
-    width: 170px;
-    height: 40px;
-    transition: 0.5s ease-in;
+
+    box-shadow: 0 10px 25px rgba(12, 135, 101, 0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        filter 0.3s ease;
 }
 
-.submit:hover{
-    background-color:#0C8765;
-    color: #f5f5f5;
+.submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(12, 135, 101, 0.30);
+    filter: brightness(1.05);
 }
+
+.submit:active {
+    transform: translateY(0);
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 768px) {
+
+    html {
+        font-size: 58%;
+    }
+
+    .container {
+        width: 94%;
+    }
+
+    .banner {
+        padding: 1rem 0;
+    }
+
+    .banner img {
+        border-radius: 1.5rem;
+    }
+
+    .banner h1 {
+        font-size: 2.3rem;
+        letter-spacing: 0.15rem;
+    }
+
+    .banner p {
+        font-size: 1.4rem;
+    }
+
+    .form {
+        padding: 2rem 1.5rem;
+        border-radius: 2rem;
+    }
+
+    .flex2,
+    .flex3 {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .one,
+    .flex,
+    .two {
+        flex-basis: 100%;
+        width: 100%;
+        margin: 0.8rem 0;
+    }
+
+    .flex textarea {
+        min-height: 150px;
+    }
+
+    .submit {
+        width: 100%;
+        max-width: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    html {
+        font-size: 55%;
+    }
+
+    .banner h1 {
+        font-size: 2rem;
+    }
+
+    .form {
+        margin: 2rem auto;
+        padding: 1.5rem;
+    }
+
+    #name,
+    #email,
+    #mobile {
+        height: 45px;
+    }
+
+    .submit {
+        max-width: 100%;
+    }
+}
+```
