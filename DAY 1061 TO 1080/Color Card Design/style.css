@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: #ff6b6b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    width: 400px;
+    height: 500px;
+    background: linear-gradient(to bottom,  #ff6b6b, #ffc8c8);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.card:hover{
+    scale: 105%;
+}
+
+.color{
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.color h1{
+    font-size: 18px;
+    padding-right: 10px;
+    letter-spacing: 0.1em;
+}
+
+.color span{
+    width: 30px;
+    height: 30px;
+    background-color: #ff6b6b;
+    border-radius: 50px;
+}
+
+.char{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(to bottom,  #ff6b6b, #ffc8c8);
+}
+
+.text h2{
+    font-size: 25px;
+    font-weight: 300;
+}
+
+.text h3{
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.codes{
+    height: 190px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    gap: 40px;
+}
+
+.hue h1{
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.hue h2{
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 400;
+}
