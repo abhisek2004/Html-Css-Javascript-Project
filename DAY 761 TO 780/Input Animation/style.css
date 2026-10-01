@@ -1,3 +1,6 @@
+/* ================================
+   RESET
+================================ */
 *,
 *::before,
 *::after {
@@ -5,95 +8,232 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* ================================
+   BASE
+================================ */
 html,
 body {
-  height: 100%;
+  width: 100%;
+  min-height: 100%;
 }
+
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #262433;
+  background:
+    radial-gradient(circle at 20% 20%, #3d3564 0%, transparent 35%),
+    radial-gradient(circle at 80% 80%, #242b52 0%, transparent 35%),
+    linear-gradient(135deg, #11111b, #1c1b2b, #12121d);
   color: #fff;
-  display: grid;
-  place-items: center;
-}
-p {
-  padding-bottom: 16px;
-}
-/* ======================== */
-.input {
-  position: relative;
-}
-.input__field {
-  padding: 10px;
-  width: 270px;
-  border: none;
-  border-radius: 4px;
-  font: inherit;
-  color: #fff;
-  background-color: transparent;
-  outline: 2px solid #fff;
-}
-.input__label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(10px, 10px);
-  transform-origin: left;
-  transition: transform 0.25s;
-}
-.input__field:focus-visible ~ .input__label,
-.input__field:valid ~ .input__label {
-  transform: translate(0, -30px) scale(0.8);
-  color: #d1c5fc;
-}
-
-.input__field:is(:focus-visible, :valid) {
-  outline-color: #d1c5fc;
-}
-.input__icon-wrapper {
-  position: absolute;
-  top: 50%;
-  right: 12px;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-.input__icon {
-  color: #999;
-  font-size: 24px;
-}
-.input__icon:hover {
-  color: #333;
-}
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
+/* ================================
+   CONTENT
+================================ */
 .content-wrapper {
   flex: 1;
-  /* This makes the content wrapper take up available space */
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* Center the cards horizontally */
   justify-content: center;
-  /* Center the cards vertically */
+  align-items: center;
+  padding: 40px 20px;
 }
 
 .card {
-  margin: 20px;
+  width: min(100%, 420px);
+  padding: 35px 30px;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+
+  transition: 0.3s ease;
 }
 
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+/* ================================
+   TEXT
+================================ */
+p {
+  padding-bottom: 18px;
+  color: #d7d5e2;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ================================
+   INPUT
+================================ */
+.input {
+  position: relative;
+  width: 100%;
+  margin-top: 25px;
+}
+
+.input__field {
+  width: 100%;
+  height: 55px;
+
+  padding: 14px 48px 14px 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+
+  outline: none;
+
+  font: inherit;
+  font-size: 15px;
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.input__field::placeholder {
+  color: transparent;
+}
+
+.input__field:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.input__field:focus,
+.input__field:valid {
+  border-color: #a78bfa;
+  background: rgba(167, 139, 250, 0.08);
+
+  box-shadow:
+    0 0 0 3px rgba(167, 139, 250, 0.12),
+    0 0 25px rgba(167, 139, 250, 0.08);
+}
+
+/* ================================
+   FLOATING LABEL
+================================ */
+.input__label {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+
+  transform: translateY(-50%);
+  transform-origin: left center;
+
+  padding: 0 5px;
+
+  color: #aaa6ba;
+  font-size: 15px;
+
+  pointer-events: none;
+
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease,
+    background 0.25s ease;
+}
+
+.input__field:focus-visible ~ .input__label,
+.input__field:valid ~ .input__label {
+  transform: translateY(-39px) scale(0.8);
+  color: #c4b5fd;
+  background: #211f32;
+}
+
+/* ================================
+   ICON
+================================ */
+.input__icon-wrapper {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.input__icon {
+  color: #858195;
+  font-size: 22px;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.input__icon-wrapper:hover .input__icon {
+  color: #c4b5fd;
+  transform: scale(1.1);
+}
+
+/* ================================
+   FOOTER
+================================ */
 footer {
-  /* background-color: #00ffe1; */
+  width: 100%;
+  min-height: 65px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px 20px;
+
   text-align: center;
-  color: #fa0404be;
-  height: 20px;
-  margin: 0 20px;
-  padding-top: 20px;
-  font-size: 25px;
+
+  color: rgba(255, 255, 255, 0.55);
+
+  font-size: 14px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 500px) {
+  .content-wrapper {
+    padding: 25px 15px;
+  }
+
+  .card {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+
+  .input__field {
+    height: 52px;
+  }
+
+  footer {
+    font-size: 13px;
+  }
 }
