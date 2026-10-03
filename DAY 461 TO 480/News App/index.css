@@ -1,138 +1,568 @@
-*{   
-    margin: 0%;
-    padding: 0%;
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-body{
-    font-family: 'Roboto', sans-serif;
-    background-color: rgb(219, 218, 218);
- 
+
+html {
+    scroll-behavior: smooth;
 }
-nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: black;
-    color: white;
-    padding: 11px;
+
+body {
+    font-family: "Roboto", Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+nav {
     position: fixed;
+    top: 0;
+    left: 0;
+
     width: 100%;
-    height: 50px;
-    top: 0%;
-}
-.logo{
-    margin-left: 5px;
+    min-height: 70px;
+
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 35px;
+
+    background: #111827;
+    color: #fff;
+
+    z-index: 9999;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
     display: flex;
+    align-items: center;
+
+    margin-left: 5px;
 }
-.logo h1{
-    font-size:30px;
+
+.logo h1 {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+
+    white-space: nowrap;
 }
- li{
+
+
+/* =========================================
+   NAVIGATION LINKS
+========================================= */
+
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+li {
     list-style: none;
-    margin-inline: 24px;
-    font-size: 19px;
-    cursor: pointer;
-}
 
-.active{
-    color: rgb(21, 119, 247);
+    margin: 0;
+    padding: 9px 14px;
 
-}
-li:hover{
-    color: rgb(21, 119, 247);
-    border-bottom: 2px solid black;
-    
-}
-
-
-.search{
-    display: flex;
-    margin-right: 34px;
-     
-}
-.search input{
-    width: 220px;
-    border: none;
-    padding: 6px;
     font-size: 17px;
-    border-radius: 3px;
-    margin-inline: 3px;
-}
-.search button{
-    width: 60px;
-    height: 31px;
-    border: none;
-    background-color: rgb(0, 99, 248);
-    color: white;
-    font-size: 16px;
-    border-radius: 2px;
+    font-weight: 500;
+
     cursor: pointer;
-    
+
+    border-radius: 6px;
+
+    transition: all 0.25s ease;
 }
 
-.dataCard{
+li:hover {
+    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.08);
+}
+
+.active {
+    color: #3b82f6;
+}
+
+
+/* =========================================
+   SEARCH AREA
+========================================= */
+
+.search {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+    margin-right: 5px;
+}
+
+.search input {
+    width: 220px;
+    height: 38px;
+
+    padding: 0 13px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+
+    background: #fff;
+    color: #222;
+
+    outline: none;
+
+    font-size: 15px;
+
+    transition: all 0.25s ease;
+}
+
+.search input::placeholder {
+    color: #9ca3af;
+}
+
+.search input:focus {
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.search button {
+    width: 65px;
+    height: 38px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #2563eb;
+    color: #fff;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.search button:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+.search button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   CATEGORY
+========================================= */
+
+.category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 20px;
+
+    margin-top: 110px;
+    margin-bottom: 25px;
+}
+
+.category h2 {
+    font-size: 28px;
+    font-weight: 700;
+
+    color: #111827;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   DATA CARD CONTAINER
+========================================= */
+
+.dataCard {
+    width: 85%;
+    max-width: 1250px;
+
+    margin: 0 auto 50px;
 
     display: grid;
-    width: 80%;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  
-    margin: auto;
-    margin-top: 13px;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 25px;
 }
-.cards{
-     
-    margin-inline: 8px;
-    padding: 11px;
-    background-color: white;
-    margin-top: 25px;
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.cards {
+    position: relative;
+
+    padding: 14px;
+
+    background: #fff;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
     cursor: pointer;
-     
+
+    overflow: hidden;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.06);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
 }
-.cards h3{
-    margin-top:  10px;
-    padding: 3px;
+
+.cards:hover {
+    transform: translateY(-7px);
+
+    border-color: #bfdbfe;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.12);
 }
-.cards p{
-    margin-top: 6px;
-    padding: 2px;
-}
-.cards img{
+
+
+/* =========================================
+   CARD IMAGE
+========================================= */
+
+.cards img {
+    display: block;
+
     width: 100%;
-    height: 45%;
+    height: 210px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    transition: transform 0.4s ease;
 }
-.category{
-    display: flex;
-    justify-content: center;
-     margin-top: 100px;
- }
-  
-@media only screen and (max-width:900px){
-    .logo li{
+
+.cards:hover img {
+    transform: scale(1.02);
+}
+
+
+/* =========================================
+   CARD TITLE
+========================================= */
+
+.cards h3 {
+    margin-top: 15px;
+    padding: 0 3px;
+
+    color: #111827;
+
+    font-size: 20px;
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================
+   CARD DESCRIPTION
+========================================= */
+
+.cards p {
+    margin-top: 8px;
+    padding: 0 3px 5px;
+
+    color: #6b7280;
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media only screen and (max-width: 1100px) {
+
+    nav {
+        padding: 12px 20px;
+    }
+
+    .logo h1 {
+        font-size: 26px;
+    }
+
+    li {
+        padding: 8px 9px;
+        font-size: 16px;
+    }
+
+    .search input {
+        width: 180px;
+    }
+
+    .dataCard {
+        width: 90%;
+    }
+}
+
+
+/* =========================================
+   TABLET / SMALL LAPTOP
+========================================= */
+
+@media only screen and (max-width: 900px) {
+
+    nav {
+        min-height: 65px;
+    }
+
+    .logo h1 {
+        font-size: 24px;
+    }
+
+    /*
+       Hide navigation list on smaller screens
+       if your HTML contains nav links.
+    */
+
+    .logo li {
         display: none;
     }
-    .category{
-         
-         margin-top: 130px;
-     }
-     
-}
- 
 
-@media only screen and (max-width:530px){
-    nav{
+    nav ul {
+        gap: 2px;
+    }
+
+    li {
+        font-size: 15px;
+        padding: 7px;
+    }
+
+    .search {
+        margin-right: 0;
+    }
+
+    .search input {
+        width: 170px;
+    }
+
+    .category {
+        margin-top: 105px;
+    }
+
+    .dataCard {
+        width: 92%;
+
+        grid-template-columns:
+            repeat(auto-fit, minmax(260px, 1fr));
+
+        gap: 20px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media only screen and (max-width: 650px) {
+
+    nav {
+        position: fixed;
+
+        min-height: 115px;
+
+        flex-direction: column;
+        justify-content: center;
+
+        gap: 10px;
+
+        padding: 10px 15px;
+    }
+
+    .logo {
+        margin: 0;
+    }
+
+    .logo h1 {
+        font-size: 24px;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    .search {
+        width: 100%;
+
         display: flex;
         justify-content: center;
-        flex-direction: column;
-        height: 100px;
-         
-    }
-    .search{
-        display: flex;
-        text-align: center;
-    }
-    nav .search{
-        margin-top: 8px;
+
+        margin: 0;
     }
 
-    
+    .search input {
+        width: 70%;
+        height: 36px;
+
+        font-size: 14px;
+    }
+
+    .search button {
+        width: 65px;
+        height: 36px;
+
+        font-size: 14px;
+    }
+
+    .category {
+        margin-top: 140px;
+        margin-bottom: 22px;
+    }
+
+    .category h2 {
+        font-size: 24px;
+    }
+
+    .dataCard {
+        width: 92%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .cards {
+        padding: 12px;
+    }
+
+    .cards img {
+        height: 200px;
+    }
+
+    .cards h3 {
+        font-size: 19px;
+    }
+
+    .cards p {
+        font-size: 14px;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media only screen and (max-width: 400px) {
+
+    nav {
+        min-height: 110px;
+    }
+
+    .logo h1 {
+        font-size: 22px;
+    }
+
+    .search {
+        gap: 5px;
+    }
+
+    .search input {
+        width: 68%;
+
+        padding: 0 10px;
+
+        font-size: 13px;
+    }
+
+    .search button {
+        width: 60px;
+
+        font-size: 13px;
+    }
+
+    .category {
+        margin-top: 135px;
+    }
+
+    .category h2 {
+        font-size: 21px;
+    }
+
+    .dataCard {
+        width: 94%;
+    }
+
+    .cards img {
+        height: 180px;
+    }
+
+    .cards h3 {
+        font-size: 18px;
+    }
+
+    .cards p {
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================
+   EXTRA SMALL DEVICES
+========================================= */
+
+@media only screen and (max-width: 320px) {
+
+    .logo h1 {
+        font-size: 20px;
+    }
+
+    .search input {
+        width: 65%;
+    }
+
+    .search button {
+        width: 55px;
+    }
+
+    .cards img {
+        height: 160px;
+    }
 }
