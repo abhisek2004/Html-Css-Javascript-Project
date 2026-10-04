@@ -1,144 +1,334 @@
+/* ========================================
+   SpendFlow - Modern Expense Tracker CSS
+   ======================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
 }
+
 body {
-  background-color: #f7f9fd;
+  background: #f1f5f9;
+  color: #1e293b;
+  min-height: 100vh;
 }
+
+/* Main Wrapper */
 .wrapper {
-  width: 90%;
+  width: 92%;
+  max-width: 900px;
   font-size: 16px;
-  max-width: 43.75em;
-  margin: 1em auto;
+  margin: 2.5em auto;
 }
+
+/* Main Container */
 .container {
   width: 100%;
 }
+
+/* Two Column Section */
 .sub-container {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3em;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5em;
 }
+
+/* Flex Utilities */
 .flex {
   display: flex;
   align-items: center;
 }
+
 .flex-space {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
+/* Headings */
 .wrapper h3 {
-  color: #363d55;
-  font-weight: 500;
-  margin-bottom: 0.6em;
+  color: #0f172a;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.7em;
 }
+
+/* Input Fields */
 .container input {
   display: block;
   width: 100%;
-  padding: 0.6em 0.3em;
-  border: 1px solid #d0d0d0;
-  border-radius: 0.3em;
-  color: #414a67;
+  padding: 0.75em 0.9em;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.55em;
+  color: #1e293b;
   outline: none;
+  font-size: 0.95rem;
   font-weight: 400;
-  margin-bottom: 0.6em;
+  margin-bottom: 0.8em;
+  transition: all 0.25s ease;
 }
+
+.container input::placeholder {
+  color: #94a3b8;
+}
+
+.container input:hover {
+  border-color: #94a3b8;
+}
+
 .container input:focus {
-  border-color: #587ef4;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
 }
+
+/* Amount Containers */
 .total-amount-container,
 .user-amount-container {
-  background-color: #ffffff;
-  padding: 1.25em 0.9em;
-  border-radius: 0.3em;
-  box-shadow: 0 0.6em 1.2em rgba(28, 0, 80, 0.06);
+  background: #ffffff;
+  padding: 1.4em 1.1em;
+  border-radius: 0.75em;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
+.total-amount-container:hover,
+.user-amount-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* Output Section */
 .output-container {
-  background-color: #587ef4;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
   color: #ffffff;
-  border-radius: 0.3em;
-  box-shadow: 0 0.6em 1.2em rgba(28, 0, 80, 0.06);
+  border-radius: 0.85em;
   margin: 2em 0;
-  padding: 1.2em;
+  padding: 1.5em;
+  box-shadow: 0 12px 30px rgba(79, 70, 229, 0.2);
 }
+
 .output-container p {
-  font-weight: 500;
-  margin-bottom: 0.6em;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.65em;
 }
+
 .output-container span {
   display: block;
   text-align: center;
-  font-weight: 400;
-  color: #e5e5e5;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #eef2ff;
 }
+
+/* Submit Button */
 .submit {
-  font-size: 1em;
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: 600;
   margin-top: 0.8em;
-  background-color: #587ef4;
+  background: #6366f1;
   border: none;
   outline: none;
   color: #ffffff;
-  padding: 0.6em 1.2em;
-  border-radius: 0.3em;
+  padding: 0.75em 1.5em;
+  border-radius: 0.55em;
   cursor: pointer;
+  transition: all 0.25s ease;
 }
+
+.submit:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 18px rgba(79, 70, 229, 0.25);
+}
+
+.submit:active {
+  transform: translateY(0);
+}
+
+/* Expense List */
 .list {
-  background-color: #ffffff;
-  padding: 1.8em 1.2em;
-  box-shadow: 0 0.6em 1.2em rgba(28, 0, 80, 0.06);
-  border-radius: 0.6em;
+  background: #ffffff;
+  padding: 1.5em 1.2em;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
+  border-radius: 0.8em;
 }
+
+/* List Item */
 .sublist-content {
   width: 100%;
-  border-left: 0.3em solid #587ef4;
-  margin-bottom: 0.6em;
-  padding: 0.5em 1em;
+  border-left: 4px solid #6366f1;
+  background: #f8fafc;
+  margin-bottom: 0.7em;
+  padding: 0.75em 1em;
   display: grid;
   grid-template-columns: 3fr 2fr 1fr 1fr;
+  align-items: center;
+  border-radius: 0 0.5em 0.5em 0;
+  transition: all 0.25s ease;
 }
+
+.sublist-content:hover {
+  background: #f1f5f9;
+  transform: translateX(3px);
+}
+
+/* Product Name */
 .product {
-  font-weight: 500;
-  color: #363d55;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e293b;
 }
+
+/* Amount */
 .amount {
-  color: #414a67;
-  margin-left: 20%;
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-left: 15%;
 }
+
+/* Icons */
 .icons-container {
   width: 5em;
-  margin: 1.2em;
+  margin: 1em;
   align-items: center;
 }
+
+/* Product Title */
 .product-title {
+  color: #0f172a;
+  font-size: 1.15rem;
+  font-weight: 600;
   margin-bottom: 1em;
 }
+
+/* Hide */
 .hide {
   display: none;
 }
+
+/* Error Message */
 .error {
-  color: #ff465a;
+  color: #ef4444;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 0.3em;
 }
+
+/* Edit Button */
 .edit {
   margin-left: auto;
 }
+
+/* Edit & Delete Buttons */
 .edit,
 .delete {
   background: transparent;
   cursor: pointer;
-  margin-right: 1.5em;
+  margin-right: 1em;
   border: none;
-  color: #587ef4;
+  color: #6366f1;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
 }
-@media screen and (max-width: 600px) {
+
+.edit:hover {
+  color: #4338ca;
+  transform: scale(1.1);
+}
+
+.delete {
+  color: #ef4444;
+}
+
+.delete:hover {
+  color: #dc2626;
+  transform: scale(1.1);
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media screen and (max-width: 700px) {
   .wrapper {
-    font-size: 14px;
+    width: 94%;
+    font-size: 15px;
+    margin: 1.5em auto;
   }
+
   .sub-container {
     grid-template-columns: 1fr;
     gap: 1em;
+  }
+
+  .output-container {
+    margin: 1.5em 0;
+  }
+
+  .list {
+    padding: 1.2em 0.8em;
+  }
+
+  .sublist-content {
+    grid-template-columns: 2fr 1.5fr 0.7fr 0.7fr;
+    padding: 0.7em 0.8em;
+  }
+
+  .amount {
+    margin-left: 5%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .wrapper {
+    width: 95%;
+    font-size: 14px;
+  }
+
+  .sub-container {
+    gap: 0.8em;
+  }
+
+  .total-amount-container,
+  .user-amount-container {
+    padding: 1.1em 0.9em;
+  }
+
+  .output-container {
+    padding: 1.2em;
+  }
+
+  .submit {
+    width: 100%;
+    padding: 0.75em;
+  }
+
+  .sublist-content {
+    grid-template-columns: 1.5fr 1fr 0.6fr 0.6fr;
+    font-size: 0.8rem;
+  }
+
+  .product {
+    font-size: 0.82rem;
+  }
+
+  .amount {
+    font-size: 0.8rem;
+  }
+
+  .edit,
+  .delete {
+    margin-right: 0.4em;
   }
 }
