@@ -2,19 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Age Calculator</title>
+
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
 
- 
-      <h1>Age Calculator</h1>
-      <h3>Enter Your Age and Get Result</h3>
-    <button onclick="get()">Get Your Age</button>
+    <main class="age-calculator">
+        <div class="calculator-card">
 
-    <input type="date" id="dates" value="">
+            <h1>Age Calculator</h1>
+
+            <p class="subtitle">
+                Enter your date of birth to calculate your exact age.
+            </p>
+
+            <div class="input-group">
+                <label for="dates">Date of Birth</label>
+                <input 
+                    type="date" 
+                    id="dates"
+                    name="dateOfBirth"
+                    required
+                >
+            </div>
+
+            <button type="button" onclick="get()">
+                Calculate Age
+            </button>
+
+            <div id="result" class="result" aria-live="polite">
+                <!-- Age result will appear here -->
+            </div>
+
+        </div>
+    </main>
+
     <script src="index.js"></script>
+
 </body>
 </html>
+This version gives you a better base for adding a **modern card UI, animated result, years/months/days calculation, and responsive mobile design**.
