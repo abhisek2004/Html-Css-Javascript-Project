@@ -1,195 +1,489 @@
+```css
+/* =========================================
+   MODERN LOADING SPINNERS
+   Theme: Dark • Glassmorphism • Responsive
+========================================= */
+
+:root {
+  --bg-primary: #0b1020;
+  --bg-secondary: #121a2f;
+  --card-bg: rgba(255, 255, 255, 0.055);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --accent: #6366f1;
+  --radius: 20px;
+  --transition: 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  padding: 40px 24px;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: var(--text-primary);
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(99, 102, 241, 0.18),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 85% 85%,
+      rgba(37, 176, 155, 0.12),
+      transparent 35%
+    ),
+    var(--bg-primary);
+
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 230px), 1fr)
+  );
+  gap: 24px;
+  align-content: center;
+}
+
+/* =========================================
+   SPINNER CARDS
+========================================= */
+
+.card {
+  min-height: 190px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(129, 140, 248, 0.55);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+}
+
+.card h3 {
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.card p {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+/* =========================================
+   SPINNER 1 — Classic Ring
+========================================= */
+
 .spinner-1 {
   width: 50px;
   aspect-ratio: 1;
+  border: 5px solid rgba(129, 140, 248, 0.2);
+  border-top-color: #818cf8;
+  border-right-color: #818cf8;
   border-radius: 50%;
-  border: 8px solid;
-  border-color: #000 #0000;
-  animation: s1 1s infinite;
+  animation: spin 0.8s linear infinite;
 }
-@keyframes s1 {to{transform: rotate(.5turn)}}
+
+/* =========================================
+   SPINNER 2 — Dual Color
+========================================= */
 
 .spinner-2 {
   width: 50px;
   aspect-ratio: 1;
+  border: 5px solid #263449;
+  border-right-color: #f59e0b;
+  border-top-color: #38bdf8;
   border-radius: 50%;
-  border: 8px solid lightblue;
-  border-right-color: orange;
-  animation: s2 1s infinite linear;
+  animation: spin 0.9s linear infinite;
 }
-@keyframes s2 {to{transform: rotate(1turn)}}
+
+/* =========================================
+   SPINNER 3 — Gradient Arc
+========================================= */
 
 .spinner-3 {
   width: 50px;
-  padding: 8px;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: #25b09b;
-  --_m: 
-    conic-gradient(#0000 10%,#000),
-    linear-gradient(#000 0 0) content-box;
-  -webkit-mask: var(--_m);
-          mask: var(--_m);
-  -webkit-mask-composite: source-out;
-          mask-composite: subtract;
-  animation: s3 1s infinite linear;
+  background: conic-gradient(
+    from 0deg,
+    #25b09b,
+    #6366f1,
+    transparent 80%
+  );
+
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 6px),
+    #000 calc(100% - 5px)
+  );
+
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 6px),
+    #000 calc(100% - 5px)
+  );
+
+  animation: spin 1s linear infinite;
 }
-@keyframes s3 {to{transform: rotate(1turn)}}
+
+/* =========================================
+   SPINNER 4 — Segmented Ring
+========================================= */
 
 .spinner-4 {
   width: 50px;
-  --b: 8px; /* the border thickness */
   aspect-ratio: 1;
   border-radius: 50%;
-  padding: 1px;
-  background: conic-gradient(#0000 10%,#f03355) content-box;
-  -webkit-mask:
-    repeating-conic-gradient(#0000 0deg,#000 1deg 20deg,#0000 21deg 36deg),
-    radial-gradient(farthest-side,#0000 calc(100% - var(--b) - 1px),#000 calc(100% - var(--b)));
-  -webkit-mask-composite: destination-in;
-  mask-composite: intersect;
-  animation:s4 1s infinite steps(10);
+
+  background: conic-gradient(
+    #f03355 0deg 25deg,
+    transparent 25deg 36deg,
+    #f03355 36deg 61deg,
+    transparent 61deg 72deg,
+    #f03355 72deg 97deg,
+    transparent 97deg 108deg,
+    #f03355 108deg 133deg,
+    transparent 133deg 144deg,
+    #f03355 144deg 169deg,
+    transparent 169deg 180deg,
+    #f03355 180deg 205deg,
+    transparent 205deg 216deg,
+    #f03355 216deg 241deg,
+    transparent 241deg 252deg,
+    #f03355 252deg 277deg,
+    transparent 277deg 288deg,
+    #f03355 288deg 313deg,
+    transparent 313deg 324deg,
+    #f03355 324deg 349deg,
+    transparent 349deg 360deg
+  );
+
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 7px),
+    #000 calc(100% - 6px)
+  );
+
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 7px),
+    #000 calc(100% - 6px)
+  );
+
+  animation: spin 1.2s steps(10) infinite;
 }
-@keyframes s4 {to{transform: rotate(1turn)}}
+
+/* =========================================
+   SPINNER 5 — Purple Orbit
+========================================= */
 
 .spinner-5 {
   width: 50px;
-  --b: 8px; /* the border thickness */
   aspect-ratio: 1;
   border-radius: 50%;
-  background: #514b82;
-  -webkit-mask:
-    repeating-conic-gradient(#0000 0deg,#000 1deg 70deg,#0000 71deg 90deg),
-    radial-gradient(farthest-side,#0000 calc(100% - var(--b) - 1px),#000 calc(100% - var(--b)));
-  -webkit-mask-composite: destination-in;
-  mask-composite: intersect;
-  animation: s5 1s infinite;
+  background: conic-gradient(
+    from 0deg,
+    #514b82,
+    #a78bfa,
+    transparent 75%
+  );
+
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 6px),
+    #000 calc(100% - 5px)
+  );
+
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 6px),
+    #000 calc(100% - 5px)
+  );
+
+  animation: spin 1.5s ease-in-out infinite;
 }
-@keyframes s5 {to{transform: rotate(.5turn)}}
+
+/* =========================================
+   SPINNER 6 — Orange Orbit
+========================================= */
 
 .spinner-6 {
   width: 50px;
   aspect-ratio: 1;
+  padding: 4px;
   border-radius: 50%;
-  padding: 3px;
-  background: 
-    radial-gradient(farthest-side,#ffa516 95%,#0000) 50% 0/12px 12px no-repeat,
-    radial-gradient(farthest-side,#0000 calc(100% - 5px),#ffa516 calc(100% - 4px)) content-box;
-  animation: s6 2s infinite ;
+
+  background:
+    radial-gradient(
+      circle at 50% 0,
+      #ffa516 0 5px,
+      transparent 6px
+    ),
+    conic-gradient(
+      transparent 10%,
+      #ffa516
+    );
+
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 5px),
+    #000 calc(100% - 4px)
+  );
+
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 5px),
+    #000 calc(100% - 4px)
+  );
+
+  animation: spin 1.2s linear infinite;
 }
-@keyframes s6 {to{transform: rotate(1turn)}}
+
+/* =========================================
+   SPINNER 7 — Four Dots
+========================================= */
 
 .spinner-7 {
   width: 50px;
   aspect-ratio: 1;
-  --_c: radial-gradient(farthest-side,#25b09b 92%,#0000);
-  background: 
-    var(--_c) top,
-    var(--_c) left,
-    var(--_c) right,
-    var(--_c) bottom;
-  background-size: 12px 12px;
-  background-repeat: no-repeat;
-  animation: s7 1s infinite;
+  --dot: radial-gradient(
+    farthest-side,
+    #25b09b 92%,
+    transparent
+  );
+
+  background:
+    var(--dot) top / 12px 12px no-repeat,
+    var(--dot) bottom / 12px 12px no-repeat,
+    var(--dot) left / 12px 12px no-repeat,
+    var(--dot) right / 12px 12px no-repeat;
+
+  animation: spin 1s ease-in-out infinite;
 }
-@keyframes s7 {to{transform: rotate(.5turn)}}
+
+/* =========================================
+   SPINNER 8 — Five Dots
+========================================= */
 
 .spinner-8 {
   width: 50px;
   aspect-ratio: 1;
+  position: relative;
   color: #f03355;
-  --_c: no-repeat radial-gradient(farthest-side,currentColor 92%,#0000);
-  background: 
-    var(--_c) 50% 0   /12px 12px,
-    var(--_c) 50% 100%/12px 12px,
-    var(--_c) 100% 50%/12px 12px,
-    var(--_c) 0    50%/12px 12px,
-    var(--_c) 50%  50%/12px 12px,
-    conic-gradient(from 90deg at 4px 4px,#0000 90deg,currentColor 0)
-    -4px -4px/calc(50% + 2px) calc(50% + 2px);
-  animation: s8 1s infinite linear;
+
+  background:
+    radial-gradient(
+      circle at 50% 0,
+      currentColor 5px,
+      transparent 6px
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      currentColor 5px,
+      transparent 6px
+    ),
+    radial-gradient(
+      circle at 0 50%,
+      currentColor 5px,
+      transparent 6px
+    ),
+    radial-gradient(
+      circle at 100% 50%,
+      currentColor 5px,
+      transparent 6px
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      currentColor 5px,
+      transparent 6px
+    );
+
+  animation: spin 1s linear infinite;
 }
-@keyframes s8 {to{transform: rotate(.5turn)}}
+
+/* =========================================
+   SPINNER 9 — Pulse Ring
+========================================= */
 
 .spinner-9 {
   width: 50px;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: 
-    radial-gradient(farthest-side,#f03355 95%,#0000) 50% 1px/12px 12px no-repeat,
-    radial-gradient(farthest-side,#0000 calc(100% - 14px),#ccc 0);
-  animation: s9 2s infinite linear;
+  border: 5px solid rgba(240, 51, 85, 0.15);
+  border-top-color: #f03355;
+  position: relative;
+
+  animation: spin 1.4s linear infinite;
 }
-@keyframes s9 {to{transform: rotate(1turn)}}
+
+.spinner-9::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 3px solid rgba(240, 51, 85, 0.25);
+  border-bottom-color: #fb7185;
+  border-radius: 50%;
+  animation: spin-reverse 1s linear infinite;
+}
+
+/* =========================================
+   SPINNER 10 — Double Ring
+========================================= */
 
 .spinner-10 {
   width: 50px;
   aspect-ratio: 1;
-  color: #854f1d;
-  border-radius: 50%;
-  display: grid;
-  background: 
-    conic-gradient(from 90deg at 4px 4px,#0000 90deg,currentColor 0)
-    -4px -4px/calc(50% + 2px) calc(50% + 2px),
-    radial-gradient(farthest-side,currentColor 6px,#0000 7px calc(100% - 6px),currentColor calc(100% - 5px)) no-repeat;
-  animation: s10 2s infinite linear;
   position: relative;
+  border: 4px solid transparent;
+  border-top-color: #fbbf24;
+  border-bottom-color: #fbbf24;
+  border-radius: 50%;
+
+  animation: spin 1.5s linear infinite;
 }
-.spinner-10:before {
+
+.spinner-10::before {
   content: "";
-  border-radius: inherit;
-  background: inherit;
-  transform: rotate(45deg);
-}
-@keyframes s10 {to{transform: rotate(.5turn)}}
-
-/**/
-body {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-  grid-auto-rows: 130px;
-  place-items:center;
+  position: absolute;
+  inset: 5px;
+  border: 3px solid transparent;
+  border-left-color: #f97316;
+  border-right-color: #f97316;
+  border-radius: 50%;
+  animation: spin-reverse 1s linear infinite;
 }
 
-* {
-  box-sizing: border-box;
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-
+@keyframes spin-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
 }
+
+/* =========================================
+   CONTENT & FOOTER
+========================================= */
 
 .content-wrapper {
-  flex: 1;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Center the cards horizontally */
   justify-content: center;
-  /* Center the cards vertically */
-}
-
-.card {
-  margin: 20px;
+  gap: 24px;
 }
 
 footer {
-  /* background-color: #00ffe1; */
-  text-align: center;
-  color: #fa0404be;
-  height: 60px;
-  /* Adjust the height as needed */
-  margin: 0 20px;
-  padding-top: 20px;
-  font-size: 25px;
+  grid-column: 1 / -1;
+  min-height: 60px;
   display: flex;
-  justify-content: center;
-  /* Center content horizontally */
   align-items: center;
-  /* Center content vertically */
-  display: flex;
-  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+  padding: 20px 0;
 }
+
+footer a {
+  color: #818cf8;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+footer a:hover {
+  color: #c4b5fd;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 600px) {
+  body {
+    padding: 24px 16px;
+    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card {
+    min-height: 155px;
+    padding: 22px 12px;
+    gap: 18px;
+  }
+
+  .spinner-1,
+  .spinner-2,
+  .spinner-3,
+  .spinner-4,
+  .spinner-5,
+  .spinner-6,
+  .spinner-7,
+  .spinner-8,
+  .spinner-9,
+  .spinner-10 {
+    width: 42px;
+  }
+}
+
+@media (max-width: 340px) {
+  body {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+```
