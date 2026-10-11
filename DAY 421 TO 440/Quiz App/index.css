@@ -1,33 +1,124 @@
- body{
+
+/* Modern Quiz App Styling */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: 'Open Sans', sans-serif;
-    background-color: rgb(2, 2, 29);
- }
- .container{
-    width: 440px;
-    margin-left: 33%;
-    background-color: #fff;
-    margin-top: 5px;
-    padding: 11px;
- }
- .head{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #02021d, #15154b, #292968);
+}
+
+.container {
+    width: 100%;
+    max-width: 480px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.head {
     text-align: center;
-    padding: 11px;
+    padding: 15px 10px 22px;
     font-size: 30px;
- }
- .quiz{
-    margin-left: 11px;
- }
- .btn{
+    font-weight: 700;
+    color: #15154b;
+}
+
+.quiz {
+    margin: 10px 0;
+    line-height: 1.8;
+    color: #33334d;
+    font-size: 16px;
+}
+
+.quiz label {
+    display: block;
+    margin: 10px 0;
+    padding: 12px 15px;
+    border: 1px solid #e0e3f0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.quiz label:hover {
+    background-color: #f0f2ff;
+    border-color: #5555db;
+}
+
+.quiz input[type="radio"],
+.quiz input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: #4f46e5;
+    cursor: pointer;
+}
+
+.btn {
     text-align: center;
-    padding: 11px;
- }
- button{
-    width: 140px;
-    height: 40px;
-    background-color: rgb(3, 3, 33);
-    color: white;
-    font-size: 24px;
+    padding: 20px 0 5px;
+}
+
+button {
+    width: 100%;
+    max-width: 200px;
+    min-height: 48px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #4338ca, #6366f1);
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 600;
+    font-family: inherit;
     border: none;
-    outline: none;
-    border-radius: 2px;
- }
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #3730a3, #4f46e5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.3);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+button:focus-visible {
+    outline: 3px solid #818cf8;
+    outline-offset: 4px;
+}
+
+@media (max-width: 520px) {
+    .container {
+        padding: 20px;
+    }
+
+    .head {
+        font-size: 25px;
+    }
+
+    .quiz {
+        font-size: 15px;
+    }
+
+    button {
+        max-width: 100%;
+    }
+}
