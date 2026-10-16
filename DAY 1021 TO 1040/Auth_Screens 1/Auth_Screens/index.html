@@ -1,86 +1,168 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futuristic Login</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b14">
+
+  <title>NEXUS | Secure Login</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="style.js" defer></script>
 </head>
 
 <body>
-    <div class="grid-container" id="gridContainer"></div>
+  <div class="background">
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+    <div class="grid-overlay"></div>
+  </div>
 
-    <div class="login-container">
-        <div class="corner-decoration top-left"></div>
-        <div class="corner-decoration top-right"></div>
-        <div class="corner-decoration bottom-left"></div>
-        <div class="corner-decoration bottom-right"></div>
+  <main class="page">
+    <section class="login-container" aria-labelledby="loginTitle">
 
-        <div class="header">
-            <div class="scan-line"></div>
-            <h1>ACCESS</h1>
-            <p class="status-text">System Ready</p>
+      <div class="top-bar">
+        <a href="#" class="brand" aria-label="Nexus home">
+          <span class="brand-icon">
+            <i class="fa-solid fa-cube"></i>
+          </span>
+          <span>NEXUS<span class="brand-dot">.</span></span>
+        </a>
+
+        <span class="secure-badge">
+          <span class="status-dot"></span>
+          SECURE GATEWAY
+        </span>
+      </div>
+
+      <div class="login-header">
+        <div class="welcome-icon">
+          <i class="fa-solid fa-fingerprint"></i>
         </div>
 
-        <form id="loginForm">
-            <div class="form-group">
-                <label class="form-label">User Identification</label>
-                <div class="input-wrapper">
-                    <i class="fa-solid fa-user field-icon"></i>
-                    <input type="email" class="input-field" placeholder="Enter email address" required>
-                </div>
-            </div>
+        <p class="eyebrow">WELCOME BACK</p>
+        <h1 id="loginTitle">Access your <span>world.</span></h1>
+        <p class="subtitle">
+          Enter your credentials to continue your journey.
+        </p>
+      </div>
 
-            <div class="form-group">
-                <label class="form-label">Security Code</label>
-                <div class="input-wrapper">
-                    <i class="fa-solid fa-lock field-icon"></i>
-                    <input type="password" id="passwordField" class="input-field" placeholder="Enter password" required>
-                    <i class="fa-solid fa-eye toggle-icon" id="togglePassword"></i>
-                </div>
-            </div>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="email">Email address</label>
 
-            <div class="checkbox-group">
-                <label class="custom-checkbox">
-                    <input type="checkbox" id="rememberMe">
-                    <span>Remember Session</span>
-                </label>
-                <a href="#" class="forgot-link">Recovery Mode?</a>
-            </div>
+          <div class="input-wrapper">
+            <i class="fa-regular fa-envelope field-icon"></i>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="input-field"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required>
+          </div>
+        </div>
 
-            <button type="submit" class="submit-btn">
-                Initialize Login
+        <div class="form-group">
+          <div class="label-row">
+            <label for="passwordField">Password</label>
+            <a href="#" id="forgotLink" class="text-link">
+              Forgot password?
+            </a>
+          </div>
+
+          <div class="input-wrapper">
+            <i class="fa-solid fa-lock field-icon"></i>
+
+            <input
+              type="password"
+              id="passwordField"
+              name="password"
+              class="input-field"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required>
+
+            <button
+              type="button"
+              class="toggle-password"
+              id="togglePassword"
+              aria-label="Show password"
+              aria-pressed="false">
+              <i class="fa-regular fa-eye"></i>
             </button>
-        </form>
-
-        <div class="divider">
-            <span class="divider-text">ALTERNATIVE ACCESS</span>
+          </div>
         </div>
 
-        <div class="social-grid">
-            <button class="social-button" title="Google Auth">
-                <i class="fa-brands fa-google"></i>
-            </button>
-            <button class="social-button" title="GitHub Auth">
-                <i class="fa-brands fa-github"></i>
-            </button>
-            <button class="social-button" title="Discord Auth">
-                <i class="fa-brands fa-discord"></i>
-            </button>
+        <div class="options-row">
+          <label class="remember-option">
+            <input type="checkbox" id="rememberMe" name="rememberMe">
+            <span class="custom-check">
+              <i class="fa-solid fa-check"></i>
+            </span>
+            <span>Remember me</span>
+          </label>
+
+          <span class="session-info">
+            <i class="fa-solid fa-shield-halved"></i>
+            Encrypted session
+          </span>
         </div>
 
-        <div class="register-link">
-            <a href="#">CREATE NEW ACCOUNT →</a>
-        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span class="button-text">Sign in to NEXUS</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
 
-        <div class="footer-credit">
-            <p>──Made by CodeZenithAI──</p>
-        </div>
-    </div>
+        <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+      </form>
 
-    <script src="style.js"></script>
+      <div class="divider">
+        <span>OR CONTINUE WITH</span>
+      </div>
+
+      <div class="social-grid">
+        <button type="button" class="social-button" data-provider="Google">
+          <i class="fa-brands fa-google"></i>
+          <span>Google</span>
+        </button>
+
+        <button type="button" class="social-button" data-provider="GitHub">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+        </button>
+
+        <button type="button" class="social-button" data-provider="Discord">
+          <i class="fa-brands fa-discord"></i>
+          <span>Discord</span>
+        </button>
+      </div>
+
+      <p class="register-link">
+        New to NEXUS?
+        <a href="#" id="registerLink">Create an account <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </p>
+
+      <div class="footer-note">
+        <span><i class="fa-solid fa-lock"></i> Protected connection</span>
+        <span>© 2026 NEXUS</span>
+      </div>
+    </section>
+
+    <p class="page-caption">
+      <span class="caption-line"></span>
+      YOUR SPACE. YOUR FUTURE.
+      <span class="caption-line"></span>
+    </p>
+  </main>
 </body>
 </html>
