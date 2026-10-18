@@ -1,12 +1,151 @@
-body{
-  overflow: hidden;
-  margin: 0;
-  background-color: #2f2f2f;
+
+/* ==============================
+   MODERN CANVAS DESIGN
+============================== */
+
+:root {
+  --bg-dark: #080b16;
+  --bg-light: #151b30;
+  --canvas-bg: #ffffff;
+  --accent: #8b5cf6;
+  --glow: rgba(139, 92, 246, 0.25);
 }
-canvas{
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  position: relative;
+  isolation: isolate;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(99, 102, 241, 0.18),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(168, 85, 247, 0.14),
+      transparent 35%
+    ),
+    linear-gradient(135deg, var(--bg-dark), var(--bg-light));
+
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Subtle background grid */
+
+body::before {
+  content: "";
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 40px 40px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    black,
+    transparent 90%
+  );
+}
+
+/* Canvas container */
+
+canvas {
+  display: block;
+
+  width: min(900px, calc(100vw - 40px));
+  height: auto;
+  max-height: calc(100vh - 40px);
+
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+
+  background: var(--canvas-bg);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+
+  box-shadow:
+    0 0 0 6px rgba(255, 255, 255, 0.025),
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 45px var(--glow);
+
+  animation: canvas-appear 0.6s ease-out both;
+
+  transition:
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+canvas:hover {
+  border-color: rgba(167, 139, 250, 0.6);
+
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.45),
+    0 0 55px var(--glow);
+}
+
+/* Entrance animation */
+
+@keyframes canvas-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Mobile responsive */
+
+@media (max-width: 600px) {
+  canvas {
+    width: calc(100vw - 24px);
+    border-radius: 10px;
+    max-height: calc(100vh - 24px);
+  }
+
+  body::before {
+    background-size: 28px 28px;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  canvas {
+    animation: none;
+    transition: none;
+  }
 }
