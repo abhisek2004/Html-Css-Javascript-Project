@@ -1,61 +1,81 @@
+
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080d1b">
+    <title>TempX | Temperature Converter</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="temperature2.png" type="image/x-png">
-    <title> Temperature Converter </title>
-  </head>
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
 
-  <body>
+    <main class="app">
+        <header class="header">
+            <div class="logo">✳</div>
+            <span>TEMP<span class="accent">X</span></span>
+            <span class="status">● ONLINE</span>
+        </header>
 
-    <h1 class="title">🌡️ <b> <u>Temperature Converter</u> </b> </h1>
+        <section class="hero">
+            <span class="eyebrow">SMART TEMPERATURE TOOL</span>
+            <h1>Temperature<br><span>Converter.</span></h1>
+            <p>Convert temperatures instantly with precision and simplicity.</p>
+        </section>
 
-    <div class="container">
-      <div class="temp-calculator">
-        <form class="temp-value" id="myForm">
-          <p>Enter the Value:</p>
-          <input type="text" placeholder="0" id="input-value" name="value" />
-        </form>
+        <section class="converter">
+            <div class="input-group">
+                <label for="input-value">ENTER TEMPERATURE</label>
+                <input type="number" id="input-value"
+                    placeholder="Enter a value..." step="any">
+            </div>
 
-        <div id="degree">
-          <span>
-            <p>From</p>
-            <select name="input" id="input">
-              <option value="celsius">Celsius(°C)</option>
-              <option value="fahrenhiet">Fahrenhiet(°F)</option>
-              <option value="kelvin">Kelvin(°K)</option>
-            </select>
-          </span>
+            <div class="units">
+                <div class="unit-box">
+                    <label for="input">FROM</label>
+                    <select id="input">
+                        <option value="celsius">Celsius (°C)</option>
+                        <option value="fahrenheit">Fahrenheit (°F)</option>
+                        <option value="kelvin">Kelvin (K)</option>
+                    </select>
+                </div>
 
-          <span>
-            <p>To</p>
-            <select name="output" id="output">
-              <option value="celsius">Celsius(°C)</option>
-              <option value="fahrenhiet">Fahrenhiet(°F)</option>
-              <option value="kelvin">Kelvin(°K)</option>
-            </select>
-          </span>
-        </div>
+                <button class="swap-btn" id="swap" aria-label="Swap units">⇄</button>
 
-        <div class="btn">
-          <input type="reset" onclick="resetForm()" value="CLEAR" />
-          <input type="button" onclick="convertTemprature()" id="convert" value="CONVERT" />
-        </div>
+                <div class="unit-box">
+                    <label for="output">TO</label>
+                    <select id="output">
+                        <option value="fahrenheit">Fahrenheit (°F)</option>
+                        <option value="celsius">Celsius (°C)</option>
+                        <option value="kelvin">Kelvin (K)</option>
+                    </select>
+                </div>
+            </div>
 
-        <div class="temp-value" id="formresult">
-          <p id="ans">Answer:</p>
-          <input type="text" name="value2" id="result" value="" />
-        </div>
-        <p> <b>Made by Abhisek Panda</p>
-      </div>
-    </div>
-    <footer>
-    </footer>
+            <button class="convert-btn" id="convert">
+                Convert Temperature <span>→</span>
+            </button>
+
+            <div class="result-box">
+                <span class="result-label">CONVERSION RESULT</span>
+                <div class="result-value" id="result">--</div>
+                <p id="result-unit">Your result will appear here</p>
+            </div>
+
+            <button class="clear-btn" id="clear">↻ Reset Converter</button>
+        </section>
+
+        <footer>
+            <p>Designed & Developed by <strong>Abhisek Panda</strong></p>
+            <span>© 2026 TEMPX · Built with precision.</span>
+        </footer>
+    </main>
+
     <script src="app.js"></script>
-  </body>
-
+</body>
 </html>
