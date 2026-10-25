@@ -1,60 +1,203 @@
-body{
-    transition: 0.5s ease-in-out;
-}
-#plate {
-    width: 370px;
-    height: 60px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -225px;
-    margin-top: -25px;
-    background-color: white;
-    text-align: center;
-    line-height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    border-radius: 10px;
-}
-.color-option {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
+
+/* ==============================
+   GLOBAL RESET & BASE STYLING
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html,
 body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+    width: 100%;
+    min-height: 100%;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(135deg, #080d1b, #111b35, #15132e);
+    color: #ffffff;
+    transition: background 0.5s ease-in-out;
+    overflow-x: hidden;
 }
+
+/* ==============================
+   CONTENT WRAPPER
+================================ */
 
 .content-wrapper {
     flex: 1;
-    /* This makes the content wrapper take up available space */
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Center the cards horizontally */
     justify-content: center;
-    /* Center the cards vertically */
+    padding: 30px 20px;
+    position: relative;
 }
+
+/* ==============================
+   COLOR PLATE
+================================ */
+
+#plate {
+    width: min(90%, 430px);
+    min-height: 85px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    padding: 20px 25px;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 22px;
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.08);
+
+    transition: all 0.35s ease;
+}
+
+#plate:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.4);
+}
+
+/* ==============================
+   COLOR OPTIONS
+================================ */
+
+.color-option {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    display: inline-block;
+
+    border-radius: 50%;
+    cursor: pointer;
+
+    border: 3px solid rgba(255, 255, 255, 0.25);
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.color-option:hover {
+    transform: scale(1.2);
+    border-color: #ffffff;
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.4);
+}
+
+.color-option:active {
+    transform: scale(0.9);
+}
+
+/* ==============================
+   CARD DESIGN
+================================ */
 
 .card {
     margin: 20px;
+    padding: 25px;
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+
+    transition: all 0.3s ease;
 }
 
+.card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(130, 120, 255, 0.5);
+}
+
+/* ==============================
+   FOOTER
+================================ */
+
 footer {
-    /* background-color: #00ffe1; */
+    width: 100%;
+    padding: 22px 15px;
+    margin-top: auto;
+
     text-align: center;
-    color: #fa0404be;
-    height: 20px;
-    margin: 0 20px;
-    padding-top: 20px;
-    font-size: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    color: #aab5d1;
+
+    background: rgba(255, 255, 255, 0.025);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+footer span {
+    color: #8c83ff;
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+================================ */
+
+@media (max-width: 480px) {
+
+    .content-wrapper {
+        padding: 20px 12px;
+    }
+
+    #plate {
+        width: 95%;
+        min-height: 75px;
+        gap: 14px;
+        padding: 16px;
+        border-radius: 17px;
+    }
+
+    .color-option {
+        width: 32px;
+        height: 32px;
+    }
+
+    .card {
+        margin: 12px;
+        padding: 20px;
+    }
+
+    footer {
+        font-size: 12px;
+        padding: 18px 10px;
+    }
+}
+
+/* ==============================
+   ACCESSIBILITY
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
 }
