@@ -1,82 +1,176 @@
-body {
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+* {
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  justify-content: center;
-  background-color: pink;
-}
-
-h1 {
-  font-size: 50px;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  letter-spacing: 4px;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  white-space: nowrap;
-}
-
-.container {
-  text-align: center;
-}
-
-.btn {
-  padding: 30px 50px;
-  background-color: white;
-  border: none;
-  margin: 10px;
-  font-size: 30px;
-  min-width: 200px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  background-image: url("images/tom.png");
-  background-size: cover;
-  color: white;
-  font-family: cursive;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  text-transform: capitalize;
-}
-
-.btn:hover {
-  color: pink;
-}
-
-.btn:active {
-  background-size: 105%;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html,
 body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  min-height: 100%;
+  width: 100%;
 }
 
-.content-wrapper {
-  flex: 1;
-  /* This makes the content wrapper take up available space */
+body {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Center the cards horizontally */
   justify-content: center;
-  /* Center the cards vertically */
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff9aaf, #ffc3d0, #f7a8c4);
+  background-attachment: fixed;
+  overflow-x: hidden;
 }
 
-.card {
-  margin: 20px;
-}
-
-footer {
-  /* background-color: #00ffe1; */
+/* Main Content */
+.content-wrapper {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
   text-align: center;
-  color: #fa0404be;
-  height: 20px;
-  margin: 0 20px;
-  padding-top: 20px;
-  font-size: 25px;
+}
+
+/* Main Heading */
+h1 {
+  font-size: clamp(32px, 5vw, 55px);
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 0 5px 15px rgba(120, 20, 65, 0.25);
+  margin-bottom: 25px;
+  animation: fadeIn 1s ease;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+/* Cards */
+.card {
+  margin: 10px;
+  padding: 20px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 35px rgba(160, 30, 85, 0.15);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(160, 30, 85, 0.25);
+}
+
+/* Buttons */
+.btn {
+  position: relative;
+  min-width: 200px;
+  padding: 22px 35px;
+  margin: 10px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ff4f91, #e83e8c);
+  background-image: url("images/tom.png");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(190, 35, 100, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-5px) scale(1.04);
+  color: #ffe4ef;
+  box-shadow: 0 14px 28px rgba(190, 35, 100, 0.4);
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 5px;
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  color: #a51c56;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .content-wrapper {
+    padding: 20px 12px;
+  }
+
+  h1 {
+    font-size: 32px;
+    letter-spacing: 2px;
+    white-space: normal;
+  }
+
+  .container {
+    gap: 12px;
+  }
+
+  .card {
+    width: 100%;
+    margin: 5px;
+    padding: 15px;
+  }
+
+  .btn {
+    width: 100%;
+    min-width: unset;
+    padding: 18px 25px;
+    font-size: 18px;
+    margin: 8px 0;
+  }
+
+  footer {
+    font-size: 13px;
+  }
 }
