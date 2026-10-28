@@ -1,55 +1,133 @@
-body{
-    background: linear-gradient(45deg, #0a0a0a, #3a4452);
-}
-#display{
-    width: 370px;
-    height: 540px;
-    border: 1px solid rgb(213, 209, 209);
-    border-radius: 4px;
-    text-align: center;
-    margin: 55px;
-    margin-left: 33%;
-}
-#show{
-    width: 300px;
-    height: 40px;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    color: white;
-    margin: 22px;
-    margin-top: 25px;
-    text-align: right;
-    font-size: 40px;
-}
-::placeholder{
-    color: white;
-}
-#sym{
-    color: rgb(4, 218, 4);
-}
-#equal{
-    background-color: rgb(255, 157, 0);
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.btn{
-    width: 60px;
-    height: 60px;
-    background-color: transparent;
-    color: white;
-    border-radius: 50%;
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #09090f, #151c2e, #202b45);
+    font-family: 'Inter', sans-serif;
+}
+
+/* Calculator Container */
+#display {
+    width: 360px;
+    min-height: 550px;
+    padding: 25px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+    text-align: center;
+}
+
+/* Display Screen */
+#show {
+    width: 100%;
+    height: 110px;
+    margin-bottom: 20px;
+    padding: 15px;
     border: none;
     outline: none;
-    font-size: 22px;
-    margin: 10px;
-    box-shadow: -4px -4px 10px rgba(201, 201, 201, 0.363);
+    background: transparent;
+    color: #ffffff;
+    text-align: right;
+    font-size: 42px;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
+
+#show::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+/* Calculator Buttons */
+.btn {
+    width: 62px;
+    height: 62px;
+    margin: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: scale(0.92);
+}
+
+/* Operator Buttons */
+#sym {
+    background: rgba(0, 220, 150, 0.15);
+    color: #00e6a0;
+    border: 1px solid rgba(0, 230, 160, 0.2);
+}
+
+#sym:hover {
+    background: #00c98b;
+    color: #ffffff;
+}
+
+/* Equal Button */
+#equal {
+    background: linear-gradient(135deg, #ff9d00, #ff5e00);
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 5px 18px rgba(255, 125, 0, 0.25);
+}
+
+#equal:hover {
+    background: linear-gradient(135deg, #ffb52e, #ff7500);
+    box-shadow: 0 8px 25px rgba(255, 125, 0, 0.4);
+}
+
+/* Footer */
 footer {
-    font-size: large;
+    margin-top: 25px;
+    color: #a5b4fc;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
     text-align: center;
-    color: #fa0404be;
-    height: 20px;
-    margin: 0 20px;
-    padding-top: 20px;
-    font-size: 25px;
+}
+
+/* Responsive Design */
+@media (max-width: 420px) {
+    #display {
+        width: 92%;
+        min-height: 530px;
+        padding: 20px 12px;
+    }
+
+    .btn {
+        width: 58px;
+        height: 58px;
+        margin: 5px 3px;
+    }
+
+    #show {
+        font-size: 36px;
+    }
 }
