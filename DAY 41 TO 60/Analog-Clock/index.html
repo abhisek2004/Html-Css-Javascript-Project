@@ -1,44 +1,344 @@
+
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080d1b">
 
-    <head>
+    <title>Modern Analog Clock | Abhisek Panda</title>
 
-        <title>Analog-Clock</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
-        <!-- CSS File -->
-        <link rel="stylesheet" href="css/style.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    </head>
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Outfit', sans-serif;
+            color: #fff;
+            background:
+                radial-gradient(circle at 20% 20%, #243b70, transparent 40%),
+                radial-gradient(circle at 80% 80%, #542c76, transparent 40%),
+                #080d1b;
+            overflow-x: hidden;
+        }
 
-    <body>
+        .container {
+            width: min(100%, 600px);
+            padding: 35px 20px;
+            text-align: center;
+        }
 
-        <div class="container">
+        .header h1 {
+            font-size: clamp(30px, 6vw, 45px);
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
 
-            <div class="circle"></div>
-            <div class="circle"></div>
+        .header p {
+            margin-top: 8px;
+            color: #aab5d0;
+            font-size: 15px;
+        }
 
-            <div class="clock">
-                <div class="clock-bg">
-                    <img src="images/clock.png" alt="...">
-                </div>
-                <div class="hour">
-                    <span class="hr" id="hr"></span>
-                </div>
-                <div class="minute">
-                    <span class="min" id="min"></span>
-                </div>
-                <div class="second">
-                    <span class="sec" id="sec"></span>
-                </div>
+        .clock {
+            width: min(75vw, 340px);
+            aspect-ratio: 1;
+            margin: 45px auto 35px;
+            padding: 12px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #ffffff30, #ffffff05);
+            box-shadow:
+                0 20px 70px #0008,
+                inset 0 0 20px #ffffff15;
+            border: 1px solid #ffffff25;
+        }
+
+        .clock-face {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            border-radius: 50%;
+            background: radial-gradient(circle, #192746, #10182d 75%);
+            border: 5px solid #ffffff20;
+            box-shadow: inset 0 0 35px #0008;
+        }
+
+        .clock-face::before {
+            content: "";
+            position: absolute;
+            inset: 8px;
+            border: 1px solid #ffffff20;
+            border-radius: 50%;
+        }
+
+        .numbers {
+            position: absolute;
+            inset: 0;
+        }
+
+        .number {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #eaf0ff;
+            font-size: 18px;
+            font-weight: 500;
+            transform: translate(-50%, -50%);
+        }
+
+        .hand {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform-origin: bottom center;
+            border-radius: 20px;
+            transform: translateX(-50%) rotate(0deg);
+        }
+
+        .hour {
+            width: 7px;
+            height: 25%;
+            background: #fff;
+            z-index: 3;
+        }
+
+        .minute {
+            width: 5px;
+            height: 34%;
+            background: #62d6ff;
+            z-index: 4;
+        }
+
+        .second {
+            width: 2px;
+            height: 40%;
+            background: #ff648a;
+            z-index: 5;
+        }
+
+        .center-dot {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #ff648a;
+            border: 3px solid white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 6;
+            box-shadow: 0 0 15px #ff648a;
+        }
+
+        .time-info {
+            padding: 22px 15px;
+            border: 1px solid #ffffff20;
+            background: #ffffff0a;
+            backdrop-filter: blur(15px);
+            border-radius: 18px;
+            box-shadow: 0 10px 40px #0003;
+        }
+
+        .time-info h2 {
+            font-size: clamp(30px, 7vw, 42px);
+            letter-spacing: 4px;
+            font-weight: 500;
+            color: #62d6ff;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .time-info p {
+            margin: 12px 0 6px;
+            color: #d4dced;
+            font-size: 16px;
+        }
+
+        .time-info span {
+            color: #8292b7;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        footer {
+            margin-top: 35px;
+            color: #8996b3;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: #62d6ff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        footer a:hover {
+            color: #ff648a;
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 25px 15px;
+            }
+
+            .clock {
+                margin: 35px auto 25px;
+            }
+
+            .number {
+                font-size: 16px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <header class="header">
+            <h1>Analog Clock</h1>
+            <p>Every second tells a story.</p>
+        </header>
+
+        <section class="clock" aria-label="Analog clock">
+
+            <div class="clock-face">
+
+                <div class="numbers" id="numbers"></div>
+
+                <div class="hand hour" id="hr"></div>
+
+                <div class="hand minute" id="min"></div>
+
+                <div class="hand second" id="sec"></div>
+
+                <div class="center-dot"></div>
+
             </div>
 
-        </div>
+        </section>
 
-        <!-- JS File -->
-        <script type="text/javascript" src="js/script.js"></script>
+        <section class="time-info">
+
+            <h2 id="digital-time">00:00:00</h2>
+
+            <p id="date">Loading date...</p>
+
+            <span>Local Time</span>
+
+        </section>
+
         <footer>
-            <a href="https://github.com/abhisek2004">@ Created and Design By Abhisek Panda</a>
+            Designed & Developed by
+            <a href="https://github.com/abhisek2004"
+               target="_blank"
+               rel="noopener noreferrer">
+                Abhisek Panda
+            </a>
         </footer>
-    </body>
 
+    </main>
+
+    <script>
+
+        const hourHand = document.getElementById("hr");
+        const minuteHand = document.getElementById("min");
+        const secondHand = document.getElementById("sec");
+
+        const digitalTime = document.getElementById("digital-time");
+        const dateDisplay = document.getElementById("date");
+        const numbersContainer = document.getElementById("numbers");
+
+        // Generate Clock Numbers
+        for (let i = 1; i <= 12; i++) {
+
+            const number = document.createElement("div");
+
+            number.className = "number";
+            number.textContent = i;
+
+            const angle = (i * 30 - 90) * Math.PI / 180;
+
+            const radius = 41;
+
+            number.style.left =
+                `${50 + radius * Math.cos(angle)}%`;
+
+            number.style.top =
+                `${50 + radius * Math.sin(angle)}%`;
+
+            numbersContainer.appendChild(number);
+        }
+
+        // Update Clock
+        function updateClock() {
+
+            const now = new Date();
+
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            const milliseconds = now.getMilliseconds();
+
+            const secondAngle =
+                seconds * 6 + milliseconds * 0.006;
+
+            const minuteAngle =
+                minutes * 6 + seconds * 0.1;
+
+            const hourAngle =
+                (hours % 12) * 30 + minutes * 0.5;
+
+            // Analog Clock Hands
+            hourHand.style.transform =
+                `translateX(-50%) rotate(${hourAngle}deg)`;
+
+            minuteHand.style.transform =
+                `translateX(-50%) rotate(${minuteAngle}deg)`;
+
+            secondHand.style.transform =
+                `translateX(-50%) rotate(${secondAngle}deg)`;
+
+            // Digital Time
+            digitalTime.textContent =
+                now.toLocaleTimeString("en-IN", {
+                    hour12: true,
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit"
+                });
+
+            // Current Date
+            dateDisplay.textContent =
+                now.toLocaleDateString("en-IN", {
+                    weekday: "long",
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric"
+                });
+        }
+
+        // Start Clock
+        updateClock();
+
+        setInterval(updateClock, 50);
+
+    </script>
+
+</body>
 </html>
