@@ -1,34 +1,76 @@
-html,
-body {
+
+* {
     margin: 0;
     padding: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: aqua;
+    box-sizing: border-box;
 }
 
+html,
+body {
+    min-height: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #e0f7fa, #b2ebf2, #80deea);
+    color: #1e293b;
+}
+
+/* Main Content */
 .content-wrapper {
     flex: 1;
-    /* This makes the content wrapper take up available space */
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Center the cards horizontally */
     justify-content: center;
-    /* Center the cards vertically */
+    gap: 25px;
+    padding: 40px 20px;
 }
 
+/* Cards */
 .card {
-    margin: 20px;
+    width: min(90%, 350px);
+    padding: 25px;
+    margin: 10px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Footer */
 footer {
-    /* background-color: #00ffe1; */
+    width: 100%;
+    padding: 20px;
     text-align: center;
-    color: #fa0404be;
-    height: 20px;
-    margin: 0 20px;
-    padding-top: 20px;
-    font-size: 25px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #334155;
+    background: rgba(255, 255, 255, 0.35);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .content-wrapper {
+        padding: 25px 15px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    footer {
+        font-size: 13px;
+    }
 }
