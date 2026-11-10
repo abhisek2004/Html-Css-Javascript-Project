@@ -1,23 +1,79 @@
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>page flip using Javascript</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="./style.css">
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern 3D Page Flip</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<section>
-  <div class="left next"></div>
-  <div class="right next"></div>
-  <div class="left current"></div>
-  <div class="right current"></div>
-</section>
-<h1 id="title">tap the image to flip</h1>
-<!-- partial -->
-  <script  src="./script.js"></script>
 
+    <main class="container">
+        <div class="header">
+            <span class="tag">INTERACTIVE EXPERIENCE</span>
+            <h1>Memory Book</h1>
+            <p>Turn the pages and explore the moments.</p>
+        </div>
+
+        <div class="book-container">
+            <div class="book" id="book">
+                <div class="page page-1">
+                    <div class="page-content cover">
+                        <span>✦</span>
+                        <h2>MY<br>STORY</h2>
+                        <p>A JOURNEY THROUGH MEMORIES</p>
+                        <small>EST. 2026</small>
+                    </div>
+                </div>
+
+                <div class="page page-2">
+                    <div class="page-content">
+                        <span class="number">01</span>
+                        <h2>Chapter One</h2>
+                        <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600" alt="Mountain landscape">
+                        <p>Every great journey begins with a single step. Discover the beauty of new beginnings.</p>
+                    </div>
+                </div>
+
+                <div class="page page-3">
+                    <div class="page-content">
+                        <span class="number">02</span>
+                        <h2>Explore Life</h2>
+                        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600" alt="Nature landscape">
+                        <p>Life is full of beautiful moments. Capture them, enjoy them and never stop exploring.</p>
+                    </div>
+                </div>
+
+                <div class="page page-4">
+                    <div class="page-content">
+                        <span class="number">03</span>
+                        <h2>Keep Dreaming</h2>
+                        <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=600" alt="Sunrise">
+                        <p>Your dreams are waiting. Keep moving forward and create your own story.</p>
+                    </div>
+                </div>
+
+                <div class="page page-5">
+                    <div class="page-content cover back-cover">
+                        <span>✦</span>
+                        <h2>THE<br>END</h2>
+                        <p>THANK YOU FOR READING</p>
+                        <small>UNTIL NEXT TIME</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="prevBtn">← Previous</button>
+            <span id="pageCount">1 / 5</span>
+            <button id="nextBtn">Next →</button>
+        </div>
+
+        <p class="hint">Click the buttons or tap the book to turn pages</p>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
