@@ -14,7 +14,7 @@
     "cookie-parser": "^1.4.6",
     "express": "^5.2.1",
     "mongodb": "^6.6.2",
-    "mongoose": "^8.4.0",
+    "mongoose": "^9.12.1",
     "nodemon": "^3.1.0"
   }
 }
