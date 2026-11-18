@@ -1,22 +1,72 @@
- <!DOCTYPE html>
- <html lang="en">
- <head>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Catamaran:wght@200&family=Courgette&family=Edu+TAS+Beginner:wght@700&family=Lato:wght@300;900&family=Mukta:wght@700&family=Mulish:wght@300&family=Open+Sans&family=PT+Sans:ital,wght@1,700&family=Poppins:wght@300&family=Raleway:wght@100&family=Roboto+Condensed:wght@700&family=Roboto+Slab&family=Roboto:wght@300;400&family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+    <title>QR Code Generator | RD Creations</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="index.css">
- </head>
- <body>
-      <div class="container">
-        <h1>QR CODE Generator</h1>
-        <div class="input">
-            <input type="text" placeholder="Write & Create QR Code" id="inp"><br>
-            <button onclick="myFun()">Generate QR Code</button>
+</head>
+<body>
+
+    <div class="bg-circle circle-one"></div>
+    <div class="bg-circle circle-two"></div>
+
+    <main class="container">
+
+        <div class="logo">
+            <i>▦</i>
         </div>
-        <img src="" alt="" id="img">
-      </div>
+
+        <div class="heading">
+            <span class="tag">SMART TOOLS</span>
+            <h1>QR Code <span>Generator</span></h1>
+            <p>Turn your links and text into scannable QR codes instantly.</p>
+        </div>
+
+        <div class="input-area">
+            <label for="inp">Enter your text or URL</label>
+
+            <div class="input-box">
+                <span>🔗</span>
+                <input
+                    type="text"
+                    id="inp"
+                    placeholder="https://example.com"
+                    autocomplete="off">
+                <button id="clearBtn" type="button" aria-label="Clear input">✕</button>
+            </div>
+
+            <button class="generate-btn" id="generateBtn">
+                Generate QR Code <span>→</span>
+            </button>
+
+            <p class="message" id="message"></p>
+        </div>
+
+        <div class="result" id="result">
+            <div class="qr-frame">
+                <img src="" alt="Generated QR Code" id="img">
+            </div>
+
+            <h3>Your QR Code is Ready!</h3>
+            <p>Scan it with your smartphone camera.</p>
+
+            <button class="download-btn" id="downloadBtn">
+                ↓ Download QR Code
+            </button>
+        </div>
+
+        <div class="footer">
+            Designed with ❤️ by <span>RD Creations</span>
+        </div>
+
+    </main>
+
     <script src="index.js"></script>
- </body>
- </html>
+</body>
+</html>
