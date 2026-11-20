@@ -1,55 +1,229 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMI Calculator</title>
+
+    <title>BMI Calculator | RD Creations</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
     <link rel="stylesheet" href="style.css">
-    <script src="./script.js" defer></script>
-    <script src="https://kit.fontawesome.com/2360d5f79f.js" crossorigin="anonymous" defer></script>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
-    <section class="main-section">
-        <h1><i class="fa-solid fa-dumbbell"></i> BMI CALCULATOR</h1>
-        <form>
-            <div>
-                <input type="number" min="0" max="1000" placeholder="Enter your age here" id="age">
+
+    <div class="background">
+        <div class="glow glow-one"></div>
+        <div class="glow glow-two"></div>
+    </div>
+
+    <main class="calculator">
+
+        <!-- HEADER -->
+
+        <header class="header">
+            <div class="logo">
+                <i class="fa-solid fa-heart-pulse"></i>
             </div>
-            <div>
-                <input type="text" placeholder="Enter your height" id="height">
-                <select id="heightOption">
-                    <option value="meter">meter</option>
-                    <option value="cm">cm</option>
-                    <option value="foot">foot</option>
-                </select>
+
+            <span class="brand">FITNESS<span>TRACK</span></span>
+
+            <div class="status">
+                <span></span> HEALTH TOOL
             </div>
-            <div>
-                <input type="text" placeholder="Enter your weight" id="weight">
-                <select id="weightOption">
-                    <option value="kg">kg</option>
-                    <option value="lbs">lbs</option>
-                    <option value="pound">pound</option>
-                </select>
+        </header>
+
+        <!-- TITLE -->
+
+        <section class="intro">
+            <span class="eyebrow">YOUR PERSONAL HEALTH COMPANION</span>
+
+            <h1>BMI <span>Calculator</span></h1>
+
+            <p>
+                Discover your Body Mass Index and understand
+                your weight category.
+            </p>
+        </section>
+
+        <!-- FORM -->
+
+        <form id="bmiForm">
+
+            <div class="form-grid">
+
+                <!-- AGE -->
+
+                <div class="input-group">
+                    <label for="age">Your Age</label>
+
+                    <div class="input-box">
+                        <i class="fa-solid fa-calendar-days"></i>
+
+                        <input
+                            type="number"
+                            id="age"
+                            placeholder="Enter your age"
+                            min="2"
+                            max="120"
+                            required>
+                        <span>Years</span>
+                    </div>
+                </div>
+
+                <!-- GENDER -->
+
+                <div class="input-group">
+                    <label>Select Gender</label>
+
+                    <div class="gender-options">
+
+                        <label class="gender-card selected">
+                            <input type="radio" name="gender"
+                                value="female" checked>
+                            <i class="fa-solid fa-venus"></i>
+                            <span>Female</span>
+                        </label>
+
+                        <label class="gender-card">
+                            <input type="radio" name="gender"
+                                value="male">
+                            <i class="fa-solid fa-mars"></i>
+                            <span>Male</span>
+                        </label>
+
+                    </div>
+                </div>
+
+                <!-- HEIGHT -->
+
+                <div class="input-group">
+                    <label for="height">Your Height</label>
+
+                    <div class="input-box">
+                        <i class="fa-solid fa-ruler-vertical"></i>
+
+                        <input
+                            type="number"
+                            id="height"
+                            placeholder="Enter height"
+                            min="0.1"
+                            step="any"
+                            required>
+
+                        <select id="heightUnit">
+                            <option value="cm">CM</option>
+                            <option value="meter">Meter</option>
+                            <option value="foot">Feet</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- WEIGHT -->
+
+                <div class="input-group">
+                    <label for="weight">Your Weight</label>
+
+                    <div class="input-box">
+                        <i class="fa-solid fa-weight-scale"></i>
+
+                        <input
+                            type="number"
+                            id="weight"
+                            placeholder="Enter weight"
+                            min="0.1"
+                            step="any"
+                            required>
+
+                        <select id="weightUnit">
+                            <option value="kg">KG</option>
+                            <option value="lbs">LBS</option>
+                        </select>
+                    </div>
+                </div>
+
             </div>
-            <div class="gender">
-                <span class="female"><i class="fa-solid fa-person-dress"></i></span>
-                <input id="female" type="radio" name="tip" value="female" checked="checked">
-                <span><i class="fa-solid fa-person"></i></span>
-                <input id="male" type="radio" name="tip" value="male">
-            </div>
+
+            <!-- BUTTONS -->
+
             <div class="buttons">
-                <button type="submit">Calculate</button>
-                <button type="reset" id="reset">Reset</button>
+                <button type="submit" class="calculate-btn">
+                    Calculate BMI
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+                <button type="reset" class="reset-btn">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    Reset
+                </button>
             </div>
-            <div class="output">
-                <p>BMI: <span></span></p>
-                <p>Category: <span></span></p>
-            </div>
+
         </form>
-    </section>
+
+        <!-- RESULT -->
+
+        <section class="result" id="result" aria-live="polite">
+
+            <div class="result-heading">
+                <div>
+                    <span class="eyebrow">YOUR HEALTH REPORT</span>
+                    <h2>BMI Results</h2>
+                </div>
+
+                <div class="result-icon">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+            </div>
+
+            <div class="result-content">
+
+                <div class="bmi-value">
+                    <span>Your BMI</span>
+                    <h3 id="bmiValue">0.0</h3>
+                    <p id="bmiCategory">Category</p>
+                </div>
+
+                <div class="bmi-meter">
+                    <div class="meter-track">
+                        <div class="meter-marker" id="meterMarker"></div>
+                    </div>
+
+                    <div class="meter-labels">
+                        <span>Underweight</span>
+                        <span>Normal</span>
+                        <span>Overweight</span>
+                        <span>Obese</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="result-message" id="resultMessage"></div>
+
+            <div class="health-note">
+                <i class="fa-solid fa-circle-info"></i>
+                BMI is a screening measure, not a diagnosis.
+                Adult BMI categories may not apply to children,
+                teenagers or pregnancy.
+            </div>
+
+        </section>
+
+        <!-- FOOTER -->
+
+        <footer>
+            <p>Made with <span>♥</span> by <strong>RD Creations</strong></p>
+        </footer>
+
+    </main>
 
 </body>
-
 </html>
