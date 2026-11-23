@@ -1,39 +1,63 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Music Player</title>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Music Player | Developer AP</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+</head>
+
+<body>
+
     <div class="container">
-      <h1 class="title">Music Player</h1>
-      <div class="player">
-        <audio id="player" src="" controls></audio>
-        <div class="player__controls">
-          <button class="player__button player__button--play"></button>
-          <button class="player__button player__button--pause"></button>
+
+        <h1 class="title">DEVELOPER AP <span>Music Player</span></h1>
+
+        <div class="player">
+
+            <audio id="player" src="" controls></audio>
+
+            <div class="player__controls">
+                <button class="player__button player__button--play"></button>
+                <button class="player__button player__button--pause"></button>
+            </div>
+
+            <div class="player__progress">
+                <div class="player__progress-bar"></div>
+            </div>
+
         </div>
-        <div class="player__progress">
-          <div class="player__progress-bar"></div>
-        </div>
-      </div>
-      <ul class="playlist">
-        <li class="playlist__item">
-          <a href="#" data-src="songs/song1.m4a">Song 1</a>
-        </li>
-        <li class="playlist__item">
-          <a href="#" data-src="songs/song2.m4a">Song 2</a>
-        </li>
-        <li class="playlist__item">
-          <a href="#" data-src="songs/song3.m4a">Song 3</a>
-        </li>
-      </ul>
+
+        <ul class="playlist">
+
+            <li class="playlist__item">
+                <a href="#" data-src="songs/song1.m4a">Song 1</a>
+            </li>
+
+            <li class="playlist__item">
+                <a href="#" data-src="songs/song2.m4a">Song 2</a>
+            </li>
+
+            <li class="playlist__item">
+                <a href="#" data-src="songs/song3.m4a">Song 3</a>
+            </li>
+
+        </ul>
+
+        <footer class="footer">
+            Crafted with ❤️ by <strong>Developer AP</strong>
+        </footer>
+
     </div>
+
     <script src="script.js"></script>
-  </body>
+
+</body>
 </html>
-
-
-
-
-
