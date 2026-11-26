@@ -1,52 +1,47 @@
-<!doctype html>
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-	<meta charset="utf-8">
-	<title>Clock UI Design</title>
-	<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-pUA-Compatible" content="ie=edge" />
+
+    <title>Star Rating | Developer AP</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Font Awesome CDN Link -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+
+    <!--<script src="script.js" defer></script>-->
 </head>
+
 <body>
-	<div id="clock">
-		<h2>The time is now</h2>
-		<div id="time">
-			<div><span id="hour">00</span><span>Hours</span></div>
-			<div><span id="minutes">00</span><span>Minutes</span></div>
-			<div><span id="seconds">00</span><span>Seconds</span></div>
-			<div><span id="ampm"></span></div>
-		</div>
-	</div>
-	<script type="text/javascript">
-		function clock(){
 
-			var hours = document.getElementById('hour');
-			var minutes = document.getElementById('minutes');
-			var seconds = document.getElementById('seconds');
-			var ampm = document.getElementById('ampm');
+    <div class="rating-box">
 
-			var h = new Date().getHours();
-			var m = new Date().getMinutes();
-			var s = new Date().getSeconds();
-			var am = "AM";
+        <header>How was your experience?</header>
 
-		    if(h > 12){
-		        h = h - 12;
-		       var am = "PM"
-		    }
-			h = (h < 10) ? "0" + h : h
-			m = (m < 10) ? "0" + m : m
-			s = (s < 10) ? "0" + s : s
+        <div class="stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+        </div>
 
+    </div>
 
-			hours.innerHTML = h;
-			minutes.innerHTML = m;
-			seconds.innerHTML = s;
-			ampm.innerHTML = am
+    <footer>
+        <a href="https://github.com/abhisek2004"
+           target="_blank"
+           rel="noopener noreferrer">
+            Crafted with ❤️ by <strong>Developer AP</strong>
+        </a>
+    </footer>
 
-		}
-
-		var interval = setInterval(clock, 1000);
-	</script>
 </body>
+
 </html>
-
-
